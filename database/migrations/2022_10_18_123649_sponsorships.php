@@ -15,9 +15,8 @@ class Sponsorships extends Migration
     {
         Schema::create('sponsorships', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('business_plan', 15);
-            $table->tinyInteger('time_plan');
+            $table->Integer('time_plan');
             $table->float('price', 5, 2);
             $table->timestamps();
         });
