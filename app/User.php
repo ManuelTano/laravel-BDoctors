@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Review');
     }
+
+    public function specialties()
+    {
+        return $this->belongsToMany('App\Models\Specialty');
+    }
 }
