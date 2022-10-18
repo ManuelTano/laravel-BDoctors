@@ -15,7 +15,7 @@ class SpecialtySeeder extends Seeder
         $specialties=config('specialties');
         foreach ($specialties as $specialty) {
             $new_specialty = new Specialty();
-            $new_specialty->label=$specialty;
+            $new_specialty->label = $specialty;
             $new_specialty->save();
         }
     }
