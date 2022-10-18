@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sponsorships extends Model
+class Sponsorship extends Model
 {
     public function users()
     {
