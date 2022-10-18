@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Specialty;
 
 class SpecialtySeeder extends Seeder
 {
@@ -11,6 +12,11 @@ class SpecialtySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $specialties=config('specialties');
+        foreach ($specialties as $specialty) {
+            $new_specialty = new Specialty();
+            $new_specialty->label=$specialty;
+            $new_specialty->save();
+        }
     }
 }
