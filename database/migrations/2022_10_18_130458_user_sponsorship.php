@@ -16,7 +16,8 @@ class UserSponsorship extends Migration
         Schema::create('user_sponsorship', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('sponsorships_id')->constrained()->onDelete('cascade');
+            $table->foreignId('sponsorship_id')->constrained()->onDelete('cascade');
+            $table->date('expiration_date');
             $table->timestamps();
         });
     }

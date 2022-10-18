@@ -19438,6 +19438,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (function(module, exports, __webpack_require__) {
 
 <<<<<<< HEAD
+__webpack_require__(/*! /Users/pasqualepedoto/Desktop/Progetto Finale Boolean/laravel-BDoctors/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/pasqualepedoto/Desktop/Progetto Finale Boolean/laravel-BDoctors/resources/sass/app.scss */"./resources/sass/app.scss");
+=======
+<<<<<<< HEAD
+__webpack_require__(/*! C:\Users\tmanu\Desktop\laravel-BDoctors\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\tmanu\Desktop\laravel-BDoctors\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+<<<<<<< HEAD
 __webpack_require__(/*! C:\laravel\laravel-BDoctors\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\laravel\laravel-BDoctors\resources\sass\app.scss */"./resources/sass/app.scss");
 =======
@@ -19449,6 +19457,8 @@ __webpack_require__(/*! C:\Laravel\laravel-BDoctors\resources\js\app.js */"./res
 module.exports = __webpack_require__(/*! C:\Laravel\laravel-BDoctors\resources\sass\app.scss */"./resources/sass/app.scss");
 >>>>>>> 1de8ec394a54eeba5cbc7f6271a7e2f21e274f90
 >>>>>>> d5ee67498313d1d9548220a51cfbe7e351dd3e23
+>>>>>>> 09c23ef83c94c731460da1f7019ad6022ed25e8b
+>>>>>>> 26e526f55a1c315093d03c073d70c13bc36f3e36
 
 
 /***/ })
