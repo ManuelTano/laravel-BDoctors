@@ -21,3 +21,5 @@ Route::get('/', function () {
 // Aggiungiamo tutte le rotte per l'autenticazione
 
 Auth::routes();
+
+
