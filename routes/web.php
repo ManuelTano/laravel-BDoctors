@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\Authenticate;
+use App\Http\Controllers\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +21,4 @@ Route::get('/', function () {
 // Aggiungiamo tutte le rotte per l'autenticazione
 
 Auth::routes();
-
-// Authenticate users routes
-
 
