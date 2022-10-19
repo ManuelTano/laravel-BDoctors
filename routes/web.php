@@ -24,3 +24,4 @@ Auth::routes();
 
 // Authenticate users routes
 
+
