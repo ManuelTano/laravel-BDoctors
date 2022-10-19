@@ -23,6 +23,3 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Authenticate users routes
-
-
