@@ -18,7 +18,7 @@ class SponsorshipController extends Controller
     {
         $sponsorships = Sponsorship::all();
 
-        return view('admin.sponsorships.index',compact('sponsorships'));
+        return view('admin.sponsorships.index', compact('sponsorships'));
     }
 
     /**
@@ -40,7 +40,7 @@ class SponsorshipController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        
+
         $new_sponsorship = new Sponsorship();
 
         $new_sponsorship->business_plan = $data['business_plan'];
@@ -58,9 +58,9 @@ class SponsorshipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Sponsorship $sponsorship)
     {
-        //
+        return view('admin.sponsorships.show', compact('sponsorship'));
     }
 
     /**
