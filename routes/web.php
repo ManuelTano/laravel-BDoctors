@@ -27,7 +27,7 @@ Auth::routes();
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin')->group(function(){
     Route::resource('sponsorships','SponsorshipController');
-     
+    // commento
   });
   
 
