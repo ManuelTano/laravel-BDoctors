@@ -28,7 +28,7 @@ class SponsorshipController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.sponsorships.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class SponsorshipController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.sponsorships.edit');
     }
 
     /**
