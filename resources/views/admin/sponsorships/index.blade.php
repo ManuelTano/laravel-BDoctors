@@ -4,6 +4,7 @@
 <div class="container">
   <header>
     <a href="{{ route('admin.sponsorships.create') }}" class="btn btn-primary">clicca per un nuovo sponsor</a>
+    {{-- <a href="{{ route('admin.sponsorships.edit') }}" class="btn btn-danger">clicca per modificare sponsor</a> --}}
   </header>
     <table class="table">
         <thead>

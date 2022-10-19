@@ -1,5 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-    <p>form</p>
+<div class="container">
+
+    <form action="{{ route('admin.sponsorships.store') }}" method="POST" class="row">
+        {{-- Token di convalida --}}
+        @csrf
+        
+        {{-- Business Plan --}}
+        <div class="form-group col-6">
+            <label for="business_plan">Business plan</label>
+            <input type="text" class="form-control" id="business_plan" name="business_plan">
+        </div>
+        
+        {{-- Time Plan --}}
+        <div class="form-group col-6">
+            <label for="business_plan">Time plan (hour)</label>
+            <input type="number" class="form-control" id="time_plan" name="time_plan">
+        </div>
+        
+        {{-- Business Plan --}}
+        <div class="form-group col-6">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" name="price">
+        </div>
+
+        {{-- Button to submit form --}}
+        <div class="col-12">
+            <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
 @endsection

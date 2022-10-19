@@ -39,7 +39,17 @@ class SponsorshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        
+        $new_sponsorship = new Sponsorship();
+
+        $new_sponsorship->business_plan = $data['business_plan'];
+        $new_sponsorship->time_plan = $data['time_plan'];
+        $new_sponsorship->price = $data['price'];
+
+        $new_sponsorship->save();
+
+        return redirect()->route('admin.sponsorships.index');
     }
 
     /**
