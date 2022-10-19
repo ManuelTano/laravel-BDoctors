@@ -25,7 +25,7 @@ Auth::routes();
 
 // Authenticate users routes
 
-Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin')->group(function(){
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::resource('sponsorships','SponsorshipController');
 
     Route::get('{any?}', function(){

@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+  <header>
+    <a href="{{ route('admin.sponsorships.create') }}" class="btn btn-primary">clicca per un nuovo sponsor</a>
+  </header>
     <table class="table">
         <thead>
           <tr>
