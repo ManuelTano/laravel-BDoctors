@@ -15,9 +15,12 @@ class CreateUserSpecialtyTable extends Migration
     {
         Schema::create('user_specialty', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('specialty_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('specialty_id')->nullable();
             $table->timestamps();
+
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('specialty_id')->references('id')->on('specialties')->onDelete('cascade');
         });
     }
 

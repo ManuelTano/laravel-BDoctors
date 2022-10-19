@@ -15,10 +15,13 @@ class UserSponsorship extends Migration
     {
         Schema::create('user_sponsorship', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('sponsorship_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('sponsorship_id')->nullable();
             $table->date('expiration_date');
             $table->timestamps();
+
+            $table->foreign('user_id')->constrained()->onDelete('cascade');
+            $table->foreign('sponsorship_id')->constrained()->onDelete('cascade');
         });
     }
 
