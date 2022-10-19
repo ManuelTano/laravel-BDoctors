@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Authenticate;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,9 @@ Auth::routes();
 // Authenticate users routes
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin')->group(function(){
-  Route::resource('sponsorships','SponsorshipController');
-   
-});
+    Route::resource('sponsorships','SponsorshipController');
+     
+  });
+  
 
 
