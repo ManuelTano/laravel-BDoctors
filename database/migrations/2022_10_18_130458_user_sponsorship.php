@@ -20,8 +20,8 @@ class UserSponsorship extends Migration
             $table->date('expiration_date');
             $table->timestamps();
 
-            $table->foreign('user_id')->constrained()->onDelete('cascade');
-            $table->foreign('sponsorship_id')->constrained()->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('')->onDelete('cascade');
+            $table->foreign('sponsorship_id')->onDelete('cascade');
         });
     }
 
