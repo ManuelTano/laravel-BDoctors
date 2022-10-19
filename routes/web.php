@@ -27,8 +27,17 @@ Auth::routes();
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin')->group(function(){
     Route::resource('sponsorships','SponsorshipController');
-    // commento
-  });
+
+    Route::get('{any?}', function(){
+        abort('404');
+    })->where('any','.*');
+});
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('{any?}', function(){
+    return view('welcome');
+})->where('any','.*');
   
 
 
