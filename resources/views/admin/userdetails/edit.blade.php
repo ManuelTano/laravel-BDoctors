@@ -53,7 +53,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="first_name">First Name</label>
-                <input type="text" class="form-control" id="first_name" name="first_name">
+                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ old('first_name',$details->first_name) }}">
             </div>
         </div>
 
@@ -61,7 +61,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="last_name">Last Name</label>
-                <input type="text" class="form-control" id="last_name" name="last_name">
+                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ old('last_name',$details->last_name) }}">
             </div>
         </div>
 
@@ -69,7 +69,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="curriculum_vitae">Curriculum Vitae</label>
-                <input type="text" class="form-control" id="curriculum_vitae" name="curriculum_vitae">
+                <input type="text" class="form-control" id="curriculum_vitae" name="curriculum_vitae" value="{{ old('curriculum_vitae',$details->curriculum_vitae) }}">
             </div>
         </div>
 
@@ -77,7 +77,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" name="address">
+                <input type="text" class="form-control" id="address" name="address" value="{{ old('address',$details->address) }}">
             </div>
         </div>
 
@@ -85,7 +85,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone">
+                <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone',$details->phone) }}">
             </div>
         </div>
 
@@ -93,7 +93,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="thumb">Thumb</label>
-                <input type="text" class="form-control" id="thumb" name="thumb">
+                <input type="text" class="form-control" id="thumb" name="thumb" value="{{ old('thumb',$details->thumb) }}">
             </div>
         </div>
 
@@ -101,7 +101,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="city">City</label>
-                <input type="text" class="form-control" id="city" name="city">
+                <input type="text" class="form-control" id="city" name="city" value="{{ old('city',$details->city) }}">
             </div>
         </div>
         
