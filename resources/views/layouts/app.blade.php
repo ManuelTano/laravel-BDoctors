@@ -74,7 +74,7 @@
                                 {{-- Logout --}}
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                      {{-- Edit profile --}}
-                                     <a class="dropdown-item" href="{{ route('admin.users.edit',Auth::user()) }}">
+                                     <a class="dropdown-item" href="{{ route('admin.userdetails.edit') }}">
                                         Profile
                                     </a>
                                     

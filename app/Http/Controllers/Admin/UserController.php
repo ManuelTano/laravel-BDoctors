@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Models\UserDetail;
 
 class UserController extends Controller
 {
@@ -81,14 +82,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $data = $request->all();
-
-        $user->name = $data['name'];
-        $user->email = $data['email'];
-
-        $user->save();
-
-        return redirect()->route('admin.users.show',$user);
+        //
     }
 
     /**

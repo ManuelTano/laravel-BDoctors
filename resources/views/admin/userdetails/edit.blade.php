@@ -6,7 +6,7 @@
     <h2 class="my-3">Edit your credentials</h2>
 
     {{-- $ Form ID --}}
-    <form action="{{ route('admin.users.update',$user) }}" method="POST" class="row">
+    <form action="{{ route('admin.userdetails.update') }}" method="POST" class="row">
         {{-- Token di controllo --}}
         @csrf
 
@@ -16,23 +16,23 @@
         {{-- # Fields --}}
         
         {{-- Name --}}
-        <div class="col-6">
+        {{-- <div class="col-6">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" name="name">
             </div>
-        </div>
+        </div> --}}
         
         {{-- Email --}}
-        <div class="col-6">
+        {{-- <div class="col-6">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email">
             </div>
-        </div>
+        </div> --}}
 
         {{-- Password --}}
-        <div class="col-6">
+        {{-- <div class="col-6">
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" name="password">
@@ -41,9 +41,9 @@
 
         <div class="d-flex align-items-center justify-content-center col-12">
             <hr class="my-5 col-6">
-        </div>
+        </div> --}}
 
-        <h2 class="my-3 col-12">Edit your profile</h2>
+        {{-- <h2 class="my-3 col-12">Edit your profile</h2> --}}
 
         {{-- $ Form info --}}
 

@@ -31,6 +31,11 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     // Definiamo tutte le rotte relative agli utenti (dottori)
     Route::resource('users','UserController');
 
+    // Rotta per l'edit del profilo
+
+    Route::get('/userdetails/edit','UserDetailController@edit')->name('userdetails.edit');
+    Route::put('/userdetails/update','UserDetailController@update')->name('userdetails.update');
+
     // Redirect in Page Not Found in caso di url errato o non gestito
     
     Route::get('{any?}', function(){
