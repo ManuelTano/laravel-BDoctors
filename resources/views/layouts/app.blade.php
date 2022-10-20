@@ -12,6 +12,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    {{-- Font Awesome --}}
+    <script src="https://kit.fontawesome.com/ddb740f05b.js" crossorigin="anonymous"></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -33,7 +36,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="mr-5">
+                            <a href="{{ url('/home') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-house mr-2"></i>Homepage</a>
+                        </li>
+                        <li class="mr-5">
+                            <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-message mr-2"></i>Your Messaggi</a>
+                        </li>
+                        <li class="mr-5">
+                            <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-users mr-2"></i>Your Reviews</a>
+                        </li>
+                        <li class="mr-5">
+                            <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-user-doctor mr-2"></i>Doctors</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
