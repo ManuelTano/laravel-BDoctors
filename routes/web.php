@@ -28,12 +28,21 @@ Auth::routes();
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::resource('sponsorships','SponsorshipController');
 
+    // Definiamo tutte le rotte relative agli utenti (dottori)
+    Route::resource('users','UserController');
+
+    // Redirect in Page Not Found in caso di url errato o non gestito
+    
     Route::get('{any?}', function(){
         abort('404');
     })->where('any','.*');
 });
 
+// Pagina d'atterraggio al login
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Redirect su pagina di Welcome 
 
 Route::get('{any?}', function(){
     return view('welcome');

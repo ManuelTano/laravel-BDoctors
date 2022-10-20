@@ -46,7 +46,7 @@
                             <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-users mr-2"></i>Your Reviews</a>
                         </li>
                         <li class="mr-5">
-                            <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-user-doctor mr-2"></i>Doctors</a>
+                            <a href="{{ route('admin.users.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-user-doctor mr-2"></i>Doctors</a>
                         </li>
                     </ul>
 
