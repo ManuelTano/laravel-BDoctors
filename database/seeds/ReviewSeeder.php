@@ -17,17 +17,17 @@ class ReviewSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $users = User::pluck('id')->toArray();
+        $users_ids = User::pluck('id')->toArray();
 
-        foreach($users as $user){
+        for($i = 0; $i < 20 ; $i++){
             $new_review = new Review();
 
-            $new_review->user_id = $user;
+            $new_review->user_id = Arr::random($users_ids);;
 
             $new_review->first_name = $faker->firstName();
             $new_review->last_name = $faker->lastName();
             $new_review->feedback = $faker->paragraph();
-            $new_review->rating = $faker->numberBetween(0, 5);
+            $new_review->rating = $faker->numberBetween(0,5);
 
             $new_review->save();
         }

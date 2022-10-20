@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 
 use App\User;
@@ -17,12 +18,12 @@ class MessageSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $users = User::pluck('id')->toArray();
+        $users_ids = User::pluck('id')->toArray();
 
-        foreach($users as $user){
+        for($i = 0; $i < 20 ; $i++){
             $new_message = new Message();
 
-            $new_message->user_id = $user;
+            $new_message->user_id = Arr::random($users_ids);;
 
             $new_message->first_name = $faker->firstName();
             $new_message->last_name = $faker->lastName();

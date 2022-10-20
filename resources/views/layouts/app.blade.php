@@ -41,10 +41,10 @@
                                 <a href="{{ url('/home') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-house mr-2"></i>Homepage</a>
                             </li>
                             <li class="mr-5">
-                                <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-message mr-2"></i>Your Messages</a>
+                                <a href="{{ route('admin.messages.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-message mr-2"></i>Your Messages</a>
                             </li>
                             <li class="mr-5">
-                                <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-users mr-2"></i>Your Reviews</a>
+                                <a href="{{ route('admin.reviews.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-users mr-2"></i>Your Reviews</a>
                             </li>
                             <li class="mr-5">
                                 <a href="{{ route('admin.users.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-user-doctor mr-2"></i>Doctors</a>

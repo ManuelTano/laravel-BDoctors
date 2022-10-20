@@ -31,10 +31,20 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     // Definiamo tutte le rotte relative agli utenti (dottori)
     Route::resource('users','UserController');
 
-    // Rotta per l'edit del profilo
+    // Rotta per l'edit e l'update del profilo
 
     Route::get('/userdetails/edit','UserDetailController@edit')->name('userdetails.edit');
     Route::put('/userdetails/update','UserDetailController@update')->name('userdetails.update');
+
+    // Rotta per l'edit e l'update dei messages
+
+    Route::get('/messages','MessageController@index')->name('messages.index');
+    Route::put('/messages/{user}','MessageController@show')->name('messages.show');
+
+    // Rotta per l'edit e l'update dei reviews
+
+    Route::get('/reviews','ReviewController@index')->name('reviews.index');
+    Route::put('/reviews/{review}','ReviewController@show')->name('reviews.show');
 
     // Redirect in Page Not Found in caso di url errato o non gestito
     
