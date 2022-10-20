@@ -20,7 +20,7 @@ class UserDetails extends Migration
             $table->string('last_name', 50)->nullable();
             $table->string('slug', 101)->nullable();
             $table->string('address', 50)->nullable();
-            $table->string('curriculum_vitae', 50)->nullable();
+            $table->text('curriculum_vitae')->nullable();
             $table->string('phone', 15)->nullable();
             $table->string('thumb')->nullable();
             $table->string('city', 50)->nullable();

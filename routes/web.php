@@ -33,6 +33,7 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
 
     // Rotta per l'edit e l'update del profilo
 
+    Route::get('/userdetails','UserDetailController@index')->name('userdetails.index');
     Route::get('/userdetails/edit','UserDetailController@edit')->name('userdetails.edit');
     Route::put('/userdetails/update','UserDetailController@update')->name('userdetails.update');
 

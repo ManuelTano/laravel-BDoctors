@@ -14,9 +14,16 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Str; 
 
 use App\User;
+use App\Models\UserDetail;
 
 class UserDetailController extends Controller
 {
+    public function index(){
+        $details = UserDetail::all();
+
+        return view('admin.userdetails.index',compact('details'));
+    }
+
     public function edit(){
         // Preleviamo l'utente attualmente loggato nella sessione
         $user = Auth::user();
@@ -61,9 +68,11 @@ class UserDetailController extends Controller
 
         // Gestione dell'input file per il curriculum
         if(array_key_exists('curriculum_vitae',$data)){
+
             // # Storiamo l'immagine nella cartella storage-copia in public:
             // # otteniamo un link assoluto che verrà salavto sul DB e che potrà
             // # essere prelevato
+
             if($details->curriculum_vitae) Storage::delete($details->curriculum_vitae);
             $curriculum_vitae_link = Storage::put('users_curriculum_vitae',$data['curriculum_vitae']);
             $details->curriculum_vitae = $curriculum_vitae_link;
@@ -78,6 +87,6 @@ class UserDetailController extends Controller
         // Update dei dati
         $details->update($data);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.userdetails.index');
     }
 }

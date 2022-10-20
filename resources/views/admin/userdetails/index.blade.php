@@ -8,18 +8,24 @@
                 <th scope="col">#</th>
                 <th scope="col">name</th>
                 <th scope="col">email</th>
+                <th scope="col">thumb</th>
                 <th scope="col"></th>
             </tr>
         </thead>
-        @foreach ($users as $user)    
+        @foreach ($details as $detail)    
             <tbody>
                 <tr>
-                    <th scope="row">{{ $user->id }}</th>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
+                    <th scope="row">{{ $detail->id }}</th>
+                    <td>{{ $detail->first_name }}</td>
+                    <td>{{ $detail->last_name }}</td>
+                    <td>
+                        <figure>
+                            <img src="{{ asset('storage/' . $detail->thumb) }}" alt="alt" class="img-fluid">
+                        </figure>
+                    </td>
                     <td>
                         {{-- Show --}}
-                        <a href="{{ route('admin.users.show',$user) }}" class="btn btn-primary mr-2">
+                        <a href="" class="btn btn-primary mr-2">
                             <i class="fa-solid fa-eye"></i>
                         </a> 
                         {{-- Send Message --}}

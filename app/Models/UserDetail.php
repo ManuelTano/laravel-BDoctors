@@ -13,7 +13,6 @@ class UserDetail extends Model
         'address',
         'city',
         'phone',
-        'curriculum_vitae',
     ];
 
     // Getter
