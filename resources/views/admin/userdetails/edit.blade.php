@@ -6,7 +6,7 @@
     <h2 class="my-3">Edit your credentials</h2>
 
     {{-- $ Form ID --}}
-    <form action="{{ route('admin.userdetails.update') }}" method="POST" class="row">
+    <form action="{{ route('admin.userdetails.update') }}" method="POST" class="row" enctype="multipart/form-data">
         {{-- Token di controllo --}}
         @csrf
 
@@ -90,11 +90,9 @@
         </div>
 
         {{-- thumb --}}
-        <div class="col-6">
-            <div class="form-group">
-                <label for="thumb">Thumb</label>
-                <input type="text" class="form-control" id="thumb" name="thumb" value="{{ old('thumb',$details->thumb) }}">
-            </div>
+        <div class="form-group col-6 d-flex align-items-end justify-content-end">
+            <label for="thumb"></label>
+            <input name="thumb" type="file" id="thumb" value="{{ old('thumb',$details->thumb) }}">
         </div>
 
         {{-- City --}}

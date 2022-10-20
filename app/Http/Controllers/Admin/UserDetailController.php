@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+// Importate per validare i dati in arrivo
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
 use Illuminate\Support\Str; 
 
 use App\User;
@@ -29,14 +33,17 @@ class UserDetailController extends Controller
         $details = $user->userDetail;
 
         // Validazione dei dati in arrivo
-        // $request->validate([
-        //     'first_name' => 'nullable|string',
-        //     'last_name' => 'nullable|string',
-        //     'year_of_birth' => 'nullable|date_format:Y',
-        //     'address' => 'nullable|string',
-        // ],[
-        //     'numeric' => 'La data di nascita deve essere numerica!'
-        // ]);
+        $request->validate([
+            'first_name' => 'nullable|string',
+            'last_name' => 'nullable|string',
+            'phone' => 'nullable|min:10|max:13',
+            'address' => 'nullable|string',
+            'city' => 'nullable|string',
+            'thumb' => 'nullable|image|mimes:jpeg,png,jpg',
+            'curriculum' => 'nullable|file|mimes:pdf',
+        ],[
+            'min:10' => 'Il numero telefonico deve essere composto da almeno 10 caratteri',
+        ]);
 
         // Assegnazione dei dati
         $data = $request->all();
