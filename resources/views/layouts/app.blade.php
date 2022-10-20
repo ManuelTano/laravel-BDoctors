@@ -34,21 +34,23 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="mr-5">
-                            <a href="{{ url('/home') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-house mr-2"></i>Homepage</a>
-                        </li>
-                        <li class="mr-5">
-                            <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-message mr-2"></i>Your Messaggi</a>
-                        </li>
-                        <li class="mr-5">
-                            <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-users mr-2"></i>Your Reviews</a>
-                        </li>
-                        <li class="mr-5">
-                            <a href="{{ route('admin.users.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-user-doctor mr-2"></i>Doctors</a>
-                        </li>
-                    </ul>
+                    @auth
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav mr-auto">
+                            <li class="mr-5">
+                                <a href="{{ url('/home') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-house mr-2"></i>Homepage</a>
+                            </li>
+                            <li class="mr-5">
+                                <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-message mr-2"></i>Your Messages</a>
+                            </li>
+                            <li class="mr-5">
+                                <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-users mr-2"></i>Your Reviews</a>
+                            </li>
+                            <li class="mr-5">
+                                <a href="{{ route('admin.users.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-user-doctor mr-2"></i>Doctors</a>
+                            </li>
+                        </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -64,11 +66,19 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
+                                {{-- Logged User --}}
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
+                                {{-- Logout --}}
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                     {{-- Edit profile --}}
+                                     <a class="dropdown-item" href="{{ route('admin.users.edit',Auth::user()) }}">
+                                        Profile
+                                    </a>
+                                    
+                                    {{-- Logout --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -59,9 +59,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+
+    // ! Attenzione: la seguente funzione edita ESCLUSIVAMENTE il profilo 
+    // ! dell'utente LOGGATO
+
+    public function edit(User $user)
     {
-        //
+        return view('admin.users.edit',compact('user'));
     }
 
     /**
@@ -71,9 +75,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+    // ! Attenzione: la seguente funzione aggiorna ESCLUSIVAMENTE il profilo 
+    // ! dell'utente LOGGATO
+
+    public function update(Request $request, User $user)
     {
-        //
+        $data = $request->all();
+
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+
+        $user->save();
+
+        return redirect()->route('admin.users.show',$user);
     }
 
     /**
