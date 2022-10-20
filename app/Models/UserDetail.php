@@ -14,8 +14,13 @@ class UserDetail extends Model
         'city',
         'phone',
         'curriculum_vitae',
-        'thumb'
     ];
+
+    // Getter
+
+    public function getThumb(){
+        return $this->thumb;
+    }
 
     public function user()
     {

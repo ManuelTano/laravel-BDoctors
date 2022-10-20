@@ -8,6 +8,7 @@
                 <th scope="col">#</th>
                 <th scope="col">name</th>
                 <th scope="col">email</th>
+                <th scope="col">thumb</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -17,6 +18,11 @@
                     <th scope="row">{{ $user->id }}</th>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
+                    <td>
+                        <figure>
+                            <img src="{{ asset('storage/' . $user->userDetail->getThumb()) }}" alt="alt" class="img-fluid">
+                        </figure>
+                    </td>
                     <td>
                         {{-- Show --}}
                         <a href="{{ route('admin.users.show',$user) }}" class="btn btn-primary mr-2">

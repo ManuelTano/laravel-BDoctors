@@ -66,10 +66,10 @@
         </div>
 
         {{-- Curriculum vitae --}}
-        <div class="col-6">
-            <div class="form-group">
-                <label for="curriculum_vitae">Curriculum Vitae</label>
-                <input type="text" class="form-control" id="curriculum_vitae" name="curriculum_vitae" value="{{ old('curriculum_vitae',$details->curriculum_vitae) }}">
+        <div class="form-group col-6 d-flex align-items-end justify-content-between">
+            <label for="curriculum_vitae" class="d-flex align-items-center h-100 m-0">Curriculum vitae</label>
+            <div class="d-flex align-items-center h-100">
+                <input name="curriculum_vitae" type="file" id="curriculum_vitae" value="{{ old('curriculum_vitae',$details->curriculum_vitae) }}">
             </div>
         </div>
 
@@ -90,9 +90,11 @@
         </div>
 
         {{-- thumb --}}
-        <div class="form-group col-6 d-flex align-items-end justify-content-end">
-            <label for="thumb"></label>
-            <input name="thumb" type="file" id="thumb" value="{{ old('thumb',$details->thumb) }}">
+        <div class="form-group col-6 d-flex align-items-end justify-content-between">
+            <label for="thumb" class="d-flex align-items-center h-100 m-0">Thumb</label>
+            <div class="d-flex align-items-center h-100">
+                <input name="thumb" type="file" id="thumb" value="{{ old('thumb',$details->thumb) }}">
+            </div>
         </div>
 
         {{-- City --}}
