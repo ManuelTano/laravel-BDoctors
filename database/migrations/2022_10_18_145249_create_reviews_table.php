@@ -16,13 +16,14 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('first_name', 50)->nullable();
-            $table->string('last_name', 50)->nullable();
+            $table->string('first_name', 50);
+            $table->string('last_name', 50);
+            $table->string('email', 50);
             $table->longText('feedback');
             $table->smallInteger('rating');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
