@@ -23,4 +23,9 @@ class UserDetail extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function specialties()
+    {
+        return $this->belongsToMany('App\Models\Specialty');
+    }
 }

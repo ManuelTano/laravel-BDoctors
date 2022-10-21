@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UserSponsorship extends Migration
+class CreateSponsorshipUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class UserSponsorship extends Migration
      */
     public function up()
     {
-        Schema::create('user_sponsorship', function (Blueprint $table) {
+        Schema::create('sponsorship_user', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('sponsorship_id')->nullable();
@@ -32,6 +32,6 @@ class UserSponsorship extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_sponsorship');
+        Schema::dropIfExists('sponsorship_user');
     }
 }

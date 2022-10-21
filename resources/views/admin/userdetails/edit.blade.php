@@ -15,7 +15,23 @@
 
         {{-- $ Form info --}}
 
-        <div class="col-12"></div>
+        {{-- Specializzazioni --}}
+        <div class="form-group col-6">
+            <h5>Specialties</h5>
+            @forelse ($specialties as $specialty)
+                <label for="specialty-{{ $specialty->label }}" class="mr-4">{{ $specialty->label }}</label>
+                <input 
+                    name="specialties[]" 
+                    type="checkbox" 
+                    class="form-check-input" 
+                    id="specialty-{{ $specialty->id }}" 
+                    value="{{ $specialty->id }}"
+                    @if(in_array($specialty->label,old('specialties',[]))) checked @endif
+                    >
+            @empty
+                <p>-</p>
+            @endforelse
+        </div>
 
         {{-- Curriculum vitae --}}
         <div class="col-6">

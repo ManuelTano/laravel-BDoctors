@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 
 use App\User;
 use App\Models\UserDetail;
+use App\Models\Specialty;
 
 class UserDetailController extends Controller
 {
@@ -28,9 +29,12 @@ class UserDetailController extends Controller
         // Preleviamo l'utente attualmente loggato nella sessione
         $user = Auth::user();
 
+        // Preleviamo tutte le specializzazioni
+        $specialties = Specialty::all();
+
         // Preleviamo i suoi dati personali e passiamoli alla edit
         $details = $user->userDetail;
-        return view('admin.userdetails.edit',compact('details'));
+        return view('admin.userdetails.edit',compact('details','specialties'));
     }
 
     public function update(Request $request){
@@ -74,6 +78,17 @@ class UserDetailController extends Controller
             if($details->curriculum_vitae) Storage::delete($details->curriculum_vitae);
             $curriculum_vitae_link = Storage::put('users_curriculum_vitae',$data['curriculum_vitae']);
             $details->curriculum_vitae = $curriculum_vitae_link;
+        }
+
+        // dd($data['specialties']);
+
+        // @ Facciamo il sync dei tags: elimina quelli di prima e metti quelli checkati 
+        if(array_key_exists('specialties',$data)){
+            $details->specialties()->sync($data['specialties']);
+        }else{
+            // Nel caso in cui non arriva nulla vuol dire che sono stati tutti
+            // de-checkati e quindi col detach li leviamo tutti
+            $details->specialties()->detach();
         }
 
         // Update dei dati
