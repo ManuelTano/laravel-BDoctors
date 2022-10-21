@@ -37,7 +37,12 @@
         <div class="col-6">
             <div class="form-group col-6 d-flex align-items-end justify-content-between">
                 <label for="curriculum_vitae" class="d-flex align-items-center h-100 m-0">Curriculum vitae</label>
-                <input name="curriculum_vitae" type="file" id="curriculum_vitae" value="{{ old('curriculum_vitae',$details->curriculum_vitae) }}">
+                <input name="curriculum_vitae" type="file" id="curriculum_vitae" class="form-control @error('curriculum_vitae') is-invalid @enderror" value="{{ old('curriculum_vitae',$details->curriculum_vitae) }}">
+                @error('curriculum_vitae')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
             </div>
         </div>
 
@@ -45,7 +50,12 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" name="address" value="{{ old('address',$details->address) }}">
+                <input type="text" id="address" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address',$details->address) }}">
+                @error('address')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
             </div>
         </div>
 
@@ -53,7 +63,12 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone',$details->phone) }}">
+                <input type="text" id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone',$details->phone) }}">
+                @error('phone')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
             </div>
         </div>
 
@@ -61,7 +76,12 @@
         <div class="col-6">
             <div class="form-group col-6 d-flex align-items-end justify-content-between">
                 <label for="thumb" class="d-flex align-items-center h-100 m-0">Thumb</label>
-                <input name="thumb" type="file" id="thumb" value="{{ old('thumb',$details->thumb) }}">
+                <input name="thumb" type="file" id="thumb" value="{{ old('thumb',$details->thumb) }}" class="form-control @error('thumb') is-invalid @enderror">
+                @error('thumb')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
             </div>
         </div>
 
@@ -69,7 +89,12 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="city">City</label>
-                <input type="text" class="form-control" id="city" name="city" value="{{ old('city',$details->city) }}">
+                <input type="text" id="city" name="city" value="{{ old('city',$details->city) }}" class="form-control @error('city') is-invalid @enderror">
+                @error('city')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
             </div>
         </div>
         
