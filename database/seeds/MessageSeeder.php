@@ -27,6 +27,7 @@ class MessageSeeder extends Seeder
 
             $new_message->first_name = $faker->firstName();
             $new_message->last_name = $faker->lastName();
+            $new_message->email = $faker->email();
             $new_message->text = $faker->paragraph();
 
             $new_message->save();

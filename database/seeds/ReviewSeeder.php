@@ -27,7 +27,8 @@ class ReviewSeeder extends Seeder
             $new_review->first_name = $faker->firstName();
             $new_review->last_name = $faker->lastName();
             $new_review->feedback = $faker->paragraph();
-            $new_review->rating = $faker->numberBetween(0,5);
+            $new_review->email = $faker->email();
+            $new_review->rating = $faker->numberBetween(1,5);
 
             $new_review->save();
         }
