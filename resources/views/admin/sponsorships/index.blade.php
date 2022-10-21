@@ -9,6 +9,7 @@
                     <th scope="col">Business plan</th>
                     <th scope="col">Time plan</th>
                     <th scope="col">Price</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             @foreach ($sponsorships as $sponsorship)
@@ -17,8 +18,8 @@
                         <tr>
                             <th scope="row">{{ $sponsorship->id }}</th>
                             <td>{{ $sponsorship->business_plan }}</td>
-                            <td>{{ $sponsorship->time_plan }}</td>
-                            <td>{{ $sponsorship->price }}</td>
+                            <td>{{ $sponsorship->time_plan }}h</td>
+                            <td>{{ $sponsorship->price }} &euro;</td>
                             <td><a class="btn btn-primary"
                                     href="{{ route('admin.sponsorships.show', $sponsorship) }}">vedi</a></td>
                         </tr>
