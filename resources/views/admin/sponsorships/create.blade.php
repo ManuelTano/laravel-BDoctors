@@ -1,1 +1,0 @@
-@include('includes.admin.sponsorships.form')

@@ -40,12 +40,12 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     // Rotta per l'edit e l'update dei messages
 
     Route::get('/messages','MessageController@index')->name('messages.index');
-    Route::put('/messages/{user}','MessageController@show')->name('messages.show');
+    Route::get('/messages/{message}','MessageController@show')->name('messages.show');
 
     // Rotta per l'edit e l'update dei reviews
 
     Route::get('/reviews','ReviewController@index')->name('reviews.index');
-    Route::put('/reviews/{review}','ReviewController@show')->name('reviews.show');
+    Route::get('/reviews/{review}','ReviewController@show')->name('reviews.show');
 
     // Redirect in Page Not Found in caso di url errato o non gestito
     
