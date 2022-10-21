@@ -26,7 +26,7 @@
                     class="form-check-input" 
                     id="specialty-{{ $specialty->id }}" 
                     value="{{ $specialty->id }}"
-                    @if(in_array($specialty->label,old('specialties',[]))) checked @endif
+                    @if(in_array($specialty->id,old('specialties',$prev_specialties ?? []))) checked @endif
                     >
             @empty
                 <p>-</p>

@@ -34,7 +34,10 @@ class UserDetailController extends Controller
 
         // Preleviamo i suoi dati personali e passiamoli alla edit
         $details = $user->userDetail;
-        return view('admin.userdetails.edit',compact('details','specialties'));
+
+        $prev_specialties = $details->specialties->pluck('id')->toArray();
+
+        return view('admin.userdetails.edit',compact('details','specialties','prev_specialties'));
     }
 
     public function update(Request $request){
