@@ -6,8 +6,6 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">name</th>
-                <th scope="col">email</th>
                 <th scope="col">thumb</th>
                 <th scope="col"></th>
             </tr>
@@ -16,8 +14,6 @@
             <tbody>
                 <tr>
                     <th scope="row">{{ $detail->id }}</th>
-                    <td>{{ $detail->first_name }}</td>
-                    <td>{{ $detail->last_name }}</td>
                     <td>
                         <figure>
                             <img src="{{ asset('storage/' . $detail->thumb) }}" alt="alt" class="img-fluid">

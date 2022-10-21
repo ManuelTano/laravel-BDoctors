@@ -42,8 +42,6 @@ class UserDetailController extends Controller
 
         // Validazione dei dati in arrivo
         $request->validate([
-            'first_name' => 'nullable|string',
-            'last_name' => 'nullable|string',
             'phone' => 'nullable|min:10|max:13',
             'address' => 'nullable|string',
             'city' => 'nullable|string',
@@ -77,12 +75,6 @@ class UserDetailController extends Controller
             $curriculum_vitae_link = Storage::put('users_curriculum_vitae',$data['curriculum_vitae']);
             $details->curriculum_vitae = $curriculum_vitae_link;
         }
-
-        // Slug name
-        $word_to_slug = $data['first_name'] . ' ' . $data['last_name'];
-
-        // Slug time
-        $details->slug = Str::of($word_to_slug)->slug('-');
 
         // Update dei dati
         $details->update($data);

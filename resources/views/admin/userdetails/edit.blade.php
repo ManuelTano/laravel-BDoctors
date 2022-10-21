@@ -12,58 +12,10 @@
 
         {{-- Change method --}}
         @method('PUT')
-        
-        {{-- # Fields --}}
-        
-        {{-- Name --}}
-        {{-- <div class="col-6">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name">
-            </div>
-        </div> --}}
-        
-        {{-- Email --}}
-        {{-- <div class="col-6">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
-            </div>
-        </div> --}}
-
-        {{-- Password --}}
-        {{-- <div class="col-6">
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
-            </div>
-        </div>
-
-        <div class="d-flex align-items-center justify-content-center col-12">
-            <hr class="my-5 col-6">
-        </div> --}}
-
-        {{-- <h2 class="my-3 col-12">Edit your profile</h2> --}}
 
         {{-- $ Form info --}}
 
         <div class="col-12"></div>
-
-        {{-- First Name --}}
-        <div class="col-6">
-            <div class="form-group">
-                <label for="first_name">First Name</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ old('first_name',$details->first_name) }}">
-            </div>
-        </div>
-
-        {{-- Last Name --}}
-        <div class="col-6">
-            <div class="form-group">
-                <label for="last_name">Last Name</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ old('last_name',$details->last_name) }}">
-            </div>
-        </div>
 
         {{-- Curriculum vitae --}}
         <div class="col-6">
