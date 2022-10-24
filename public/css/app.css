@@ -1,4 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+.bg-celestino {
+  background-color: #a2d9ff;
+}
+
+.card {
+  box-shadow: 10px 10px 5px #dedede;
+}
+
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
