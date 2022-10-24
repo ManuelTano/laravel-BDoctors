@@ -5,11 +5,11 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Text</th>
-                    <th scope="col">Doctor</th>
+                    <th scope="col"></th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Cognome</th>
+                    <th scope="col">Testo</th>
+                    <th scope="col">Dottore</th>
                     <th scope="col"></th>
                 </tr>
             </thead>

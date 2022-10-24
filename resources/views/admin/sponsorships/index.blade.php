@@ -5,10 +5,10 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Business plan</th>
-                    <th scope="col">Time plan</th>
-                    <th scope="col">Price</th>
+                    <th scope="col"></th>
+                    <th scope="col">Piano d'acquisto</th>
+                    <th scope="col">Durata Piano</th>
+                    <th scope="col">Prezzo</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -21,7 +21,7 @@
                             <td>{{ $sponsorship->time_plan }}h</td>
                             <td>{{ $sponsorship->price }} &euro;</td>
                             <td><a class="btn btn-primary"
-                                    href="{{ route('admin.sponsorships.show', $sponsorship) }}">vedi</a></td>
+                                    href="{{ route('admin.sponsorships.show', $sponsorship) }}">Visualizza</a></td>
                         </tr>
                     </tbody>
                 @endif

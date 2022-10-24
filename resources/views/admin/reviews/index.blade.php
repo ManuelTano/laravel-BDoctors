@@ -5,12 +5,12 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Feedback</th>
-                    <th scope="col">Rating</th>
-                    <th scope="col">Doctor</th>
+                    <th scope="col"></th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Cognome</th>
+                    <th scope="col">Recensione</th>
+                    <th scope="col">Valutazione</th>
+                    <th scope="col">Dottore</th>
                     <th scope="col"></th>
                 </tr>
             </thead>

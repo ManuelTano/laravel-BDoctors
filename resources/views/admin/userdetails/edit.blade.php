@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h2 class="my-3">Edit your credentials</h2>
+    <h2 class="my-3">Modifica I Tuoi Dati</h2>
 
     {{-- $ Form ID --}}
     <form action="{{ route('admin.userdetails.update') }}" method="POST" class="row" enctype="multipart/form-data">
@@ -17,7 +17,7 @@
 
         {{-- Specializzazioni --}}
         <div class="form-group col-6">
-            <h5>Specialties</h5>
+            <h5>Specializzazioni</h5>
             @forelse ($specialties as $specialty)
                 <label for="specialty-{{ $specialty->label }}" class="mr-4">{{ $specialty->label }}</label>
                 <input 
@@ -36,7 +36,7 @@
         {{-- Curriculum vitae --}}
         <div class="col-6">
             <div class="form-group col-6 d-flex align-items-end justify-content-between">
-                <label for="curriculum_vitae" class="d-flex align-items-center h-100 m-0">Curriculum vitae</label>
+                <label for="curriculum_vitae" class="d-flex align-items-center h-100 m-0">Curriculum Vitae</label>
                 <input name="curriculum_vitae" type="file" id="curriculum_vitae" class="form-control @error('curriculum_vitae') is-invalid @enderror" value="{{ old('curriculum_vitae',$details->curriculum_vitae) }}">
                 @error('curriculum_vitae')
                     <div class="invalid-feedback">
@@ -49,7 +49,7 @@
         {{-- Address --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="address">Address</label>
+                <label for="address">Indirizzo</label>
                 <input type="text" id="address" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address',$details->address) }}">
                 @error('address')
                     <div class="invalid-feedback">
@@ -62,7 +62,7 @@
         {{-- Phone --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="phone">Phone</label>
+                <label for="phone">Numero Di Telefono</label>
                 <input type="text" id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone',$details->phone) }}">
                 @error('phone')
                     <div class="invalid-feedback">
@@ -75,7 +75,7 @@
         {{-- thumb --}}
         <div class="col-6">
             <div class="form-group col-6 d-flex align-items-end justify-content-between">
-                <label for="thumb" class="d-flex align-items-center h-100 m-0">Thumb</label>
+                <label for="thumb" class="d-flex align-items-center h-100 m-0">Immagine</label>
                 <input name="thumb" type="file" id="thumb" value="{{ old('thumb',$details->thumb) }}" class="form-control @error('thumb') is-invalid @enderror">
                 @error('thumb')
                     <div class="invalid-feedback">
@@ -88,7 +88,7 @@
         {{-- City --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="city">City</label>
+                <label for="city">Città</label>
                 <input type="text" id="city" name="city" value="{{ old('city',$details->city) }}" class="form-control @error('city') is-invalid @enderror">
                 @error('city')
                     <div class="invalid-feedback">
@@ -100,7 +100,7 @@
         
         {{-- Button to submit form --}}
        <div class="col-12 d-flex">
-            <button class="btn btn-success" type="submit">Submit<i class="fa-solid fa-arrow-right ml-2"></i></button>
+            <button class="btn btn-success" type="submit">Conferma<i class="fa-solid fa-arrow-right ml-2"></i></button>
        </div>
     </form>
 </div>

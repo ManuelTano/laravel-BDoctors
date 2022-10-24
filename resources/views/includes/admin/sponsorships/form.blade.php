@@ -9,25 +9,25 @@
         
         {{-- Business Plan --}}
         <div class="form-group col-6">
-            <label for="business_plan">Business plan</label>
+            <label for="business_plan">Piani d'acquisto</label>
             <input type="text" class="form-control" id="business_plan" name="business_plan">
         </div>
         
         {{-- Time Plan --}}
         <div class="form-group col-6">
-            <label for="business_plan">Time plan (hour)</label>
+            <label for="business_plan">Durata Piano</label>
             <input type="number" class="form-control" id="time_plan" name="time_plan">
         </div>
         
         {{-- Business Plan --}}
         <div class="form-group col-6">
-            <label for="price">Price</label>
+            <label for="price">Prezzo</label>
             <input type="number" class="form-control" id="price" name="price">
         </div>
 
         {{-- Button to submit form --}}
         <div class="col-12">
-            <button class="btn btn-success" type="submit">Submit</button>
+            <button class="btn btn-success" type="submit">Conferma</button>
         </div>
     </form>
 </div>

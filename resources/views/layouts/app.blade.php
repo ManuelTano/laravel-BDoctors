@@ -41,16 +41,16 @@
                                 <a href="{{ url('/home') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-house mr-2"></i>Homepage</a>
                             </li>
                             <li class="mr-5">
-                                <a href="{{ route('admin.messages.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-comments mr-2"></i>Your Messages</a>
+                                <a href="{{ route('admin.messages.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-comments mr-2"></i>I Tuoi Messaggi</a>
                             </li>
                             <li class="mr-5">
-                                <a href="{{ route('admin.reviews.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-users mr-2"></i>Your Reviews</a>
+                                <a href="{{ route('admin.reviews.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-users mr-2"></i>Le Tue Recensioni</a>
                             </li>
                             <li class="mr-5">
-                                <a href="{{ route('admin.sponsorships.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-cart-flatbed-suitcase mr-2"></i>Sponsorships</a>
+                                <a href="{{ route('admin.sponsorships.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-cart-flatbed-suitcase mr-2"></i>Piani d'acquisto</a>
                             </li>
                             <li class="mr-5">
-                                <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-chart-column mr-2"></i>Statistics</a>
+                                <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-chart-column mr-2"></i>Statistiche</a>
                             </li>
                         </ul>
                     @endauth
@@ -60,11 +60,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Effettua Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                                 </li>
                             @endif
                         @else
@@ -78,14 +78,14 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                      {{-- Edit profile --}}
                                      <a class="dropdown-item" href="{{ route('admin.userdetails.edit') }}">
-                                        Profile
+                                        Profilo
                                     </a>
                                     
                                     {{-- Logout --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Effettua Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

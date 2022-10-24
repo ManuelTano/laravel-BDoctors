@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h2 class="my-3">Edit your credentials</h2>
+    <h2 class="my-3">Modofica I Tuoi Dati</h2>
 
     {{-- $ Form ID --}}
     <form action="{{ route('admin.users.update',$user) }}" method="POST" class="row">
@@ -18,7 +18,7 @@
         {{-- Name --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">Nickname</label>
                 <input type="text" class="form-control" id="name" name="name">
             </div>
         </div>
@@ -43,7 +43,7 @@
             <hr class="my-5 col-6">
         </div>
 
-        <h2 class="my-3 col-12">Edit your profile</h2>
+        <h2 class="my-3 col-12">Modifica Il Tuo Profilo</h2>
 
         {{-- $ Form info --}}
 
@@ -52,7 +52,7 @@
         {{-- First Name --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="first_name">First Name</label>
+                <label for="first_name">Nome</label>
                 <input type="text" class="form-control" id="first_name" name="first_name">
             </div>
         </div>
@@ -60,7 +60,7 @@
         {{-- Last Name --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="last_name">Last Name</label>
+                <label for="last_name">Cognome</label>
                 <input type="text" class="form-control" id="last_name" name="last_name">
             </div>
         </div>
@@ -76,7 +76,7 @@
         {{-- Address --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="address">Address</label>
+                <label for="address">Indirizzo</label>
                 <input type="text" class="form-control" id="address" name="address">
             </div>
         </div>
@@ -84,7 +84,7 @@
         {{-- Phone --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="phone">Phone</label>
+                <label for="phone">Numero Di Telefono</label>
                 <input type="text" class="form-control" id="phone" name="phone">
             </div>
         </div>
@@ -92,7 +92,7 @@
         {{-- thumb --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="thumb">Thumb</label>
+                <label for="thumb">Immagine</label>
                 <input type="text" class="form-control" id="thumb" name="thumb">
             </div>
         </div>
@@ -100,14 +100,14 @@
         {{-- City --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="city">City</label>
+                <label for="city">Città</label>
                 <input type="text" class="form-control" id="city" name="city">
             </div>
         </div>
         
         {{-- Button to submit form --}}
        <div class="col-12 d-flex">
-            <button class="btn btn-success" type="submit">Submit<i class="fa-solid fa-arrow-right ml-2"></i></button>
+            <button class="btn btn-success" type="submit">Conferma<i class="fa-solid fa-arrow-right ml-2"></i></button>
        </div>
     </form>
 </div>
