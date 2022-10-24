@@ -20,7 +20,7 @@ class MessageSeeder extends Seeder
     {
         $users_ids = User::pluck('id')->toArray();
 
-        for($i = 0; $i < 20 ; $i++){
+        for($i = 0; $i < 100 ; $i++){
             $new_message = new Message();
 
             $new_message->user_id = Arr::random($users_ids);;
