@@ -8,7 +8,7 @@
 <div class="container">
     <h2 class="my-3">Modifica le tue credenziali</h2>
 
-    <form action="" method="POST" class="row" enctype="multipart/form-data" id="submit-edit-credentials" novalidate>
+    <form action="{{ route('admin.users.update') }}" method="POST" class="my-4 p-3 row rounded border border-secondary bg-white" enctype="multipart/form-data" id="submit-edit-credentials" novalidate>
          {{-- Token di controllo --}}
          @csrf
 
@@ -69,6 +69,19 @@
             </div>
         </div>
 
+        {{-- Password --}}
+        <div class="col-6">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror">
+                @error('password')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
+            </div>
+        </div>
+
         {{-- Button to submit --}}
         <div class="col-12 d-flex">
             <button class="btn btn-success" type="submit">Conferma<i class="fa-solid fa-arrow-right ml-2"></i></button>
@@ -79,7 +92,7 @@
     <h2 class="my-3">Modifica i tuoi dati personali</h2>
 
     {{-- $ Form ID --}}
-    <form action="{{ route('admin.userdetails.update') }}" method="POST" class="row" enctype="multipart/form-data" id="submit-edit-profile" novalidate>
+    <form action="{{ route('admin.userdetails.update') }}" method="POST" class="my-4 p-3 row rounded border border-secondary bg-white" enctype="multipart/form-data" id="submit-edit-profile" novalidate>
         {{-- Token di controllo --}}
         @csrf
 
