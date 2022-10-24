@@ -1,19 +1,105 @@
 @extends('layouts.app')
 
+@section('additional-scripts')
+    <script src="{{ asset('js/edit_profile_form.js') }}" defer></script>
+@endsection
+
 @section('content')
 <div class="container">
+    <h2 class="my-3">Modifica le tue credenziali</h2>
 
-    <h2 class="my-3">Modifica I Tuoi Dati</h2>
+    <form action="{{ route('admin.users.update') }}" method="POST" class="my-4 p-3 row rounded border border-secondary bg-white" enctype="multipart/form-data" id="submit-edit-credentials" novalidate>
+         {{-- Token di controllo --}}
+         @csrf
+
+         {{-- Change method --}}
+         @method('PUT')
+ 
+         {{-- $ Form credentials --}}
+
+        {{-- First Name --}}
+        <div class="col-6">
+            <div class="form-group">
+                <label for="first_name">Nome</label>
+                <input type="text" id="first_name" name="first_name" class="form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name',$details->user->first_name) }}">
+                @error('first_name')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
+            </div>
+        </div>
+
+        {{-- Last Name --}}
+        <div class="col-6">
+            <div class="form-group">
+                <label for="last_name">Cognome</label>
+                <input type="text" id="last_name" name="last_name" class="form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name',$details->user->last_name) }}">
+                @error('last_name')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
+            </div>
+        </div>
+
+        {{-- Email --}}
+        <div class="col-6">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email',$details->user->email) }}">
+                @error('email')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
+            </div>
+        </div>
+
+        {{-- Name --}}
+        <div class="col-6">
+            <div class="form-group">
+                <label for="name">Username</label>
+                <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name',$details->user->name) }}">
+                @error('name')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
+            </div>
+        </div>
+
+        {{-- Password --}}
+        <div class="col-6">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror">
+                @error('password')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
+            </div>
+        </div>
+
+        {{-- Button to submit --}}
+        <div class="col-12 d-flex">
+            <button class="btn btn-success" type="submit">Conferma<i class="fa-solid fa-arrow-right ml-2"></i></button>
+       </div>
+
+    </form>
+
+    <h2 class="my-3">Modifica i tuoi dati personali</h2>
 
     {{-- $ Form ID --}}
-    <form action="{{ route('admin.userdetails.update') }}" method="POST" class="row" enctype="multipart/form-data">
+    <form action="{{ route('admin.userdetails.update') }}" method="POST" class="my-4 p-3 row rounded border border-secondary bg-white" enctype="multipart/form-data" id="submit-edit-profile" novalidate>
         {{-- Token di controllo --}}
         @csrf
 
         {{-- Change method --}}
         @method('PUT')
 
-        {{-- $ Form info --}}
+        {{-- $ Form profile --}}
 
         {{-- Specializzazioni --}}
         <div class="form-group col-6">
