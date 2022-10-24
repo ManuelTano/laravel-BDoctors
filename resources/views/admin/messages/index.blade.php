@@ -1,37 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Cognome</th>
-                    <th scope="col">Testo</th>
-                    <th scope="col">Dottore</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            @foreach ($messages as $message)   
-                @if($message->user->id == Auth::id()) 
-                    <tbody>
-                        <tr>
-                            <th scope="row">{{ $message->id }}</th>
-                            <td>{{ $message->first_name }}</td>
-                            <td>{{ $message->last_name }}</td>
-                            <td>{{ $message->text }}</td>
-                            <td>{{ $message->user->name }}</td>
-                            <td>
-                                {{-- Show --}}
-                                <a href="{{ route('admin.messages.show', $message) }}" class="btn btn-primary mr-2">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a> 
-                            </td>
-                        </tr>
-                    </tbody>
-                @endif
-            @endforeach
-        </table>
+    <h1 class="text-center mt-4">I tuoi messaggi</h1>
+    <div class="container d-flex flex-wrap justify-content-between">
+        @foreach ($messages as $message)
+            @if ($message->user->id == Auth::id())
+                <div class="card mt-5" style="width: 21rem;">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="card-title">{{ $message->first_name }} {{ $message->last_name }}</h5>
+                            <p class="card-text">{{ $message->text }}</p>
+                        </div>
+                        <div class="mt-5">
+                            <p class="card-text">{{ $message->created_at }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        @endforeach
     </div>
 @endsection
