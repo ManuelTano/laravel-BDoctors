@@ -38,7 +38,7 @@
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
                             <li class="mr-5">
-                                <a href="{{ url('/home') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-house mr-2"></i>Homepage</a>
+                                <a href="{{ url('/home') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-house mr-2"></i>Il Mio Profilo</a>
                             </li>
                             <li class="mr-5">
                                 <a href="{{ route('admin.messages.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-comments mr-2"></i>I Tuoi Messaggi</a>
@@ -78,7 +78,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                      {{-- Edit profile --}}
                                      <a class="dropdown-item" href="{{ route('admin.userdetails.edit') }}">
-                                        Profilo
+                                        Modifica Profilo
                                     </a>
                                     
                                     {{-- Logout --}}
