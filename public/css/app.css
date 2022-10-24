@@ -1,6 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
-.bg-celestino {
-  background-color: #99733b;
+.bg-bronze {
+  background-color: #c7a48d;
+}
+
+.bg-silver {
+  background-color: #ccc4c1;
+}
+
+.bg-gold {
+  background-color: #c3aa57;
 }
 
 .card {
