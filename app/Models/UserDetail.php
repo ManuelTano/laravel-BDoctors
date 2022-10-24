@@ -13,7 +13,11 @@ class UserDetail extends Model
         'phone',
     ];
 
-    // Getter
+    // # Methods
+
+    public function getFullAddress(){
+        return $this->address . ' , ' . $this->city;
+    }
 
     public function getThumb(){
         return $this->thumb;

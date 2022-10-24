@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use App\User;
+use App\Models\UserDetail;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $user = Auth::user();
+        $id = $user->id;
+
+        // $specialties = UserDetail::select('label')->with('specialties')->where('user_id',$id);
+        // dd($specialties);
+
+        return view('admin.home',compact('user'));
     }
 }

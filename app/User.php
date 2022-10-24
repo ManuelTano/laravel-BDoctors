@@ -23,6 +23,12 @@ class User extends Authenticatable
         'password',
     ];
 
+    // # Methods
+
+    public function getFullName(){
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
