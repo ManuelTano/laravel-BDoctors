@@ -95,6 +95,7 @@
 
 // Intercettiamo tramite l'id il form per editare i dettagli del medico
 var submitEditProfileForm = document.getElementById("submit-edit-profile");
+<<<<<<< HEAD
 var submitEditCredentialsForm = document.getElementById("submit-edit-credentials");
 
 // Definiamo l'addEventListener al submit del form di editing del profilo
@@ -109,6 +110,40 @@ submitEditProfileForm.addEventListener("submit", function (event) {
   if (hasConfirmed) submitEditProfileForm.submit();
 });
 
+=======
+
+// Intercettiamo tramite l'id il form per editare le credenziali del medico
+var submitEditCredentialsForm = document.getElementById("submit-edit-credentials");
+
+// Prendiamo il tag password e palliniamolo
+var password = document.getElementById("password");
+password.type = "password";
+
+// Definiamo l'addEventListener al submit del form di editing del profilo
+submitEditProfileForm.addEventListener("submit", function (event) {
+  // Intercettiamo il submit del form
+  event.preventDefault();
+
+  // Verifichiamo che il medico confermi le modifiche
+  var hasConfirmed = confirm("Sei sicuro di voler modificare le tue informazioni personali?");
+
+  // Dovesse con fermare inviamo il form
+  if (hasConfirmed) submitEditProfileForm.submit();
+});
+
+// Definiamo l'addEventListener al submit del form di editing delle credenziali del medico
+submitEditCredentialsForm.addEventListener("submit", function (event) {
+  // Intercettiamo il submit del form
+  event.preventDefault();
+
+  // Verifichiamo che il medico confermi le modifiche
+  var hasConfirmed = confirm("Sei sicuro di voler modificare le tue credenziali?");
+
+  // Dovesse con fermare inviamo il form
+  if (hasConfirmed) submitEditCredentialsForm.submit();
+});
+
+>>>>>>> 4154352a636e0edce04c8e8d201c08b5130b83b8
 /***/ }),
 
 /***/ 1:
@@ -118,7 +153,11 @@ submitEditProfileForm.addEventListener("submit", function (event) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\tmanu\Desktop\laravel-BDoctors\resources\js\edit_profile_form.js */"./resources/js/edit_profile_form.js");
+=======
+module.exports = __webpack_require__(/*! /Users/pasqualepedoto/Desktop/Progetto Finale Boolean/laravel-BDoctors/resources/js/edit_profile_form.js */"./resources/js/edit_profile_form.js");
+>>>>>>> 4154352a636e0edce04c8e8d201c08b5130b83b8
 
 
 /***/ })
