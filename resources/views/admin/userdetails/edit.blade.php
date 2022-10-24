@@ -73,15 +73,15 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror">
+                <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('',$details->user->password) }}">
                 @error('password')
-                    <div class="invalid-feedback">
-                        <strong>{{ $message }}</strong>
-                    </div>
+                <div class="invalid-feedback">
+                    <strong>{{ $message }}</strong>
+                </div>
                 @enderror
             </div>
         </div>
-
+            
         {{-- Button to submit --}}
         <div class="col-12 d-flex">
             <button class="btn btn-success" type="submit">Conferma<i class="fa-solid fa-arrow-right ml-2"></i></button>
@@ -121,9 +121,9 @@
 
         {{-- Curriculum vitae --}}
         <div class="col-6">
-            <div class="form-group col-6 d-flex align-items-end justify-content-between">
-                <label for="curriculum_vitae" class="d-flex align-items-center h-100 m-0">Curriculum Vitae</label>
-                <input name="curriculum_vitae" type="file" id="curriculum_vitae" class="form-control @error('curriculum_vitae') is-invalid @enderror" value="{{ old('curriculum_vitae',$details->curriculum_vitae) }}">
+            <div class="form-group">
+                <label for="curriculum_vitae" class="flex-shrink-0 h-100 m-0">Curriculum Vitae</label>
+                <input name="curriculum_vitae" type="file" id="curriculum_vitae" class="pl-0 border-0 form-control @error('curriculum_vitae') is-invalid @enderror">
                 @error('curriculum_vitae')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -159,21 +159,31 @@
         </div>
 
         {{-- thumb --}}
-        <div class="col-6">
-            <div class="form-group col-6 d-flex align-items-end justify-content-between">
-                <label for="thumb" class="d-flex align-items-center h-100 m-0">Immagine</label>
-                <input name="thumb" type="file" id="thumb" value="{{ old('thumb',$details->thumb) }}" class="form-control @error('thumb') is-invalid @enderror">
+        <div class="col-6 row">
+            <div class="form-group col-6 d-flex flex-column align-items-start justify-content-start">
+                <label for="thumb" class="flex-shrink-0 m-0">Immagine</label>
+                <input 
+                name="thumb" 
+                type="file" 
+                id="thumb" 
+                class="pl-0 border-0 form-control @error('thumb') is-invalid @enderror"
+                >
                 @error('thumb')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
                     </div>
                 @enderror
             </div>
+            {{-- <div class="col-6 pb-5">
+                <figure>
+                    <img src="{{ asset('storage/' . $details->thumb) }}" alt="thumb" class="img-fluid" id="prev-image">
+                </figure>
+            </div> --}}
         </div>
 
         {{-- City --}}
         <div class="col-6">
-            <div class="form-group">
+            <div class="form-group col-6">
                 <label for="city">Città</label>
                 <input type="text" id="city" name="city" value="{{ old('city',$details->city) }}" class="form-control @error('city') is-invalid @enderror">
                 @error('city')
