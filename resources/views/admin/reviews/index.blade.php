@@ -10,7 +10,6 @@
                     <th scope="col">Cognome</th>
                     <th scope="col">Recensione</th>
                     <th scope="col">Valutazione</th>
-                    <th scope="col">Dottore</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -23,7 +22,6 @@
                             <td>{{ $review->last_name }}</td>
                             <td>{{ $review->feedback }}</td>
                             <td>{{ $review->rating }}</td>
-                            <td>{{ $review->user->name }}</td>
                             <td>
                                 {{-- Show --}}
                                 <a href="{{ route('admin.reviews.show', $review) }}" class="btn btn-primary mr-2">
