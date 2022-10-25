@@ -11,6 +11,7 @@ use App\Models\UserDetail;
 
 // Importate per validare i dati in arrivo
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -31,6 +32,10 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required|string|min:8',
         ]);
+
+        // Cript password
+        $pass_to_crypt = Hash::make($request['password']);
+        $request['password'] = $pass_to_crypt;
 
         $data = $request->all();
 

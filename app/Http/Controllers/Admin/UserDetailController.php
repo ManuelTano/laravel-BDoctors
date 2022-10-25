@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Crypt;
 
 // Importate per validare i dati in arrivo
 use Illuminate\Support\Facades\Validator;
@@ -35,6 +36,7 @@ class UserDetailController extends Controller
         // Preleviamo i suoi dati personali e passiamoli alla edit
         $details = $user->userDetail;
 
+        // Specializzazioni del medico
         $prev_specialties = $details->specialties->pluck('id')->toArray();
 
         return view('admin.userdetails.edit',compact('details','specialties','prev_specialties'));
