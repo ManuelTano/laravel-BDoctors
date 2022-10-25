@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -129,14 +129,14 @@ submitEditCredentialsForm.addEventListener("submit", function (event) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!*************************************************!*\
   !*** multi ./resources/js/edit_profile_form.js ***!
   \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Yorbit\Desktop\PROJECTS\laravel-BDoctors\resources\js\edit_profile_form.js */"./resources/js/edit_profile_form.js");
+module.exports = __webpack_require__(/*! C:\Laravel\laravel-BDoctors\resources\js\edit_profile_form.js */"./resources/js/edit_profile_form.js");
 
 
 /***/ })
