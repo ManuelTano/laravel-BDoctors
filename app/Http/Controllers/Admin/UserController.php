@@ -32,6 +32,7 @@ class UserController extends Controller
             'city' => 'required|regex:/^[\pL\s\-]+$/u',
             'address' => 'required|string',
             'email' => 'required|email',
+            'specialties' => 'required',
             'password' => 'required|string|min:8',
         ]);
 

@@ -98,8 +98,10 @@
         {{-- Specializzazioni --}}
         <div class="form-group col-6">
             <h5>Specializzazioni<span class="mb-2">*</span></h5>
+            <div class="form-check mr-3 d-flex flex-wrap">
             @forelse ($specialties as $specialty)
-                <input 
+                <div class="col-6">
+                    <input 
                     name="specialties[]" 
                     type="checkbox" 
                     class="form-check-input" 
@@ -107,10 +109,12 @@
                     value="{{ $specialty->id }}"
                     @if(in_array($specialty->id,old('specialties',$prev_specialties ?? []))) checked @endif
                     >
-                    <label for="specialty-{{ $specialty->label }}" class="mr-4">{{ $specialty->label }}</label>
-            @empty
-                <p>-</p>
-            @endforelse
+                    <label for="specialty-{{ $specialty->label }}" class="form-check-label">{{ $specialty->label }}</label>
+                </div>
+                @empty
+                    <p>-</p>
+                @endforelse
+            </div>
         </div>
 
         {{-- Password --}}
@@ -127,8 +131,9 @@
         </div>
             
         {{-- Button to submit --}}
-        <div class="col-12 d-flex">
+        <div class="col-12 d-flex align-items-center justify-content-between">
             <button class="btn btn-success" type="submit">Conferma<i class="fa-solid fa-arrow-right ml-2"></i></button>
+            <p class="m-0"><span class="mb-2 mr-2">*</span>Campi obbligatori</p>
        </div>
 
     </form>
@@ -190,7 +195,7 @@
         </div>
         
         {{-- Button to submit form --}}
-       <div class="col-12 d-flex">
+       <div class="col-12">
             <button class="btn btn-success" type="submit">Conferma<i class="fa-solid fa-arrow-right ml-2"></i></button>
        </div>
     </form>

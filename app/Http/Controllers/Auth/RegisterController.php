@@ -54,7 +54,6 @@ class RegisterController extends Controller
     {
         $specialties = Specialty::orderBy('label','ASC')->get();
         return view('auth.register', compact('specialties'));
-
     }
 
 
@@ -73,7 +72,10 @@ class RegisterController extends Controller
             'address' => ['required', 'max:100'],
             'city' => ['required', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'specialties' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ],[
+            'specialties.required' => 'Non puoi registrarti senza almeno una specializzazione'
         ]);
     }
 
@@ -85,7 +87,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
         $user =  User::create([
             'name' => $data['name'],
             'first_name' => $data['first_name'],
@@ -100,17 +101,9 @@ class RegisterController extends Controller
 
         $details->user_id = $user->id;
 
-        // @ Facciamo il sync dei tags: elimina quelli di prima e metti quelli checkati 
-        if(array_key_exists('specialties',$data)){
-            $user->specialties()->sync($data['specialties']);
-        }else{
-            // Nel caso in cui non arriva nulla vuol dire che sono stati tutti
-            // de-checkati e quindi col detach li leviamo tutti
-            $user->specialties()->detach();
-        }
+        $user->specialties()->sync($data['specialties']);
 
         $details->save();
-
         return $user;
     }
 }
