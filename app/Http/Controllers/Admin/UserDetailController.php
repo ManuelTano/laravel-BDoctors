@@ -51,7 +51,7 @@ class UserDetailController extends Controller
         $request->validate([
             'phone' => 'required|min:10|max:13',
             'address' => 'required|string',
-            'city' => 'required|string',
+            'city' => 'regex:/^[\pL\s\-]+$/u|string',
             'thumb' => 'required|image|mimes:jpeg,png,jpg',
             'curriculum_vitae' => 'required|file|mimes:pdf',
         ],[

@@ -25,9 +25,9 @@ class UserController extends Controller
 
         // Validazione dei dati in arrivo
         $request->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'name' => 'required|string',
+            'first_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'last_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'name' => 'required|regex:/^[\pL\s\-]+$/u',
             'email' => 'required|email',
             'password' => 'required|string|min:8',
         ]);
