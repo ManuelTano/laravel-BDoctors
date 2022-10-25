@@ -8,7 +8,6 @@ class UserDetail extends Model
 {
 
     protected $fillable = [
-        'city',
         'phone',
     ];
 

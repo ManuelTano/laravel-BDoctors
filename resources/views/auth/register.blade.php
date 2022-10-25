@@ -71,6 +71,17 @@
                             </div>
                         </div>
 
+                        {{-- City --}}
+                        <div class="form-group row">
+                            <label for="city">Città</label>
+                            <input type="text" id="city" name="city" value="{{ old('city') }}" class="form-control @error('city') is-invalid @enderror">
+                            @error('city')
+                                <div class="invalid-feedback">
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                            @enderror
+                        </div>
+
                         {{-- Address --}}
                         <div class="form-group row">
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>

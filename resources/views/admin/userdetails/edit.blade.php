@@ -174,24 +174,6 @@
                     </div>
                 @enderror
             </div>
-            {{-- <div class="col-6 pb-5">
-                <figure>
-                    <img src="{{ asset('storage/' . $details->thumb) }}" alt="thumb" class="img-fluid" id="prev-image">
-                </figure>
-            </div> --}}
-        </div>
-
-        {{-- City --}}
-        <div class="col-6">
-            <div class="form-group col-6">
-                <label for="city">Città</label>
-                <input type="text" id="city" name="city" value="{{ old('city',$details->city) }}" class="form-control @error('city') is-invalid @enderror">
-                @error('city')
-                    <div class="invalid-feedback">
-                        <strong>{{ $message }}</strong>
-                    </div>
-                @enderror
-            </div>
         </div>
         
         {{-- Button to submit form --}}

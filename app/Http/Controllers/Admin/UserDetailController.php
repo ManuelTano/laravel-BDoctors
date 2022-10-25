@@ -52,16 +52,12 @@ class UserDetailController extends Controller
         // Validazione dei dati in arrivo
         $request->validate([
             'phone' => 'required|min:10|max:13',
-            'address' => 'required|string',
-            'city' => 'regex:/^[\pL\s\-]+$/u|string',
             'thumb' => 'required|image|mimes:jpeg,png,jpg',
             'curriculum_vitae' => 'required|file|mimes:pdf',
         ],[
             'min:10' => 'Il numero telefonico deve essere composto da almeno 10 caratteri',
             'max:13' => 'Il numero telefonico deve essere composto massimo 13 caratteri',
             'phone.required' => 'Il numero telefonico è un campo obbligatorio',
-            'address.required' => 'L\'indirizzo è un campo obbligatorio',
-            'city.required' => 'La città è un campo obbligatorio',
             'thumb.required' => 'L\'immagine è un campo obbligatorio',
             'curriculum_vitae.required' => 'Il curriculum vitae è un campo obbligatorio',
             'thumb.mimes' => 'Il formato dell\'immagine può essere: .jpg,.png,.jpeg',
