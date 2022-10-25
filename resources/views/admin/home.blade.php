@@ -4,9 +4,11 @@
     <div class="container">
         <div class="my-3 rounded-lg border border-1 bg-white row">
             <div class="col-4 p-0">
+                @if($user->userdetail->thumb)
                 <figure class="m-0">
                     <img class="img-fluid" src="{{ asset('storage/' . $user->userDetail->thumb) }}" alt="">
                 </figure>
+                @endif
             </div>
             <div class="col-8 p-3 d-flex flex-column justify-content-between">
                 <div>
