@@ -36,6 +36,6 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('admin.userdetails.index');
+        return redirect()->route('home');
     }
 }
