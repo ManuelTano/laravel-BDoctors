@@ -30,9 +30,6 @@ class HomeController extends Controller
         $user = Auth::user();
         $id = $user->id;
 
-        // $specialties = UserDetail::select('label')->with('specialties')->where('user_id',$id);
-        // dd($specialties);
-
         return view('admin.home',compact('user'));
     }
 }

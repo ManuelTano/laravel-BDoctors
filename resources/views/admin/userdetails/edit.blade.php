@@ -20,7 +20,7 @@
         {{-- First Name --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="first_name">Nome</label>
+                <label for="first_name">Nome<span class="mb-2">*</span></label>
                 <input type="text" id="first_name" name="first_name" class="form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name',$details->user->first_name) }}">
                 @error('first_name')
                     <div class="invalid-feedback">
@@ -33,7 +33,7 @@
         {{-- Last Name --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="last_name">Cognome</label>
+                <label for="last_name">Cognome<span class="mb-2">*</span></label>
                 <input type="text" id="last_name" name="last_name" class="form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name',$details->user->last_name) }}">
                 @error('last_name')
                     <div class="invalid-feedback">
@@ -46,7 +46,7 @@
         {{-- Email --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">Email<span class="mb-2">*</span></label>
                 <input type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email',$details->user->email) }}">
                 @error('email')
                     <div class="invalid-feedback">
@@ -59,7 +59,7 @@
         {{-- Name --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="name">Username</label>
+                <label for="name">Username<span class="mb-2">*</span></label>
                 <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name',$details->user->name) }}">
                 @error('name')
                     <div class="invalid-feedback">
@@ -69,10 +69,41 @@
             </div>
         </div>
 
+        {{-- Address --}}
+        <div class="col-6">
+            <div class="form-group">
+                <label for="address">Indirizzo<span class="mb-2">*</span></label>
+                <input type="text" id="address" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address',$details->address) }}">
+                @error('address')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
+            </div>
+        </div>
+
+        {{-- Specializzazioni --}}
+        <div class="form-group col-6">
+            <h5>Specializzazioni<span class="mb-2">*</span></h5>
+            @forelse ($specialties as $specialty)
+                <input 
+                    name="specialties[]" 
+                    type="checkbox" 
+                    class="form-check-input" 
+                    id="specialty-{{ $specialty->id }}" 
+                    value="{{ $specialty->id }}"
+                    @if(in_array($specialty->id,old('specialties',$prev_specialties ?? []))) checked @endif
+                    >
+                    <label for="specialty-{{ $specialty->label }}" class="mr-4">{{ $specialty->label }}</label>
+            @empty
+                <p>-</p>
+            @endforelse
+        </div>
+
         {{-- Password --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">Password<span class="mb-2">*</span></label>
                 <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror">
                 @error('password')
                 <div class="invalid-feedback">
@@ -101,43 +132,12 @@
 
         {{-- $ Form profile --}}
 
-        {{-- Specializzazioni --}}
-        <div class="form-group col-6">
-            <h5>Specializzazioni</h5>
-            @forelse ($specialties as $specialty)
-                <label for="specialty-{{ $specialty->label }}" class="mr-4">{{ $specialty->label }}</label>
-                <input 
-                    name="specialties[]" 
-                    type="checkbox" 
-                    class="form-check-input" 
-                    id="specialty-{{ $specialty->id }}" 
-                    value="{{ $specialty->id }}"
-                    @if(in_array($specialty->id,old('specialties',$prev_specialties ?? []))) checked @endif
-                    >
-            @empty
-                <p>-</p>
-            @endforelse
-        </div>
-
         {{-- Curriculum vitae --}}
         <div class="col-6">
             <div class="form-group">
                 <label for="curriculum_vitae" class="flex-shrink-0 h-100 m-0">Curriculum Vitae</label>
                 <input name="curriculum_vitae" type="file" id="curriculum_vitae" class="pl-0 border-0 form-control @error('curriculum_vitae') is-invalid @enderror">
                 @error('curriculum_vitae')
-                    <div class="invalid-feedback">
-                        <strong>{{ $message }}</strong>
-                    </div>
-                @enderror
-            </div>
-        </div>
-
-        {{-- Address --}}
-        <div class="col-6">
-            <div class="form-group">
-                <label for="address">Indirizzo</label>
-                <input type="text" id="address" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address',$details->address) }}">
-                @error('address')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
                     </div>

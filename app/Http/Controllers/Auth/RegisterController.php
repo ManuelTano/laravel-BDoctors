@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 
 use App\User;
 use App\Models\UserDetail;
+use App\Models\Specialty;
 
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -45,6 +46,19 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showRegistrationForm()
+    {
+        $specialties = Specialty::orderBy('label','ASC')->get();
+        return view('auth.register', compact('specialties'));
+
+    }
+
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -56,6 +70,7 @@ class RegisterController extends Controller
             'name' => ['required', 'regex:/^[\pL\s\-]+$/u', 'max:255'],
             'first_name' => ['required', 'regex:/^[\pL\s\-]+$/u', 'max:50'],
             'last_name' => ['required', 'regex:/^[\pL\s\-]+$/u', 'max:50'],
+            'address' => ['required', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -81,6 +96,15 @@ class RegisterController extends Controller
         $details = new UserDetail();
 
         $details->user_id = $user->id;
+
+        // @ Facciamo il sync dei tags: elimina quelli di prima e metti quelli checkati 
+        if(array_key_exists('specialties',$data)){
+            $user->specialties()->sync($data['specialties']);
+        }else{
+            // Nel caso in cui non arriva nulla vuol dire che sono stati tutti
+            // de-checkati e quindi col detach li leviamo tutti
+            $user->specialties()->detach();
+        }
 
         $details->save();
 

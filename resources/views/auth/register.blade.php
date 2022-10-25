@@ -71,6 +71,24 @@
                             </div>
                         </div>
 
+                        {{-- Specializzazioni --}}
+                        <div class="form-group col-6">
+                            <h5>Specializzazioni<span class="mb-2">*</span></h5>
+                            @forelse ($specialties as $specialty)
+                                <input 
+                                    name="specialties[]" 
+                                    type="checkbox" 
+                                    class="form-check-input" 
+                                    id="specialty-{{ $specialty->id }}" 
+                                    value="{{ $specialty->id }}"
+                                    @if(in_array($specialty->id,old('specialties',$prev_specialties ?? []))) checked @endif
+                                    >
+                                    <label for="specialty-{{ $specialty->label }}" class="mr-4">{{ $specialty->label }}</label>
+                            @empty
+                                <p>-</p>
+                            @endforelse
+                        </div>
+
                         {{-- Password --}}
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>

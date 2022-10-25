@@ -8,7 +8,6 @@ class UserDetail extends Model
 {
 
     protected $fillable = [
-        'address',
         'city',
         'phone',
     ];
@@ -26,10 +25,5 @@ class UserDetail extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
-    }
-
-    public function specialties()
-    {
-        return $this->belongsToMany('App\Models\Specialty');
     }
 }

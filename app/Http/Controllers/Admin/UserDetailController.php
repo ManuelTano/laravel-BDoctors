@@ -93,8 +93,6 @@ class UserDetailController extends Controller
             $details->curriculum_vitae = $curriculum_vitae_link;
         }
 
-        // dd($data['specialties']);
-
         // @ Facciamo il sync dei tags: elimina quelli di prima e metti quelli checkati 
         if(array_key_exists('specialties',$data)){
             $details->specialties()->sync($data['specialties']);

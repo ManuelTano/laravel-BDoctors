@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Specialty extends Model
 {
-    public function userDetails()
+    public function users()
     {
-        return $this->belongsToMany('App\Models\UserDetail');
+        return $this->belongsToMany('App\User');
     }
 }

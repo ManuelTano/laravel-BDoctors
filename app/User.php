@@ -20,6 +20,7 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'email',
+        'address',
         'password',
     ];
 
@@ -47,23 +48,38 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Relazione OneToOne tra User e UserDetail
+
     public function userDetail()
     {
         return $this->hasOne('App\Models\UserDetail');
     }
+
+    // Relazione ManyToMany tra User e Sponsorship
 
     public function sponsorships()
     {
         return $this->belongsToMany('App\Models\Sponsorship');
     }
 
+    // Relazione OneToMany tra User e Message
+
     public function messages()
     {
         return $this->hasMany('App\Models\Message');
     }
 
+    // Relazione OneToMany tra User e Review
+
     public function reviews()
     {
         return $this->hasMany('App\Models\Review');
+    }
+
+    // Relazione ManyToMany tra User e Specialty
+
+    public function specialties()
+    {
+        return $this->belongsToMany('App\Models\Specialty');
     }
 }

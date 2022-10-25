@@ -16,7 +16,6 @@ class UserDetails extends Migration
         Schema::create('user_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('address', 50)->nullable();
             $table->text('curriculum_vitae')->nullable();
             $table->string('phone', 15)->nullable();
             $table->string('thumb')->nullable();
