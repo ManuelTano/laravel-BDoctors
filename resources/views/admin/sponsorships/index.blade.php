@@ -10,7 +10,7 @@
         <div class="row justify-content-between my-5">
             @foreach (config('sponsorships') as $sponsorship)
                 @if ($sponsorship['business_plan'] != 'basic')
-                    <div class="col-3 card  align-items-center text-center p-0 m-0">
+                    <div class=" card  align-items-center text-center p-0 m-0" style="width: 21rem;">
                         <div class="w-100 p-0 m-0 bg-{{ $sponsorship['business_plan'] }}">
                             <h1 class="text-uppercase my-3">{{ $sponsorship['business_plan'] }}</h1>
                         </div>
@@ -21,15 +21,15 @@
                                 </path>
                             </svg>
                         </div>
-                        <div>
-                            <h2 class="my-3">{{ $sponsorship['time_plan'] }}h</h2>
-                        </div>
-                        <div>
-                            <h2 class="my-3">{{ $sponsorship['price'] }} &euro;</h2>
-                        </div>
-                        <p class="my-3 mx-3">{{ $sponsorship['description'] }} </p>
-                        <div>
-                            <a href="" class="btn btn-success mt-4 mb-5">Compra ora</a>
+                        <div class="d-flex flex-column justify-content-between h-100">
+                            <div>
+                                <h2 class="my-3">{{ $sponsorship['time_plan'] }}h</h2>
+                                <h2 class="my-3">{{ $sponsorship['price'] }} &euro;</h2>
+                                <p class="my-3 mx-3">{{ $sponsorship['description'] }} </p>
+                            </div>
+                            <div>
+                                <a href="" class="btn btn-success mt-4 mb-5">Compra ora</a>
+                            </div>
                         </div>
                     </div>
                 @endif
