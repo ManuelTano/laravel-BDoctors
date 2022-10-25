@@ -69,11 +69,24 @@
             </div>
         </div>
 
+        {{-- City --}}
+        <div class="col-6">
+            <div class="form-group">
+                <label for="city">Città<span class="mb-2">*</span></label>
+                <input type="text" id="city" name="city" class="form-control @error('city') is-invalid @enderror" value="{{ old('city',$details->user->city) }}">
+                @error('address')
+                    <div class="invalid-feedback">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
+            </div>
+        </div>
+
         {{-- Address --}}
         <div class="col-6">
             <div class="form-group">
                 <label for="address">Indirizzo<span class="mb-2">*</span></label>
-                <input type="text" id="address" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address',$details->address) }}">
+                <input type="text" id="address" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address',$details->user->address) }}">
                 @error('address')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>

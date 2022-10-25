@@ -19,7 +19,6 @@ class UserDetails extends Migration
             $table->text('curriculum_vitae')->nullable();
             $table->string('phone', 15)->nullable();
             $table->string('thumb')->nullable();
-            $table->string('city', 50)->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -37,7 +37,7 @@ class UserDetailController extends Controller
         $details = $user->userDetail;
 
         // Specializzazioni del medico
-        $prev_specialties = $details->specialties->pluck('id')->toArray();
+        $prev_specialties = $user->specialties->pluck('id')->toArray();
 
         return view('admin.userdetails.edit',compact('details','specialties','prev_specialties'));
     }
@@ -87,15 +87,6 @@ class UserDetailController extends Controller
             if($details->curriculum_vitae) Storage::delete($details->curriculum_vitae);
             $curriculum_vitae_link = Storage::put('users_curriculum_vitae',$data['curriculum_vitae']);
             $details->curriculum_vitae = $curriculum_vitae_link;
-        }
-
-        // @ Facciamo il sync dei tags: elimina quelli di prima e metti quelli checkati 
-        if(array_key_exists('specialties',$data)){
-            $details->specialties()->sync($data['specialties']);
-        }else{
-            // Nel caso in cui non arriva nulla vuol dire che sono stati tutti
-            // de-checkati e quindi col detach li leviamo tutti
-            $details->specialties()->detach();
         }
 
         // Update dei dati
