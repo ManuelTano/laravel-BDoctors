@@ -13,10 +13,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($query)
+    public function index()
     {
-        $users = User::where('name', $query)->get();
-        return response()->json($users);
+        $users = User::all();
+        return response()->json(compact('users'));
     }
 
     /**

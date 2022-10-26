@@ -18,8 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/users/{query}', 'Api\UserController@index');
-
-Route::get('/specialties', 'Api\SpecialtyController@index');
-
-Route::get('/userdetails', 'Api\UserDetailController@index');
+Route::namespace('Api')->group(function(){
+    Route::resource('users', 'UserController');
+});
