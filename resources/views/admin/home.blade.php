@@ -14,6 +14,7 @@
                 <div>
                     <p><i class="fa-solid fa-user mr-3"></i>{{ $user->getFullName() }}</p>
                     <p><i class="fa-solid fa-house mr-3"></i>{{ $user->address }}</p>
+                    <p><i class="fa-solid fa-city mr-3"></i>{{ $user->city }}</p>
                 </div>
                 <div>
                     <address class="d-flex align-items-center justify-content-between">
