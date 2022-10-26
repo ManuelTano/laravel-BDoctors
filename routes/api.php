@@ -19,5 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('Api')->group(function(){
-    Route::recource('users', 'UserController');
+    Route::resource('users', 'UserController');
 });
