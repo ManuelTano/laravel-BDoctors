@@ -2074,7 +2074,7 @@ var render = function render() {
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("header", [_c("h1", [_vm._v("BDoctors")])]);
+  return _c("header", [_c("h1", [_vm._v("BDoctors")]), _vm._v(" "), _c("h1", [_vm._v("BDoctors")])]);
 }];
 render._withStripped = true;
 
@@ -50859,11 +50859,7 @@ var root = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Laravel\laravel-BDoctors\resources\js\front.js */"./resources/js/front.js");
-=======
-module.exports = __webpack_require__(/*! C:\Users\tmanu\Desktop\laravel-BDoctors\resources\js\front.js */"./resources/js/front.js");
->>>>>>> 72c85805b70537593f03ed55e1bbfa9182adeeb9
 
 
 /***/ })
