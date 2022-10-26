@@ -1,7 +1,6 @@
 <template>
     <header>
         <h1>BDoctors</h1>
-        <h1>BDoctors</h1>
     </header>
 </template>
 
