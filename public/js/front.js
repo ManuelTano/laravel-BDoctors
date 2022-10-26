@@ -2074,7 +2074,7 @@ var render = function render() {
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("header", [_c("h1", [_vm._v("BDoctors")]), _vm._v(" "), _c("h1", [_vm._v("BDoctors")])]);
+  return _c("header", [_c("h1", [_vm._v("BDoctors")])]);
 }];
 render._withStripped = true;
 
