@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/users', 'Api\UserController@index');
+Route::get('/users/{query}', 'Api\UserController@index');
 
 Route::get('/specialties', 'Api\SpecialtyController@index');
 
