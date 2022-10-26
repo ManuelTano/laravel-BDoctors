@@ -19,6 +19,19 @@ class UserController extends Controller
         return response()->json(compact('users'));
     }
 
+    public function specialtyFilter($query){
+
+        $users_by_firstname = User::with('specialties')
+        ->where('first_name','like','%' . $query . '%')
+        ->get();
+
+        $users_by_lastname = User::with('specialties')
+        ->where('last_name','like','%' . $query . '%')
+        ->get();
+
+        return response()->json(compact('users_by_firstname','users_by_lastname'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

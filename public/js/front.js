@@ -1920,18 +1920,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      users: [],
-      query: ''
+      users: []
     };
   },
   methods: {
-    myQuery: function myQuery(query) {
+    fetchAllUsers: function fetchAllUsers() {
       var _this = this;
-      this.query = query;
-      axios.get("http://127.0.0.1:8000/api/users/".concat(this.query)).then(function (res) {
-        _this.users = res.data;
+      axios.get("http://127.0.0.1:8000/api/users").then(function (res) {
+        _this.users = res.data.users;
       });
     }
+  },
+  mounted: function mounted() {
+    this.fetchAllUsers();
   }
 });
 
@@ -2043,9 +2044,6 @@ var render = function render() {
   return _c("div", [_c("AppHeader"), _vm._v(" "), _c("AppMain", {
     attrs: {
       users: _vm.users
-    },
-    on: {
-      "my-search": _vm.myQuery
     }
   })], 1);
 };
@@ -50859,7 +50857,7 @@ var root = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\laravel-BDoctors\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/pasqualepedoto/Desktop/Progetto Finale Boolean/laravel-BDoctors/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

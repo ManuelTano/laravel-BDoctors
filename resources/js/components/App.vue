@@ -1,14 +1,13 @@
 <template>
     <div>
         <AppHeader />
-        <AppMain @my-search="myQuery" :users="users" />
+        <AppMain :users="users" />
     </div>
 </template>
 
 <script>
-import AppHeader from './AppHeader.vue';
-import AppMain from './AppMain.vue';
-
+import AppHeader from "./AppHeader.vue";
+import AppMain from "./AppMain.vue";
 
 export default {
     name: "App",
@@ -19,16 +18,17 @@ export default {
     data() {
         return {
             users: [],
-            query: '',
-        }
+        };
     },
     methods: {
-        myQuery(query) {
-            this.query = query
-            axios.get(`http://127.0.0.1:8000/api/users/${this.query}`).then((res) => {
-                this.users = res.data
-            })
-        }
+        fetchAllUsers() {
+            axios.get("http://127.0.0.1:8000/api/users").then((res) => {
+                this.users = res.data.users;
+            });
+        },
     },
-}
+    mounted() {
+        this.fetchAllUsers();
+    },
+};
 </script>
