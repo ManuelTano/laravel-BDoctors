@@ -21,6 +21,8 @@ class UserSeeder extends Seeder
             $new_user->last_name = $faker->lastName();
             $new_user->email = $faker->email();
             $new_user->password = bcrypt($faker->name());
+            $new_user->address = $faker->address();
+            $new_user->city = 'Milano';
 
             $new_user->save();
         } 
