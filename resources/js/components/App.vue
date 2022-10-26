@@ -1,13 +1,13 @@
 <template>
     <div>
         <AppHeader />
-        <AppMain @my-search="myQuery" />
+        <AppMain @my-search="myQuery" :users="users" />
     </div>
 </template>
 
 <script>
 import AppHeader from './AppHeader.vue';
-import AppMain from './AppMain.vue'
+import AppMain from './AppMain.vue';
 
 
 export default {
