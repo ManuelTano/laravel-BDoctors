@@ -23,12 +23,14 @@ export default {
         }
     },
     methods: {
-        myQuery(query) {
-            this.query = query
-            axios.get(`http://127.0.0.1:8000/api/users/${this.query}`).then((res) => {
+        myQuery() {
+            axios.get(`http://127.0.0.1:8000/api/users`).then((res) => {
                 this.users = res.data
             })
         }
     },
+    mounted() {
+        this.myQuery();
+    }
 }
 </script>

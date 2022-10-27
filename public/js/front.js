@@ -1925,13 +1925,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    myQuery: function myQuery(query) {
+    myQuery: function myQuery() {
       var _this = this;
-      this.query = query;
-      axios.get("http://127.0.0.1:8000/api/users/".concat(this.query)).then(function (res) {
+      axios.get("http://127.0.0.1:8000/api/users").then(function (res) {
         _this.users = res.data;
       });
     }
+  },
+  mounted: function mounted() {
+    this.myQuery();
   }
 });
 
