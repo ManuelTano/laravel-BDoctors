@@ -69,11 +69,20 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
+        .show-home{
+            z-index: 10;
+        }
+
+        .show-home a{
+            color: white;
+            font-size: 16px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="flex-center position-ref">
+    <div class="flex-center position-ref show-home">
         @if (Route::has('login'))
             <div class="top-right links">
                 @auth

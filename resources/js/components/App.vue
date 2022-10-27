@@ -1,19 +1,19 @@
 <template>
     <div>
-        <AppHeader />
+        <BaseJumbotron />
         <AppMain :users="users" @my-search="fetchUsersByInput" />
     </div>
 </template>
 
 <script>
-import AppHeader from "./AppHeader.vue";
 import AppMain from "./AppMain.vue";
+import BaseJumbotron from "./BaseJumbotron.vue";
 
 export default {
     name: "App",
     components: {
-        AppHeader,
         AppMain,
+        BaseJumbotron,
     },
     data() {
         return {
@@ -36,6 +36,6 @@ export default {
                 });
         },
     },
-    mounted() { },
+    mounted() {},
 };
 </script>
