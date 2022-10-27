@@ -19,5 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('Api')->group(function () {
+
+    // Tutte le rotte per i dottori
     Route::resource('users', 'UserController');
+
+    // Rotta che filtra i dottori in base all'input
+    Route::get('/users/filter/{query}', 'UserController@filterByInput');
+
+    // Rotta che filtra i dottori in base alla specialistica
+    Route::get('/users/specialty/{query}', 'UserController@filterBySpecialty');
 });

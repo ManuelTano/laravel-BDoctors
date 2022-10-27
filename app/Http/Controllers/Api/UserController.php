@@ -19,6 +19,23 @@ class UserController extends Controller
         return response()->json($users);
     }
 
+    public function filterByInput($query){
+
+        $users_by_firstname = User::with('specialties')
+        ->where('first_name','like','%' . $query . '%')
+        ->get();
+
+        $users_by_lastname = User::with('specialties')
+        ->where('last_name','like','%' . $query . '%')
+        ->get();
+
+        return response()->json(compact('users_by_firstname','users_by_lastname'));
+    }
+
+    public function filterBySpecialty($query){
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      *

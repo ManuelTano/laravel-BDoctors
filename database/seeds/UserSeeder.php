@@ -1,7 +1,13 @@
 <?php
 
 use Illuminate\Database\Seeder;
+
 use App\User;
+use App\Models\Specialty;
+
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+
 use Faker\Generator as Faker;
 
 class UserSeeder extends Seeder
@@ -14,6 +20,9 @@ class UserSeeder extends Seeder
     public function run(Faker $faker)
     {
         for($i = 0 ; $i < 10 ; $i++){
+
+            $specialties_ids = Specialty::pluck('id')->toArray();
+
             $new_user = new User();
 
             $new_user->name = $faker->name();
@@ -25,6 +34,16 @@ class UserSeeder extends Seeder
             $new_user->city = 'Milano';
 
             $new_user->save();
+
+            $user_specialties = [];
+
+            while(count($user_specialties) == 0){
+                foreach($specialties_ids as $specialty){
+                    if($faker->boolean()) $user_specialties[] = $specialty;
+                }
+            }
+
+            $new_user->specialties()->attach($user_specialties);
         } 
     }
 }
