@@ -19,7 +19,7 @@ class UserController extends Controller
         return response()->json(compact('users'));
     }
 
-    public function specialtyFilter($query){
+    public function filterByInput($query){
 
         $users_by_firstname = User::with('specialties')
         ->where('first_name','like','%' . $query . '%')
@@ -30,6 +30,10 @@ class UserController extends Controller
         ->get();
 
         return response()->json(compact('users_by_firstname','users_by_lastname'));
+    }
+
+    public function filterBySpecialty($query){
+        
     }
 
     /**

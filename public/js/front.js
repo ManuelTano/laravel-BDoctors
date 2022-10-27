@@ -1924,16 +1924,21 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    // Chiamata che preleva tutti i dottori
     fetchAllUsers: function fetchAllUsers() {
       var _this = this;
       axios.get("http://127.0.0.1:8000/api/users").then(function (res) {
         _this.users = res.data.users;
       });
+    },
+    fetchUsersByInput: function fetchUsersByInput(search) {
+      var _this2 = this;
+      axios.get("http://127.0.0.1:8000/api/users/specialty/" + search).then(function (res) {
+        _this2.users = res.data.users;
+      });
     }
   },
-  mounted: function mounted() {
-    this.fetchAllUsers();
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -2044,6 +2049,9 @@ var render = function render() {
   return _c("div", [_c("AppHeader"), _vm._v(" "), _c("AppMain", {
     attrs: {
       users: _vm.users
+    },
+    on: {
+      "my-search": _vm.fetchUsersByInput
     }
   })], 1);
 };
