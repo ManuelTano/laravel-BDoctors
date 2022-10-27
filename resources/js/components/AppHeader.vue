@@ -6,13 +6,19 @@
             </h1>
             <ul>
                 <li>
-                    <a href="">Tutti i dottori</a>
+                    <router-link :to="{ name: 'alldoctors' }"
+                        >Tutti i dottori</router-link
+                    >
                 </li>
                 <li>
-                    <a href="">Dottori in evidenza</a>
+                    <router-link :to="{ name: 'all-featured-doctors' }"
+                        >Dottori in evidenza</router-link
+                    >
                 </li>
                 <li>
-                    <a href="">Ricerca avanzata</a>
+                    <router-link :to="{ name: 'doctors-by-specialty' }"
+                        >Ricerca per specializzazione</router-link
+                    >
                 </li>
             </ul>
         </nav>
@@ -26,6 +32,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../sass/variables";
+
 header {
     height: 60px;
     padding: 2rem;
@@ -57,7 +65,15 @@ header {
                 margin: 0 1rem;
                 a {
                     text-decoration: none;
+
                     color: white;
+
+                    font-weight: bold;
+                    font-size: 1rem;
+
+                    &:hover {
+                        color: $primary-color;
+                    }
                 }
             }
         }

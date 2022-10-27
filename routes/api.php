@@ -28,4 +28,7 @@ Route::namespace('Api')->group(function () {
 
     // Rotta che filtra i dottori in base alla specialistica
     Route::get('/users/specialty/{query}', 'UserController@filterBySpecialty');
+
+    // Rotta per far restituire tutte le specializzazione
+    Route::get('/specialties','SpecialtyController@index');
 });

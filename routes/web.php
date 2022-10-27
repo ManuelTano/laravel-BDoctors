@@ -60,6 +60,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Redirect su pagina di Welcome 
 
-Route::get('{any?}', function () {
+Route::get('/{any?}', function () {
     return view('guest.home');
 })->where('any', '.*');

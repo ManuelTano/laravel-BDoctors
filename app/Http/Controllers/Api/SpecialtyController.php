@@ -16,7 +16,7 @@ class SpecialtyController extends Controller
     public function index()
     {
         $specialties = Specialty::all();
-        return response()->json($specialties);
+        return response()->json(compact('specialties'));
     }
 
     /**

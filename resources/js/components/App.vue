@@ -1,18 +1,19 @@
 <template>
     <div>
         <BaseJumbotron />
-        <AppMain :users="users" @my-search="fetchUsersByInput" />
+        <router-view></router-view>
+        <!-- <AppMain :users="users" @my-search="fetchUsersByInput" /> -->
     </div>
 </template>
 
 <script>
-import AppMain from "./AppMain.vue";
+// import AppMain from "./AppMain.vue";
 import BaseJumbotron from "./BaseJumbotron.vue";
 
 export default {
     name: "App",
     components: {
-        AppMain,
+        // AppMain,
         BaseJumbotron,
     },
     data() {
@@ -21,13 +22,6 @@ export default {
         };
     },
     methods: {
-        // Chiamata che preleva tutti i dottori
-        fetchAllUsers() {
-            axios.get("http://127.0.0.1:8000/api/users").then((res) => {
-                this.users = res.data.users;
-            });
-        },
-
         fetchUsersByInput(search) {
             axios
                 .get("http://127.0.0.1:8000/api/users/specialty/" + search)
@@ -39,3 +33,5 @@ export default {
     mounted() {},
 };
 </script>
+
+<style lang="scss"></style>
