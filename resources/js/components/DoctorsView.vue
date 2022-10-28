@@ -1,60 +1,23 @@
 <template>
     <section id="doctors-view">
         <div class="container">
-            <ul>
-                <li v-for="user in users" :key="user.id">
-                    <div class="card" style="width: 18rem">
-                        <!-- <img src="" class="card-img-top" alt="" /> -->
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                {{ user.name }}
-                            </h5>
-                            <p class="card-text">
-                                <span
-                                    >Laurea in Medicina con specializzazione in
-                                </span>
-                                <span
-                                    v-for="(
-                                        specialty, index
-                                    ) in user.specialties"
-                                    :key="specialty.id"
-                                    >{{ specialty.label }}
-                                    <span
-                                        v-if="index === user.specialties.length"
-                                        >.</span
-                                    >
-                                    <span v-else>,</span>
-                                </span>
-                            </p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <address>
-                                    <i class="fa-solid fa-house mr-2"></i>
-                                    {{ user.address + "  " + user.city }}
-                                </address>
-                            </li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+            <AppCard v-for="user in users" :key="user.id" :user="user" />
         </div>
     </section>
 </template>
 
 <script>
+import AppCard from "./AppCard.vue"
 export default {
     name: "DoctorsView",
+    components: {
+        AppCard,
+    },
     props: {
         users: Array,
     },
 };
+
 </script>
 
 <style lang="scss" scoped>
