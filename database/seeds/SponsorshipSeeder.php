@@ -12,7 +12,7 @@ class SponsorshipSeeder extends Seeder
      */
     public function run()
     {
-        $sponsorships=config('sponsorships');
+        $sponsorships = config('sponsorships');
         foreach ($sponsorships as $sponsorship) {
             $new_sponsorship = new Sponsorship();
             $new_sponsorship->business_plan = $sponsorship['business_plan'];
