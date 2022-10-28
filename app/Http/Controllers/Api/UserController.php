@@ -51,9 +51,24 @@ class UserController extends Controller
         return response()->json(compact('users_by_specialty'));
     }
 
+    // Metodo che consente di prelevare le reviews relative
+    // ad un dottore
+
     public function fetchReviews($id){
         $user_reviews = Review::where('user_id',$id)->get();
         return response()->json(compact('user_reviews'));
+    }
+
+    // Metodo che consente di inviare una nuova recensione
+
+    public function sendNewReview(){
+        $text = 'invia recensione';
+        return response()->json(compact('text'));
+    }
+
+    public function sendNewMessage(){
+        $text = 'invia messaggio';
+        return response()->json(compact('text'));
     }
 
     /**
