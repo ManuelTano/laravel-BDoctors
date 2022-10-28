@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 use App\User;
 use App\Models\Specialty;
+use App\Models\UserDetail;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -44,6 +45,11 @@ class UserSeeder extends Seeder
             }
 
             $new_user->specialties()->attach($user_specialties);
+
+            // Creiamo i suoi dettagli in modo tale da agganciarli
+            $details = new UserDetail();
+            $details->user_id = $new_user->id;
+            $details->save();
         } 
     }
 }
