@@ -1,7 +1,6 @@
 <template>
     <div class="position-relative">
         <AppHeader />
-        <BaseJumbotron />
         <router-view></router-view>
     </div>
 </template>

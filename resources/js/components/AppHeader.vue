@@ -22,18 +22,13 @@
                         >
                     </li>
                     <li class="nav-item active">
-                        <router-link :to="{ name: 'alldoctors' }"
-                            >Tutti i dottori</router-link
+                        <router-link :to="{ name: 'advanced-search' }"
+                            >Ricerca avanzata</router-link
                         >
                     </li>
                     <li class="nav-item">
                         <router-link :to="{ name: 'all-featured-doctors' }"
                             >Dottori in evidenza</router-link
-                        >
-                    </li>
-                    <li class="nav-item">
-                        <router-link :to="{ name: 'doctors-by-specialty' }"
-                            >Ricerca per specializzazione</router-link
                         >
                     </li>
                 </ul>
@@ -71,7 +66,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 5;
 
     nav {
         #logo {

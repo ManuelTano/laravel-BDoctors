@@ -1,18 +1,15 @@
 <template>
     <div id="jumbo">
-        <!-- <AppHeader class="position-absolute top-25 left-0 right-0" /> -->
-        <BaseInput class="transform-center" />
+        <slot />
     </div>
 </template>
 
 <script>
 import AppHeader from "./AppHeader.vue";
-import BaseInput from "./BaseInput.vue";
 export default {
     name: "BaseJumbotron",
     components: {
         AppHeader,
-        BaseInput,
     },
 };
 </script>
@@ -25,11 +22,6 @@ export default {
     background-repeat: no-repeat;
     width: 100%;
     height: 500px;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
 }
 
 .transform-center {
