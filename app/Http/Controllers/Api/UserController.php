@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+
 use App\User;
+use App\Models\Review;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -46,6 +49,11 @@ class UserController extends Controller
         }
 
         return response()->json(compact('users_by_specialty'));
+    }
+
+    public function fetchReviews($id){
+        $user_reviews = Review::where('user_id',$id)->get();
+        return response()->json(compact('user_reviews'));
     }
 
     /**

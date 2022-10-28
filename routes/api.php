@@ -31,4 +31,7 @@ Route::namespace('Api')->group(function () {
 
     // Rotta per far restituire tutte le specializzazione
     Route::get('/specialties','SpecialtyController@index');
+
+    // Rotta per prelevare le recensioni di un dottore
+    Route::get('/reviews/user/{id}','UserController@fetchReviews');
 });
