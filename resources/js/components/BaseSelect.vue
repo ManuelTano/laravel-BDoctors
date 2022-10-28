@@ -1,13 +1,12 @@
 <template>
     <div class="input-group">
         <select
-            class="custom-select"
+            class="form-control"
             id="specialty"
-            aria-label="Example select with button addon"
             @change="emitQuery"
             v-model="choice"
         >
-            <option selected>{{ text }}</option>
+            <option selected value="">{{ text }}</option>
             <option
                 :value="specialty.id"
                 v-for="specialty in specialties"

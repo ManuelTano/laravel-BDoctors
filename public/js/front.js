@@ -2270,10 +2270,9 @@ var render = function render() {
       value: _vm.choice,
       expression: "choice"
     }],
-    staticClass: "custom-select",
+    staticClass: "form-control",
     attrs: {
-      id: "specialty",
-      "aria-label": "Example select with button addon"
+      id: "specialty"
     },
     on: {
       change: [function ($event) {
@@ -2288,7 +2287,8 @@ var render = function render() {
     }
   }, [_c("option", {
     attrs: {
-      selected: ""
+      selected: "",
+      value: ""
     }
   }, [_vm._v(_vm._s(_vm.text))]), _vm._v(" "), _vm._l(_vm.specialties, function (specialty) {
     return _c("option", {
