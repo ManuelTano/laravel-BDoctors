@@ -16,19 +16,13 @@ export default {
 
 <style lang="scss" scoped>
 #jumbo {
-    background-image: url("https://cdn.wallpapersafari.com/83/61/edRJ9V.jpeg");
-    background-position: center;
+    background-image: url("https://img.freepik.com/free-vector/clean-medical-background_53876-116875.jpg?w=2000");
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
     height: 500px;
+    margin-top: 100px;
 }
 
-.transform-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
 
-    transform: translate(-50%, -50%);
-}
 </style>

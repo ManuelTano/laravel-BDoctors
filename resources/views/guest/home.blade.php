@@ -81,13 +81,17 @@
             color: white;
             font-size: 16px;
         }
+
+        .margin {
+            margin-top: 37px;
+                }
     </style>
 </head>
 
 <body>
     <div class="flex-center position-ref show-home">
         @if (Route::has('login'))
-            <div class="top-right links">
+            <div class="top-right links margin">
                 @auth
                     <a href="{{ url('/home') }}">Home</a>
                 @else

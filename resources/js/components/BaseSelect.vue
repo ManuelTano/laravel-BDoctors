@@ -1,7 +1,7 @@
 <template>
-    <div class="input-group">
+    <div class="input-group ">
         <select
-            class="form-control"
+            class="form-control "
             id="specialty"
             @change="emitQuery"
             v-model="choice"
@@ -38,4 +38,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+#specialty {
+    top: 25;
+    left: 25;
+}
+
+</style>
