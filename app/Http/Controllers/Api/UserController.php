@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 
 class UserController extends Controller
 {
@@ -33,7 +35,17 @@ class UserController extends Controller
     }
 
     public function filterBySpecialty($query){
-        
+        $users = User::with('specialties')->get();
+
+        $users_by_specialty = [];
+
+        foreach($users as $user){
+            foreach($user->specialties as $specialty){
+                if($specialty->id == $query) $users_by_specialty[] = $user;
+            }
+        }
+
+        return response()->json(compact('users_by_specialty'));
     }
 
     /**

@@ -2011,10 +2011,14 @@ __webpack_require__.r(__webpack_exports__);
   name: "BaseSelect",
   data: function data() {
     return {
-      specialties: []
+      specialties: [],
+      choice: ""
     };
   },
   methods: {
+    emitQuery: function emitQuery() {
+      this.$emit("doctors-for-specialty", this.choice);
+    },
     fetchSpecialties: function fetchSpecialties() {
       var _this = this;
       axios.get("http://127.0.0.1:8000/api/specialties").then(function (res) {
@@ -2077,6 +2081,21 @@ __webpack_require__.r(__webpack_exports__);
   name: "DoctorsBySpecialties",
   components: {
     BaseSelect: _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      users: [],
+      query: ""
+    };
+  },
+  methods: {
+    fetchDoctorsBySpecialist: function fetchDoctorsBySpecialist(choice) {
+      var _this = this;
+      this.query = choice;
+      axios.get("http://127.0.0.1:8000/api/users/specialty/" + choice).then(function (res) {
+        _this.users = res.data.users_by_specialty;
+      });
+    }
   }
 });
 
@@ -2309,10 +2328,27 @@ var render = function render() {
   return _c("div", {
     staticClass: "input-group"
   }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.choice,
+      expression: "choice"
+    }],
     staticClass: "custom-select",
     attrs: {
       id: "specialty",
       "aria-label": "Example select with button addon"
+    },
+    on: {
+      change: [function ($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.choice = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      }, _vm.emitQuery]
     }
   }, [_c("option", {
     attrs: {
@@ -2409,7 +2445,36 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "container"
-  }, [_c("BaseSelect")], 1);
+  }, [_c("BaseSelect", {
+    on: {
+      "doctors-for-specialty": _vm.fetchDoctorsBySpecialist
+    }
+  }), _vm._v(" "), _c("ul", _vm._l(_vm.users, function (user) {
+    return _c("li", {
+      key: user.key
+    }, [_c("div", {
+      staticClass: "card",
+      staticStyle: {
+        width: "18rem"
+      }
+    }, [_c("img", {
+      staticClass: "card-img-top",
+      attrs: {
+        src: "",
+        alt: ""
+      }
+    }), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
+    }, [_c("h5", {
+      staticClass: "card-title"
+    }, [_vm._v("\n                        " + _vm._s(user.name) + "\n                    ")]), _vm._v(" "), _c("p", {
+      staticClass: "card-text"
+    }, [_c("span", [_vm._v("Laurea in Medicina con specializzazione in\n                        ")]), _vm._v(" "), _vm._l(user.specialties, function (specialty, index) {
+      return _c("span", {
+        key: specialty.id
+      }, [_vm._v(_vm._s(specialty.label) + "\n                            "), index === user.specialties.length ? _c("span", [_vm._v(".")]) : _c("span", [_vm._v(",")])]);
+    })], 2)])])]);
+  }), 0)], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;

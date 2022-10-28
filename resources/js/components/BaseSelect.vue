@@ -4,6 +4,8 @@
             class="custom-select"
             id="specialty"
             aria-label="Example select with button addon"
+            @change="emitQuery"
+            v-model="choice"
         >
             <option selected>Seleziona una specializzazione</option>
             <option
@@ -28,9 +30,13 @@ export default {
     data() {
         return {
             specialties: [],
+            choice: "",
         };
     },
     methods: {
+        emitQuery() {
+            this.$emit("doctors-for-specialty", this.choice);
+        },
         fetchSpecialties() {
             axios.get("http://127.0.0.1:8000/api/specialties").then((res) => {
                 this.specialties = res.data.specialties;
