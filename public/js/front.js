@@ -2071,12 +2071,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../BaseSelect.vue */ "./resources/js/components/BaseSelect.vue");
+/* harmony import */ var _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BaseSelect.vue */ "./resources/js/components/BaseSelect.vue");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DoctorsBySpecialties",
   components: {
-    BaseSelect: _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    BaseSelect: _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
@@ -2148,41 +2148,63 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("header", [_c("nav", [_vm._m(0), _vm._v(" "), _c("ul", [_c("li", [_c("router-link", {
+  return _c("header", [_c("nav", {
+    staticClass: "navbar navbar-expand-lg navbar-light bg-transparent"
+  }, [_c("a", {
+    staticClass: "navbar-brand",
+    attrs: {
+      id: "logo",
+      href: "#"
+    }
+  }, [_vm._v("BDoctors")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "collapse navbar-collapse",
+    attrs: {
+      id: "navbarTogglerDemo02"
+    }
+  }, [_c("ul", {
+    staticClass: "navbar-nav mr-auto mt-2 mt-lg-0"
+  }, [_c("li", {
+    staticClass: "nav-item active"
+  }, [_c("router-link", {
     attrs: {
       to: {
         name: "alldoctors"
       }
     }
-  }, [_vm._v("Tutti i dottori")])], 1), _vm._v(" "), _c("li", [_c("router-link", {
+  }, [_vm._v("Tutti i dottori")])], 1), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("router-link", {
     attrs: {
       to: {
         name: "all-featured-doctors"
       }
     }
-  }, [_vm._v("Dottori in evidenza")])], 1), _vm._v(" "), _c("li", [_c("router-link", {
+  }, [_vm._v("Dottori in evidenza")])], 1), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_c("router-link", {
     attrs: {
       to: {
         name: "doctors-by-specialty"
       }
     }
-  }, [_vm._v("Ricerca per specializzazione")])], 1)])])]);
+  }, [_vm._v("Ricerca per specializzazione")])], 1)])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("h1", {
-    staticClass: "m-0",
+  return _c("button", {
+    staticClass: "navbar-toggler",
     attrs: {
-      id: "logo"
+      type: "button",
+      "data-toggle": "collapse",
+      "data-target": "#navbarTogglerDemo02",
+      "aria-controls": "navbarTogglerDemo02",
+      "aria-expanded": "false",
+      "aria-label": "Toggle navigation"
     }
-  }, [_c("a", {
-    attrs: {
-      href: ""
-    }
-  }, [_c("h1", {
-    staticClass: "text-white"
-  }, [_vm._v("BDoctors")])])]);
+  }, [_c("span", {
+    staticClass: "navbar-toggler-icon"
+  })]);
 }];
 render._withStripped = true;
 
@@ -6817,7 +6839,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "header[data-v-0851419a] {\n  height: 60px;\n  padding: 2rem;\n  width: 100%;\n}\nheader nav[data-v-0851419a] {\n  display: flex;\n  align-items: center;\n}\nheader nav #logo[data-v-0851419a] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\nheader nav #logo a[data-v-0851419a] {\n  text-decoration: none;\n}\nheader nav ul[data-v-0851419a] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 0;\n  list-style-type: none;\n}\nheader nav ul li[data-v-0851419a] {\n  margin: 0 1rem;\n}\nheader nav ul li a[data-v-0851419a] {\n  text-decoration: none;\n  color: white;\n  font-weight: bold;\n  font-size: 1rem;\n}\nheader nav ul li a[data-v-0851419a]:hover {\n  color: #3490dc;\n}", ""]);
+exports.push([module.i, "header[data-v-0851419a] {\n  height: 60px;\n  padding: 2rem;\n  width: 100%;\n}\nheader nav #logo[data-v-0851419a] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\nheader nav #logo a[data-v-0851419a] {\n  text-decoration: none;\n}\nheader nav ul[data-v-0851419a] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 0;\n  list-style-type: none;\n}\nheader nav ul li[data-v-0851419a] {\n  margin: 0 1rem;\n}\nheader nav ul li a[data-v-0851419a] {\n  text-decoration: none;\n  color: white;\n  font-weight: bold;\n  font-size: 1rem;\n}\nheader nav ul li a[data-v-0851419a]:hover {\n  color: #3490dc;\n}", ""]);
 
 // exports
 

@@ -159,12 +159,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../BaseSelect.vue */ "./resources/js/components/BaseSelect.vue");
+/* harmony import */ var _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BaseSelect.vue */ "./resources/js/components/BaseSelect.vue");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DoctorsBySpecialties",
   components: {
-    BaseSelect: _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    BaseSelect: _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
