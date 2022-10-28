@@ -16,6 +16,9 @@
     {{-- JS --}}
     <script defer src="{{ asset('js/front.js') }}"></script>
 
+    {{-- Font Awesome --}}
+    <script src="https://kit.fontawesome.com/ddb740f05b.js" crossorigin="anonymous"></script>
+
     <!-- Styles -->
     <style>
         html,

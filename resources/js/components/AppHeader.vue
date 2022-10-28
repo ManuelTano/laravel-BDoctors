@@ -1,7 +1,9 @@
 <template>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-            <a class="navbar-brand" id="logo" href="#">BDoctors</a>
+            <router-link :to="{ name: 'home' }" class="navbar-brand" id="logo"
+                >BDoctors</router-link
+            >
             <button
                 class="navbar-toggler"
                 type="button"
@@ -73,6 +75,10 @@ header {
             display: flex;
             align-items: center;
             justify-content: center;
+
+            font-weight: bold;
+            font-size: 2rem;
+            color: white;
 
             a {
                 text-decoration: none;
