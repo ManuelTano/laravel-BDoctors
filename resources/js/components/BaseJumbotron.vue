@@ -1,6 +1,6 @@
 <template>
     <div id="jumbo">
-        <AppHeader class="position-absolute top-25 left-0 right-0" />
+        <!-- <AppHeader class="position-absolute top-25 left-0 right-0" /> -->
         <BaseInput class="transform-center" />
     </div>
 </template>
@@ -26,7 +26,10 @@ export default {
     width: 100%;
     height: 500px;
 
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .transform-center {

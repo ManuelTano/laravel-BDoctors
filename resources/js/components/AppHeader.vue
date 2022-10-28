@@ -17,6 +17,11 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
+                        <router-link :to="{ name: 'home' }"
+                            >Homepage</router-link
+                        >
+                    </li>
+                    <li class="nav-item active">
                         <router-link :to="{ name: 'alldoctors' }"
                             >Tutti i dottori</router-link
                         >
@@ -60,9 +65,13 @@ export default {
 @import "../../sass/variables";
 
 header {
-    height: 60px;
-    padding: 2rem;
     width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
 
     nav {
         #logo {

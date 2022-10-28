@@ -6,6 +6,7 @@ import VueRouter from "vue-router";
 // Importiamo tutti i componenti pages
 
 import AllDoctorsPage from "./components/pages/AllDoctorsPage.vue";
+import HomePage from "./components/pages/HomePage.vue";
 import NotFoundPage from "./components/pages/NotFoundPage.vue";
 import FeaturedDoctorsPage from "./components/pages/FeaturedDoctorsPage.vue";
 import DoctorsBySpecialties from "./components/pages/DoctorsBySpecialties.vue";
@@ -25,7 +26,7 @@ const routes = new VueRouter({
 
     // Oggetto contenente tutte le rotte
     routes: [
-        // { path: "/", component: HomePage, name: "home" },
+        { path: "/", component: HomePage, name: "home" },
         {
             path: "/alldoctors",
             component: AllDoctorsPage,

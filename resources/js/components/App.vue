@@ -1,20 +1,20 @@
 <template>
-    <div>
+    <div class="position-relative">
+        <AppHeader />
         <BaseJumbotron />
         <router-view></router-view>
-        <!-- <AppMain :users="users" @my-search="fetchUsersByInput" /> -->
     </div>
 </template>
 
 <script>
-// import AppMain from "./AppMain.vue";
+import AppHeader from "./AppHeader.vue";
 import BaseJumbotron from "./BaseJumbotron.vue";
 
 export default {
     name: "App",
     components: {
-        // AppMain,
         BaseJumbotron,
+        AppHeader,
     },
     data() {
         return {
