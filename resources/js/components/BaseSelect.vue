@@ -7,7 +7,7 @@
             @change="emitQuery"
             v-model="choice"
         >
-            <option selected>Seleziona una specializzazione</option>
+            <option selected>{{ text }}</option>
             <option
                 :value="specialty.id"
                 v-for="specialty in specialties"
@@ -16,20 +16,18 @@
                 {{ specialty.label }}
             </option>
         </select>
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">
-                Filtra
-            </button>
-        </div>
     </div>
 </template>
 
 <script>
 export default {
     name: "BaseSelect",
+    props: {
+        specialties: Array,
+        text: String,
+    },
     data() {
         return {
-            specialties: [],
             choice: "",
         };
     },
@@ -37,14 +35,6 @@ export default {
         emitQuery() {
             this.$emit("doctors-for-specialty", this.choice);
         },
-        fetchSpecialties() {
-            axios.get("http://127.0.0.1:8000/api/specialties").then((res) => {
-                this.specialties = res.data.specialties;
-            });
-        },
-    },
-    mounted() {
-        this.fetchSpecialties();
     },
 };
 </script>
