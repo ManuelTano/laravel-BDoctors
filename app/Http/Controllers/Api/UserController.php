@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\User;
 use App\Models\Review;
+use App\Models\Message;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -61,14 +62,50 @@ class UserController extends Controller
 
     // Metodo che consente di inviare una nuova recensione
 
-    public function sendNewReview(){
-        $text = 'invia recensione';
-        return response()->json(compact('text'));
+    public function sendNewReview(Request $request){
+
+        // Validiamo ciò che ci arriva dal form Front-end
+        $validation = $request->validate([
+            'first_name' => 'required|string|regex:/^[\pL\s\-]+$/u',
+            'last_name' => 'required|string|regex:/^[\pL\s\-]+$/u',
+            'email' => 'required|email',
+            'feedback' => 'required|string',
+            'rating' => 'required|numeric|min:1|max:5',
+        ],[]);
+
+        // Passiamo i dati in una nuova variabile
+        $data = $request->all();
+
+        // Creiamo una nuova recensione
+        $new_review = new Review();
+
+        // Filliamo i campi
+        $new_review->fill($data);
+
+        if($validation->fails()) return response()->json(compact('Non è stato possibile inviare la tua recensione!'));
+        return response()->json(compact('La tua recensione è stata inviata con successo!'));
     }
 
     public function sendNewMessage(){
-        $text = 'invia messaggio';
-        return response()->json(compact('text'));
+        // Validiamo ciò che ci arriva dal form Front-end
+        $validation = $request->validate([
+            'first_name' => 'required|string|regex:/^[\pL\s\-]+$/u',
+            'last_name' => 'required|string|regex:/^[\pL\s\-]+$/u',
+            'email' => 'required|email',
+            'text' => 'required|string',
+        ],[]);
+
+        // Passiamo i dati in una nuova variabile
+        $data = $request->all();
+
+        // Creiamo una nuova recensione
+        $new_message = new Message();
+
+        // Filliamo i campi
+        $new_message->fill($data);
+
+        if($validation->fails()) return response()->json(compact('Non è stato possibile inviare il tuo messaggio!'));
+        return response()->json(compact('Il tuo messaggio è stata inviata con successo!'));
     }
 
     /**
@@ -82,15 +119,12 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Metodo legato alla rotta che preleva un singolo
+    // medico in funzione dell'id
     public function show($id)
     {
-        //
+        $user = User::where('id',$id)->get();
+        return response()->json(compact('user'));
     }
 
     /**
