@@ -2456,9 +2456,7 @@ var render = function render() {
     attrs: {
       id: "featured-doctors"
     }
-  }, [_c("BaseJumbotron", {
-    staticClass: "d-flex justify-content-between align-items-center"
-  }, [_c("div", [_c("BaseSelect", {
+  }, [_c("BaseJumbotron", [_c("div", [_c("BaseSelect", {
     attrs: {
       specialties: _vm.specialties,
       text: "Scegli una specializzazione"
@@ -2520,8 +2518,24 @@ var render = function render() {
       id: "homepage"
     }
   }, [_c("BaseJumbotron", {
-    staticClass: "d-flex align-items-center justify-content-center"
-  }, [_c("div", [_c("BaseSelect", {
+    staticClass: "d-flex align-items-center justify-content-between"
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-8"
+  }, [_c("div", {
+    staticClass: "mb-5"
+  }, [_c("span", {
+    staticClass: "title"
+  }, [_vm._v(" Cerca un ")]), _c("span", {
+    staticClass: "wordchanger"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-8"
+  }, [_c("BaseSelect", {
     attrs: {
       specialties: _vm.specialties,
       text: "Scegli una specializzazione"
@@ -2529,7 +2543,7 @@ var render = function render() {
     on: {
       "doctors-for-specialty": _vm.fetchDoctorsBySpecialist
     }
-  })], 1)]), _vm._v(" "), _c("DoctorsView", {
+  })], 1)])])]), _vm._v(" "), _c("DoctorsView", {
     attrs: {
       users: _vm.users
     }
@@ -7038,7 +7052,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "ul[data-v-317790a4] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  list-style-type: none;\n  margin: 50px 0;\n}\nul li[data-v-317790a4] {\n  margin: 20px 0;\n}", ""]);
+exports.push([module.i, "ul[data-v-317790a4] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  list-style-type: none;\n  margin: 50px 0;\n}\nul li[data-v-317790a4] {\n  margin: 20px 0;\n}\n.title[data-v-317790a4] {\n  color: #b1a8e5;\n  text-align: center;\n  font-family: \"Avenir Next\", \"Roboto\", sans-serif;\n  font-size: 5vw;\n  line-height: 1;\n  letter-spacing: -0.02em;\n  font-weight: 800;\n}\n.wordchanger[data-v-317790a4]::before {\n  content: \"humanising\";\n  display: block;\n  position: relative;\n  color: #b1a8e5;\n  text-align: center;\n  font-family: \"Avenir Next\", \"Roboto\", sans-serif;\n  font-size: 5vw;\n  line-height: 1;\n  letter-spacing: -0.02em;\n  font-weight: 800;\n  animation-name: mywordchange-317790a4;\n  animation-duration: 8s;\n  animation-iteration-count: infinite;\n  animation-timing-function: ease-in-out;\n}\n@keyframes mywordchange-317790a4 {\n0% {\n    content: \"pediatra\";\n    opacity: 0.58;\n}\n10% {\n    content: \"pediatra\";\n    opacity: 1;\n}\n19% {\n    content: \"pediatra\";\n    opacity: 0;\n}\n20% {\n    content: \"dermatologo\";\n    opacity: 0;\n}\n30% {\n    content: \"dermatologo\";\n    opacity: 1;\n}\n39% {\n    content: \"dermatologo\";\n    opacity: 0;\n}\n40% {\n    content: \"cardiologo\";\n    opacity: 0;\n}\n50% {\n    content: \"cardiologo\";\n    opacity: 1;\n}\n59% {\n    content: \"cardiologo\";\n    opacity: 0;\n}\n60% {\n    content: \"oculista\";\n    opacity: 0;\n}\n70% {\n    content: \"oculista\";\n    opacity: 1;\n}\n79% {\n    content: \"oculista\";\n    opacity: 0;\n}\n80% {\n    content: \"urologo\";\n    opacity: 0;\n}\n90% {\n    content: \"urologo\";\n    opacity: 1;\n}\n99% {\n    content: \"urologo\";\n    opacity: 0;\n}\n100% {\n    content: \"pediatra\";\n    opacity: 0;\n}\n}", ""]);
 
 // exports
 
