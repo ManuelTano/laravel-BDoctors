@@ -1,17 +1,17 @@
 <template>
     <section id="advanced-search">
         <BaseJumbotron />
-        <DoctorsView />
+        <AppMain :users="users" />
     </section>
 </template>
 <script>
 import BaseJumbotron from "../BaseJumbotron.vue";
-import DoctorsView from "../DoctorsView.vue";
+import AppMain from "../AppMain.vue";
 export default {
     name: "AdvancedSearch",
     components: {
         BaseJumbotron,
-        DoctorsView,
+        AppMain,
     },
     data() {
         return {
@@ -20,15 +20,15 @@ export default {
     },
     methods: {
         // Chiamata che preleva tutti i dottori
-        // fetchAllUsers() {
-        //     axios.get("http://127.0.0.1:8000/api/users").then((res) => {
-        //         console.log(res.data);
-        //         this.users = res.data;
-        //     });
-        // },
+        fetchAllUsers() {
+            axios.get("http://127.0.0.1:8000/api/users").then((res) => {
+                console.log(res.data);
+                this.users = res.data;
+            });
+        },
     },
     mounted() {
-        // this.fetchAllUsers();
+        this.fetchAllUsers();
     },
 };
 </script>

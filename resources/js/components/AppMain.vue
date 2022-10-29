@@ -1,22 +1,23 @@
 <template>
     <main>
-        <div v-for="user in users" :key="user.id">
-            <UserDetails :firstName="user.first_name" />
-        </div>
+        <DoctorsView :users="users" />
+
     </main>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+
+</style>
 
 <script>
-import BaseInput from "./BaseInput.vue";
-import UserDetails from "./UserDetails.vue";
+
+
+import DoctorsView from "./DoctorsView.vue";
 
 export default {
     name: "AppMain",
     components: {
-        BaseInput,
-        UserDetails,
+        DoctorsView
     },
     props: {
         users: Array,
