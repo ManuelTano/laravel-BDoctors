@@ -1,6 +1,6 @@
 <template>
     <section id="doctors-view">
-        <div class="container">
+        <div class="container   ">
             <AppCard v-for="user in users" :key="user.id" :user="user" />
         </div>
     </section>
@@ -21,18 +21,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-ul {
+.container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     flex-wrap: wrap;
-
-    list-style-type: none;
-
-    margin: 50px 0;
-
-    li {
-        margin: 20px 0;
-    }
+    margin: 0 auto;
+    margin-right: 8rem;
 }
 </style>

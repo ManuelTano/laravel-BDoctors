@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card m-4 mx-4 col-3">
         <ul class="ul">
             <li>
                 {{ user.first_name }}
@@ -83,7 +83,7 @@ export default {
     width: 100%;
     content: '';
     left: 8px;
-    bottom: Opx;
+    bottom: 0px;
     height: 15px;
     position: absolute;
     background: Linear-gradient(18deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 6, 1) 100%);
@@ -127,7 +127,7 @@ export default {
     margin-left: auto;
     cursor: pointer;
     transition: all .25s ease;
-    font-family: poppins;
+
     font-size: .75rem;
     outline: none;
 }
@@ -149,7 +149,7 @@ export default {
     padding-left: Opx;
     padding-top: 8px;
     padding-bottom: 8px;
-    top: Opx;
+    top: 0px;
     opacity: 0;
     transform: translate(100%);
     transition: all .25s ease;
@@ -174,7 +174,7 @@ ul li:last-child {
 
 .ul li:first.child {
 
-    border-radius: 12px 12px Opx Opx;
+    border-radius: 12px 12px 0px 0px;
 }
 
 .ul li:hover {
