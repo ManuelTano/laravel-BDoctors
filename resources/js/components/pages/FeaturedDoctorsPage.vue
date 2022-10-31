@@ -1,6 +1,6 @@
 <template>
     <section id="featured-doctors">
-        <BaseJumbotron class="d-flex align-items-center justify-content-center">
+        <BaseJumbotron>
             <div>
                 <BaseSelect
                     @doctors-for-specialty="fetchDoctorsBySpecialist"

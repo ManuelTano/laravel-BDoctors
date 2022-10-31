@@ -1,8 +1,10 @@
 <template>
-    <header>
+    <header class="shadow rounded position-fixed">
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
             <router-link :to="{ name: 'home' }" class="navbar-brand" id="logo"
-                >BDoctors</router-link
+                >
+                <img src="https://i.ibb.co/0QRNT2m/sdasdasdasd1.png" alt="" class="img-fluid w-50 mb-2">
+                </router-link
             >
             <button
                 class="navbar-toggler"
@@ -63,7 +65,7 @@ export default {
 
 header {
     width: 100%;
-
+    background-color: $celestino;
     position: absolute;
     top: 0;
     left: 0;
