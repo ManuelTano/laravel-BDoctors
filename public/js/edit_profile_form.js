@@ -136,7 +136,11 @@ submitEditCredentialsForm.addEventListener("submit", function (event) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\tmanu\Desktop\laravel-BDoctors\resources\js\edit_profile_form.js */"./resources/js/edit_profile_form.js");
+=======
+module.exports = __webpack_require__(/*! C:\laravel\laravel-BDoctors\resources\js\edit_profile_form.js */"./resources/js/edit_profile_form.js");
+>>>>>>> 39db080916c2c70bfc716c09dd7d71bc932193b0
 
 
 /***/ })
