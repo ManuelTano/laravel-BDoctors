@@ -2125,7 +2125,6 @@ __webpack_require__.r(__webpack_exports__);
 
       // Assegnamo l'oggetto errors
       this.errors = errors;
-      console.log(this.errors);
     },
     submitForm: function submitForm() {
       // Svuotiamo l'oggetto errors per ripopolarlo nel caso di errori

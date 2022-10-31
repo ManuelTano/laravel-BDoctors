@@ -151,8 +151,6 @@ export default {
 
             // Assegnamo l'oggetto errors
             this.errors = errors;
-
-            console.log(this.errors);
         },
 
         submitForm() {
