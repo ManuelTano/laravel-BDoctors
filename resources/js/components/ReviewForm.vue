@@ -173,7 +173,7 @@ export default {
 
         sendReview() {
             axios
-                .post("http://127.0.0.1:8000/api/user/new-review", this.form)
+                .post("http://127.0.0.1:8000/api/new-review", this.form)
                 .then((res) => {
                     console.log("Inviata con successo");
                     console.log(res.data);
@@ -193,6 +193,7 @@ export default {
                         if (feedback) errors.feedback = feedback[0];
                         this.errors = errors;
                     } else {
+                        // Svuoto i campi
                         this.form.email = "";
                         this.form.first_name = "";
                         this.form.last_name = "";

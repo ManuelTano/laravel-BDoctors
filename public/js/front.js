@@ -2143,7 +2143,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     sendReview: function sendReview() {
       var _this = this;
-      axios.post("http://127.0.0.1:8000/api/user/new-review", this.form).then(function (res) {
+      axios.post("http://127.0.0.1:8000/api/new-review", this.form).then(function (res) {
         console.log("Inviata con successo");
         console.log(res.data);
         if (res.data.errors) {
@@ -2161,6 +2161,7 @@ __webpack_require__.r(__webpack_exports__);
           if (feedback) errors.feedback = feedback[0];
           _this.errors = errors;
         } else {
+          // Svuoto i campi
           _this.form.email = "";
           _this.form.first_name = "";
           _this.form.last_name = "";
