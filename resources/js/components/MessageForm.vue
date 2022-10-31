@@ -1,5 +1,5 @@
 <template>
-    <section id="form-review">
+    <section id="message-form">
         <div class="container">
             <!-- Alert -->
             <AppAlert
@@ -66,33 +66,15 @@
                 <!-- Feedback -->
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="feedback">Feedback</label>
+                        <label for="text">Messaggio</label>
                         <textarea
                             class="form-control"
-                            id="feedback"
-                            placeholder="Lascia un feedback"
-                            v-model.trim="form.feedback"
+                            id="text"
+                            placeholder="Scrivi qui"
+                            v-model.trim="form.text"
                             rows="3"
                             required
                         ></textarea>
-                    </div>
-                </div>
-
-                <!-- Rating -->
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="rating">Rating</label>
-                        <select
-                            class="form-control"
-                            id="rating"
-                            v-model="form.rating"
-                        >
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
                     </div>
                 </div>
 
@@ -113,7 +95,7 @@
 import AppAlert from "../components/AppAlert.vue";
 
 export default {
-    name: "ReviewForm",
+    name: "MessageForm",
     components: {
         AppAlert,
     },
@@ -124,8 +106,7 @@ export default {
                 email: "",
                 first_name: "",
                 last_name: "",
-                feedback: "",
-                rating: null,
+                text: "",
             },
 
             // Eventuali errori del form
@@ -164,11 +145,7 @@ export default {
             }
 
             // Controllo se c'è il feedback
-            if (!this.form.feedback)
-                errors.feedback = "Il feedback è obbligatorio";
-
-            // Controllo se c'è il nome
-            if (!this.form.rating) errors.rating = "Il rating è obbligatorio";
+            if (!this.form.text) errors.text = "Il messaggio è obbligatorio";
 
             // Assegnamo l'oggetto errors
             this.errors = errors;
@@ -182,7 +159,7 @@ export default {
             this.validateForm();
 
             // Se non ho errori mando il form
-            if (!this.hasErrors) this.sendReview();
+            if (!this.hasErrors) this.sendMessage();
         },
 
         resetErrorsAndMessage() {
@@ -190,36 +167,29 @@ export default {
             this.alertMessage = null;
         },
 
-        sendReview() {
+        sendMessage() {
             axios
-                .post("http://127.0.0.1:8000/api/new-review", this.form)
+                .post("http://127.0.0.1:8000/api/new-message", this.form)
                 .then((res) => {
                     console.log("Inviata con successo");
                     console.log(res.data);
                     if (res.data.errors) {
                         const errors = {};
-                        const {
-                            email,
-                            last_name,
-                            first_name,
-                            feedback,
-                            rating,
-                        } = res.data.errors;
+                        const { email, last_name, first_name, text } =
+                            res.data.errors;
                         if (email) errors.email = email[0];
                         if (last_name) errors.last_name = last_name[0];
                         if (first_name) errors.first_name = first_name[0];
-                        if (rating) errors.rating = rating[0];
-                        if (feedback) errors.feedback = feedback[0];
+                        if (text) errors.text = text[0];
                         this.errors = errors;
                     } else {
                         // Svuoto i campi
                         this.form.email = "";
                         this.form.first_name = "";
                         this.form.last_name = "";
-                        this.form.feedback = "";
-                        this.form.rating = "";
+                        this.form.text = "";
                         this.alertMessage =
-                            "Recensione inviata! Ti contatteremo il prima possibile";
+                            "Messaggio inviato! Verrai contattato appena possibile";
                     }
                 })
                 .catch((err) => {

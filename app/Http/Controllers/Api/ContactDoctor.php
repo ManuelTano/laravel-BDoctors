@@ -18,7 +18,7 @@ class ContactDoctor extends Controller
             'first_name' => 'required|string|regex:/^[\pL\s\-]+$/u',
             'last_name' => 'required|string|regex:/^[\pL\s\-]+$/u',
             'email' => 'required|email',
-            'message' => 'required|string',
+            'text' => 'required|string',
         ]);
 
         $new_message = new Message();
