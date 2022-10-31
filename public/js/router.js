@@ -620,6 +620,8 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "container"
+  }, [_c("div", {
+    staticClass: "d-flex flex-wrap justify-content-center align-items-start"
   }, _vm._l(_vm.users, function (user) {
     return _c("AppCard", {
       key: user.id,
@@ -627,7 +629,7 @@ var render = function render() {
         user: user
       }
     });
-  }), 1)]);
+  }), 1)])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -875,7 +877,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".container[data-v-2b3a4344] {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 0 auto;\n  margin-right: 8rem;\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -932,7 +934,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card {\n    width: 300px;\n    height: 400px;\n    background: #000;\n    border-radius: 30px;\n    overflow: hidden;\n    position: relative;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    cursor: pointer;\n    transition: all .25s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n}\n.card:hover {\n    transform: scale(.9);\n}\n.card:hover:after {\n    height: 28px;\n}\n.card:hover .con-text p {\n    margin-bottom: 8px;\n    opacity: 1;\n}\n.card:hover img {\n    transform: scale(1.25);\n}\n.card:hover .ul {\n    transform: translate(0);\n    opacity: 1;\n}\n.card:after {\n    width: 100%;\n    content: '';\n    left: 8px;\n    bottom: 0px;\n    height: 15px;\n    position: absolute;\n    background: Linear-gradient(18deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 6, 1) 100%);\n    z-index: 20;\n    transition: all .25s ease;\n}\n.card img {\n    height: 100%;\n    z-index: 18;\n    transition: all .25s ease;\n}\n.card .con-text {\n    z-index: 30;\n    position: absolute;\n    bottom: 0px;\n    color: #fff;\n    padding: 20px;\n    padding-bottom: 30px;\n}\n.card .con-text p {\n    font-size: .8rem;\n    Opacity: 0;\n    margin-bottom: -170px;\n    transition: all .25s ease;\n    display: flex;\n    align-items: center;\n    justify-content: flex-end;\n    flex-direction: column;\n}\n.card .con-text p button {\n    padding: 7px 17px;\n    border-radius: 12px;\n    background: transparent;\n    border: 2px solid #fff;\n    color: #fff;\n    margin-top: 10px;\n    margin-left: auto;\n    cursor: pointer;\n    transition: all .25s ease;\n\n    font-size: .75rem;\n    outline: none;\n}\n.card .con-text p button:hover {\n    background: #fff;\n    color: #000;\n}\n.ul {\n    position: absolute;\n    right: 10px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    z-index: 40;\n    border-radius: 14px;\n    padding-left: Opx;\n    padding-top: 8px;\n    padding-bottom: 8px;\n    top: 0px;\n    opacity: 0;\n    transform: translate(100%);\n    transition: all .25s ease;\n}\n.ul li {\n    background: #fff;\n    list-style: none;\n    width: 40px;\n    height: 40px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    opacity: .7;\n    transition: all .25s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n}\nul li:last-child {\n    border-radius: 0px Opx 12px 12px;\n}\n.ul li:first.child {\n\n    border-radius: 12px 12px 0px 0px;\n}\n.ul li:hover {\n    opacity: 1;\n    transform: translate(-7px, -4px);\n    border-radius: 6px;\n}\n.ul li i {\n    font-size: 1.4rem;\n    color: #000;\n}\n", ""]);
+exports.push([module.i, "\n.card {\r\n    width: 18.75rem;\r\n    height: 25rem;\r\n    background: #000;\r\n    border-radius: 1.87rem;\r\n    overflow: hidden;\r\n    position: relative;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    cursor: pointer;\r\n    transition: all .25s ease;\r\n    -webkit-backface-visibility: hidden;\r\n            backface-visibility: hidden;\n}\n.card:hover {\r\n    transform: scale(.9);\n}\n.card:hover:after {\r\n    height: 1.75rem;\n}\n.card:hover .con-text p {\r\n    margin-bottom: 0.5rem;\r\n    opacity: 1;\n}\n.card:hover img {\r\n    transform: scale(1.25);\n}\n.card:hover .ul {\r\n    transform: translate(0);\r\n    opacity: 1;\n}\n.card:after {\r\n    width: 100%;\r\n    content: '';\r\n    left: 0.5rem;\r\n    bottom: 0rem;\r\n    height: 0.93rem;\r\n    position: absolute;\r\n    background: Linear-gradient(18deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 6, 1) 100%);\r\n    z-index: 20;\r\n    transition: all .25s ease;\n}\n.card img {\r\n    height: 100%;\r\n    z-index: 18;\r\n    transition: all .25s ease;\n}\n.card .con-text {\r\n    z-index: 30;\r\n    position: absolute;\r\n    bottom: 0rem;\r\n    color: #fff;\r\n    padding: 1.25rem;\r\n    padding-bottom: 1.87rem;\n}\n.card .con-text p {\r\n    font-size: .8rem;\r\n    Opacity: 0;\r\n    margin-bottom: -10.60rem;\r\n    transition: all .25s ease;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-end;\r\n    flex-direction: column;\n}\n.card .con-text p button {\r\n    padding: 0.43rem 1.06rem;\r\n    border-radius: 0.75rem;\r\n    background: transparent;\r\n    border: 0.125rem solid #fff;\r\n    color: #fff;\r\n    margin-top: 0.625rem;\r\n    margin-left: auto;\r\n    cursor: pointer;\r\n    transition: all .25s ease;\r\n\r\n    font-size: 0.75rem;\r\n    outline: none;\n}\n.card .con-text p button:hover {\r\n    background: #fff;\r\n    color: #000;\n}\n.ul {\r\n    position: absolute;\r\n    right: 0.625rem;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: column;\r\n    z-index: 40;\r\n    border-radius: 0.875rem;\r\n    padding-left: 0rem;\r\n    padding-top: 0.5rem;\r\n    padding-bottom: 0.5rem;\r\n    top: 0rem;\r\n    opacity: 0;\r\n    transform: translate(100%);\r\n    transition: all .25s ease;\n}\n.ul li {\r\n    background: #fff;\r\n    list-style: none;\r\n    width: 2.5rem;\r\n    height: 2.5rem;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    opacity: .7;\r\n    transition: all .25s ease;\r\n    -webkit-backface-visibility: hidden;\r\n            backface-visibility: hidden;\n}\nul li:last-child {\r\n    border-radius: 0rem 0rem 0.75rem 0.75rem;\n}\n.ul li:first.child {\r\n\r\n    border-radius: 0.75rem 0.75rem 0rem 0rem;\n}\n.ul li:hover {\r\n    opacity: 1;\r\n    transform: translate(-0.43rem, -0.25rem);\r\n    border-radius: 0.375rem;\n}\n.ul li i {\r\n    font-size: 1.4rem;\r\n    color: #000;\n}\r\n", ""]);
 
 // exports
 
@@ -18236,7 +18238,7 @@ var routes = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/pasqualepedoto/laravel-BDoctors/resources/js/router.js */"./resources/js/router.js");
+module.exports = __webpack_require__(/*! C:\laravel\laravel-BDoctors\resources\js\router.js */"./resources/js/router.js");
 
 
 /***/ })
