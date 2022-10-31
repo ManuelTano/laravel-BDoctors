@@ -32,8 +32,9 @@ class SendDoctorReview extends Controller
         $new_review->fill($data);
 
         $new_review->save();
-
-        return response()->json('ciao');
+        
+        if($validator->fails()) return response()->json('La recensione non è stata inviata. Riprova più tardi.');
+        else return response()->json('La recensione è stata inviata correttamente.');
     }
 
 }

@@ -1,7 +1,20 @@
 <template>
     <section id="form-review">
         <div class="container">
-            <form class="row" @submit.prevent="submitForm">
+            <AppAlert
+                v-if="alertMessage || hasErrors"
+                :type="hasErrors ? 'alert-danger' : 'alert-success'"
+            >
+                <div v-if="alertMessage">{{ alertMessage }}</div>
+                <div v-if="hasErrors">
+                    <ul>
+                        <li v-for="(error, key) in errors" :key="key">
+                            {{ error }}
+                        </li>
+                    </ul>
+                </div>
+            </AppAlert>
+            <form class="row" @submit.prevent="submitForm" novalidate>
                 <!-- Email Address -->
                 <div class="col-6">
                     <div class="form-group">
@@ -94,8 +107,13 @@
 </template>
 
 <script>
+import AppAlert from "../components/AppAlert.vue";
+
 export default {
     name: "ReviewForm",
+    components: {
+        AppAlert,
+    },
     data() {
         return {
             // Campi del form
@@ -211,4 +229,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+ul {
+    list-style-type: none;
+}
+</style>
