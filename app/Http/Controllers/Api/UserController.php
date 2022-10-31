@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
+use Illuminate\Support\Facades\Validator;
+
 class UserController extends Controller
 {
     /**
@@ -65,7 +67,7 @@ class UserController extends Controller
     public function sendNewReview(Request $request){
 
         // Validiamo ciò che ci arriva dal form Front-end
-        $validation = $request->validate([
+        $validation = Validator::make($request , [
             'first_name' => 'required|string|regex:/^[\pL\s\-]+$/u',
             'last_name' => 'required|string|regex:/^[\pL\s\-]+$/u',
             'email' => 'required|email',
@@ -79,11 +81,15 @@ class UserController extends Controller
         // Creiamo una nuova recensione
         $new_review = new Review();
 
+        $new_review->user_id = 1;
+
         // Filliamo i campi
         $new_review->fill($data);
 
-        if($validation->fails()) return response()->json(compact('Non è stato possibile inviare la tua recensione!'));
-        return response()->json(compact('La tua recensione è stata inviata con successo!'));
+        // if($validation->fails()) return response()->json(compact('Non è stato possibile inviare la tua recensione!'));
+        // return response()->json(compact('La tua recensione è stata inviata con successo!'));
+        return response()->json(compact('data'));
+        else return response('',204);
     }
 
     public function sendNewMessage(){

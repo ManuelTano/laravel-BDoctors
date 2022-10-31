@@ -33,10 +33,10 @@ Route::namespace('Api')->group(function () {
     Route::get('/reviews/user/{id}','UserController@fetchReviews');
 
     // Rotta per inviare una recensione al dottore
-    Route::get('/user/new-review','UserController@sendNewReview');
+    Route::post('/user/new-review','UserController@sendNewReview');
 
     // Rotta per inviare un messaggio al dottore
-    Route::get('/user/new-message','UserController@sendNewMessage');
+    Route::post('/user/new-message','UserController@sendNewMessage');
 
     // Rotta per far restituire tutte le specializzazione
     Route::get('/specialties','SpecialtyController@index');
