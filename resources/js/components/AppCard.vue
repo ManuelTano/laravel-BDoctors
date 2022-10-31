@@ -43,10 +43,10 @@ export default {
 
 <style leng="scss">
 .card {
-    width: 300px;
-    height: 400px;
+    width: 18.75rem;
+    height: 25rem;
     background: #000;
-    border-radius: 30px;
+    border-radius: 1.87rem;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -62,11 +62,11 @@ export default {
 }
 
 .card:hover:after {
-    height: 28px;
+    height: 1.75rem;
 }
 
 .card:hover .con-text p {
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
     opacity: 1;
 }
 
@@ -82,9 +82,9 @@ export default {
 .card:after {
     width: 100%;
     content: '';
-    left: 8px;
-    bottom: 0px;
-    height: 15px;
+    left: 0.5rem;
+    bottom: 0rem;
+    height: 0.93rem;
     position: absolute;
     background: Linear-gradient(18deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 6, 1) 100%);
     z-index: 20;
@@ -100,16 +100,16 @@ export default {
 .card .con-text {
     z-index: 30;
     position: absolute;
-    bottom: 0px;
+    bottom: 0rem;
     color: #fff;
-    padding: 20px;
-    padding-bottom: 30px;
+    padding: 1.25rem;
+    padding-bottom: 1.87rem;
 }
 
 .card .con-text p {
     font-size: .8rem;
     Opacity: 0;
-    margin-bottom: -170px;
+    margin-bottom: -10.60rem;
     transition: all .25s ease;
     display: flex;
     align-items: center;
@@ -118,17 +118,17 @@ export default {
 }
 
 .card .con-text p button {
-    padding: 7px 17px;
-    border-radius: 12px;
+    padding: 0.43rem 1.06rem;
+    border-radius: 0.75rem;
     background: transparent;
-    border: 2px solid #fff;
+    border: 0.125rem solid #fff;
     color: #fff;
-    margin-top: 10px;
+    margin-top: 0.625rem;
     margin-left: auto;
     cursor: pointer;
     transition: all .25s ease;
 
-    font-size: .75rem;
+    font-size: 0.75rem;
     outline: none;
 }
 
@@ -139,17 +139,17 @@ export default {
 
 .ul {
     position: absolute;
-    right: 10px;
+    right: 0.625rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     z-index: 40;
-    border-radius: 14px;
-    padding-left: Opx;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    top: 0px;
+    border-radius: 0.875rem;
+    padding-left: 0rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    top: 0rem;
     opacity: 0;
     transform: translate(100%);
     transition: all .25s ease;
@@ -158,8 +158,8 @@ export default {
 .ul li {
     background: #fff;
     list-style: none;
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,18 +169,18 @@ export default {
 }
 
 ul li:last-child {
-    border-radius: 0px Opx 12px 12px;
+    border-radius: 0rem 0rem 0.75rem 0.75rem;
 }
 
 .ul li:first.child {
 
-    border-radius: 12px 12px 0px 0px;
+    border-radius: 0.75rem 0.75rem 0rem 0rem;
 }
 
 .ul li:hover {
     opacity: 1;
-    transform: translate(-7px, -4px);
-    border-radius: 6px;
+    transform: translate(-0.43rem, -0.25rem);
+    border-radius: 0.375rem;
 }
 
 .ul li i {
