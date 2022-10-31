@@ -1,6 +1,6 @@
 <template>
     <section id="app-alert">
-        <div class="alert" :class="type" role="alert">
+        <div class="alert" :class="type" role="alert" @click="deleteAlert">
             <slot />
         </div>
     </section>
@@ -11,6 +11,11 @@ export default {
     name: "AppAlert",
     props: {
         type: String,
+    },
+    methods: {
+        deleteAlert() {
+            this.$emit("delete-alert");
+        },
     },
 };
 </script>
