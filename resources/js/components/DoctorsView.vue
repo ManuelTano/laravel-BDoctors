@@ -1,7 +1,7 @@
 <template>
-    <section id="doctors-view">
+    <section id="doctors-view ">
         <div class="container">
-            <div class=" d-flex flex-wrap justify-content-center align-items-start  ">
+            <div class="d-flex flex-wrap justify-content-between align-items-start m-0 p-0 mt-5">
                 <AppCard v-for="user in users" :key="user.id" :user="user" />
             </div>
         </div>

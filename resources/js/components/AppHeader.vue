@@ -1,42 +1,32 @@
 <template>
-    <header class="shadow rounded position-fixed">
-        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-            <router-link :to="{ name: 'home' }" class="navbar-brand" id="logo"
-                >
-                <img src="https://i.ibb.co/0QRNT2m/sdasdasdasd1.png" alt="" class="img-fluid w-50 mb-2">
-                </router-link
-            >
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
+  <header class="shadow position-fixed">
+    <nav class="navbar navbar-expand-md ">
+      <router-link :to="{ name: 'home' }" class="navbar-brand" id="logo">
+        <img
+          src="https://i.ibb.co/0QRNT2m/sdasdasdasd1.png"
+          alt=""
+          class="img-fluid w-50 mb-2"
+        />
+      </router-link>
+    
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <router-link :to="{ name: 'home' }"
-                            >Homepage</router-link
-                        >
-                    </li>
-                    <li class="nav-item active">
-                        <router-link :to="{ name: 'advanced-search' }"
-                            >Ricerca avanzata</router-link
-                        >
-                    </li>
-                    <li class="nav-item">
-                        <router-link :to="{ name: 'all-featured-doctors' }"
-                            >Dottori in evidenza</router-link
-                        >
-                    </li>
-                </ul>
-                <!-- <form class="form-inline my-2 my-lg-0">
+      <div class="justify-content-start align-items-center text-center">
+        <ul class="navbar-nav mr-auto mt-2  d-flex">
+          <li class="nav-item active">
+            <router-link :to="{ name: 'home' }">Homepage</router-link>
+          </li>
+          <li class="nav-item active">
+            <router-link :to="{ name: 'advanced-search' }"
+              >Ricerca avanzata</router-link
+            >
+          </li>
+          <li class="nav-item active">
+            <router-link :to="{ name: 'all-featured-doctors' }"
+              >Dottori in evidenza</router-link
+            >
+          </li>
+        </ul>
+        <!-- <form class="form-inline my-2 my-lg-0">
                     <input
                         class="form-control mr-sm-2"
                         type="search"
@@ -49,14 +39,14 @@
                         Search
                     </button>
                 </form> -->
-            </div>
-        </nav>
-    </header>
+      </div>
+    </nav>
+  </header>
 </template>
 
 <script>
 export default {
-    name: "AppHeader",
+  name: "AppHeader",
 };
 </script>
 
@@ -64,53 +54,52 @@ export default {
 @import "../../sass/variables";
 
 header {
-    width: 100%;
-    background-color: $celestino;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 5;
+  width: 100%;
+  background-color: $celestino;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
 
-    nav {
-        #logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+  nav {
+    #logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-            font-weight: bold;
-            font-size: 2rem;
-            color: white;
+      font-weight: bold;
+      font-size: 2rem;
+      color: white;
 
-            a {
-                text-decoration: none;
-            }
-        }
-
-        ul {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            margin: 0;
-
-            list-style-type: none;
-            li {
-                margin: 0 1rem;
-                a {
-                    text-decoration: none;
-
-                    color: white;
-
-                    font-weight: bold;
-                    font-size: 1rem;
-
-                    &:hover {
-                        color: $primary-color;
-                    }
-                }
-            }
-        }
+      a {
+        text-decoration: none;
+      }
     }
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0;
+
+      list-style-type: none;
+      li {
+        margin: 0 1rem;
+        a {
+          text-decoration: none;
+
+          color: white;
+
+          font-weight: bold;
+          font-size: 1rem;
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
 }
 </style>
