@@ -178,7 +178,7 @@
 
         {{-- thumb --}}
         <div class="col-6 row">
-            <div class="form-group col-6 d-flex flex-column align-items-start justify-content-start">
+            <div class="form-group col-10 d-flex flex-column align-items-start justify-content-start">
                 <label for="thumb" class="flex-shrink-0 m-0">Immagine</label>
                 <input 
                 name="thumb" 
@@ -191,6 +191,17 @@
                         <strong>{{ $message }}</strong>
                     </div>
                 @enderror
+            </div>
+            {{-- Thumb preview --}}
+            <div class="form-group col-2 m-0 h-100">
+                <figure class="m-0 h-100">
+                    <img 
+                    src="{{ asset('storage/' . $details->thumb ) ?? 'https://wopart.eu/wp-content/uploads/2021/10/placeholder-7.png' }}" 
+                    alt="{{ $details->thumb }}"
+                    id="image"
+                    class="img-fluid h-100"
+                    >
+                </figure>
             </div>
         </div>
         

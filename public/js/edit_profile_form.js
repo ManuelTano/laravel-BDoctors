@@ -126,6 +126,19 @@ submitEditCredentialsForm.addEventListener("submit", function (event) {
   // Dovesse con fermare inviamo il form
   if (hasConfirmed) submitEditCredentialsForm.submit();
 });
+var preview = document.getElementById("image");
+var imageField = document.getElementById("thumb");
+if (imageField !== null) {
+  imageField.addEventListener("input", function () {
+    if (imageField.files && imageField.files[0]) {
+      var reader = new FileReader();
+      reader.readAsDataURL(imageField.files[0]);
+      reader.onload = function (event) {
+        preview.src = event.target.result;
+      };
+    }
+  });
+}
 
 /***/ }),
 
