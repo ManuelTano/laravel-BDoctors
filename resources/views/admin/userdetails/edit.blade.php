@@ -151,9 +151,9 @@
         {{-- $ Form profile --}}
 
         {{-- Curriculum vitae --}}
-        <div class="col-6">
-            <div class="form-group">
-                <label for="curriculum_vitae" class="flex-shrink-0 h-100 m-0">Curriculum Vitae</label>
+        <div class="col-6 row">
+            <div class="form-group col-8">
+                <label for="curriculum_vitae" class="flex-shrink-0 m-0">Curriculum Vitae</label>
                 <input name="curriculum_vitae" type="file" id="curriculum_vitae" class="pl-0 border-0 form-control @error('curriculum_vitae') is-invalid @enderror">
                 @error('curriculum_vitae')
                     <div class="invalid-feedback">
@@ -161,6 +161,15 @@
                     </div>
                 @enderror
             </div>
+            @if($details->curriculum_vitae)
+                <div class="form-group col-4 d-flex align-items-center">
+                    <div>
+                        <i class="fa-regular fa-file-pdf fa-2x position-relative">
+                            <i class="fa-solid fa-check position-absolute text-success mt-2"></i>
+                        </i>
+                    </div>
+                </div>
+            @endif
         </div>
 
         {{-- Phone --}}
@@ -178,13 +187,14 @@
 
         {{-- thumb --}}
         <div class="col-6 row">
-            <div class="form-group col-10 d-flex flex-column align-items-start justify-content-start">
+            <div class="form-group col-6 d-flex flex-column align-items-start justify-content-start">
                 <label for="thumb" class="flex-shrink-0 m-0">Immagine</label>
                 <input 
                 name="thumb" 
                 type="file" 
                 id="thumb" 
                 class="pl-0 border-0 form-control @error('thumb') is-invalid @enderror"
+                value="{{ asset('storage/' . $details->thumb ) ?? '' }}"
                 >
                 @error('thumb')
                     <div class="invalid-feedback">
@@ -193,7 +203,7 @@
                 @enderror
             </div>
             {{-- Thumb preview --}}
-            <div class="form-group col-2 m-0 h-100">
+            <div class="form-group col-6 m-0 h-100">
                 <figure class="m-0 h-100">
                     <img 
                     src="{{ asset('storage/' . $details->thumb ) ?? 'https://wopart.eu/wp-content/uploads/2021/10/placeholder-7.png' }}" 

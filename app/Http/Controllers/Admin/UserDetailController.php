@@ -52,8 +52,8 @@ class UserDetailController extends Controller
         // Validazione dei dati in arrivo
         $request->validate([
             'phone' => 'required|min:10|max:13',
-            'thumb' => 'required|image|mimes:jpeg,png,jpg',
-            'curriculum_vitae' => 'required|file|mimes:pdf',
+            'thumb' => 'image|mimes:jpeg,png,jpg',
+            'curriculum_vitae' => 'file|mimes:pdf',
         ],[
             'min:10' => 'Il numero telefonico deve essere composto da almeno 10 caratteri',
             'max:13' => 'Il numero telefonico deve essere composto massimo 13 caratteri',
