@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+
 class UserController extends Controller
 {
     /**
@@ -52,60 +55,34 @@ class UserController extends Controller
         return response()->json(compact('users_by_specialty'));
     }
 
+    // Metodo che filtra i dottori in base al numero di recensioni
+
+    public function filterByMoreReviews(){
+        $users_by_more_reviews = Review::join('users','reviews.user_id','=','users.id')
+        ->select('users.*',DB::raw('COUNT(reviews.user_id) as numero_recensioni'))
+        ->orderBy('numero_recensioni','DESC')
+        ->groupBy('reviews.user_id')
+        ->get();
+        return response()->json(compact('users_by_more_reviews'));
+    }
+
+    // Metodo che filtra i dottori in base al rating
+
+    public function filterByBestRating(){
+        $users_by_most_rating = Review::join('users','reviews.user_id','=','users.id')
+        ->select('users.*',DB::raw('AVG(reviews.rating) as media'))
+        ->orderBy('media','DESC')
+        ->groupBy('users.id')
+        ->get();
+        return response()->json(compact('users_by_most_rating'));
+    }
+
     // Metodo che consente di prelevare le reviews relative
     // ad un dottore
 
     public function fetchReviews($id){
         $user_reviews = Review::where('user_id',$id)->get();
         return response()->json(compact('user_reviews'));
-    }
-
-    // Metodo che consente di inviare una nuova recensione
-
-    public function sendNewReview(Request $request){
-
-        // Validiamo ciò che ci arriva dal form Front-end
-        $validation = $request->validate([
-            'first_name' => 'required|string|regex:/^[\pL\s\-]+$/u',
-            'last_name' => 'required|string|regex:/^[\pL\s\-]+$/u',
-            'email' => 'required|email',
-            'feedback' => 'required|string',
-            'rating' => 'required|numeric|min:1|max:5',
-        ],[]);
-
-        // Passiamo i dati in una nuova variabile
-        $data = $request->all();
-
-        // Creiamo una nuova recensione
-        $new_review = new Review();
-
-        // Filliamo i campi
-        $new_review->fill($data);
-
-        if($validation->fails()) return response()->json(compact('Non è stato possibile inviare la tua recensione!'));
-        return response()->json(compact('La tua recensione è stata inviata con successo!'));
-    }
-
-    public function sendNewMessage(){
-        // Validiamo ciò che ci arriva dal form Front-end
-        $validation = $request->validate([
-            'first_name' => 'required|string|regex:/^[\pL\s\-]+$/u',
-            'last_name' => 'required|string|regex:/^[\pL\s\-]+$/u',
-            'email' => 'required|email',
-            'text' => 'required|string',
-        ],[]);
-
-        // Passiamo i dati in una nuova variabile
-        $data = $request->all();
-
-        // Creiamo una nuova recensione
-        $new_message = new Message();
-
-        // Filliamo i campi
-        $new_message->fill($data);
-
-        if($validation->fails()) return response()->json(compact('Non è stato possibile inviare il tuo messaggio!'));
-        return response()->json(compact('Il tuo messaggio è stata inviata con successo!'));
     }
 
     /**

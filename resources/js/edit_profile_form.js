@@ -37,3 +37,19 @@ submitEditCredentialsForm.addEventListener("submit", (event) => {
     // Dovesse con fermare inviamo il form
     if (hasConfirmed) submitEditCredentialsForm.submit();
 });
+
+const preview = document.getElementById("image");
+const imageField = document.getElementById("thumb");
+
+if (imageField !== null) {
+    imageField.addEventListener("input", () => {
+        if (imageField.files && imageField.files[0]) {
+            let reader = new FileReader();
+
+            reader.readAsDataURL(imageField.files[0]);
+            reader.onload = (event) => {
+                preview.src = event.target.result;
+            };
+        }
+    });
+}

@@ -2,9 +2,11 @@
     <section id="advanced-search">
         <BaseJumbotron />
         <AppMain :users="users" />
+        <ReviewForm />
     </section>
 </template>
 <script>
+import ReviewForm from "../ReviewForm.vue";
 import BaseJumbotron from "../BaseJumbotron.vue";
 import AppMain from "../AppMain.vue";
 export default {
@@ -12,6 +14,7 @@ export default {
     components: {
         BaseJumbotron,
         AppMain,
+        ReviewForm,
     },
     data() {
         return {
