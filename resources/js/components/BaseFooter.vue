@@ -1,21 +1,16 @@
 <template>
   <footer>
     <div class="container">
-      <div class="row">
-        <div class="col-6">
-             <router-link :to="{ name: 'home' }" class="" id="logo"
-                >
-          <img
-            src="https://i.ibb.co/jwdnvh4/aaaaaaaa.png"
-            alt=""
-            class="img-fluid w-25 py-4"
-
-          />
-                </router-link
-            >
-          <span 
-            >Copyright © 2022 BDoctors, tutti i diritti riservati.</span
-          >
+      <div class="row py-5">
+        <div class="col-12-sm col-6-md">
+          <router-link :to="{ name: 'home' }" class="" id="logo">
+            <img
+              src="https://i.ibb.co/jwdnvh4/aaaaaaaa.png"
+              alt=""
+              class="img-fluid w-25 py-4"
+            />
+          </router-link>
+          <span>Copyright © 2022 BDoctors, tutti i diritti riservati.</span>
         </div>
       </div>
       <div class="row">
@@ -27,7 +22,7 @@
             <li>Hai bisogno di aiuto?</li>
           </ul>
         </div>
-        <div class="col-3">
+        <div class="col-4">
           <ul>
             <li><h4>Trova il tuo specialista</h4></li>
             <li>Dermatologo</li>
@@ -41,15 +36,31 @@
             <li>Virologo</li>
           </ul>
         </div>
-        <div class="col-3">
-            <ul>
-
+        <div class="col-4">
+          <ul>
             <li><h4>Ricerche frequenti</h4></li>
-            </ul>
+            <li>Ginecologo Milano</li>
+            <li>Dermatologo Milano</li>
+            <li>Pediatra Milano</li>
+            <li>Cardiologo Milano</li>
+            <li>Oculista Milano</li>
+            <li>Odontoiatra Milano</li>
+            <li>Urologo Milano</li>
+            <li>Virologo Milano</li>
+            <li>Radiologo Milano</li>
+          </ul>
         </div>
         <div class="col-3"></div>
       </div>
       <div class="row mt-4">
+        <div class="col-5">
+          <a href=""><i class="fa-brands fa-facebook fa-2xl"></i></a>
+          <a href=""><i class="fa-brands fa-instagram fa-2xl"></i></a>
+          <a href=""><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+          <a href=""><i class="fa-brands fa-youtube fa-2xl"></i></a>
+        </div>
+      </div>
+      <div class="row mt-5">
         <div class="col-12">
           <p>
             BDoctors Srl, società soggetta a direzione e coordinamento di
@@ -85,6 +96,10 @@ export default {
 <style lang="scss" scoped>
 @import "../../sass/variables";
 
+footer {
+  padding-bottom: 50px;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -93,10 +108,14 @@ ul {
 }
 
 li:hover {
-    color: #b1a8e5;
+  color: #b1a8e5;
 }
 
 footer {
   background-color: #d9f0ed;
+}
+
+i {
+  color: #336699;
 }
 </style>

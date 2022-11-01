@@ -46,9 +46,9 @@
         }
 
         .top-right {
-            position: absolute;
+            position: fixed;
             right: 10px;
-            top: 18px;
+            top: 45px;
         }
 
         .content {
@@ -73,36 +73,39 @@
             margin-bottom: 30px;
         }
 
-        .show-home{
+        .show-home {
             z-index: 10;
         }
 
-        .show-home a{
-            color: white;
+        .show-home a {
+            color: black;
             font-size: 16px;
         }
-
-        .margin {
-            margin-top: 37px;
-                }
     </style>
 </head>
 
 <body>
-    <div class="flex-center position-ref show-home">
-        @if (Route::has('login'))
-            <div class="top-right links margin">
-                @auth
-                    <a href="{{ url('/home') }}">Home</a>
-                @else
-                    <a href="{{ route('login') }}">Effettua Login</a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Registrati</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
+    <div class="dropdown show-home flex-center top-right mx-4">
+        <button class="btn btn-primary dropdown-toggle flex-center p-2 " type="button" id="dropdownMenu2" data-toggle="dropdown"
+           >
+            <div class="d-none d-lg-block"> Sei un dottore? Clicca qui! </div>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            @if (Route::has('login'))
+                <div class="">
+                    @auth
+                        <a href="{{ url('/home') }}" class="dropdown-item">Home</a>
+                    @else
+                        <a href="{{ route('login') }}" class="dropdown-item">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="dropdown-item">Registrati</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+        </div>
     </div>
     <div id="root"></div>
 </body>
