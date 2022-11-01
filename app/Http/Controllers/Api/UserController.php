@@ -66,6 +66,17 @@ class UserController extends Controller
         return response()->json(compact('users_by_more_reviews'));
     }
 
+    // Metodo che filtra i dottori in base al rating
+
+    public function filterByBestRating(){
+        $users_by_most_rating = Review::join('users','reviews.user_id','=','users.id')
+        ->select('users.*',DB::raw('AVG(reviews.rating) as media'))
+        ->orderBy('media','DESC')
+        ->groupBy('users.id')
+        ->get();
+        return response()->json(compact('users_by_most_rating'));
+    }
+
     // Metodo che consente di prelevare le reviews relative
     // ad un dottore
 

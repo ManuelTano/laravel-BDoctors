@@ -35,6 +35,9 @@ Route::namespace('Api')->group(function () {
     // Rotta che filtra i dottori in base al numero di recensioni
     Route::get('/users-by-reviews', 'UserController@filterByMoreReviews');
 
+    // Rotta che filtra i dottori in base al rating
+    Route::get('/users-by-rating', 'UserController@filterByBestRating');
+
     // # ROTTE CHE PRELEVANO I DATI DEI DOTTORI
 
     // Rotta per prelevare le recensioni di un dottore
