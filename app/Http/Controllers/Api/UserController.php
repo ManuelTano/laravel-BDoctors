@@ -13,6 +13,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -52,6 +53,17 @@ class UserController extends Controller
         }
 
         return response()->json(compact('users_by_specialty'));
+    }
+
+    // Metodo che filtra i dottori in base al numero di recensioni
+
+    public function filterByMoreReviews(){
+        $users_by_more_reviews = Review::join('users','reviews.user_id','=','users.id')
+        ->select('users.*',DB::raw('COUNT(reviews.user_id) as numero_recensioni'))
+        ->orderBy('numero_recensioni','DESC')
+        ->groupBy('reviews.user_id')
+        ->get();
+        return response()->json(compact('users_by_more_reviews'));
     }
 
     // Metodo che consente di prelevare le reviews relative
