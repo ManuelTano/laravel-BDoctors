@@ -27,6 +27,7 @@ Auth::routes();
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
     Route::resource('sponsorships', 'SponsorshipController');
+    Route::get('/stats','StatController@show')->name('stats.show');
 
     // Definiamo le rotte relative agli utenti (dottori)
     Route::put('/users/update', 'UserController@update')->name('users.update');

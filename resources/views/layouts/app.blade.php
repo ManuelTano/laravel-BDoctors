@@ -17,6 +17,7 @@
 
     {{-- Font Awesome --}}
     <script src="https://kit.fontawesome.com/ddb740f05b.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -53,7 +54,7 @@
                                 <a href="{{ route('admin.sponsorships.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-cart-flatbed-suitcase mr-2"></i>Piani d'acquisto</a>
                             </li>
                             <li class="mr-5">
-                                <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-chart-column mr-2"></i>Statistiche</a>
+                                <a href="{{ route('admin.stats.show') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-chart-column mr-2"></i>Statistiche</a>
                             </li>
                         </ul>
                     @endauth

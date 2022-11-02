@@ -2,7 +2,7 @@
   <section class="pt-5 mt-5">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-6">
+        <div class="col-6 text-center">
           <h2>BDoctors: al servizio della tua salute</h2>
         </div>
       </div>
