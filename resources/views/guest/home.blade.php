@@ -81,12 +81,16 @@
             color: black;
             font-size: 16px;
         }
+
+        .fixed-btn{
+            top: 10px
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="dropdown show-home flex-center top-right mx-4">
+    <div class="dropdown show-home flex-center top-right ml-4 fixed-btn">
         <button class="btn btn-primary dropdown-toggle flex-center p-2 " type="button" id="dropdownMenu2" data-toggle="dropdown"
            >
             <div class="d-none d-lg-block"> Sei un dottore? Clicca qui! </div>

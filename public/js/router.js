@@ -633,7 +633,7 @@ var render = function render() {
   return _c("header", {
     staticClass: "shadow position-fixed"
   }, [_c("nav", {
-    staticClass: "navbar navbar-expand-md"
+    staticClass: "navbar fix-navbar navbar-expand-md"
   }, [_c("router-link", {
     staticClass: "navbar-brand",
     attrs: {
@@ -1463,7 +1463,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "header[data-v-0851419a] {\n  width: 100%;\n  background-color: #a2d9ff;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 5;\n}\nheader nav #logo[data-v-0851419a] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n  font-size: 2rem;\n  color: white;\n}\nheader nav #logo a[data-v-0851419a] {\n  text-decoration: none;\n}\nheader nav ul[data-v-0851419a] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 0;\n  list-style-type: none;\n}\nheader nav ul li[data-v-0851419a] {\n  margin: 0 1rem;\n}\nheader nav ul li a[data-v-0851419a] {\n  text-decoration: none;\n  color: white;\n  font-weight: bold;\n  font-size: 1rem;\n}\nheader nav ul li a[data-v-0851419a]:hover {\n  color: #3490dc;\n}", ""]);
+exports.push([module.i, "header[data-v-0851419a] {\n  width: 100%;\n  background-color: #a2d9ff;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 5;\n}\nheader nav.fix-navbar[data-v-0851419a] {\n  justify-content: flex-start;\n}\nheader nav #logo[data-v-0851419a] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-grow: 0;\n  margin-right: 0;\n  font-weight: bold;\n  font-size: 2rem;\n  color: white;\n}\nheader nav #logo a[data-v-0851419a] {\n  text-decoration: none;\n}\nheader nav ul[data-v-0851419a] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 0;\n  list-style-type: none;\n}\nheader nav ul li[data-v-0851419a] {\n  margin: 0 1rem;\n}\nheader nav ul li a[data-v-0851419a] {\n  text-decoration: none;\n  color: white;\n  font-weight: bold;\n  font-size: 1rem;\n}\nheader nav ul li a[data-v-0851419a]:hover {\n  color: #3490dc;\n}", ""]);
 
 // exports
 
