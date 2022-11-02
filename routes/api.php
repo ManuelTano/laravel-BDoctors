@@ -52,6 +52,6 @@ Route::namespace('Api')->group(function () {
     Route::post('/new-message','ContactDoctor@sendNewMessage');
 
     // # ROTTA CHE RESTITUISCE TUTTE LE SPECIALIZZAZIONI
-    
+
     Route::get('/specialties','SpecialtyController@index');
 });

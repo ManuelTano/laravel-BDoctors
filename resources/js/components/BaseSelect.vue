@@ -1,7 +1,7 @@
 <template>
-    <div class="input-group ">
+    <div class="input-group">
         <select
-            class="form-control "
+            class="form-control"
             id="specialty"
             @change="emitQuery"
             v-model="choice"
@@ -12,12 +12,17 @@
                 v-for="specialty in specialties"
                 :key="specialty.id"
             >
-                {{ specialty.label }}
+                <router-link
+                    :to="{
+                        name: 'advanced-search',
+                        params: { query: specialty.id },
+                    }"
+                >
+                    {{ specialty.label }}
+                </router-link>
             </option>
         </select>
     </div>
-
-    
 </template>
 
 <script>
@@ -41,10 +46,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 #specialty {
     top: 25;
     left: 25;
 }
-
 </style>

@@ -162,9 +162,9 @@ __webpack_require__.r(__webpack_exports__);
     users: Array
   },
   methods: {
-    emitSearch: function emitSearch(search) {
-      this.$emit("my-search", search);
-    }
+    // emitSearch(search) {
+    //     this.$emit("my-search", search);
+    // },
   }
 });
 
@@ -244,6 +244,44 @@ __webpack_require__.r(__webpack_exports__);
     emitQuery: function emitQuery() {
       this.$emit("doctors-for-specialty", this.choice);
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DoctorsBySpecialty.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DoctorsBySpecialty.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AppMain_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppMain.vue */ "./resources/js/components/AppMain.vue");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "DoctorsBySpecialty",
+  components: {
+    AppMain: _AppMain_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      users: []
+    };
+  },
+  methods: {
+    // Chiamata che preleva tutti i dottori
+    fetchAllUsers: function fetchAllUsers() {
+      var _this = this;
+      axios.get("http://127.0.0.1:8000/api/users/specialty" + this.$route.params.query).then(function (res) {
+        console.log(res.data);
+        _this.users = res.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.fetchAllUsers();
   }
 });
 
@@ -397,10 +435,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _BaseFooter_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BaseFooter.vue */ "./resources/js/components/BaseFooter.vue");
-/* harmony import */ var _ReviewForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ReviewForm.vue */ "./resources/js/components/ReviewForm.vue");
-/* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
-/* harmony import */ var _AppMain_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AppMain.vue */ "./resources/js/components/AppMain.vue");
+/* harmony import */ var _DoctorsBySpecialty_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../DoctorsBySpecialty.vue */ "./resources/js/components/DoctorsBySpecialty.vue");
+/* harmony import */ var _BaseFooter_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../BaseFooter.vue */ "./resources/js/components/BaseFooter.vue");
+/* harmony import */ var _ReviewForm_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ReviewForm.vue */ "./resources/js/components/ReviewForm.vue");
+/* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
 
 
 
@@ -408,28 +446,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdvancedSearch",
   components: {
-    BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    AppMain: _AppMain_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    ReviewForm: _ReviewForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    BaseFooter: _BaseFooter_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    ReviewForm: _ReviewForm_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    BaseFooter: _BaseFooter_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    DoctorsBySpecialty: _DoctorsBySpecialty_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
-    return {
-      users: []
-    };
-  },
-  methods: {
-    // Chiamata che preleva tutti i dottori
-    fetchAllUsers: function fetchAllUsers() {
-      var _this = this;
-      axios.get("http://127.0.0.1:8000/api/users").then(function (res) {
-        console.log(res.data);
-        _this.users = res.data;
-      });
-    }
-  },
-  mounted: function mounted() {
-    this.fetchAllUsers();
+    return {};
   }
 });
 
@@ -1010,8 +1033,47 @@ var render = function render() {
       domProps: {
         value: specialty.id
       }
-    }, [_vm._v("\n            " + _vm._s(specialty.label) + "\n        ")]);
+    }, [_c("router-link", {
+      attrs: {
+        to: {
+          name: "advanced-search",
+          params: {
+            query: specialty.id
+          }
+        }
+      }
+    }, [_vm._v("\n                " + _vm._s(specialty.label) + "\n            ")])], 1);
   })], 2)]);
+};
+var staticRenderFns = [];
+render._withStripped = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DoctorsBySpecialty.vue?vue&type=template&id=1d378284&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DoctorsBySpecialty.vue?vue&type=template&id=1d378284&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("section", {
+    attrs: {
+      id: "doctors-by-specialty"
+    }
+  }, [_c("AppMain", {
+    attrs: {
+      users: _vm.users
+    }
+  })], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -1315,11 +1377,7 @@ var render = function render() {
     attrs: {
       id: "advanced-search"
     }
-  }, [_c("BaseJumbotron"), _vm._v(" "), _c("AppMain", {
-    attrs: {
-      users: _vm.users
-    }
-  }), _vm._v(" "), _c("ReviewForm"), _vm._v(" "), _c("BaseFooter")], 1);
+  }, [_c("BaseJumbotron"), _vm._v(" "), _c("DoctorsBySpecialty"), _vm._v(" "), _c("BaseFooter")], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -1460,11 +1518,7 @@ var render = function render() {
     on: {
       "doctors-for-specialty": _vm.fetchDoctorsBySpecialist
     }
-  })], 1)])])]), _vm._v(" "), _c("DoctorsView", {
-    attrs: {
-      users: _vm.users
-    }
-  }), _vm._v(" "), _c("BaseCard"), _vm._v(" "), _c("svg", {
+  })], 1)])])]), _vm._v(" "), _c("BaseCard"), _vm._v(" "), _c("svg", {
     staticStyle: {
       transform: "rotate(0deg)",
       transition: "0.3s"
@@ -1488,12 +1542,12 @@ var render = function render() {
       "stop-color": "rgba(217, 240, 237, 1)",
       offset: "0%"
     }
-  }), _c("stop", {
+  }), _vm._v(" "), _c("stop", {
     attrs: {
       "stop-color": "rgba(177, 168, 229, 1)",
       offset: "100%"
     }
-  })], 1)], 1), _c("path", {
+  })], 1)], 1), _vm._v(" "), _c("path", {
     staticStyle: {
       transform: "translate(0, 0px)",
       opacity: "1"
@@ -18880,6 +18934,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/DoctorsBySpecialty.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/DoctorsBySpecialty.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DoctorsBySpecialty_vue_vue_type_template_id_1d378284_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DoctorsBySpecialty.vue?vue&type=template&id=1d378284&scoped=true& */ "./resources/js/components/DoctorsBySpecialty.vue?vue&type=template&id=1d378284&scoped=true&");
+/* harmony import */ var _DoctorsBySpecialty_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DoctorsBySpecialty.vue?vue&type=script&lang=js& */ "./resources/js/components/DoctorsBySpecialty.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DoctorsBySpecialty_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DoctorsBySpecialty_vue_vue_type_template_id_1d378284_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DoctorsBySpecialty_vue_vue_type_template_id_1d378284_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "1d378284",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/DoctorsBySpecialty.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/DoctorsBySpecialty.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/DoctorsBySpecialty.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DoctorsBySpecialty_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./DoctorsBySpecialty.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DoctorsBySpecialty.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DoctorsBySpecialty_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/DoctorsBySpecialty.vue?vue&type=template&id=1d378284&scoped=true&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/DoctorsBySpecialty.vue?vue&type=template&id=1d378284&scoped=true& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_DoctorsBySpecialty_vue_vue_type_template_id_1d378284_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../node_modules/vue-loader/lib??vue-loader-options!./DoctorsBySpecialty.vue?vue&type=template&id=1d378284&scoped=true& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DoctorsBySpecialty.vue?vue&type=template&id=1d378284&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_DoctorsBySpecialty_vue_vue_type_template_id_1d378284_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_DoctorsBySpecialty_vue_vue_type_template_id_1d378284_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/DoctorsView.vue":
 /*!*************************************************!*\
   !*** ./resources/js/components/DoctorsView.vue ***!
@@ -19447,17 +19570,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _components_pages_AdvancedSearch_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/pages/AdvancedSearch.vue */ "./resources/js/components/pages/AdvancedSearch.vue");
-/* harmony import */ var _components_pages_DoctorPage_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/pages/DoctorPage.vue */ "./resources/js/components/pages/DoctorPage.vue");
-/* harmony import */ var _components_pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/pages/HomePage.vue */ "./resources/js/components/pages/HomePage.vue");
-/* harmony import */ var _components_pages_NotFoundPage_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/pages/NotFoundPage.vue */ "./resources/js/components/pages/NotFoundPage.vue");
-/* harmony import */ var _components_pages_FeaturedDoctorsPage_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/FeaturedDoctorsPage.vue */ "./resources/js/components/pages/FeaturedDoctorsPage.vue");
+/* harmony import */ var _components_DoctorsBySpecialty_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/DoctorsBySpecialty.vue */ "./resources/js/components/DoctorsBySpecialty.vue");
+/* harmony import */ var _components_pages_AdvancedSearch_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/pages/AdvancedSearch.vue */ "./resources/js/components/pages/AdvancedSearch.vue");
+/* harmony import */ var _components_pages_DoctorPage_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/pages/DoctorPage.vue */ "./resources/js/components/pages/DoctorPage.vue");
+/* harmony import */ var _components_pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/pages/HomePage.vue */ "./resources/js/components/pages/HomePage.vue");
+/* harmony import */ var _components_pages_NotFoundPage_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/NotFoundPage.vue */ "./resources/js/components/pages/NotFoundPage.vue");
+/* harmony import */ var _components_pages_FeaturedDoctorsPage_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/pages/FeaturedDoctorsPage.vue */ "./resources/js/components/pages/FeaturedDoctorsPage.vue");
 // Importiamo Vue e VueRouter
 
 
 
 
 // Importiamo tutti i componenti pages
+
 
 
 
@@ -19479,26 +19604,30 @@ var routes = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   // Oggetto contenente tutte le rotte
   routes: [{
     path: "/",
-    component: _components_pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    component: _components_pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
     name: "home"
   }, {
     path: "/all-featured-doctors",
-    component: _components_pages_FeaturedDoctorsPage_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    component: _components_pages_FeaturedDoctorsPage_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
     name: "all-featured-doctors"
   }, {
     path: "/advanced-search",
-    component: _components_pages_AdvancedSearch_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    component: _components_pages_AdvancedSearch_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     name: "advanced-search"
   }, {
     path: "/doctors-doctor/:user",
-    component: _components_pages_DoctorPage_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    component: _components_pages_DoctorPage_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: "doctors-doctor"
+  }, {
+    path: "/doctors-by-specialty/:query",
+    component: _components_DoctorsBySpecialty_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    name: "doctors-by-specialty"
   },
   // ! Rotta da mettere sempre dopo le altre
 
   {
     path: "*",
-    component: _components_pages_NotFoundPage_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    component: _components_pages_NotFoundPage_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
     name: "not_found"
   }]
 });
