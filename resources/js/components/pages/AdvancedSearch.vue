@@ -3,9 +3,11 @@
         <BaseJumbotron />
         <AppMain :users="users" />
         <ReviewForm />
+        <BaseFooter />
     </section>
 </template>
 <script>
+import BaseFooter from "../BaseFooter.vue";
 import ReviewForm from "../ReviewForm.vue";
 import BaseJumbotron from "../BaseJumbotron.vue";
 import AppMain from "../AppMain.vue";
@@ -15,6 +17,7 @@ export default {
         BaseJumbotron,
         AppMain,
         ReviewForm,
+        BaseFooter,
     },
     data() {
         return {

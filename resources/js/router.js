@@ -6,6 +6,7 @@ import VueRouter from "vue-router";
 // Importiamo tutti i componenti pages
 
 import AdvancedSearch from "./components/pages/AdvancedSearch.vue";
+import DoctorPage from "./components/pages/DoctorPage.vue";
 import HomePage from "./components/pages/HomePage.vue";
 import NotFoundPage from "./components/pages/NotFoundPage.vue";
 import FeaturedDoctorsPage from "./components/pages/FeaturedDoctorsPage.vue";
@@ -35,6 +36,11 @@ const routes = new VueRouter({
             path: "/advanced-search",
             component: AdvancedSearch,
             name: "advanced-search",
+        },
+        {
+            path: "/doctors/doctor/:id",
+            components: DoctorPage,
+            name: "/doctors/doctor",
         },
 
         // ! Rotta da mettere sempre dopo le altre

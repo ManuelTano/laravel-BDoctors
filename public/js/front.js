@@ -2247,18 +2247,21 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ReviewForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../ReviewForm.vue */ "./resources/js/components/ReviewForm.vue");
-/* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
-/* harmony import */ var _AppMain_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AppMain.vue */ "./resources/js/components/AppMain.vue");
+/* harmony import */ var _BaseFooter_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BaseFooter.vue */ "./resources/js/components/BaseFooter.vue");
+/* harmony import */ var _ReviewForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ReviewForm.vue */ "./resources/js/components/ReviewForm.vue");
+/* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
+/* harmony import */ var _AppMain_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AppMain.vue */ "./resources/js/components/AppMain.vue");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdvancedSearch",
   components: {
-    BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    AppMain: _AppMain_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    ReviewForm: _ReviewForm_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    AppMain: _AppMain_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    ReviewForm: _ReviewForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    BaseFooter: _BaseFooter_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
@@ -3138,7 +3141,7 @@ var render = function render() {
     attrs: {
       users: _vm.users
     }
-  }), _vm._v(" "), _c("ReviewForm")], 1);
+  }), _vm._v(" "), _c("ReviewForm"), _vm._v(" "), _c("BaseFooter")], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;

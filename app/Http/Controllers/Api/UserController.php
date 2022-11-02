@@ -28,6 +28,15 @@ class UserController extends Controller
         return response()->json($users);
     }
 
+    // Metodo legato alla rotta che preleva un singolo
+    // medico in funzione dell'id
+    public function show($user){
+        $result = User::join('user_details','users.id','=','user_details.user_id')
+        ->where('users.id','=',$user)
+        ->get();
+        return response()->json(compact('result'));
+    }
+
     public function filterByInput($query){
 
         $users_by_firstname = User::with('specialties')
@@ -94,14 +103,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-    }
-
-    // Metodo legato alla rotta che preleva un singolo
-    // medico in funzione dell'id
-    public function show($id)
-    {
-        $user = User::where('id',$id)->get();
-        return response()->json(compact('user'));
     }
 
     /**

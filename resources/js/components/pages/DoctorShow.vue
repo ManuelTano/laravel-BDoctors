@@ -1,19 +1,24 @@
 <template>
-
     <section id="doctorshow">
-        <BaseJumbotron class="d-flex align-items-center justify-content-between">
+        <BaseJumbotron
+            class="d-flex align-items-center justify-content-between"
+        >
             <div class="container">
                 <div class="row">
                     <div class="col-8">
                         <div class="mb-5">
-                            <span class="title"> Cerca un </span><span class="wordchanger"></span>
+                            <span class="title"> Cerca un </span
+                            ><span class="wordchanger"></span>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-8">
-                        <BaseSelect @doctors-for-specialty="fetchDoctorsBySpecialist" :specialties="specialties"
-                            text="Scegli un dottore" />
+                        <BaseSelect
+                            @doctors-for-specialty="fetchDoctorsBySpecialist"
+                            :specialties="specialties"
+                            text="Scegli un dottore"
+                        />
                     </div>
                 </div>
             </div>
@@ -22,8 +27,8 @@
 </template>
 
 <script>
-import BaseJumbotron from '../BaseJumbotron.vue';
-import BaseSelect from '../BaseSelect.vue';
+import BaseJumbotron from "../BaseJumbotron.vue";
+import BaseSelect from "../BaseSelect.vue";
 export default {
     name: "DoctorShow",
     props: {
@@ -32,7 +37,7 @@ export default {
     },
     components: {
         BaseJumbotron,
-        BaseSelect
+        BaseSelect,
     },
     data() {
         return {
@@ -45,9 +50,6 @@ export default {
         },
     },
 };
-
 </script>
 
-<style>
-
-</style>
+<style></style>
