@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-center mt-4">I tuoi messaggi</h1>
+    <h1 class="text-center mt-4"><strong>I tuoi messaggi</strong></h1>
     <div class="container d-flex flex-wrap justify-content-between">
         @foreach ($messages as $message)
             @if ($message->user->id == Auth::id())
