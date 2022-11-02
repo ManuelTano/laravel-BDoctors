@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container px-5">
         <h1 class="text-center my-4"><strong>Il mio profilo</strong></h1>
         <div class="my-3 rounded-lg border border-1 bg-white row">
             <div class="col-4 p-0">
