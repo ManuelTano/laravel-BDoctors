@@ -82,9 +82,9 @@
             font-size: 16px;
         }
 
-        .fixed-btn{
+        /* .fixed-btn{
             top: 10px
-        }
+        } */
     </style>
 </head>
 
