@@ -38,9 +38,9 @@ const routes = new VueRouter({
             name: "advanced-search",
         },
         {
-            path: "/doctors/doctor/:id",
-            components: DoctorPage,
-            name: "/doctors/doctor",
+            path: "/doctors-doctor/:user",
+            component: DoctorPage,
+            name: "doctors-doctor",
         },
 
         // ! Rotta da mettere sempre dopo le altre

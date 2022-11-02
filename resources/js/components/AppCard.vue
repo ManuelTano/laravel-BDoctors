@@ -19,10 +19,10 @@
         <div class="con-text">
             <h2></h2>
             <p>
-                <!-- <router-link
+                <router-link
                     class="my_card"
-                    :to="{ name: '/doctors/doctor', params: { id: user.id } }"
-                ></router-link> -->
+                    :to="{ name: 'doctors-doctor', params: { user: user.id } }"
+                ></router-link>
             </p>
         </div>
     </div>

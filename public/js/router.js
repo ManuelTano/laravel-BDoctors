@@ -440,43 +440,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/DoctorPage.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
-/* harmony import */ var _BaseFooter_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../BaseFooter.vue */ "./resources/js/components/BaseFooter.vue");
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "DoctorPage",
-  components: {
-    BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    BaseFooter: _BaseFooter_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
-  data: function data() {
-    return {
-      user: null
-    };
-  },
-  methods: {
-    // Chiamata che preleva il singolo dottore
-    fetchDoctor: function fetchDoctor() {
-      var _this = this;
-      axios
-      // Bisogna sistemare l'url
-      .get("http://127.0.0.1:8000/api/users" + this.$route.params.id).then(function (res) {
-        _this.user = res.data.result;
-        console.log("User prelevato: " + _this.user);
-      })["catch"](function (err) {
-        console.log("User non prelevato, errore di chiamata.");
-      });
-    }
-  },
-  mounted: {
-    "this": fetchDoctor()
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/pasqualepedoto/laravel-BDoctors/resources/js/components/pages/DoctorPage.vue: Unexpected token, expected \"{\" (32:25)\n\n\u001b[0m \u001b[90m 30 |\u001b[39m     }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 31 |\u001b[39m     mounted\u001b[33m:\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 32 |\u001b[39m         thisfetchDoctor()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 33 |\u001b[39m     }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 34 |\u001b[39m }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 35 |\u001b[39m\u001b[0m\n    at instantiate (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:72:32)\n    at constructor (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:367:12)\n    at Parser.raise (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:3706:19)\n    at Parser.unexpected (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:3744:16)\n    at Parser.expect (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:4157:28)\n    at Parser.parseBlock (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:15499:10)\n    at Parser.parseFunctionBody (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:14175:24)\n    at Parser.parseFunctionBodyAndFinish (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:14159:10)\n    at Parser.parseMethod (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:14108:31)\n    at Parser.parseObjectMethod (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:13984:19)\n    at Parser.parseObjPropValue (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:14025:23)\n    at Parser.parsePropertyDefinition (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:13943:17)\n    at Parser.parseObjectLike (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:13833:21)\n    at Parser.parseExprAtom (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:13225:23)\n    at Parser.parseExprSubscripts (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12875:23)\n    at Parser.parseUpdate (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12854:21)\n    at Parser.parseMaybeUnary (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12824:23)\n    at Parser.parseMaybeUnaryOrPrivate (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12615:61)\n    at Parser.parseExprOps (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12622:23)\n    at Parser.parseMaybeConditional (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12592:23)\n    at Parser.parseMaybeAssign (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12544:21)\n    at /Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12502:39\n    at Parser.allowInAnd (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:14576:12)\n    at Parser.parseMaybeAssignAllowIn (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12502:17)\n    at Parser.parseObjectProperty (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:13992:101)\n    at Parser.parseObjPropValue (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:14025:100)\n    at Parser.parsePropertyDefinition (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:13943:17)\n    at Parser.parseObjectLike (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:13833:21)\n    at Parser.parseExprAtom (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:13225:23)\n    at Parser.parseExprSubscripts (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12875:23)\n    at Parser.parseUpdate (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12854:21)\n    at Parser.parseMaybeUnary (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12824:23)\n    at Parser.parseMaybeUnaryOrPrivate (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12615:61)\n    at Parser.parseExprOps (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12622:23)\n    at Parser.parseMaybeConditional (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12592:23)\n    at Parser.parseMaybeAssign (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12544:21)\n    at /Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12502:39\n    at Parser.allowInAnd (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:14570:16)\n    at Parser.parseMaybeAssignAllowIn (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:12502:17)\n    at Parser.parseExportDefaultExpression (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:16261:22)\n    at Parser.parseExport (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:16149:31)\n    at Parser.parseStatementContent (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:14987:27)\n    at Parser.parseStatement (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:14871:17)\n    at Parser.parseBlockOrModuleBlockBody (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:15531:25)\n    at Parser.parseBlockBody (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:15522:10)\n    at Parser.parseProgram (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:14785:10)\n    at Parser.parseTopLevel (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:14772:25)\n    at Parser.parse (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:16799:10)\n    at parse (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/parser/lib/index.js:16851:38)\n    at parser (/Users/pasqualepedoto/laravel-BDoctors/node_modules/@babel/core/lib/parser/index.js:52:34)");
 
 /***/ }),
 
@@ -632,7 +598,19 @@ var render = function render() {
       src: "",
       alt: "img-profilo"
     }
-  }), _vm._v(" "), _vm._m(3)]);
+  }), _vm._v(" "), _c("div", {
+    staticClass: "con-text"
+  }, [_c("h2"), _vm._v(" "), _c("p", [_c("router-link", {
+    staticClass: "my_card",
+    attrs: {
+      to: {
+        name: "doctors-doctor",
+        params: {
+          user: _vm.user.id
+        }
+      }
+    }
+  })], 1)])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -652,12 +630,6 @@ var staticRenderFns = [function () {
   return _c("li", [_c("i", {
     staticClass: "bx bx-map"
   })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "con-text"
-  }, [_c("h2"), _vm._v(" "), _c("p")]);
 }];
 render._withStripped = true;
 
@@ -1340,7 +1312,7 @@ var render = function render() {
     }
   }, [_c("BaseJumbotron"), _vm._v(" "), _c("div", {
     staticClass: "container"
-  }, [_vm._v("\n        " + _vm._s(_vm.user.first_name + " " + _vm.user.last_name) + "\n    ")]), _vm._v(" "), _c("BaseFooter")], 1);
+  }), _vm._v(" "), _c("BaseFooter")], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -19483,9 +19455,9 @@ var routes = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: _components_pages_AdvancedSearch_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     name: "advanced-search"
   }, {
-    path: "/doctors/doctor/:id",
-    components: _components_pages_DoctorPage_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    name: "/doctors/doctor"
+    path: "/doctors-doctor/:user",
+    component: _components_pages_DoctorPage_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    name: "doctors-doctor"
   },
   // ! Rotta da mettere sempre dopo le altre
 
