@@ -1971,7 +1971,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppCard",
   props: {
-    user: Object
+    user: Object,
+    specialty: Object
   }
 });
 
@@ -2453,20 +2454,18 @@ var render = function render() {
     staticClass: "ul"
   }, [_c("li", [_vm._v("\n            " + _vm._s(_vm.user.first_name) + "\n            "), _c("i", {
     staticClass: "bx bx-drink"
-  })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c("img", {
+  })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("img", {
     attrs: {
       src: "",
       alt: "img-profilo"
     }
-  }), _vm._v(" "), _vm._m(3)]);
+  }), _vm._v(" "), _c("div", {
+    staticClass: "con-text"
+  }, [_c("ul", _vm._l(_vm.user.specialty, function (user) {
+    return _c("li", [_vm._v("\n                " + _vm._s(user.first_name) + "\n            ")]);
+  }), 0), _vm._v(" "), _vm._m(2)])]);
 };
 var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("li", [_c("i", {
-    staticClass: "bx bx-film"
-  })]);
-}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("li", [_c("i", {
@@ -2481,9 +2480,7 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "con-text"
-  }, [_c("h2"), _vm._v(" "), _c("p", [_c("button", [_vm._v("\n                see more\n            ")])])]);
+  return _c("p", [_c("button", [_vm._v("\n                see more\n            ")])]);
 }];
 render._withStripped = true;
 
@@ -7874,7 +7871,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card {\r\n    width: 18.75rem;\r\n    height: 25rem;\r\n    background: #000;\r\n    border-radius: 1.87rem;\r\n    overflow: hidden;\r\n    position: relative;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    cursor: pointer;\r\n    transition: all .25s ease;\r\n    -webkit-backface-visibility: hidden;\r\n            backface-visibility: hidden;\n}\n.card:hover {\r\n    transform: scale(.9);\n}\n.card:hover:after {\r\n    height: 1.75rem;\n}\n.card:hover .con-text p {\r\n    margin-bottom: 0.5rem;\r\n    opacity: 1;\n}\n.card:hover img {\r\n    transform: scale(1.25);\n}\n.card:hover .ul {\r\n    transform: translate(0);\r\n    opacity: 1;\n}\n.card:after {\r\n    width: 100%;\r\n    content: '';\r\n    left: 0.5rem;\r\n    bottom: 0rem;\r\n    height: 0.93rem;\r\n    position: absolute;\r\n    background: Linear-gradient(18deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 6, 1) 100%);\r\n    z-index: 20;\r\n    transition: all .25s ease;\n}\n.card img {\r\n    height: 100%;\r\n    z-index: 18;\r\n    transition: all .25s ease;\n}\n.card .con-text {\r\n    z-index: 30;\r\n    position: absolute;\r\n    bottom: 0rem;\r\n    color: #fff;\r\n    padding: 1.25rem;\r\n    padding-bottom: 1.87rem;\n}\n.card .con-text p {\r\n    font-size: .8rem;\r\n    Opacity: 0;\r\n    margin-bottom: -10.60rem;\r\n    transition: all .25s ease;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-end;\r\n    flex-direction: column;\n}\n.card .con-text p button {\r\n    padding: 0.43rem 1.06rem;\r\n    border-radius: 0.75rem;\r\n    background: transparent;\r\n    border: 0.125rem solid #fff;\r\n    color: #fff;\r\n    margin-top: 0.625rem;\r\n    margin-left: auto;\r\n    cursor: pointer;\r\n    transition: all .25s ease;\r\n\r\n    font-size: 0.75rem;\r\n    outline: none;\n}\n.card .con-text p button:hover {\r\n    background: #fff;\r\n    color: #000;\n}\n.ul {\r\n    position: absolute;\r\n    right: 0.625rem;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: column;\r\n    z-index: 40;\r\n    border-radius: 0.875rem;\r\n    padding-left: 0rem;\r\n    padding-top: 0.5rem;\r\n    padding-bottom: 0.5rem;\r\n    top: 0rem;\r\n    opacity: 0;\r\n    transform: translate(100%);\r\n    transition: all .25s ease;\n}\n.ul li {\r\n    background: #fff;\r\n    list-style: none;\r\n    width: 2.5rem;\r\n    height: 2.5rem;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    opacity: .7;\r\n    transition: all .25s ease;\r\n    -webkit-backface-visibility: hidden;\r\n            backface-visibility: hidden;\n}\nul li:last-child {\r\n    border-radius: 0rem 0rem 0.75rem 0.75rem;\n}\n.ul li:first.child {\r\n\r\n    border-radius: 0.75rem 0.75rem 0rem 0rem;\n}\n.ul li:hover {\r\n    opacity: 1;\r\n    transform: translate(-0.43rem, -0.25rem);\r\n    border-radius: 0.375rem;\n}\n.ul li i {\r\n    font-size: 1.4rem;\r\n    color: #000;\n}\r\n", ""]);
+exports.push([module.i, "\n.card {\r\n    width: 18.75rem;\r\n    height: 25rem;\r\n    background: #000;\r\n    border-radius: 1.87rem;\r\n    overflow: hidden;\r\n    position: relative;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    cursor: pointer;\r\n    transition: all .25s ease;\r\n    -webkit-backface-visibility: hidden;\r\n            backface-visibility: hidden;\n}\n.card:hover {\r\n    transform: scale(.9);\n}\n.card:hover:after {\r\n    height: 1.75rem;\n}\n.card:hover .con-text p {\r\n    margin-bottom: 0.5rem;\r\n    opacity: 1;\n}\n.card:hover img {\r\n    transform: scale(1.25);\n}\n.card:hover .ul {\r\n    transform: translate(0);\r\n    opacity: 1;\n}\n.card:after {\r\n    width: 100%;\r\n    content: '';\r\n    left: 0.5rem;\r\n    bottom: 0rem;\r\n    height: 0.93rem;\r\n    position: absolute;\r\n    background: Linear-gradient(18deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 6, 1) 100%);\r\n\r\n    transition: all .25s ease;\n}\n.card img {\r\n    height: 100%;\r\n\r\n    transition: all .25s ease;\n}\n.card .con-text {\r\n\r\n    position: absolute;\r\n    bottom: 0rem;\r\n    color: #fff;\r\n    padding: 1.25rem;\r\n    padding-bottom: 1.87rem;\n}\n.card .con-text p {\r\n    font-size: .8rem;\r\n    Opacity: 0;\r\n    margin-bottom: -10.60rem;\r\n    transition: all .25s ease;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-end;\r\n    flex-direction: column;\n}\n.card .con-text p button {\r\n    padding: 0.43rem 1.06rem;\r\n    border-radius: 0.75rem;\r\n    background: transparent;\r\n    border: 0.125rem solid #fff;\r\n    color: #fff;\r\n    margin-top: 0.625rem;\r\n    margin-left: auto;\r\n    cursor: pointer;\r\n    transition: all .25s ease;\r\n\r\n    font-size: 0.75rem;\r\n    outline: none;\n}\n.card .con-text p button:hover {\r\n    background: #fff;\r\n    color: #000;\n}\n.ul {\r\n    position: absolute;\r\n    right: 0.625rem;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: column;\r\n\r\n    border-radius: 0.875rem;\r\n    padding-left: 0rem;\r\n    padding-top: 0.5rem;\r\n    padding-bottom: 0.5rem;\r\n    top: 0rem;\r\n    opacity: 0;\r\n    transform: translate(100%);\r\n    transition: all .25s ease;\n}\n.ul li {\r\n    background: #fff;\r\n    list-style: none;\r\n    width: 2.5rem;\r\n    height: 2.5rem;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    opacity: .7;\r\n    transition: all .25s ease;\r\n    -webkit-backface-visibility: hidden;\r\n            backface-visibility: hidden;\n}\nul li:last-child {\r\n    border-radius: 0rem 0rem 0.75rem 0.75rem;\n}\n.ul li:first.child {\r\n\r\n    border-radius: 0.75rem 0.75rem 0rem 0rem;\n}\n.ul li:hover {\r\n    opacity: 1;\r\n    transform: translate(-0.43rem, -0.25rem);\r\n    border-radius: 0.375rem;\n}\n.ul li i {\r\n    font-size: 1.4rem;\r\n    color: #000;\n}\r\n", ""]);
 
 // exports
 

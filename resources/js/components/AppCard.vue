@@ -6,9 +6,6 @@
                 <i class='bx bx-drink'></i>
             </li>
             <li>
-                <i class='bx bx-film'></i>
-            </li>
-            <li>
                 <i class='bx bx-store-alt'></i>
             </li>
             <li>
@@ -17,9 +14,11 @@
         </ul>
         <img src="" alt="img-profilo">
         <div class="con-text">
-            <h2>
-
-            </h2>
+            <ul>
+                <li v-for="user in user.specialty">
+                    {{ user.first_name }}
+                </li>
+            </ul>
             <p>
 
                 <button>
@@ -37,6 +36,7 @@ export default {
 
     props: {
         user: Object,
+        specialty: Object
     },
 };
 </script>
@@ -87,18 +87,18 @@ export default {
     height: 0.93rem;
     position: absolute;
     background: Linear-gradient(18deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 6, 1) 100%);
-    z-index: 20;
+
     transition: all .25s ease;
 }
 
 .card img {
     height: 100%;
-    z-index: 18;
+
     transition: all .25s ease;
 }
 
 .card .con-text {
-    z-index: 30;
+
     position: absolute;
     bottom: 0rem;
     color: #fff;
@@ -144,7 +144,7 @@ export default {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    z-index: 40;
+
     border-radius: 0.875rem;
     padding-left: 0rem;
     padding-top: 0.5rem;
