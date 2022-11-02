@@ -435,6 +435,51 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/DoctorPage.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/DoctorPage.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
+/* harmony import */ var _BaseFooter_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../BaseFooter.vue */ "./resources/js/components/BaseFooter.vue");
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "DoctorPage",
+  components: {
+    BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    BaseFooter: _BaseFooter_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      user: null
+    };
+  },
+  methods: {
+    // Chiamata che preleva il singolo dottore
+    fetchDoctor: function fetchDoctor() {
+      var _this = this;
+      axios
+      // Bisogna sistemare l'url
+      .get("http://127.0.0.1:8000/api/users" + this.$route.params.id).then(function (res) {
+        _this.user = res.data.result;
+        console.log("User prelevato: " + _this.user);
+      })["catch"](function (err) {
+        console.log("User non prelevato, errore di chiamata.");
+      });
+    }
+  },
+  mounted: {
+    "this": fetchDoctor()
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/FeaturedDoctorsPage.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/FeaturedDoctorsPage.vue?vue&type=script&lang=js& ***!
@@ -612,7 +657,7 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "con-text"
-  }, [_c("h2"), _vm._v(" "), _c("p", [_c("button", [_vm._v("\n                see more\n            ")])])]);
+  }, [_c("h2"), _vm._v(" "), _c("p")]);
 }];
 render._withStripped = true;
 
@@ -1275,6 +1320,34 @@ render._withStripped = true;
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/DoctorPage.vue?vue&type=template&id=3ba5a564&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/DoctorPage.vue?vue&type=template&id=3ba5a564&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("section", {
+    attrs: {
+      id: "doctor-page"
+    }
+  }, [_c("BaseJumbotron"), _vm._v(" "), _c("div", {
+    staticClass: "container"
+  }, [_vm._v("\n        " + _vm._s(_vm.user.first_name + " " + _vm.user.last_name) + "\n    ")]), _vm._v(" "), _c("BaseFooter")], 1);
+};
+var staticRenderFns = [];
+render._withStripped = true;
+
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/FeaturedDoctorsPage.vue?vue&type=template&id=9292a1a2&scoped=true&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/FeaturedDoctorsPage.vue?vue&type=template&id=9292a1a2&scoped=true& ***!
@@ -1637,7 +1710,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card {\n    width: 18.75rem;\n    height: 25rem;\n    background: #000;\n    border-radius: 1.87rem;\n    overflow: hidden;\n    position: relative;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    cursor: pointer;\n    transition: all .25s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n}\n.card:hover {\n    transform: scale(.9);\n}\n.card:hover:after {\n    height: 1.75rem;\n}\n.card:hover .con-text p {\n    margin-bottom: 0.5rem;\n    opacity: 1;\n}\n.card:hover img {\n    transform: scale(1.25);\n}\n.card:hover .ul {\n    transform: translate(0);\n    opacity: 1;\n}\n.card:after {\n    width: 100%;\n    content: '';\n    left: 0.5rem;\n    bottom: 0rem;\n    height: 0.93rem;\n    position: absolute;\n    background: Linear-gradient(18deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 6, 1) 100%);\n    z-index: 20;\n    transition: all .25s ease;\n}\n.card img {\n    height: 100%;\n    z-index: 18;\n    transition: all .25s ease;\n}\n.card .con-text {\n    z-index: 30;\n    position: absolute;\n    bottom: 0rem;\n    color: #fff;\n    padding: 1.25rem;\n    padding-bottom: 1.87rem;\n}\n.card .con-text p {\n    font-size: .8rem;\n    Opacity: 0;\n    margin-bottom: -10.60rem;\n    transition: all .25s ease;\n    display: flex;\n    align-items: center;\n    justify-content: flex-end;\n    flex-direction: column;\n}\n.card .con-text p button {\n    padding: 0.43rem 1.06rem;\n    border-radius: 0.75rem;\n    background: transparent;\n    border: 0.125rem solid #fff;\n    color: #fff;\n    margin-top: 0.625rem;\n    margin-left: auto;\n    cursor: pointer;\n    transition: all .25s ease;\n\n    font-size: 0.75rem;\n    outline: none;\n}\n.card .con-text p button:hover {\n    background: #fff;\n    color: #000;\n}\n.ul {\n    position: absolute;\n    right: 0.625rem;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    z-index: 40;\n    border-radius: 0.875rem;\n    padding-left: 0rem;\n    padding-top: 0.5rem;\n    padding-bottom: 0.5rem;\n    top: 0rem;\n    opacity: 0;\n    transform: translate(100%);\n    transition: all .25s ease;\n}\n.ul li {\n    background: #fff;\n    list-style: none;\n    width: 2.5rem;\n    height: 2.5rem;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    opacity: .7;\n    transition: all .25s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n}\nul li:last-child {\n    border-radius: 0rem 0rem 0.75rem 0.75rem;\n}\n.ul li:first.child {\n\n    border-radius: 0.75rem 0.75rem 0rem 0rem;\n}\n.ul li:hover {\n    opacity: 1;\n    transform: translate(-0.43rem, -0.25rem);\n    border-radius: 0.375rem;\n}\n.ul li i {\n    font-size: 1.4rem;\n    color: #000;\n}\n", ""]);
+exports.push([module.i, "\n.card {\n    width: 18.75rem;\n    height: 25rem;\n    background: #000;\n    border-radius: 1.87rem;\n    overflow: hidden;\n    position: relative;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    cursor: pointer;\n    transition: all 0.25s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n}\n.card:hover {\n    transform: scale(0.9);\n}\n.card:hover:after {\n    height: 1.75rem;\n}\n.card:hover .con-text p {\n    margin-bottom: 0.5rem;\n    opacity: 1;\n}\n.card:hover img {\n    transform: scale(1.25);\n}\n.card:hover .ul {\n    transform: translate(0);\n    opacity: 1;\n}\n.card:after {\n    width: 100%;\n    content: \"\";\n    left: 0.5rem;\n    bottom: 0rem;\n    height: 0.93rem;\n    position: absolute;\n    background: Linear-gradient(\n        18deg,\n        rgba(0, 0, 0, 0) 0%,\n        rgba(0, 0, 6, 1) 100%\n    );\n    z-index: 20;\n    transition: all 0.25s ease;\n}\n.card img {\n    height: 100%;\n    z-index: 18;\n    transition: all 0.25s ease;\n}\n.card .con-text {\n    z-index: 30;\n    position: absolute;\n    bottom: 0rem;\n    color: #fff;\n    padding: 1.25rem;\n    padding-bottom: 1.87rem;\n}\n.card .con-text p {\n    font-size: 0.8rem;\n    opacity: 0;\n    margin-bottom: -10.6rem;\n    transition: all 0.25s ease;\n    display: flex;\n    align-items: center;\n    justify-content: flex-end;\n    flex-direction: column;\n}\n\n/* .card .con-text p button {\n    padding: 0.43rem 1.06rem;\n    border-radius: 0.75rem;\n    background: transparent;\n    border: 0.125rem solid #fff;\n    color: #fff;\n    margin-top: 0.625rem;\n    margin-left: auto;\n    cursor: pointer;\n    transition: all .25s ease;\n\n    font-size: 0.75rem;\n    outline: none;\n} */\n.card .con-text p .my_card {\n    padding: 0.43rem 1.06rem;\n    border-radius: 0.75rem;\n    background: transparent;\n    border: 0.125rem solid #fff;\n    color: #fff;\n    margin-top: 0.625rem;\n    margin-left: auto;\n    cursor: pointer;\n    transition: all 0.25s ease;\n\n    font-size: 0.75rem;\n    outline: none;\n}\n.card .con-text p button:hover {\n    background: #fff;\n    color: #000;\n}\n.ul {\n    position: absolute;\n    right: 0.625rem;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    z-index: 40;\n    border-radius: 0.875rem;\n    padding-left: 0rem;\n    padding-top: 0.5rem;\n    padding-bottom: 0.5rem;\n    top: 0rem;\n    opacity: 0;\n    transform: translate(100%);\n    transition: all 0.25s ease;\n}\n.ul li {\n    background: #fff;\n    list-style: none;\n    width: 2.5rem;\n    height: 2.5rem;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    opacity: 0.7;\n    transition: all 0.25s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n}\nul li:last-child {\n    border-radius: 0rem 0rem 0.75rem 0.75rem;\n}\n.ul li:first.child {\n    border-radius: 0.75rem 0.75rem 0rem 0rem;\n}\n.ul li:hover {\n    opacity: 1;\n    transform: translate(-0.43rem, -0.25rem);\n    border-radius: 0.375rem;\n}\n.ul li i {\n    font-size: 1.4rem;\n    color: #000;\n}\n", ""]);
 
 // exports
 
@@ -19061,6 +19134,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/pages/DoctorPage.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/pages/DoctorPage.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DoctorPage_vue_vue_type_template_id_3ba5a564_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DoctorPage.vue?vue&type=template&id=3ba5a564&scoped=true& */ "./resources/js/components/pages/DoctorPage.vue?vue&type=template&id=3ba5a564&scoped=true&");
+/* harmony import */ var _DoctorPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DoctorPage.vue?vue&type=script&lang=js& */ "./resources/js/components/pages/DoctorPage.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DoctorPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DoctorPage_vue_vue_type_template_id_3ba5a564_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DoctorPage_vue_vue_type_template_id_3ba5a564_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "3ba5a564",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/pages/DoctorPage.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/DoctorPage.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/pages/DoctorPage.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DoctorPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DoctorPage.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/DoctorPage.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DoctorPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/DoctorPage.vue?vue&type=template&id=3ba5a564&scoped=true&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/pages/DoctorPage.vue?vue&type=template&id=3ba5a564&scoped=true& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_DoctorPage_vue_vue_type_template_id_3ba5a564_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../../node_modules/vue-loader/lib??vue-loader-options!./DoctorPage.vue?vue&type=template&id=3ba5a564&scoped=true& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/DoctorPage.vue?vue&type=template&id=3ba5a564&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_DoctorPage_vue_vue_type_template_id_3ba5a564_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_DoctorPage_vue_vue_type_template_id_3ba5a564_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/pages/FeaturedDoctorsPage.vue":
 /*!***************************************************************!*\
   !*** ./resources/js/components/pages/FeaturedDoctorsPage.vue ***!
@@ -19299,15 +19441,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _components_pages_AdvancedSearch_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/pages/AdvancedSearch.vue */ "./resources/js/components/pages/AdvancedSearch.vue");
-/* harmony import */ var _components_pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/pages/HomePage.vue */ "./resources/js/components/pages/HomePage.vue");
-/* harmony import */ var _components_pages_NotFoundPage_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/pages/NotFoundPage.vue */ "./resources/js/components/pages/NotFoundPage.vue");
-/* harmony import */ var _components_pages_FeaturedDoctorsPage_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/pages/FeaturedDoctorsPage.vue */ "./resources/js/components/pages/FeaturedDoctorsPage.vue");
+/* harmony import */ var _components_pages_DoctorPage_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/pages/DoctorPage.vue */ "./resources/js/components/pages/DoctorPage.vue");
+/* harmony import */ var _components_pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/pages/HomePage.vue */ "./resources/js/components/pages/HomePage.vue");
+/* harmony import */ var _components_pages_NotFoundPage_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/pages/NotFoundPage.vue */ "./resources/js/components/pages/NotFoundPage.vue");
+/* harmony import */ var _components_pages_FeaturedDoctorsPage_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/FeaturedDoctorsPage.vue */ "./resources/js/components/pages/FeaturedDoctorsPage.vue");
 // Importiamo Vue e VueRouter
 
 
 
 
 // Importiamo tutti i componenti pages
+
 
 
 
@@ -19328,22 +19472,26 @@ var routes = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   // Oggetto contenente tutte le rotte
   routes: [{
     path: "/",
-    component: _components_pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    component: _components_pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: "home"
   }, {
     path: "/all-featured-doctors",
-    component: _components_pages_FeaturedDoctorsPage_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    component: _components_pages_FeaturedDoctorsPage_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
     name: "all-featured-doctors"
   }, {
     path: "/advanced-search",
     component: _components_pages_AdvancedSearch_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     name: "advanced-search"
+  }, {
+    path: "/doctors/doctor/:id",
+    components: _components_pages_DoctorPage_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    name: "/doctors/doctor"
   },
   // ! Rotta da mettere sempre dopo le altre
 
   {
     path: "*",
-    component: _components_pages_NotFoundPage_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    component: _components_pages_NotFoundPage_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
     name: "not_found"
   }]
 });

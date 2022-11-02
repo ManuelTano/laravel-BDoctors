@@ -29,7 +29,7 @@ export default {
                 // Bisogna sistemare l'url
                 .get("http://127.0.0.1:8000/api/users" + this.$route.params.id)
                 .then((res) => {
-                    this.user = res.data.user;
+                    this.user = res.data.result;
                     console.log("User prelevato: " + this.user);
                 })
                 .catch((err) => {

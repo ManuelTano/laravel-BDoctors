@@ -3,32 +3,29 @@
         <ul class="ul">
             <li>
                 {{ user.first_name }}
-                <i class='bx bx-drink'></i>
+                <i class="bx bx-drink"></i>
             </li>
             <li>
-                <i class='bx bx-film'></i>
+                <i class="bx bx-film"></i>
             </li>
             <li>
-                <i class='bx bx-store-alt'></i>
+                <i class="bx bx-store-alt"></i>
             </li>
             <li>
-                <i class='bx bx-map'></i>
+                <i class="bx bx-map"></i>
             </li>
         </ul>
-        <img src="" alt="img-profilo">
+        <img src="" alt="img-profilo" />
         <div class="con-text">
-            <h2>
-
-            </h2>
+            <h2></h2>
             <p>
-
-                <button>
-                    see more
-                </button>
+                <!-- <router-link
+                    class="my_card"
+                    :to="{ name: '/doctors/doctor', params: { id: user.id } }"
+                ></router-link> -->
             </p>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -53,12 +50,12 @@ export default {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all .25s ease;
+    transition: all 0.25s ease;
     backface-visibility: hidden;
 }
 
 .card:hover {
-    transform: scale(.9);
+    transform: scale(0.9);
 }
 
 .card:hover:after {
@@ -81,20 +78,24 @@ export default {
 
 .card:after {
     width: 100%;
-    content: '';
+    content: "";
     left: 0.5rem;
     bottom: 0rem;
     height: 0.93rem;
     position: absolute;
-    background: Linear-gradient(18deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 6, 1) 100%);
+    background: Linear-gradient(
+        18deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 6, 1) 100%
+    );
     z-index: 20;
-    transition: all .25s ease;
+    transition: all 0.25s ease;
 }
 
 .card img {
     height: 100%;
     z-index: 18;
-    transition: all .25s ease;
+    transition: all 0.25s ease;
 }
 
 .card .con-text {
@@ -107,17 +108,17 @@ export default {
 }
 
 .card .con-text p {
-    font-size: .8rem;
-    Opacity: 0;
-    margin-bottom: -10.60rem;
-    transition: all .25s ease;
+    font-size: 0.8rem;
+    opacity: 0;
+    margin-bottom: -10.6rem;
+    transition: all 0.25s ease;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     flex-direction: column;
 }
 
-.card .con-text p button {
+/* .card .con-text p button {
     padding: 0.43rem 1.06rem;
     border-radius: 0.75rem;
     background: transparent;
@@ -127,6 +128,21 @@ export default {
     margin-left: auto;
     cursor: pointer;
     transition: all .25s ease;
+
+    font-size: 0.75rem;
+    outline: none;
+} */
+
+.card .con-text p .my_card {
+    padding: 0.43rem 1.06rem;
+    border-radius: 0.75rem;
+    background: transparent;
+    border: 0.125rem solid #fff;
+    color: #fff;
+    margin-top: 0.625rem;
+    margin-left: auto;
+    cursor: pointer;
+    transition: all 0.25s ease;
 
     font-size: 0.75rem;
     outline: none;
@@ -152,7 +168,7 @@ export default {
     top: 0rem;
     opacity: 0;
     transform: translate(100%);
-    transition: all .25s ease;
+    transition: all 0.25s ease;
 }
 
 .ul li {
@@ -163,8 +179,8 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: .7;
-    transition: all .25s ease;
+    opacity: 0.7;
+    transition: all 0.25s ease;
     backface-visibility: hidden;
 }
 
@@ -173,7 +189,6 @@ ul li:last-child {
 }
 
 .ul li:first.child {
-
     border-radius: 0.75rem 0.75rem 0rem 0rem;
 }
 
