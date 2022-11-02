@@ -4,18 +4,15 @@
         <div class="container">
             {{ user[0].first_name + " " + user[0].last_name }}
         </div>
-        <BaseFooter />
     </section>
 </template>
 
 <script>
 import BaseJumbotron from "../BaseJumbotron.vue";
-import BaseFooter from "../BaseFooter.vue";
 export default {
     name: "DoctorPage",
     components: {
         BaseJumbotron,
-        BaseFooter,
     },
     data() {
         return {

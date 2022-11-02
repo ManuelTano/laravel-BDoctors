@@ -1,25 +1,41 @@
 <template>
     <section id="advanced-search">
         <BaseJumbotron />
-        <DoctorsBySpecialty />
-        <BaseFooter />
+        <AppMain :users="users" />
     </section>
 </template>
 <script>
-import DoctorsBySpecialty from "../DoctorsBySpecialty.vue";
-import BaseFooter from "../BaseFooter.vue";
-import ReviewForm from "../ReviewForm.vue";
+import AppMain from "../AppMain.vue";
 import BaseJumbotron from "../BaseJumbotron.vue";
 export default {
     name: "AdvancedSearch",
     components: {
         BaseJumbotron,
-        ReviewForm,
-        BaseFooter,
-        DoctorsBySpecialty,
+        AppMain,
     },
     data() {
-        return {};
+        return {
+            users: [],
+            query: this.$route.params.query,
+        };
+    },
+    methods: {
+        // fetchDoctorsBySpecialty() {
+        //     axios
+        //         .get("http://127.0.0.1:8000/api/users")
+        //         .then((res) => {
+        //             this.users = res.data;
+        //             console.log("chiamata fatta");
+        //             console.log(res.data);
+        //             console.log(this.query);
+        //         })
+        //         .catch((err) => {
+        //             console.log("Errorrrrrr");
+        //         });
+        // },
+    },
+    mounted() {
+        // this.fetchDoctorsBySpecialty();
     },
 };
 </script>

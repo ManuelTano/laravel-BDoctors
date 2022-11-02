@@ -17,10 +17,5 @@ export default {
     props: {
         users: Array,
     },
-    methods: {
-        // emitSearch(search) {
-        //     this.$emit("my-search", search);
-        // },
-    },
 };
 </script>

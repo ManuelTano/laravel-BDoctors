@@ -12,14 +12,7 @@
                 v-for="specialty in specialties"
                 :key="specialty.id"
             >
-                <router-link
-                    :to="{
-                        name: 'advanced-search',
-                        params: { query: specialty.id },
-                    }"
-                >
-                    {{ specialty.label }}
-                </router-link>
+                {{ specialty.label }}
             </option>
         </select>
     </div>

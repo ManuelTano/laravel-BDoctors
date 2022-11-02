@@ -5,7 +5,6 @@ import VueRouter from "vue-router";
 
 // Importiamo tutti i componenti pages
 
-import DoctorsBySpecialty from "./components/DoctorsBySpecialty.vue";
 import AdvancedSearch from "./components/pages/AdvancedSearch.vue";
 import DoctorPage from "./components/pages/DoctorPage.vue";
 import HomePage from "./components/pages/HomePage.vue";
@@ -44,8 +43,8 @@ const routes = new VueRouter({
             name: "doctors-doctor",
         },
         {
-            path: "/doctors-by-specialty/:query",
-            component: DoctorsBySpecialty,
+            path: "/doctors-by-specialty",
+            component: AdvancedSearch,
             name: "doctors-by-specialty",
         },
 

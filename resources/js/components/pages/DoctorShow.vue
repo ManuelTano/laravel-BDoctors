@@ -1,6 +1,6 @@
 <template>
     <section id="doctorshow">
-        <BaseJumbotron
+        <!-- <BaseJumbotron
             class="d-flex align-items-center justify-content-between"
         >
             <div class="container">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-        </BaseJumbotron>
+        </BaseJumbotron> -->
     </section>
 </template>
 
