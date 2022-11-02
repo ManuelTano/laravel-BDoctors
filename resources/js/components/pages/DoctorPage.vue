@@ -2,7 +2,7 @@
     <section id="doctor-page">
         <BaseJumbotron />
         <div class="container">
-            <!-- {{ user.first_name + " " + user.last_name }} -->
+            {{ user[0].first_name + " " + user[0].last_name }}
         </div>
         <BaseFooter />
     </section>
@@ -25,21 +25,23 @@ export default {
     methods: {
         // Chiamata che preleva il singolo dottore
         fetchDoctor() {
-            console.log("faccio la chiamata");
             axios
                 // Bisogna sistemare l'url
-                .get("http://127.0.0.1:8000/api/users", this.$route.params.user)
+                .get(
+                    "http://127.0.0.1:8000/api/users/" + this.$route.params.user
+                )
                 .then((res) => {
                     this.user = res.data.result;
-                    console.log(res);
+                    console.log("faccio la chiamata");
+                    console.log(res.data.result);
                 })
                 .catch((err) => {
                     console.log("User non prelevato, errore di chiamata.");
                 });
         },
     },
-    mounted: {
-        thisfetchDoctor();
+    mounted() {
+        this.fetchDoctor();
     },
 };
 </script>
