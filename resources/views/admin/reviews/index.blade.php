@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container d-flex flex-column align-items-center">
-        <h1 class="mt-4">Le tue recensioni</h1>
+        <h1 class="mt-4"><strong>Le tue recensioni</strong></h1>
         @foreach ($reviews as $review)
             @if ($review->user->id == Auth::id())
                 <div class="card col-11 mt-5">

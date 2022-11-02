@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class=" align-items-center">
-                <h1 class="my-4">I nostri piani d'acquisto</h1>
+                <h1 class="my-4"><strong>I nostri piani d'acquisto</strong></h1>
             </div>
         </div>
         <div class="row justify-content-between my-5">
