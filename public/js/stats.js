@@ -81,75 +81,52 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/edit_profile_form.js":
-/*!*******************************************!*\
-  !*** ./resources/js/edit_profile_form.js ***!
-  \*******************************************/
+/***/ "./resources/js/stats.js":
+/*!*******************************!*\
+  !*** ./resources/js/stats.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// Intercettiamo tramite l'id il form per editare i dettagli del medico
-var submitEditProfileForm = document.getElementById("submit-edit-profile");
-
-// Intercettiamo tramite l'id il form per editare le credenziali del medico
-var submitEditCredentialsForm = document.getElementById("submit-edit-credentials");
-
-// Prendiamo il tag password e palliniamolo
-var password = document.getElementById("password");
-password.type = "password";
-
-// Definiamo l'addEventListener al submit del form di editing del profilo
-submitEditProfileForm.addEventListener("submit", function (event) {
-  // Intercettiamo il submit del form
-  event.preventDefault();
-
-  // Verifichiamo che il medico confermi le modifiche
-  var hasConfirmed = confirm("Sei sicuro di voler modificare le tue informazioni personali?");
-
-  // Dovesse con fermare inviamo il form
-  if (hasConfirmed) submitEditProfileForm.submit();
-});
-
-// Definiamo l'addEventListener al submit del form di editing delle credenziali del medico
-submitEditCredentialsForm.addEventListener("submit", function (event) {
-  // Intercettiamo il submit del form
-  event.preventDefault();
-
-  // Verifichiamo che il medico confermi le modifiche
-  var hasConfirmed = confirm("Sei sicuro di voler modificare le tue credenziali?");
-
-  // Dovesse con fermare inviamo il form
-  if (hasConfirmed) submitEditCredentialsForm.submit();
-});
-var preview = document.getElementById("image");
-var imageField = document.getElementById("thumb");
-if (imageField !== null) {
-  imageField.addEventListener("input", function () {
-    if (imageField.files && imageField.files[0]) {
-      var reader = new FileReader();
-      reader.readAsDataURL(imageField.files[0]);
-      reader.onload = function (event) {
-        preview.src = event.target.result;
-      };
+var stats = document.getElementById('myCanvas');
+var myLabels = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
+var myData = [555, 555, 555, 555, 555, 555, 444, 444, 444, 444, 444, 444];
+var chart = new Chart(myCanvas, {
+  type: 'bar',
+  data: {
+    labels: myLabels,
+    datasets: [{
+      label: "Messaggi",
+      data: myData,
+      backgroundColor: 'red'
+    }]
+  },
+  options: {},
+  methods: {
+    fetchUsersByInput: function fetchUsersByInput(search) {
+      var _this = this;
+      axios.get("http://127.0.0.1:8000/api/users/").then(function (res) {
+        _this.users = res.data.users;
+      });
     }
-  });
-}
+  }
+});
 
 /***/ }),
 
-/***/ 3:
-/*!*************************************************!*\
-  !*** multi ./resources/js/edit_profile_form.js ***!
-  \*************************************************/
+/***/ 2:
+/*!*************************************!*\
+  !*** multi ./resources/js/stats.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\tmanu\Desktop\laravel-BDoctors\resources\js\edit_profile_form.js */"./resources/js/edit_profile_form.js");
+module.exports = __webpack_require__(/*! C:\Users\tmanu\Desktop\laravel-BDoctors\resources\js\stats.js */"./resources/js/stats.js");
 
 
 /***/ })

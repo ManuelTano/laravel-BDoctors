@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -736,7 +736,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "row justify-content-center"
   }, [_c("div", {
-    staticClass: "col-6"
+    staticClass: "col-6 text-center"
   }, [_c("h2", [_vm._v("BDoctors: al servizio della tua salute")])])]), _vm._v(" "), _c("div", {
     staticClass: "row justify-content-between mt-5"
   }, [_c("div", {
@@ -19351,7 +19351,7 @@ var routes = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!**************************************!*\
   !*** multi ./resources/js/router.js ***!
   \**************************************/
