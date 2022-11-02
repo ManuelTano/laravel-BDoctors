@@ -2249,7 +2249,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       users: [],
       specialties: [],
-      query: ""
+      choice: ""
     };
   },
   methods: {
@@ -2259,13 +2259,36 @@ __webpack_require__.r(__webpack_exports__);
         _this.specialties = res.data.specialties;
       });
     },
-    //
+    // Filtro dei dottori per recensioni
     fetchDoctorsBySpecialties: function fetchDoctorsBySpecialties(choice) {
       var _this2 = this;
+      this.choice = choice;
       axios.get("http://127.0.0.1:8000/api/users/specialty/" + choice).then(function (res) {
         _this2.users = res.data.users_by_specialty;
         console.log(res.data.users_by_specialty);
       });
+    },
+    // Metodo che filtra ulteriormente le ricerche dei medici in funzione
+    // della specializzazione in base alla media voti
+    filterByAVG: function filterByAVG() {
+      var _this3 = this;
+      if (this.choice !== "") {
+        axios.get("http://127.0.0.1:8000/api/users-raffinate-by-rating/" + this.choice).then(function (res) {
+          _this3.users = res.data.raffinate_users;
+          console.log(res.data.raffinate_users);
+        });
+      }
+    },
+    // Metodo che filtra ulteriormente le ricerche dei medici in funzione
+    // della specializzazione in base al numero di recensioni
+    filterByReviews: function filterByReviews() {
+      var _this4 = this;
+      if (this.choice !== "") {
+        axios.get("http://127.0.0.1:8000/api/users-raffinate-by-review/" + this.choice).then(function (res) {
+          _this4.users = res.data.raffinate_users;
+          console.log(res.data.raffinate_users);
+        });
+      }
     }
   },
   mounted: function mounted() {
@@ -2925,7 +2948,21 @@ var render = function render() {
     on: {
       "doctors-for-specialty": _vm.fetchDoctorsBySpecialties
     }
-  })], 1)])])]), _vm._v(" "), _vm.users.length ? _c("AppMain", {
+  })], 1)])])]), _vm._v(" "), _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center justify-content-center my-5"
+  }, [_c("button", {
+    staticClass: "btn btn-primary mr-3",
+    on: {
+      click: _vm.filterByAVG
+    }
+  }, [_vm._v("\n                Filtra per voti\n            ")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-primary",
+    on: {
+      click: _vm.filterByReviews
+    }
+  }, [_vm._v("\n                Filtra per recensioni\n            ")])])]), _vm._v(" "), _vm.users.length ? _c("AppMain", {
     attrs: {
       users: _vm.users
     }

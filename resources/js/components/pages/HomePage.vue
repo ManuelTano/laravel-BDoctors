@@ -1,5 +1,6 @@
 <template>
     <section id="homepage">
+        <!-- Jumbotron -->
         <BaseJumbotron
             class="d-flex align-items-center justify-content-between"
         >
@@ -23,7 +24,23 @@
                 </div>
             </div>
         </BaseJumbotron>
+
+        <!-- Additional filter -->
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-center my-5">
+                <button class="btn btn-primary mr-3" @click="filterByAVG">
+                    Filtra per voti
+                </button>
+                <button class="btn btn-primary" @click="filterByReviews">
+                    Filtra per recensioni
+                </button>
+            </div>
+        </div>
+
+        <!-- Main section: doctor card -->
         <AppMain :users="users" v-if="users.length" />
+
+        <!-- Statistics card -->
         <BaseCard />
         <svg
             id="wave"
@@ -72,7 +89,7 @@ export default {
         return {
             users: [],
             specialties: [],
-            query: "",
+            choice: "",
         };
     },
     methods: {
@@ -82,14 +99,47 @@ export default {
             });
         },
 
-        //
+        // Filtro dei dottori per recensioni
         fetchDoctorsBySpecialties(choice) {
+            this.choice = choice;
             axios
                 .get("http://127.0.0.1:8000/api/users/specialty/" + choice)
                 .then((res) => {
                     this.users = res.data.users_by_specialty;
                     console.log(res.data.users_by_specialty);
                 });
+        },
+
+        // Metodo che filtra ulteriormente le ricerche dei medici in funzione
+        // della specializzazione in base alla media voti
+        filterByAVG() {
+            if (this.choice !== "") {
+                axios
+                    .get(
+                        "http://127.0.0.1:8000/api/users-raffinate-by-rating/" +
+                            this.choice
+                    )
+                    .then((res) => {
+                        this.users = res.data.raffinate_users;
+                        console.log(res.data.raffinate_users);
+                    });
+            }
+        },
+
+        // Metodo che filtra ulteriormente le ricerche dei medici in funzione
+        // della specializzazione in base al numero di recensioni
+        filterByReviews() {
+            if (this.choice !== "") {
+                axios
+                    .get(
+                        "http://127.0.0.1:8000/api/users-raffinate-by-review/" +
+                            this.choice
+                    )
+                    .then((res) => {
+                        this.users = res.data.raffinate_users;
+                        console.log(res.data.raffinate_users);
+                    });
+            }
         },
     },
     mounted() {

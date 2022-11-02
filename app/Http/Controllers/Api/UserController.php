@@ -75,6 +75,48 @@ class UserController extends Controller
         return response()->json(compact('users_by_more_reviews'));
     }
 
+    // # Metodo che RAFFINA il filtro dei dottori in base al numero di recensioni
+
+    public function raffinateFilterByMoreReviews($query){
+        $users_by_more_reviews = User::with('specialties')
+        ->join('reviews','reviews.user_id','=','users.id')
+        ->select('users.*',DB::raw('COUNT(reviews.user_id) as numero_recensioni'))
+        ->orderBy('numero_recensioni','DESC')
+        ->groupBy('reviews.user_id')
+        ->get();
+
+        $raffinate_users = [];
+
+        foreach($users_by_more_reviews as $user){
+            foreach($user->specialties as $specialty){
+                if($specialty->id == $query) $raffinate_users[] = $user;
+            }
+        }
+
+        return response()->json(compact('raffinate_users'));
+    }
+
+     // # Metodo che RAFFINA il filtro dei dottori in base alla media voto
+
+     public function raffinateFilterByBestRating($query){
+        $users_by_best_rating = User::with('specialties')
+        ->join('reviews','reviews.user_id','=','users.id')
+        ->select('users.*',DB::raw('AVG(reviews.rating) as media'))
+        ->orderBy('media','DESC')
+        ->groupBy('users.id')
+        ->get();
+
+        $raffinate_users = [];
+
+        foreach($users_by_best_rating as $user){
+            foreach($user->specialties as $specialty){
+                if($specialty->id == $query) $raffinate_users[] = $user;
+            }
+        }
+
+        return response()->json(compact('raffinate_users'));
+    }
+
     // Metodo che filtra i dottori in base al rating
 
     public function filterByBestRating(){
