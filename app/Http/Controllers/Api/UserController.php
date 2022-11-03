@@ -52,7 +52,11 @@ class UserController extends Controller
     }
 
     public function filterBySpecialty($query){
-        $users = User::with('specialties','userDetail')->get();
+        $users = User::with('specialties','userDetail')
+        ->join('reviews','reviews.user_id','=','users.id')
+        ->select('users.*',DB::raw('round(AVG(reviews.rating)) as media'),DB::raw('COUNT(reviews.user_id) as numero_recensioni'))
+        ->groupBy('reviews.user_id')
+        ->get();
 
         $users_by_specialty = [];
 

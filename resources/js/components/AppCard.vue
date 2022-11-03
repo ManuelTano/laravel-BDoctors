@@ -1,30 +1,39 @@
 <template>
-    <div class="card m-4 mx-4 col-3">
-        <ul class="ul">
-            <li>
-                {{ user.first_name }}
-                <i class="bx bx-drink"></i>
-            </li>
-            <li>
-                <i class="bx bx-film"></i>
-            </li>
-            <li>
-                <i class="bx bx-store-alt"></i>
-            </li>
-            <li>
-                <i class="bx bx-map"></i>
-            </li>
-        </ul>
-        <img :src="user.user_detail.thumb" :alt="user.user_detail.thumb" />
-        <div class="con-text">
-            <h2></h2>
-            <p>
-                <router-link
-                    class="my_card"
-                    :to="{ name: 'doctors-doctor', params: { user: user.id } }"
-                    >Visita il profilo</router-link
-                >
-            </p>
+    <div>
+        <div class="card m-4 mx-4 col-3">
+            <ul class="ul">
+                <li>
+                    {{ user.first_name }}
+                    <i class="bx bx-drink"></i>
+                </li>
+                <li>
+                    <i class="bx bx-film"></i>
+                </li>
+                <li>
+                    <i class="bx bx-store-alt"></i>
+                </li>
+                <li>
+                    <i class="bx bx-map"></i>
+                </li>
+            </ul>
+            <img :src="user.user_detail.thumb" :alt="user.user_detail.thumb" />
+            <div class="con-text">
+                <h2></h2>
+                <p>
+                    <router-link
+                        class="my_card"
+                        :to="{
+                            name: 'doctors-doctor',
+                            params: { user: user.id },
+                        }"
+                        >Visita il profilo</router-link
+                    >
+                </p>
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <div>{{ user.media }}</div>
+            <div>{{ user.numero_recensioni }}</div>
         </div>
     </div>
 </template>

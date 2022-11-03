@@ -2490,10 +2490,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AppMain_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../AppMain.vue */ "./resources/js/components/AppMain.vue");
-/* harmony import */ var _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../BaseSelect.vue */ "./resources/js/components/BaseSelect.vue");
-/* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
-/* harmony import */ var _DoctorsView_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../DoctorsView.vue */ "./resources/js/components/DoctorsView.vue");
-/* harmony import */ var _BaseCard_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../BaseCard.vue */ "./resources/js/components/BaseCard.vue");
+/* harmony import */ var _AppAlert_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../AppAlert.vue */ "./resources/js/components/AppAlert.vue");
+/* harmony import */ var _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BaseSelect.vue */ "./resources/js/components/BaseSelect.vue");
+/* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
+/* harmony import */ var _DoctorsView_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../DoctorsView.vue */ "./resources/js/components/DoctorsView.vue");
+/* harmony import */ var _BaseCard_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../BaseCard.vue */ "./resources/js/components/BaseCard.vue");
+
 
 
 
@@ -2502,42 +2504,91 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomePage",
   components: {
-    BaseSelect: _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    DoctorsView: _DoctorsView_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    BaseCard: _BaseCard_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    AppMain: _AppMain_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    BaseSelect: _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    DoctorsView: _DoctorsView_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    BaseCard: _BaseCard_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    AppMain: _AppMain_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    AppAlert: _AppAlert_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
       users: [],
       specialties: [],
-      choice: ""
+      choice: "",
+      form: {
+        rating: null,
+        number_review: null
+      },
+      alertMessage: "",
+      errors: {}
     };
   },
+  computed: {
+    // Controlla continuamente se ci sono errori o meno al fine di mostrare gli errori
+    hasErrors: function hasErrors() {
+      return Object.keys(this.errors).length;
+    }
+  },
   methods: {
-    fetchSpecialties: function fetchSpecialties() {
+    validateForm: function validateForm() {
+      var errors = {};
+
+      // Controllo se c'è il cognome
+      if (!this.form.rating) errors.rating = "Il rating è obbligatorio";
+
+      // Controllo se c'è il feedback
+      if (!this.form.number_review) errors.number_review = "Il numero minimo di recensioni è obbligatorio";
+
+      // Assegnamo l'oggetto errors
+      this.errors = errors;
+    },
+    // Metodo invocato per effettuare il submit del form
+    submitForm: function submitForm() {
+      // Svuotiamo l'oggetto errors per ripopolarlo nel caso di errori
+      this.errors = {};
+
+      // Lanciamo la validazione lato Vue
+      this.validateForm();
+
+      // Se non ho errori mando il form
+      if (!this.hasErrors) this.raffinateDoctors();
+    },
+    raffinateDoctors: function raffinateDoctors() {
       var _this = this;
+      var raffinate = this.users.filter(function (user) {
+        if (user.media == _this.form.rating && user.numero_recensioni >= parseInt(_this.form.number_review)) return user;
+      });
+      if (raffinate.length !== 0) this.users = raffinate;
+      this.form.number_review = "";
+      this.form.rating = "";
+    },
+    resetErrorsAndMessage: function resetErrorsAndMessage() {
+      this.errors = {};
+      this.alertMessage = null;
+    },
+    fetchSpecialties: function fetchSpecialties() {
+      var _this2 = this;
       axios.get("http://127.0.0.1:8000/api/specialties").then(function (res) {
-        _this.specialties = res.data.specialties;
+        _this2.specialties = res.data.specialties;
       });
     },
     // Filtro dei dottori per recensioni
     fetchDoctorsBySpecialties: function fetchDoctorsBySpecialties(choice) {
-      var _this2 = this;
+      var _this3 = this;
       this.choice = choice;
       axios.get("http://127.0.0.1:8000/api/users/specialty/" + choice).then(function (res) {
-        _this2.users = res.data.users_by_specialty;
+        _this3.users = res.data.users_by_specialty;
         console.log(res.data.users_by_specialty);
       });
     },
     // Metodo che filtra ulteriormente le ricerche dei medici in funzione
     // della specializzazione in base alla media voti
     filterByAVG: function filterByAVG() {
-      var _this3 = this;
+      var _this4 = this;
       if (this.choice !== "") {
         axios.get("http://127.0.0.1:8000/api/users-raffinate-by-rating/" + this.choice).then(function (res) {
-          _this3.users = res.data.raffinate_users;
+          _this4.users = res.data.raffinate_users;
           console.log(res.data.raffinate_users);
         });
       }
@@ -2545,10 +2596,10 @@ __webpack_require__.r(__webpack_exports__);
     // Metodo che filtra ulteriormente le ricerche dei medici in funzione
     // della specializzazione in base al numero di recensioni
     filterByReviews: function filterByReviews() {
-      var _this4 = this;
+      var _this5 = this;
       if (this.choice !== "") {
         axios.get("http://127.0.0.1:8000/api/users-raffinate-by-review/" + this.choice).then(function (res) {
-          _this4.users = res.data.raffinate_users;
+          _this5.users = res.data.raffinate_users;
           console.log(res.data.raffinate_users);
         });
       }
@@ -2649,11 +2700,11 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
+  return _c("div", [_c("div", {
     staticClass: "card m-4 mx-4 col-3"
   }, [_c("ul", {
     staticClass: "ul"
-  }, [_c("li", [_vm._v("\n            " + _vm._s(_vm.user.first_name) + "\n            "), _c("i", {
+  }, [_c("li", [_vm._v("\n                " + _vm._s(_vm.user.first_name) + "\n                "), _c("i", {
     staticClass: "bx bx-drink"
   })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c("img", {
     attrs: {
@@ -2672,7 +2723,9 @@ var render = function render() {
         }
       }
     }
-  }, [_vm._v("Visita il profilo")])], 1)])]);
+  }, [_vm._v("Visita il profilo")])], 1)])]), _vm._v(" "), _c("div", {
+    staticClass: "card-footer d-flex justify-content-between"
+  }, [_c("div", [_vm._v(_vm._s(_vm.user.media))]), _vm._v(" "), _c("div", [_vm._v(_vm._s(_vm.user.numero_recensioni))])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -3748,19 +3801,92 @@ var render = function render() {
     staticClass: "container"
   }, [_c("h3", {
     staticClass: "text-center my-5"
-  }, [_vm._v("Raffina i tuoi risultati")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center justify-content-center"
-  }, [_c("button", {
-    staticClass: "btn btn-primary mr-3",
+  }, [_vm._v("Raffina i tuoi risultati")]), _vm._v(" "), _c("div", [_c("form", {
+    staticClass: "row",
+    attrs: {
+      novalidate: ""
+    },
     on: {
-      click: _vm.filterByAVG
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.submitForm.apply(null, arguments);
+      }
     }
-  }, [_vm._v("\n                Filtra per voti\n            ")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-warning",
+  }, [_c("div", {
+    staticClass: "col-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": "rating"
+    }
+  }, [_vm._v("Rating")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.rating,
+      expression: "form.rating"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      id: "rating"
+    },
     on: {
-      click: _vm.filterByReviews
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.form, "rating", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
     }
-  }, [_vm._v("\n                Filtra per recensioni\n            ")])])]) : _vm._e(), _vm._v(" "), _vm.users.length ? _c("AppMain", {
+  }, [_c("option", [_vm._v("1")]), _vm._v(" "), _c("option", [_vm._v("2")]), _vm._v(" "), _c("option", [_vm._v("3")]), _vm._v(" "), _c("option", [_vm._v("4")]), _vm._v(" "), _c("option", [_vm._v("5")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": "number_review"
+    }
+  }, [_vm._v("Seleziona il minimo numero di recensioni")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model.trim",
+      value: _vm.form.number_review,
+      expression: "form.number_review",
+      modifiers: {
+        trim: true
+      }
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "number_review",
+      required: ""
+    },
+    domProps: {
+      value: _vm.form.number_review
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "number_review", $event.target.value.trim());
+      },
+      blur: function blur($event) {
+        return _vm.$forceUpdate();
+      }
+    }
+  })])]), _vm._v(" "), _vm._m(0)])])]) : _vm._e(), _vm._v(" "), _vm.alertMessage || _vm.hasErrors ? _c("AppAlert", {
+    attrs: {
+      type: _vm.hasErrors ? "alert-danger" : "alert-success"
+    }
+  }, [_vm.alertMessage ? _c("div", [_vm._v(_vm._s(_vm.alertMessage))]) : _vm._e(), _vm._v(" "), _vm.hasErrors ? _c("div", [_c("ul", _vm._l(_vm.errors, function (error, key) {
+    return _c("li", {
+      key: key
+    }, [_vm._v("\n                    " + _vm._s(error) + "\n                ")]);
+  }), 0)]) : _vm._e()]) : _vm._e(), _vm._v(" "), _vm.users.length ? _c("AppMain", {
     attrs: {
       users: _vm.users
     }
@@ -3804,7 +3930,20 @@ var render = function render() {
     }
   })])], 1);
 };
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("button", {
+    staticClass: "btn btn-success",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("\n                            Filtra\n                        ")])])]);
+}];
 render._withStripped = true;
 
 
@@ -8402,7 +8541,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "ul[data-v-317790a4] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  list-style-type: none;\n  margin: 50px 0;\n}\nul li[data-v-317790a4] {\n  margin: 20px 0;\n}\n.margin-left[data-v-317790a4] {\n  margin-left: 15px;\n}\n.title[data-v-317790a4] {\n  color: #b1a8e5;\n  text-align: center;\n  font-family: \"Avenir Next\", \"Roboto\", sans-serif;\n  font-size: 5vw;\n  line-height: 1;\n  letter-spacing: -0.02em;\n  font-weight: 800;\n}\n.wordchanger[data-v-317790a4]::before {\n  content: \"humanising\";\n  display: block;\n  position: relative;\n  color: #b1a8e5;\n  text-align: center;\n  font-family: \"Avenir Next\", \"Roboto\", sans-serif;\n  font-size: 5vw;\n  line-height: 1;\n  letter-spacing: -0.02em;\n  font-weight: 800;\n  animation-name: mywordchange-317790a4;\n  animation-duration: 8s;\n  animation-iteration-count: infinite;\n  animation-timing-function: ease-in-out;\n}\n@keyframes mywordchange-317790a4 {\n0% {\n    content: \"pediatra\";\n    opacity: 0.58;\n}\n10% {\n    content: \"pediatra\";\n    opacity: 1;\n}\n19% {\n    content: \"pediatra\";\n    opacity: 0;\n}\n20% {\n    content: \"dermatologo\";\n    opacity: 0;\n}\n30% {\n    content: \"dermatologo\";\n    opacity: 1;\n}\n39% {\n    content: \"dermatologo\";\n    opacity: 0;\n}\n40% {\n    content: \"cardiologo\";\n    opacity: 0;\n}\n50% {\n    content: \"cardiologo\";\n    opacity: 1;\n}\n59% {\n    content: \"cardiologo\";\n    opacity: 0;\n}\n60% {\n    content: \"oculista\";\n    opacity: 0;\n}\n70% {\n    content: \"oculista\";\n    opacity: 1;\n}\n79% {\n    content: \"oculista\";\n    opacity: 0;\n}\n80% {\n    content: \"urologo\";\n    opacity: 0;\n}\n90% {\n    content: \"urologo\";\n    opacity: 1;\n}\n99% {\n    content: \"urologo\";\n    opacity: 0;\n}\n100% {\n    content: \"pediatra\";\n    opacity: 0;\n}\n}", ""]);
+exports.push([module.i, "ul[data-v-317790a4] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  list-style-type: none;\n  margin: 50px 0;\n}\nul li[data-v-317790a4] {\n  margin: 20px 0;\n}\nform ul[data-v-317790a4] {\n  display: block;\n  list-style-type: disc;\n}\n.margin-left[data-v-317790a4] {\n  margin-left: 15px;\n}\n.title[data-v-317790a4] {\n  color: #b1a8e5;\n  text-align: center;\n  font-family: \"Avenir Next\", \"Roboto\", sans-serif;\n  font-size: 5vw;\n  line-height: 1;\n  letter-spacing: -0.02em;\n  font-weight: 800;\n}\n.wordchanger[data-v-317790a4]::before {\n  content: \"humanising\";\n  display: block;\n  position: relative;\n  color: #b1a8e5;\n  text-align: center;\n  font-family: \"Avenir Next\", \"Roboto\", sans-serif;\n  font-size: 5vw;\n  line-height: 1;\n  letter-spacing: -0.02em;\n  font-weight: 800;\n  animation-name: mywordchange-317790a4;\n  animation-duration: 8s;\n  animation-iteration-count: infinite;\n  animation-timing-function: ease-in-out;\n}\n@keyframes mywordchange-317790a4 {\n0% {\n    content: \"pediatra\";\n    opacity: 0.58;\n}\n10% {\n    content: \"pediatra\";\n    opacity: 1;\n}\n19% {\n    content: \"pediatra\";\n    opacity: 0;\n}\n20% {\n    content: \"dermatologo\";\n    opacity: 0;\n}\n30% {\n    content: \"dermatologo\";\n    opacity: 1;\n}\n39% {\n    content: \"dermatologo\";\n    opacity: 0;\n}\n40% {\n    content: \"cardiologo\";\n    opacity: 0;\n}\n50% {\n    content: \"cardiologo\";\n    opacity: 1;\n}\n59% {\n    content: \"cardiologo\";\n    opacity: 0;\n}\n60% {\n    content: \"oculista\";\n    opacity: 0;\n}\n70% {\n    content: \"oculista\";\n    opacity: 1;\n}\n79% {\n    content: \"oculista\";\n    opacity: 0;\n}\n80% {\n    content: \"urologo\";\n    opacity: 0;\n}\n90% {\n    content: \"urologo\";\n    opacity: 1;\n}\n99% {\n    content: \"urologo\";\n    opacity: 0;\n}\n100% {\n    content: \"pediatra\";\n    opacity: 0;\n}\n}", ""]);
 
 // exports
 

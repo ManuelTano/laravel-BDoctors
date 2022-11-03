@@ -28,15 +28,66 @@
         <!-- Additional filter -->
         <div class="container" v-if="users.length">
             <h3 class="text-center my-5">Raffina i tuoi risultati</h3>
-            <div class="d-flex align-items-center justify-content-center">
-                <button class="btn btn-primary mr-3" @click="filterByAVG">
-                    Filtra per voti
-                </button>
-                <button class="btn btn-warning" @click="filterByReviews">
-                    Filtra per recensioni
-                </button>
+            <div>
+                <form @submit.prevent="submitForm" class="row" novalidate>
+                    <!-- Rating -->
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="rating">Rating</label>
+                            <select
+                                class="form-control"
+                                id="rating"
+                                v-model="form.rating"
+                            >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Number reviews -->
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="number_review"
+                                >Seleziona il minimo numero di recensioni</label
+                            >
+                            <input
+                                type="text"
+                                id="number_review"
+                                class="form-control"
+                                v-model.trim="form.number_review"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <button class="btn btn-success" type="submit">
+                                Filtra
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
+
+        <!-- Alert -->
+        <AppAlert
+            v-if="alertMessage || hasErrors"
+            :type="hasErrors ? 'alert-danger' : 'alert-success'"
+        >
+            <div v-if="alertMessage">{{ alertMessage }}</div>
+            <div v-if="hasErrors">
+                <ul>
+                    <li v-for="(error, key) in errors" :key="key">
+                        {{ error }}
+                    </li>
+                </ul>
+            </div>
+        </AppAlert>
 
         <!-- Main section: doctor card -->
         <AppMain :users="users" v-if="users.length" />
@@ -73,6 +124,7 @@
 
 <script>
 import AppMain from "../AppMain.vue";
+import AppAlert from "../AppAlert.vue";
 import BaseSelect from "../BaseSelect.vue";
 import BaseJumbotron from "../BaseJumbotron.vue";
 import DoctorsView from "../DoctorsView.vue";
@@ -85,15 +137,73 @@ export default {
         DoctorsView,
         BaseCard,
         AppMain,
+        AppAlert,
     },
     data() {
         return {
             users: [],
             specialties: [],
             choice: "",
+            form: {
+                rating: null,
+                number_review: null,
+            },
+            alertMessage: "",
+            errors: {},
         };
     },
+    computed: {
+        // Controlla continuamente se ci sono errori o meno al fine di mostrare gli errori
+        hasErrors() {
+            return Object.keys(this.errors).length;
+        },
+    },
     methods: {
+        validateForm() {
+            const errors = {};
+
+            // Controllo se c'è il cognome
+            if (!this.form.rating) errors.rating = "Il rating è obbligatorio";
+
+            // Controllo se c'è il feedback
+            if (!this.form.number_review)
+                errors.number_review =
+                    "Il numero minimo di recensioni è obbligatorio";
+
+            // Assegnamo l'oggetto errors
+            this.errors = errors;
+        },
+
+        // Metodo invocato per effettuare il submit del form
+        submitForm() {
+            // Svuotiamo l'oggetto errors per ripopolarlo nel caso di errori
+            this.errors = {};
+
+            // Lanciamo la validazione lato Vue
+            this.validateForm();
+
+            // Se non ho errori mando il form
+            if (!this.hasErrors) this.raffinateDoctors();
+        },
+
+        raffinateDoctors() {
+            const raffinate = this.users.filter((user) => {
+                if (
+                    user.media == this.form.rating &&
+                    user.numero_recensioni >= parseInt(this.form.number_review)
+                )
+                    return user;
+            });
+            if (raffinate.length !== 0) this.users = raffinate;
+            this.form.number_review = "";
+            this.form.rating = "";
+        },
+
+        resetErrorsAndMessage() {
+            this.errors = {};
+            this.alertMessage = null;
+        },
+
         fetchSpecialties() {
             axios.get("http://127.0.0.1:8000/api/specialties").then((res) => {
                 this.specialties = res.data.specialties;
@@ -162,6 +272,13 @@ ul {
 
     li {
         margin: 20px 0;
+    }
+}
+
+form {
+    ul {
+        display: block;
+        list-style-type: disc;
     }
 }
 
