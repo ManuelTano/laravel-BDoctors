@@ -2,11 +2,11 @@
     <section id="doctor-page">
         <BaseJumbotron />
         <div class="container">
-            <div class="d-flex align-items-centern p-3">
+            <div class="d-flex align-items-centern p-3" v-if="user">
                 <!-- Immagine del dottore -->
                 <figure class="m-0">
                     <img
-                        src="https://www.morfopsicologia.net/wp-content/uploads/2020/07/clienti-morfopsicologia-1.jpg"
+                        :src="user[0].thumb"
                         alt=""
                         class="img-fluid h-100 rounded-circle"
                     />
@@ -33,7 +33,7 @@
                                     <span
                                         v-for="(specialty, index) in user[0]
                                             .specialties"
-                                        :key="specialty"
+                                        :key="'spec' - specialty"
                                         >{{ specialty.label }}
                                         <span
                                             v-if="

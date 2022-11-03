@@ -106,7 +106,7 @@ export default {
         AppAlert,
     },
     props: {
-        userId: String,
+        userId: Number,
         firstName: String,
         lastName: String,
     },

@@ -15,14 +15,15 @@
                 <i class="bx bx-map"></i>
             </li>
         </ul>
-        <img src="" alt="img-profilo" />
+        <img :src="user.user_detail.thumb" :alt="user.user_detail.thumb" />
         <div class="con-text">
             <h2></h2>
             <p>
                 <router-link
                     class="my_card"
                     :to="{ name: 'doctors-doctor', params: { user: user.id } }"
-                ></router-link>
+                    >Visita il profilo</router-link
+                >
             </p>
         </div>
     </div>
@@ -52,10 +53,13 @@ export default {
     cursor: pointer;
     transition: all 0.25s ease;
     backface-visibility: hidden;
+
+    z-index: 0;
 }
 
 .card:hover {
     transform: scale(0.9);
+    z-index: 0;
 }
 
 .card:hover:after {

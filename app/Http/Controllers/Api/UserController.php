@@ -52,7 +52,7 @@ class UserController extends Controller
     }
 
     public function filterBySpecialty($query){
-        $users = User::with('specialties')->get();
+        $users = User::with('specialties','userDetail')->get();
 
         $users_by_specialty = [];
 

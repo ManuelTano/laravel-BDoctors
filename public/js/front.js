@@ -2147,7 +2147,7 @@ __webpack_require__.r(__webpack_exports__);
     AppAlert: _components_AppAlert_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    userId: String,
+    userId: Number,
     firstName: String,
     lastName: String
   },
@@ -2260,7 +2260,7 @@ __webpack_require__.r(__webpack_exports__);
     AppAlert: _components_AppAlert_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    userId: String,
+    userId: Number,
     firstName: String,
     lastName: String
   },
@@ -2657,8 +2657,8 @@ var render = function render() {
     staticClass: "bx bx-drink"
   })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c("img", {
     attrs: {
-      src: "",
-      alt: "img-profilo"
+      src: _vm.user.user_detail.thumb,
+      alt: _vm.user.user_detail.thumb
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "con-text"
@@ -2672,7 +2672,7 @@ var render = function render() {
         }
       }
     }
-  })], 1)])]);
+  }, [_vm._v("Visita il profilo")])], 1)])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -3591,21 +3591,29 @@ var render = function render() {
     }
   }, [_c("BaseJumbotron"), _vm._v(" "), _c("div", {
     staticClass: "container"
-  }, [_c("div", {
+  }, [_vm.user ? _c("div", {
     staticClass: "d-flex align-items-centern p-3"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("figure", {
+    staticClass: "m-0"
+  }, [_c("img", {
+    staticClass: "img-fluid h-100 rounded-circle",
+    attrs: {
+      src: _vm.user[0].thumb,
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", {
     staticClass: "ml-3 d-flex align-items-center flex-column justify-content-between"
   }, [_c("div", [_c("h1", {
     staticClass: "m-0"
-  }, [_vm._v("\n                        " + _vm._s(_vm.user[0].first_name + " " + _vm.user[0].last_name) + "\n                    ")]), _vm._v(" "), _c("div", [_c("ul", [_vm._m(1), _vm._v(" "), _c("li", [_c("span", [_vm._v("Specializzato in ")]), _vm._v(" "), _vm._l(_vm.user[0].specialties, function (specialty, index) {
+  }, [_vm._v("\n                        " + _vm._s(_vm.user[0].first_name + " " + _vm.user[0].last_name) + "\n                    ")]), _vm._v(" "), _c("div", [_c("ul", [_vm._m(0), _vm._v(" "), _c("li", [_c("span", [_vm._v("Specializzato in ")]), _vm._v(" "), _vm._l(_vm.user[0].specialties, function (specialty, index) {
     return _c("span", {
-      key: specialty
+      key: "spec" - specialty
     }, [_vm._v(_vm._s(specialty.label) + "\n                                    "), index === _vm.user[0].specialties.length - 1 ? _c("span", [_vm._v(".")]) : _c("span", [_vm._v(",")])]);
   })], 2)])])]), _vm._v(" "), _c("address", {
     staticClass: "d-flex justify-content-between w-100"
   }, [_c("div", [_c("div", {
     staticClass: "mr-2"
-  }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + "\n                        ")])]), _vm._v(" "), _c("div")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + "\n                        ")])]), _vm._v(" "), _c("div")])])]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "p-3"
   }), _vm._v(" "), _c("MessageForm", {
     attrs: {
@@ -3622,18 +3630,6 @@ var render = function render() {
   })], 1)], 1);
 };
 var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("figure", {
-    staticClass: "m-0"
-  }, [_c("img", {
-    staticClass: "img-fluid h-100 rounded-circle",
-    attrs: {
-      src: "https://www.morfopsicologia.net/wp-content/uploads/2020/07/clienti-morfopsicologia-1.jpg",
-      alt: ""
-    }
-  })]);
-}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("li", [_c("div", [_vm._v("Laureato in Medicina")])]);
@@ -8425,7 +8421,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card {\n    width: 18.75rem;\n    height: 25rem;\n    background: #000;\n    border-radius: 1.87rem;\n    overflow: hidden;\n    position: relative;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    cursor: pointer;\n    transition: all 0.25s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n}\n.card:hover {\n    transform: scale(0.9);\n}\n.card:hover:after {\n    height: 1.75rem;\n}\n.card:hover .con-text p {\n    margin-bottom: 0.5rem;\n    opacity: 1;\n}\n.card:hover img {\n    transform: scale(1.25);\n}\n.card:hover .ul {\n    transform: translate(0);\n    opacity: 1;\n}\n.card:after {\n    width: 100%;\n    content: \"\";\n    left: 0.5rem;\n    bottom: 0rem;\n    height: 0.93rem;\n    position: absolute;\n    background: Linear-gradient(\n        18deg,\n        rgba(0, 0, 0, 0) 0%,\n        rgba(0, 0, 6, 1) 100%\n    );\n    z-index: 20;\n    transition: all 0.25s ease;\n}\n.card img {\n    height: 100%;\n    z-index: 18;\n    transition: all 0.25s ease;\n}\n.card .con-text {\n    z-index: 30;\n    position: absolute;\n    bottom: 0rem;\n    color: #fff;\n    padding: 1.25rem;\n    padding-bottom: 1.87rem;\n}\n.card .con-text p {\n    font-size: 0.8rem;\n    opacity: 0;\n    margin-bottom: -10.6rem;\n    transition: all 0.25s ease;\n    display: flex;\n    align-items: center;\n    justify-content: flex-end;\n    flex-direction: column;\n}\n\n/* .card .con-text p button {\n    padding: 0.43rem 1.06rem;\n    border-radius: 0.75rem;\n    background: transparent;\n    border: 0.125rem solid #fff;\n    color: #fff;\n    margin-top: 0.625rem;\n    margin-left: auto;\n    cursor: pointer;\n    transition: all .25s ease;\n\n    font-size: 0.75rem;\n    outline: none;\n} */\n.card .con-text p .my_card {\n    padding: 0.43rem 1.06rem;\n    border-radius: 0.75rem;\n    background: transparent;\n    border: 0.125rem solid #fff;\n    color: #fff;\n    margin-top: 0.625rem;\n    margin-left: auto;\n    cursor: pointer;\n    transition: all 0.25s ease;\n\n    font-size: 0.75rem;\n    outline: none;\n}\n.card .con-text p button:hover {\n    background: #fff;\n    color: #000;\n}\n.ul {\n    position: absolute;\n    right: 0.625rem;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    z-index: 40;\n    border-radius: 0.875rem;\n    padding-left: 0rem;\n    padding-top: 0.5rem;\n    padding-bottom: 0.5rem;\n    top: 0rem;\n    opacity: 0;\n    transform: translate(100%);\n    transition: all 0.25s ease;\n}\n.ul li {\n    background: #fff;\n    list-style: none;\n    width: 2.5rem;\n    height: 2.5rem;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    opacity: 0.7;\n    transition: all 0.25s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n}\nul li:last-child {\n    border-radius: 0rem 0rem 0.75rem 0.75rem;\n}\n.ul li:first.child {\n    border-radius: 0.75rem 0.75rem 0rem 0rem;\n}\n.ul li:hover {\n    opacity: 1;\n    transform: translate(-0.43rem, -0.25rem);\n    border-radius: 0.375rem;\n}\n.ul li i {\n    font-size: 1.4rem;\n    color: #000;\n}\n", ""]);
+exports.push([module.i, "\n.card {\n    width: 18.75rem;\n    height: 25rem;\n    background: #000;\n    border-radius: 1.87rem;\n    overflow: hidden;\n    position: relative;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    cursor: pointer;\n    transition: all 0.25s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n\n    z-index: 0;\n}\n.card:hover {\n    transform: scale(0.9);\n    z-index: 0;\n}\n.card:hover:after {\n    height: 1.75rem;\n}\n.card:hover .con-text p {\n    margin-bottom: 0.5rem;\n    opacity: 1;\n}\n.card:hover img {\n    transform: scale(1.25);\n}\n.card:hover .ul {\n    transform: translate(0);\n    opacity: 1;\n}\n.card:after {\n    width: 100%;\n    content: \"\";\n    left: 0.5rem;\n    bottom: 0rem;\n    height: 0.93rem;\n    position: absolute;\n    background: Linear-gradient(\n        18deg,\n        rgba(0, 0, 0, 0) 0%,\n        rgba(0, 0, 6, 1) 100%\n    );\n    z-index: 20;\n    transition: all 0.25s ease;\n}\n.card img {\n    height: 100%;\n    z-index: 18;\n    transition: all 0.25s ease;\n}\n.card .con-text {\n    z-index: 30;\n    position: absolute;\n    bottom: 0rem;\n    color: #fff;\n    padding: 1.25rem;\n    padding-bottom: 1.87rem;\n}\n.card .con-text p {\n    font-size: 0.8rem;\n    opacity: 0;\n    margin-bottom: -10.6rem;\n    transition: all 0.25s ease;\n    display: flex;\n    align-items: center;\n    justify-content: flex-end;\n    flex-direction: column;\n}\n\n/* .card .con-text p button {\n    padding: 0.43rem 1.06rem;\n    border-radius: 0.75rem;\n    background: transparent;\n    border: 0.125rem solid #fff;\n    color: #fff;\n    margin-top: 0.625rem;\n    margin-left: auto;\n    cursor: pointer;\n    transition: all .25s ease;\n\n    font-size: 0.75rem;\n    outline: none;\n} */\n.card .con-text p .my_card {\n    padding: 0.43rem 1.06rem;\n    border-radius: 0.75rem;\n    background: transparent;\n    border: 0.125rem solid #fff;\n    color: #fff;\n    margin-top: 0.625rem;\n    margin-left: auto;\n    cursor: pointer;\n    transition: all 0.25s ease;\n\n    font-size: 0.75rem;\n    outline: none;\n}\n.card .con-text p button:hover {\n    background: #fff;\n    color: #000;\n}\n.ul {\n    position: absolute;\n    right: 0.625rem;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    z-index: 40;\n    border-radius: 0.875rem;\n    padding-left: 0rem;\n    padding-top: 0.5rem;\n    padding-bottom: 0.5rem;\n    top: 0rem;\n    opacity: 0;\n    transform: translate(100%);\n    transition: all 0.25s ease;\n}\n.ul li {\n    background: #fff;\n    list-style: none;\n    width: 2.5rem;\n    height: 2.5rem;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    opacity: 0.7;\n    transition: all 0.25s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n}\nul li:last-child {\n    border-radius: 0rem 0rem 0.75rem 0.75rem;\n}\n.ul li:first.child {\n    border-radius: 0.75rem 0.75rem 0rem 0rem;\n}\n.ul li:hover {\n    opacity: 1;\n    transform: translate(-0.43rem, -0.25rem);\n    border-radius: 0.375rem;\n}\n.ul li i {\n    font-size: 1.4rem;\n    color: #000;\n}\n", ""]);
 
 // exports
 
