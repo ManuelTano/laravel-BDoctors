@@ -18,7 +18,7 @@ class UserDetailSeeder extends Seeder
         $details = Userdetail::all();
 
         foreach($details as $detail){
-            $detail->thumb = $faker->image(360, 360, 'people', true);
+            $detail->thumb = $faker->imageUrl(640, 480, 'people', true);
             $detail->phone = $faker->e164PhoneNumber();
 
             $detail->save();

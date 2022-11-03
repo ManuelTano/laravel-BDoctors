@@ -2476,6 +2476,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("http://127.0.0.1:8000/api/users/specialty/" + choice).then(function (res) {
         _this2.users = _this2.usersBySpecialty = res.data.users_by_specialty;
         console.log("chiamata effettuata con successo");
+        console.log(_this2.users);
       });
     }
   },
@@ -2708,8 +2709,8 @@ var render = function render() {
   }, [_c("div", [_c("img", {
     staticClass: "card-img-top",
     attrs: {
-      src: "",
-      alt: ""
+      src: "".concat(_vm.user.user_detail.thumb),
+      alt: "fotoo"
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "card-body"
@@ -8347,7 +8348,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#app-card .card[data-v-0393c9b6] {\n  height: 350px;\n}\n#app-card .block[data-v-0393c9b6] {\n  width: 33.3333333333%;\n}\n#app-card #show-profile[data-v-0393c9b6] {\n  background-color: #3490dc;\n  color: white;\n  border: 1px solid transparent;\n}\n#app-card #show-profile[data-v-0393c9b6]:hover {\n  background-color: white;\n  color: #3490dc;\n  border: 1px solid #3490dc;\n}", ""]);
+exports.push([module.i, "#app-card .card[data-v-0393c9b6] {\n  height: 550px;\n}\n#app-card .block[data-v-0393c9b6] {\n  width: 33.3333333333%;\n}\n#app-card #show-profile[data-v-0393c9b6] {\n  background-color: #3490dc;\n  color: white;\n  border: 1px solid transparent;\n}\n#app-card #show-profile[data-v-0393c9b6]:hover {\n  background-color: white;\n  color: #3490dc;\n  border: 1px solid #3490dc;\n}", ""]);
 
 // exports
 

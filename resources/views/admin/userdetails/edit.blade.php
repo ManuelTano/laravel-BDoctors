@@ -191,10 +191,10 @@
                 <label for="thumb" class="flex-shrink-0 m-0">Immagine</label>
                 <input 
                 name="thumb" 
-                type="file" 
+                type="text" 
                 id="thumb" 
                 class="pl-0 border-0 form-control @error('thumb') is-invalid @enderror"
-                value="{{ asset('storage/' . $details->thumb ) ?? '' }}"
+                value="{{ old('thumb', $details->thumb) }}"
                 >
                 @error('thumb')
                     <div class="invalid-feedback">
@@ -206,7 +206,7 @@
             <div class="form-group col-6 m-0 h-100">
                 <figure class="m-0 h-100">
                     <img 
-                    src="{{ asset('storage/' . $details->thumb ) ?? 'https://wopart.eu/wp-content/uploads/2021/10/placeholder-7.png' }}" 
+                    src="{{ $details->thumb ?? 'https://wopart.eu/wp-content/uploads/2021/10/placeholder-7.png' }}" 
                     alt="{{ $details->thumb }}"
                     id="image"
                     class="img-fluid h-100"

@@ -3,7 +3,7 @@
 
             <div class="card my-4 d-flex flex-column justify-content-between" style="width: 18rem">
                 <div>
-                    <img src="" class="card-img-top" alt="" />
+                    <img :src="`${user.user_detail.thumb}`" class="card-img-top" alt="fotoo"/>
                     <div class="card-body">
                         <h5 class="card-title">
                             {{ user.first_name + " " + user.last_name }}
@@ -69,7 +69,7 @@ export default {
 @import "../../sass/variables";
     #app-card{
         .card{
-            height: 350px;
+            height: 550px;
         }
 
         .block{

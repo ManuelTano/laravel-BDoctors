@@ -195,6 +195,7 @@ export default {
                     this.users = this.usersBySpecialty =
                         res.data.users_by_specialty;
                     console.log("chiamata effettuata con successo");
+                    console.log(this.users);
                 });
         },
     },

@@ -6,7 +6,7 @@
             <div class="col-4 p-0">
                 @if($user->userdetail->thumb)
                 <figure class="m-0">
-                    <img class="img-fluid" src="{{ asset('storage/' . $user->userDetail->thumb) }}" alt="">
+                    <img class="img-fluid" src="{{ $user->userDetail->thumb }}" alt="">
                 </figure>
                 @endif
             </div>
