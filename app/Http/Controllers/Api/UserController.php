@@ -79,7 +79,7 @@ class UserController extends Controller
     // # Metodo che RAFFINA il filtro dei dottori in base al numero di recensioni
 
     public function raffinateFilterByMoreReviews($query){
-        $users_by_more_reviews = User::with('specialties')
+        $users_by_more_reviews = User::with('specialties','userDetail')
         ->join('reviews','reviews.user_id','=','users.id')
         ->select('users.*',DB::raw('COUNT(reviews.user_id) as numero_recensioni'))
         ->orderBy('numero_recensioni','DESC')
@@ -100,7 +100,7 @@ class UserController extends Controller
      // # Metodo che RAFFINA il filtro dei dottori in base alla media voto
 
      public function raffinateFilterByBestRating($query){
-        $users_by_best_rating = User::with('specialties')
+        $users_by_best_rating = User::with('specialties','userDetail')
         ->join('reviews','reviews.user_id','=','users.id')
         ->select('users.*',DB::raw('AVG(reviews.rating) as media'))
         ->orderBy('media','DESC')

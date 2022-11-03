@@ -18,12 +18,8 @@ class UserDetailSeeder extends Seeder
         $details = Userdetail::all();
 
         foreach($details as $detail){
-            $detail->thumb = "https://st.depositphotos.com/1371851/1256/i/600/depositphotos_12560182-stock-photo-handsome-man-with-eyeglasses.jpg";
+            $detail->thumb = $faker->image(360, 360, 'people', true);
             $detail->phone = $faker->e164PhoneNumber();
-
-            // if($detail->thumb) Storage::delete($detail->thumb);
-            // $thumb_link = Storage::put('users_thumb',$data['thumb']);
-            // $details->thumb = $thumb_link;
 
             $detail->save();
             
