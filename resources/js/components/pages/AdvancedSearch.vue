@@ -197,38 +197,6 @@ export default {
                     console.log("chiamata effettuata con successo");
                 });
         },
-
-        // Metodo che filtra ulteriormente le ricerche dei medici in funzione
-        // della specializzazione in base alla media voti
-        // filterByAVG() {
-        //     if (this.choice !== "") {
-        //         axios
-        //             .get(
-        //                 "http://127.0.0.1:8000/api/users-raffinate-by-rating/" +
-        //                     this.choice
-        //             )
-        //             .then((res) => {
-        //                 this.users = res.data.raffinate_users;
-        //                 console.log(res.data.raffinate_users);
-        //             });
-        //     }
-        // },
-
-        // Metodo che filtra ulteriormente le ricerche dei medici in funzione
-        // della specializzazione in base al numero di recensioni
-        // filterByReviews() {
-        //     if (this.choice !== "") {
-        //         axios
-        //             .get(
-        //                 "http://127.0.0.1:8000/api/users-raffinate-by-review/" +
-        //                     this.choice
-        //             )
-        //             .then((res) => {
-        //                 this.users = res.data.raffinate_users;
-        //                 console.log(res.data.raffinate_users);
-        //             });
-        //     }
-        // },
     },
     mounted() {
         this.fetchDoctorsBySpecialties(this.choice);
