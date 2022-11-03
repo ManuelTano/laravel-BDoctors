@@ -71,6 +71,11 @@
                         </div>
                     </div>
                 </form>
+                <div class="col-12 p-0">
+                    <button class="btn btn-warning" @click="resetUsers">
+                        Reset
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -142,6 +147,7 @@ export default {
     data() {
         return {
             users: [],
+            prevUsers: [],
             specialties: [],
             choice: "",
             form: {
@@ -159,6 +165,14 @@ export default {
         },
     },
     methods: {
+        resetUsers() {
+            if (this.form.rating && this.form.number_review) {
+                this.form.number_review = "";
+                this.form.rating = "";
+                this.users = this.prevUsers;
+            }
+        },
+
         validateForm() {
             const errors = {};
 
@@ -194,9 +208,10 @@ export default {
                 )
                     return user;
             });
-            if (raffinate.length !== 0) this.users = raffinate;
-            this.form.number_review = "";
-            this.form.rating = "";
+            if (raffinate.length !== 0) {
+                this.prevUsers = this.users;
+                this.users = raffinate;
+            }
         },
 
         resetErrorsAndMessage() {

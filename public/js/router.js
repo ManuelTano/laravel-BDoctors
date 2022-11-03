@@ -636,6 +636,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       users: [],
+      prevUsers: [],
       specialties: [],
       choice: "",
       form: {
@@ -653,6 +654,13 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    resetUsers: function resetUsers() {
+      if (this.form.rating && this.form.number_review) {
+        this.form.number_review = "";
+        this.form.rating = "";
+        this.users = this.prevUsers;
+      }
+    },
     validateForm: function validateForm() {
       var errors = {};
 
@@ -681,9 +689,10 @@ __webpack_require__.r(__webpack_exports__);
       var raffinate = this.users.filter(function (user) {
         if (user.media == _this.form.rating && user.numero_recensioni >= parseInt(_this.form.number_review)) return user;
       });
-      if (raffinate.length !== 0) this.users = raffinate;
-      this.form.number_review = "";
-      this.form.rating = "";
+      if (raffinate.length !== 0) {
+        this.prevUsers = this.users;
+        this.users = raffinate;
+      }
     },
     resetErrorsAndMessage: function resetErrorsAndMessage() {
       this.errors = {};
@@ -1879,7 +1888,14 @@ var render = function render() {
         return _vm.$forceUpdate();
       }
     }
-  })])]), _vm._v(" "), _vm._m(0)])])]) : _vm._e(), _vm._v(" "), _vm.alertMessage || _vm.hasErrors ? _c("AppAlert", {
+  })])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 p-0"
+  }, [_c("button", {
+    staticClass: "btn btn-warning",
+    on: {
+      click: _vm.resetUsers
+    }
+  }, [_vm._v("\n                    Reset\n                ")])])])]) : _vm._e(), _vm._v(" "), _vm.alertMessage || _vm.hasErrors ? _c("AppAlert", {
     attrs: {
       type: _vm.hasErrors ? "alert-danger" : "alert-success"
     }
