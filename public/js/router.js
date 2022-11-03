@@ -269,7 +269,9 @@ __webpack_require__.r(__webpack_exports__);
     AppAlert: _components_AppAlert_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    userId: String
+    userId: String,
+    firstName: String,
+    lastName: String
   },
   data: function data() {
     return {
@@ -380,7 +382,9 @@ __webpack_require__.r(__webpack_exports__);
     AppAlert: _components_AppAlert_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    userId: String
+    userId: String,
+    firstName: String,
+    lastName: String
   },
   data: function data() {
     return {
@@ -1100,7 +1104,9 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "container"
-  }, [_vm.alertMessage || _vm.hasErrors ? _c("AppAlert", {
+  }, [_c("h3", {
+    staticClass: "my-3"
+  }, [_vm._v("\n            Invia un messaggio " + _vm._s(" a " + _vm.firstName + " " + _vm.lastName) + "\n        ")]), _vm._v(" "), _vm.alertMessage || _vm.hasErrors ? _c("AppAlert", {
     attrs: {
       type: _vm.hasErrors ? "alert-danger" : "alert-success"
     }
@@ -1310,7 +1316,9 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "container"
-  }, [_vm.alertMessage || _vm.hasErrors ? _c("AppAlert", {
+  }, [_c("h3", {
+    staticClass: "my-3"
+  }, [_vm._v("\n            Rilascia una recensione " + _vm._s(" a " + _vm.firstName + " " + _vm.lastName) + "\n        ")]), _vm._v(" "), _vm.alertMessage || _vm.hasErrors ? _c("AppAlert", {
     attrs: {
       type: _vm.hasErrors ? "alert-danger" : "alert-success"
     },
@@ -1575,6 +1583,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 var render = function render() {
+  var _vm$user$0$phone;
   var _vm = this,
     _c = _vm._self._c;
   return _c("section", {
@@ -1586,22 +1595,30 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "d-flex align-items-centern p-3"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "ml-3 d-flex align-items-center"
+    staticClass: "ml-3 d-flex align-items-center flex-column justify-content-between"
   }, [_c("div", [_c("h1", {
     staticClass: "m-0"
-  }, [_vm._v("\n                        " + _vm._s(_vm.user[0].first_name + " " + _vm.user[0].last_name) + "\n                    ")]), _vm._v(" "), _c("div", [_c("span", [_vm._v("Specializzato in ")]), _vm._v(" "), _vm._l(_vm.user[0].specialties, function (specialty, index) {
+  }, [_vm._v("\n                        " + _vm._s(_vm.user[0].first_name + " " + _vm.user[0].last_name) + "\n                    ")]), _vm._v(" "), _c("div", [_c("ul", [_vm._m(1), _vm._v(" "), _c("li", [_c("span", [_vm._v("Specializzato in ")]), _vm._v(" "), _vm._l(_vm.user[0].specialties, function (specialty, index) {
     return _c("span", {
       key: specialty
-    }, [_vm._v(_vm._s(specialty.label) + "\n                            "), index === _vm.user[0].specialties.length - 1 ? _c("span", [_vm._v(".")]) : _c("span", [_vm._v(",")])]);
-  })], 2)])])]), _vm._v(" "), _c("div", {
+    }, [_vm._v(_vm._s(specialty.label) + "\n                                    "), index === _vm.user[0].specialties.length - 1 ? _c("span", [_vm._v(".")]) : _c("span", [_vm._v(",")])]);
+  })], 2)])])]), _vm._v(" "), _c("address", {
+    staticClass: "d-flex justify-content-between w-100"
+  }, [_c("div", [_c("div", {
+    staticClass: "mr-2"
+  }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + "\n                        ")])]), _vm._v(" "), _c("div")])])]), _vm._v(" "), _c("div", {
     staticClass: "p-3"
   }), _vm._v(" "), _c("MessageForm", {
     attrs: {
-      userId: _vm.user[0].id
+      userId: _vm.user[0].id,
+      firstName: _vm.user[0].first_name,
+      lastName: _vm.user[0].last_name
     }
   }), _vm._v(" "), _c("ReviewForm", {
     attrs: {
-      userId: _vm.user[0].id
+      userId: _vm.user[0].id,
+      firstName: _vm.user[0].first_name,
+      lastName: _vm.user[0].last_name
     }
   })], 1)], 1);
 };
@@ -1617,6 +1634,10 @@ var staticRenderFns = [function () {
       alt: ""
     }
   })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("li", [_c("div", [_vm._v("Laureato in Medicina")])]);
 }];
 render._withStripped = true;
 

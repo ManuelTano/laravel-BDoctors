@@ -1,6 +1,10 @@
 <template>
     <section id="message-form">
         <div class="container">
+            <!-- Title -->
+            <h3 class="my-3">
+                Invia un messaggio {{ " a " + firstName + " " + lastName }}
+            </h3>
             <!-- Alert -->
             <AppAlert
                 v-if="alertMessage || hasErrors"
@@ -103,6 +107,8 @@ export default {
     },
     props: {
         userId: String,
+        firstName: String,
+        lastName: String,
     },
     data() {
         return {

@@ -1,6 +1,9 @@
 <template>
     <section id="form-review">
         <div class="container">
+            <h3 class="my-3">
+                Rilascia una recensione {{ " a " + firstName + " " + lastName }}
+            </h3>
             <!-- Alert -->
             <AppAlert
                 v-if="alertMessage || hasErrors"
@@ -122,6 +125,8 @@ export default {
     },
     props: {
         userId: String,
+        firstName: String,
+        lastName: String,
     },
     data() {
         return {
