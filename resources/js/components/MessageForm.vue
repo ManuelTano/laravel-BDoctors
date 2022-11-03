@@ -82,7 +82,9 @@
                 <div class="col-12">
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">
-                            Invia Recensione
+                            Invia messaggio<i
+                                class="fa-solid fa-arrow-right ml-2"
+                            ></i>
                         </button>
                     </div>
                 </div>
@@ -98,6 +100,9 @@ export default {
     name: "MessageForm",
     components: {
         AppAlert,
+    },
+    props: {
+        userId: String,
     },
     data() {
         return {
@@ -169,10 +174,12 @@ export default {
 
         sendMessage() {
             axios
-                .post("http://127.0.0.1:8000/api/new-message", this.form)
+                .post(
+                    "http://127.0.0.1:8000/api/new-message/" + this.userId,
+                    this.form
+                )
                 .then((res) => {
                     console.log("Inviata con successo");
-                    console.log(res.data);
                     if (res.data.errors) {
                         const errors = {};
                         const { email, last_name, first_name, text } =

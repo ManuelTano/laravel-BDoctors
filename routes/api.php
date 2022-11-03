@@ -55,7 +55,7 @@ Route::namespace('Api')->group(function () {
     Route::post('/new-review','SendDoctorReview@sendNewReview');
 
     // Rotta per inviare un messaggio al dottore
-    Route::post('/new-message','ContactDoctor@sendNewMessage');
+    Route::post('/new-message/{id}','ContactDoctor@sendNewMessage');
 
     // # ROTTA CHE RESTITUISCE TUTTE LE SPECIALIZZAZIONI
 

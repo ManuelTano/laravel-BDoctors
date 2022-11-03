@@ -101,7 +101,9 @@
                 <div class="col-12">
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">
-                            Invia Recensione
+                            Invia Recensione<i
+                                class="fa-solid fa-arrow-right ml-2"
+                            ></i>
                         </button>
                     </div>
                 </div>
@@ -117,6 +119,9 @@ export default {
     name: "ReviewForm",
     components: {
         AppAlert,
+    },
+    props: {
+        userId: String,
     },
     data() {
         return {

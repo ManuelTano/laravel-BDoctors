@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ContactDoctor extends Controller
 {
-    public function sendNewMessage(Request $request){
+    public function sendNewMessage(Request $request,$id){
         $data = $request->all();
 
         // Validiamo ciò che ci arriva dal form Front-end
@@ -23,7 +23,7 @@ class ContactDoctor extends Controller
 
         $new_message = new Message();
 
-        $new_message->user_id = 1;
+        $new_message->user_id = $id;
 
         $new_message->fill($data);
 

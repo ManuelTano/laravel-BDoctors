@@ -31,7 +31,8 @@ class UserController extends Controller
     // Metodo legato alla rotta che preleva un singolo
     // medico in funzione dell'id
     public function show($user){
-        $result = User::join('user_details','users.id','=','user_details.user_id')
+        $result = User::with('specialties')
+        ->join('user_details','users.id','=','user_details.user_id')
         ->where('users.id','=',$user)
         ->get();
         return response()->json(compact('result'));
