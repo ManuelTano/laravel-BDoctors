@@ -496,38 +496,139 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AppMain_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../AppMain.vue */ "./resources/js/components/AppMain.vue");
-/* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
+/* harmony import */ var _AppAlert_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../AppAlert.vue */ "./resources/js/components/AppAlert.vue");
+/* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AdvancedSearch",
   components: {
-    BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    AppMain: _AppMain_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    AppMain: _AppMain_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    AppAlert: _AppAlert_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
+      // Lista degli utenti correntemente visualizzata
       users: [],
-      query: this.$route.params.query
+      // Lista utenti precedentemente visualizzata
+      prevUsers: [],
+      // Campi del form
+      form: {
+        rating: null,
+        number_review: null
+      },
+      // Messaggio dell'alert
+      alertMessage: "",
+      // Eventuali errori in seguito
+      errors: {},
+      // Specializzazione selezionata
+      choice: ""
     };
   },
+  computed: {
+    // Controlla continuamente se ci sono errori o meno al fine di mostrare gli errori
+    hasErrors: function hasErrors() {
+      return Object.keys(this.errors).length;
+    }
+  },
   methods: {
-    // fetchDoctorsBySpecialty() {
-    //     axios
-    //         .get("http://127.0.0.1:8000/api/users")
-    //         .then((res) => {
-    //             this.users = res.data;
-    //             console.log("chiamata fatta");
-    //             console.log(res.data);
-    //             console.log(this.query);
-    //         })
-    //         .catch((err) => {
-    //             console.log("Errorrrrrr");
-    //         });
+    // Metodo invocato al submit del form: intercetta il submit
+    // ed effettua la validazione dei campi del form stesso
+    validateForm: function validateForm() {
+      var errors = {};
+
+      // Controllo se c'è il cognome
+      if (!this.form.rating) errors.rating = "Il rating è obbligatorio";
+
+      // Controllo se c'è il feedback
+      if (!this.form.number_review) errors.number_review = "Il numero minimo di recensioni è obbligatorio";
+
+      // Assegnamo l'oggetto errors
+      this.errors = errors;
+    },
+    // Metodo invocato per effettuare il submit del form
+    submitForm: function submitForm() {
+      // Svuotiamo l'oggetto errors per ripopolarlo nel caso di errori
+      this.errors = {};
+
+      // Lanciamo la validazione lato Vue
+      this.validateForm();
+
+      // Se non ho errori mando il form
+      if (!this.hasErrors) this.advancedSearch();
+    },
+    // Metodo invocato al submit del form: raffina la ricerca
+    advancedSearch: function advancedSearch() {
+      var _this = this;
+      var raffinate = this.users.filter(function (user) {
+        if (user.media == _this.form.rating && user.numero_recensioni >= parseInt(_this.form.number_review)) return user;
+      });
+      if (raffinate.length !== 0) {
+        this.prevUsers = this.users;
+        this.users = raffinate;
+      }
+    },
+    // Resetta tutti i campi del form e il messaggio
+    resetErrorsAndMessage: function resetErrorsAndMessage() {
+      this.errors = {};
+      this.alertMessage = null;
+    },
+    // Al click del button di reset: resetto i campi del form
+    // e ed visualizzo la lista precendemente filtrata di dottori
+    resetUsers: function resetUsers() {
+      if (this.form.rating && this.form.number_review) {
+        this.form.number_review = "";
+        this.form.rating = "";
+        this.resetErrorsAndMessage();
+        this.users = this.prevUsers;
+      }
+    },
+    // **** Filtro dei dottori per specializzazioni
+    fetchDoctorsBySpecialties: function fetchDoctorsBySpecialties(choice) {
+      var _this2 = this;
+      this.choice = choice;
+      axios.get("http://127.0.0.1:8000/api/users/specialty/" + choice).then(function (res) {
+        _this2.users = res.data.users_by_specialty;
+        console.log(res.data.users_by_specialty);
+      });
+    } // Metodo che filtra ulteriormente le ricerche dei medici in funzione
+    // della specializzazione in base alla media voti
+    // filterByAVG() {
+    //     if (this.choice !== "") {
+    //         axios
+    //             .get(
+    //                 "http://127.0.0.1:8000/api/users-raffinate-by-rating/" +
+    //                     this.choice
+    //             )
+    //             .then((res) => {
+    //                 this.users = res.data.raffinate_users;
+    //                 console.log(res.data.raffinate_users);
+    //             });
+    //     }
+    // },
+    // Metodo che filtra ulteriormente le ricerche dei medici in funzione
+    // della specializzazione in base al numero di recensioni
+    // filterByReviews() {
+    //     if (this.choice !== "") {
+    //         axios
+    //             .get(
+    //                 "http://127.0.0.1:8000/api/users-raffinate-by-review/" +
+    //                     this.choice
+    //             )
+    //             .then((res) => {
+    //                 this.users = res.data.raffinate_users;
+    //                 console.log(res.data.raffinate_users);
+    //             });
+    //     }
     // },
   },
   mounted: function mounted() {
-    // this.fetchDoctorsBySpecialty();
+    this.fetchDoctorsBySpecialties(this.choice);
+  },
+  created: function created() {
+    this.choice = this.$route.params.id;
   }
 });
 
@@ -611,129 +712,38 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _AppMain_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../AppMain.vue */ "./resources/js/components/AppMain.vue");
-/* harmony import */ var _AppAlert_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../AppAlert.vue */ "./resources/js/components/AppAlert.vue");
-/* harmony import */ var _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BaseSelect.vue */ "./resources/js/components/BaseSelect.vue");
-/* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
-/* harmony import */ var _DoctorsView_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../DoctorsView.vue */ "./resources/js/components/DoctorsView.vue");
-/* harmony import */ var _BaseCard_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../BaseCard.vue */ "./resources/js/components/BaseCard.vue");
-
-
-
+/* harmony import */ var _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BaseSelect.vue */ "./resources/js/components/BaseSelect.vue");
+/* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
+/* harmony import */ var _BaseCard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BaseCard.vue */ "./resources/js/components/BaseCard.vue");
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomePage",
   components: {
-    BaseSelect: _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    DoctorsView: _DoctorsView_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    BaseCard: _BaseCard_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    AppMain: _AppMain_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    AppAlert: _AppAlert_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    BaseSelect: _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    BaseCard: _BaseCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
-      users: [],
-      prevUsers: [],
-      specialties: [],
-      choice: "",
-      form: {
-        rating: null,
-        number_review: null
-      },
-      alertMessage: "",
-      errors: {}
+      specialties: []
     };
   },
-  computed: {
-    // Controlla continuamente se ci sono errori o meno al fine di mostrare gli errori
-    hasErrors: function hasErrors() {
-      return Object.keys(this.errors).length;
-    }
-  },
   methods: {
-    resetUsers: function resetUsers() {
-      if (this.form.rating && this.form.number_review) {
-        this.form.number_review = "";
-        this.form.rating = "";
-        this.users = this.prevUsers;
-      }
-    },
-    validateForm: function validateForm() {
-      var errors = {};
-
-      // Controllo se c'è il cognome
-      if (!this.form.rating) errors.rating = "Il rating è obbligatorio";
-
-      // Controllo se c'è il feedback
-      if (!this.form.number_review) errors.number_review = "Il numero minimo di recensioni è obbligatorio";
-
-      // Assegnamo l'oggetto errors
-      this.errors = errors;
-    },
-    // Metodo invocato per effettuare il submit del form
-    submitForm: function submitForm() {
-      // Svuotiamo l'oggetto errors per ripopolarlo nel caso di errori
-      this.errors = {};
-
-      // Lanciamo la validazione lato Vue
-      this.validateForm();
-
-      // Se non ho errori mando il form
-      if (!this.hasErrors) this.raffinateDoctors();
-    },
-    raffinateDoctors: function raffinateDoctors() {
-      var _this = this;
-      var raffinate = this.users.filter(function (user) {
-        if (user.media == _this.form.rating && user.numero_recensioni >= parseInt(_this.form.number_review)) return user;
-      });
-      if (raffinate.length !== 0) {
-        this.prevUsers = this.users;
-        this.users = raffinate;
-      }
-    },
-    resetErrorsAndMessage: function resetErrorsAndMessage() {
-      this.errors = {};
-      this.alertMessage = null;
-    },
     fetchSpecialties: function fetchSpecialties() {
-      var _this2 = this;
+      var _this = this;
       axios.get("http://127.0.0.1:8000/api/specialties").then(function (res) {
-        _this2.specialties = res.data.specialties;
+        _this.specialties = res.data.specialties;
       });
     },
-    // Filtro dei dottori per recensioni
-    fetchDoctorsBySpecialties: function fetchDoctorsBySpecialties(choice) {
-      var _this3 = this;
-      this.choice = choice;
-      axios.get("http://127.0.0.1:8000/api/users/specialty/" + choice).then(function (res) {
-        _this3.users = res.data.users_by_specialty;
-        console.log(res.data.users_by_specialty);
+    changeSpecialties: function changeSpecialties(choice) {
+      this.$router.push({
+        name: "advanced-search",
+        params: {
+          id: choice
+        }
       });
-    },
-    // Metodo che filtra ulteriormente le ricerche dei medici in funzione
-    // della specializzazione in base alla media voti
-    filterByAVG: function filterByAVG() {
-      var _this4 = this;
-      if (this.choice !== "") {
-        axios.get("http://127.0.0.1:8000/api/users-raffinate-by-rating/" + this.choice).then(function (res) {
-          _this4.users = res.data.raffinate_users;
-          console.log(res.data.raffinate_users);
-        });
-      }
-    },
-    // Metodo che filtra ulteriormente le ricerche dei medici in funzione
-    // della specializzazione in base al numero di recensioni
-    filterByReviews: function filterByReviews() {
-      var _this5 = this;
-      if (this.choice !== "") {
-        axios.get("http://127.0.0.1:8000/api/users-raffinate-by-review/" + this.choice).then(function (res) {
-          _this5.users = res.data.raffinate_users;
-          console.log(res.data.raffinate_users);
-        });
-      }
     }
   },
   mounted: function mounted() {
@@ -1621,13 +1631,122 @@ var render = function render() {
     attrs: {
       id: "advanced-search"
     }
-  }, [_c("BaseJumbotron"), _vm._v(" "), _c("AppMain", {
+  }, [_c("BaseJumbotron"), _vm._v(" "), _vm.users.length ? _c("div", {
+    staticClass: "container"
+  }, [_c("h3", {
+    staticClass: "text-center my-5"
+  }, [_vm._v("Raffina i tuoi risultati")]), _vm._v(" "), _c("div", [_c("form", {
+    staticClass: "row",
+    attrs: {
+      novalidate: ""
+    },
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.submitForm.apply(null, arguments);
+      }
+    }
+  }, [_c("div", {
+    staticClass: "col-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": "rating"
+    }
+  }, [_vm._v("Rating")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.rating,
+      expression: "form.rating"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      id: "rating"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.form, "rating", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", [_vm._v("1")]), _vm._v(" "), _c("option", [_vm._v("2")]), _vm._v(" "), _c("option", [_vm._v("3")]), _vm._v(" "), _c("option", [_vm._v("4")]), _vm._v(" "), _c("option", [_vm._v("5")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": "number_review"
+    }
+  }, [_vm._v("Seleziona il minimo numero di recensioni")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model.trim",
+      value: _vm.form.number_review,
+      expression: "form.number_review",
+      modifiers: {
+        trim: true
+      }
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "number_review",
+      required: ""
+    },
+    domProps: {
+      value: _vm.form.number_review
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "number_review", $event.target.value.trim());
+      },
+      blur: function blur($event) {
+        return _vm.$forceUpdate();
+      }
+    }
+  })])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 p-0"
+  }, [_c("button", {
+    staticClass: "btn btn-warning",
+    on: {
+      click: _vm.resetUsers
+    }
+  }, [_vm._v("\n                    Reset\n                ")])])])]) : _vm._e(), _vm._v(" "), _vm.alertMessage || _vm.hasErrors ? _c("AppAlert", {
+    attrs: {
+      type: _vm.hasErrors ? "alert-danger" : "alert-success"
+    }
+  }, [_vm.alertMessage ? _c("div", [_vm._v(_vm._s(_vm.alertMessage))]) : _vm._e(), _vm._v(" "), _vm.hasErrors ? _c("div", [_c("ul", _vm._l(_vm.errors, function (error, key) {
+    return _c("li", {
+      key: key
+    }, [_vm._v("\n                    " + _vm._s(error) + "\n                ")]);
+  }), 0)]) : _vm._e()]) : _vm._e(), _vm._v(" "), _c("AppMain", {
     attrs: {
       users: _vm.users
     }
   })], 1);
 };
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("button", {
+    staticClass: "btn btn-success",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("\n                            Filtra\n                        ")])])]);
+}];
 render._withStripped = true;
 
 
@@ -1805,109 +1924,9 @@ var render = function render() {
       text: "Scegli una specializzazione"
     },
     on: {
-      "doctors-for-specialty": _vm.fetchDoctorsBySpecialties
+      "doctors-for-specialty": _vm.changeSpecialties
     }
-  })], 1)])])]), _vm._v(" "), _vm.users.length ? _c("div", {
-    staticClass: "container"
-  }, [_c("h3", {
-    staticClass: "text-center my-5"
-  }, [_vm._v("Raffina i tuoi risultati")]), _vm._v(" "), _c("div", [_c("form", {
-    staticClass: "row",
-    attrs: {
-      novalidate: ""
-    },
-    on: {
-      submit: function submit($event) {
-        $event.preventDefault();
-        return _vm.submitForm.apply(null, arguments);
-      }
-    }
-  }, [_c("div", {
-    staticClass: "col-6"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {
-    attrs: {
-      "for": "rating"
-    }
-  }, [_vm._v("Rating")]), _vm._v(" "), _c("select", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.rating,
-      expression: "form.rating"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      id: "rating"
-    },
-    on: {
-      change: function change($event) {
-        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-          return o.selected;
-        }).map(function (o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val;
-        });
-        _vm.$set(_vm.form, "rating", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-      }
-    }
-  }, [_c("option", [_vm._v("1")]), _vm._v(" "), _c("option", [_vm._v("2")]), _vm._v(" "), _c("option", [_vm._v("3")]), _vm._v(" "), _c("option", [_vm._v("4")]), _vm._v(" "), _c("option", [_vm._v("5")])])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-6"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {
-    attrs: {
-      "for": "number_review"
-    }
-  }, [_vm._v("Seleziona il minimo numero di recensioni")]), _vm._v(" "), _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model.trim",
-      value: _vm.form.number_review,
-      expression: "form.number_review",
-      modifiers: {
-        trim: true
-      }
-    }],
-    staticClass: "form-control",
-    attrs: {
-      type: "text",
-      id: "number_review",
-      required: ""
-    },
-    domProps: {
-      value: _vm.form.number_review
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.$set(_vm.form, "number_review", $event.target.value.trim());
-      },
-      blur: function blur($event) {
-        return _vm.$forceUpdate();
-      }
-    }
-  })])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", {
-    staticClass: "col-12 p-0"
-  }, [_c("button", {
-    staticClass: "btn btn-warning",
-    on: {
-      click: _vm.resetUsers
-    }
-  }, [_vm._v("\n                    Reset\n                ")])])])]) : _vm._e(), _vm._v(" "), _vm.alertMessage || _vm.hasErrors ? _c("AppAlert", {
-    attrs: {
-      type: _vm.hasErrors ? "alert-danger" : "alert-success"
-    }
-  }, [_vm.alertMessage ? _c("div", [_vm._v(_vm._s(_vm.alertMessage))]) : _vm._e(), _vm._v(" "), _vm.hasErrors ? _c("div", [_c("ul", _vm._l(_vm.errors, function (error, key) {
-    return _c("li", {
-      key: key
-    }, [_vm._v("\n                    " + _vm._s(error) + "\n                ")]);
-  }), 0)]) : _vm._e()]) : _vm._e(), _vm._v(" "), _vm.users.length ? _c("AppMain", {
-    attrs: {
-      users: _vm.users
-    }
-  }) : _vm._e(), _vm._v(" "), _c("BaseCard"), _vm._v(" "), _c("svg", {
+  })], 1)])])]), _vm._v(" "), _c("BaseCard"), _vm._v(" "), _c("svg", {
     staticStyle: {
       transform: "rotate(0deg)",
       transition: "0.3s"
@@ -1947,20 +1966,7 @@ var render = function render() {
     }
   })])], 1);
 };
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-12"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("button", {
-    staticClass: "btn btn-success",
-    attrs: {
-      type: "submit"
-    }
-  }, [_vm._v("\n                            Filtra\n                        ")])])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
