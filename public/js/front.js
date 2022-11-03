@@ -2948,21 +2948,23 @@ var render = function render() {
     on: {
       "doctors-for-specialty": _vm.fetchDoctorsBySpecialties
     }
-  })], 1)])])]), _vm._v(" "), _c("div", {
+  })], 1)])])]), _vm._v(" "), _vm.users.length ? _c("div", {
     staticClass: "container"
-  }, [_c("div", {
-    staticClass: "d-flex align-items-center justify-content-center my-5"
+  }, [_c("h3", {
+    staticClass: "text-center my-5"
+  }, [_vm._v("Raffina i tuoi risultati")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center justify-content-center"
   }, [_c("button", {
     staticClass: "btn btn-primary mr-3",
     on: {
       click: _vm.filterByAVG
     }
   }, [_vm._v("\n                Filtra per voti\n            ")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary",
+    staticClass: "btn btn-warning",
     on: {
       click: _vm.filterByReviews
     }
-  }, [_vm._v("\n                Filtra per recensioni\n            ")])])]), _vm._v(" "), _vm.users.length ? _c("AppMain", {
+  }, [_vm._v("\n                Filtra per recensioni\n            ")])])]) : _vm._e(), _vm._v(" "), _vm.users.length ? _c("AppMain", {
     attrs: {
       users: _vm.users
     }

@@ -26,12 +26,13 @@
         </BaseJumbotron>
 
         <!-- Additional filter -->
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-center my-5">
+        <div class="container" v-if="users.length">
+            <h3 class="text-center my-5">Raffina i tuoi risultati</h3>
+            <div class="d-flex align-items-center justify-content-center">
                 <button class="btn btn-primary mr-3" @click="filterByAVG">
                     Filtra per voti
                 </button>
-                <button class="btn btn-primary" @click="filterByReviews">
+                <button class="btn btn-warning" @click="filterByReviews">
                     Filtra per recensioni
                 </button>
             </div>
