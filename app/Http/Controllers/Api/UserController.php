@@ -102,7 +102,7 @@ class UserController extends Controller
      public function raffinateFilterByBestRating($query){
         $users_by_best_rating = User::with('specialties','userDetail')
         ->join('reviews','reviews.user_id','=','users.id')
-        ->select('users.*',DB::raw('AVG(reviews.rating) as media'))
+        ->select('users.*',DB::raw('round(AVG(reviews.rating)) as media'))
         ->orderBy('media','DESC')
         ->groupBy('users.id')
         ->get();
