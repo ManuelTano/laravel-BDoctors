@@ -1985,6 +1985,9 @@ __webpack_require__.r(__webpack_exports__);
   name: "AppCard",
   props: {
     user: Object
+  },
+  created: function created() {
+    console.log(this.user);
   }
 });
 
@@ -2388,7 +2391,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      // Lista degli utenti correntemente visualizzata
+      // Lista degli utenti filtrati per specializzazione
+      usersBySpecialty: [],
+      // Lista dei dottori filtrata per ricerca avanzata
+      filterUsers: [],
       users: [],
       // Lista utenti precedentemente visualizzata
       prevUsers: [],
@@ -2440,11 +2446,11 @@ __webpack_require__.r(__webpack_exports__);
     // Metodo invocato al submit del form: raffina la ricerca
     advancedSearch: function advancedSearch() {
       var _this = this;
-      var raffinate = this.users.filter(function (user) {
+      var raffinate = this.usersBySpecialty.filter(function (user) {
         if (user.media == _this.form.rating && user.numero_recensioni >= parseInt(_this.form.number_review)) return user;
       });
       if (raffinate.length !== 0) {
-        this.prevUsers = this.users;
+        this.prevUsers = this.usersBySpecialty;
         this.users = raffinate;
       }
     },
@@ -2468,8 +2474,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
       this.choice = choice;
       axios.get("http://127.0.0.1:8000/api/users/specialty/" + choice).then(function (res) {
-        _this2.users = res.data.users_by_specialty;
-        console.log(res.data.users_by_specialty);
+        _this2.users = _this2.usersBySpecialty = res.data.users_by_specialty;
+        console.log("chiamata effettuata con successo");
       });
     } // Metodo che filtra ulteriormente le ricerche dei medici in funzione
     // della specializzazione in base alla media voti
@@ -2719,51 +2725,53 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("div", {
-    staticClass: "card m-4 mx-4 col-3"
-  }, [_c("ul", {
-    staticClass: "ul"
-  }, [_c("li", [_vm._v("\n                " + _vm._s(_vm.user.first_name) + "\n                "), _c("i", {
-    staticClass: "bx bx-drink"
-  })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c("img", {
+  return _c("section", {
     attrs: {
-      src: _vm.user.user_detail.thumb,
-      alt: _vm.user.user_detail.thumb
+      id: "app-card"
+    }
+  }, [_c("div", {
+    staticClass: "card my-4",
+    staticStyle: {
+      width: "18rem"
+    }
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: "",
+      alt: ""
     }
   }), _vm._v(" "), _c("div", {
-    staticClass: "con-text"
-  }, [_c("h2"), _vm._v(" "), _c("p", [_c("router-link", {
-    staticClass: "my_card",
-    attrs: {
-      to: {
-        name: "doctors-doctor",
-        params: {
-          user: _vm.user.id
-        }
-      }
-    }
-  }, [_vm._v("Visita il profilo")])], 1)])]), _vm._v(" "), _c("div", {
-    staticClass: "card-footer d-flex justify-content-between"
-  }, [_c("div", [_vm._v(_vm._s(_vm.user.media))]), _vm._v(" "), _c("div", [_vm._v(_vm._s(_vm.user.numero_recensioni))])])]);
+    staticClass: "card-body"
+  }, [_c("h5", {
+    staticClass: "card-title"
+  }, [_vm._v("\n                " + _vm._s(_vm.user.first_name + " " + _vm.user.last_name) + "\n            ")]), _vm._v(" "), _c("p", {
+    staticClass: "card-text"
+  })]), _vm._v(" "), _c("ul", {
+    staticClass: "list-group list-group-flush"
+  }, [_c("li", {
+    staticClass: "list-group-item"
+  }, [_vm._v("media: " + _vm._s(_vm.user.media))]), _vm._v(" "), _c("li", {
+    staticClass: "list-group-item"
+  }, [_vm._v("\n                review: " + _vm._s(_vm.user.numero_recensioni) + "\n            ")]), _vm._v(" "), _c("li", {
+    staticClass: "list-group-item"
+  }, [_vm._v("A third item")])]), _vm._v(" "), _vm._m(0)])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("li", [_c("i", {
-    staticClass: "bx bx-film"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("li", [_c("i", {
-    staticClass: "bx bx-store-alt"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("li", [_c("i", {
-    staticClass: "bx bx-map"
-  })]);
+  return _c("div", {
+    staticClass: "card-body"
+  }, [_c("a", {
+    staticClass: "card-link",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Card link")]), _vm._v(" "), _c("a", {
+    staticClass: "card-link",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Another link")])]);
 }];
 render._withStripped = true;
 
@@ -8564,25 +8572,6 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "ul[data-v-317790a4] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  list-style-type: none;\n  margin: 50px 0;\n}\nul li[data-v-317790a4] {\n  margin: 20px 0;\n}\nform ul[data-v-317790a4] {\n  display: block;\n  list-style-type: disc;\n}\n.margin-left[data-v-317790a4] {\n  margin-left: 15px;\n}\n.title[data-v-317790a4] {\n  color: #b1a8e5;\n  text-align: center;\n  font-family: \"Avenir Next\", \"Roboto\", sans-serif;\n  font-size: 5vw;\n  line-height: 1;\n  letter-spacing: -0.02em;\n  font-weight: 800;\n}\n.wordchanger[data-v-317790a4]::before {\n  content: \"humanising\";\n  display: block;\n  position: relative;\n  color: #b1a8e5;\n  text-align: center;\n  font-family: \"Avenir Next\", \"Roboto\", sans-serif;\n  font-size: 5vw;\n  line-height: 1;\n  letter-spacing: -0.02em;\n  font-weight: 800;\n  animation-name: mywordchange-317790a4;\n  animation-duration: 8s;\n  animation-iteration-count: infinite;\n  animation-timing-function: ease-in-out;\n}\n@keyframes mywordchange-317790a4 {\n0% {\n    content: \"pediatra\";\n    opacity: 0.58;\n}\n10% {\n    content: \"pediatra\";\n    opacity: 1;\n}\n19% {\n    content: \"pediatra\";\n    opacity: 0;\n}\n20% {\n    content: \"dermatologo\";\n    opacity: 0;\n}\n30% {\n    content: \"dermatologo\";\n    opacity: 1;\n}\n39% {\n    content: \"dermatologo\";\n    opacity: 0;\n}\n40% {\n    content: \"cardiologo\";\n    opacity: 0;\n}\n50% {\n    content: \"cardiologo\";\n    opacity: 1;\n}\n59% {\n    content: \"cardiologo\";\n    opacity: 0;\n}\n60% {\n    content: \"oculista\";\n    opacity: 0;\n}\n70% {\n    content: \"oculista\";\n    opacity: 1;\n}\n79% {\n    content: \"oculista\";\n    opacity: 0;\n}\n80% {\n    content: \"urologo\";\n    opacity: 0;\n}\n90% {\n    content: \"urologo\";\n    opacity: 1;\n}\n99% {\n    content: \"urologo\";\n    opacity: 0;\n}\n100% {\n    content: \"pediatra\";\n    opacity: 0;\n}\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppCard.vue?vue&type=style&index=0&id=0393c9b6&leng=scss&lang=css&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AppCard.vue?vue&type=style&index=0&id=0393c9b6&leng=scss&lang=css& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.card {\n    width: 18.75rem;\n    height: 25rem;\n    background: #000;\n    border-radius: 1.87rem;\n    overflow: hidden;\n    position: relative;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    cursor: pointer;\n    transition: all 0.25s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n\n    z-index: 0;\n}\n.card:hover {\n    transform: scale(0.9);\n    z-index: 0;\n}\n.card:hover:after {\n    height: 1.75rem;\n}\n.card:hover .con-text p {\n    margin-bottom: 0.5rem;\n    opacity: 1;\n}\n.card:hover img {\n    transform: scale(1.25);\n}\n.card:hover .ul {\n    transform: translate(0);\n    opacity: 1;\n}\n.card:after {\n    width: 100%;\n    content: \"\";\n    left: 0.5rem;\n    bottom: 0rem;\n    height: 0.93rem;\n    position: absolute;\n    background: Linear-gradient(\n        18deg,\n        rgba(0, 0, 0, 0) 0%,\n        rgba(0, 0, 6, 1) 100%\n    );\n    z-index: 20;\n    transition: all 0.25s ease;\n}\n.card img {\n    height: 100%;\n    z-index: 18;\n    transition: all 0.25s ease;\n}\n.card .con-text {\n    z-index: 30;\n    position: absolute;\n    bottom: 0rem;\n    color: #fff;\n    padding: 1.25rem;\n    padding-bottom: 1.87rem;\n}\n.card .con-text p {\n    font-size: 0.8rem;\n    opacity: 0;\n    margin-bottom: -10.6rem;\n    transition: all 0.25s ease;\n    display: flex;\n    align-items: center;\n    justify-content: flex-end;\n    flex-direction: column;\n}\n\n/* .card .con-text p button {\n    padding: 0.43rem 1.06rem;\n    border-radius: 0.75rem;\n    background: transparent;\n    border: 0.125rem solid #fff;\n    color: #fff;\n    margin-top: 0.625rem;\n    margin-left: auto;\n    cursor: pointer;\n    transition: all .25s ease;\n\n    font-size: 0.75rem;\n    outline: none;\n} */\n.card .con-text p .my_card {\n    padding: 0.43rem 1.06rem;\n    border-radius: 0.75rem;\n    background: transparent;\n    border: 0.125rem solid #fff;\n    color: #fff;\n    margin-top: 0.625rem;\n    margin-left: auto;\n    cursor: pointer;\n    transition: all 0.25s ease;\n\n    font-size: 0.75rem;\n    outline: none;\n}\n.card .con-text p button:hover {\n    background: #fff;\n    color: #000;\n}\n.ul {\n    position: absolute;\n    right: 0.625rem;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    z-index: 40;\n    border-radius: 0.875rem;\n    padding-left: 0rem;\n    padding-top: 0.5rem;\n    padding-bottom: 0.5rem;\n    top: 0rem;\n    opacity: 0;\n    transform: translate(100%);\n    transition: all 0.25s ease;\n}\n.ul li {\n    background: #fff;\n    list-style: none;\n    width: 2.5rem;\n    height: 2.5rem;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    opacity: 0.7;\n    transition: all 0.25s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n}\nul li:last-child {\n    border-radius: 0rem 0rem 0.75rem 0.75rem;\n}\n.ul li:first.child {\n    border-radius: 0.75rem 0.75rem 0rem 0rem;\n}\n.ul li:hover {\n    opacity: 1;\n    transform: translate(-0.43rem, -0.25rem);\n    border-radius: 0.375rem;\n}\n.ul li i {\n    font-size: 1.4rem;\n    color: #000;\n}\n", ""]);
 
 // exports
 
@@ -40163,36 +40152,6 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppCard.vue?vue&type=style&index=0&id=0393c9b6&leng=scss&lang=css&":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AppCard.vue?vue&type=style&index=0&id=0393c9b6&leng=scss&lang=css& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./AppCard.vue?vue&type=style&index=0&id=0393c9b6&leng=scss&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppCard.vue?vue&type=style&index=0&id=0393c9b6&leng=scss&lang=css&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -56140,9 +56099,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AppCard_vue_vue_type_template_id_0393c9b6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppCard.vue?vue&type=template&id=0393c9b6& */ "./resources/js/components/AppCard.vue?vue&type=template&id=0393c9b6&");
 /* harmony import */ var _AppCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppCard.vue?vue&type=script&lang=js& */ "./resources/js/components/AppCard.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _AppCard_vue_vue_type_style_index_0_id_0393c9b6_leng_scss_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppCard.vue?vue&type=style&index=0&id=0393c9b6&leng=scss&lang=css& */ "./resources/js/components/AppCard.vue?vue&type=style&index=0&id=0393c9b6&leng=scss&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -56150,7 +56107,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _AppCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _AppCard_vue_vue_type_template_id_0393c9b6___WEBPACK_IMPORTED_MODULE_0__["render"],
   _AppCard_vue_vue_type_template_id_0393c9b6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -56179,22 +56136,6 @@ component.options.__file = "resources/js/components/AppCard.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AppCard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppCard.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/AppCard.vue?vue&type=style&index=0&id=0393c9b6&leng=scss&lang=css&":
-/*!****************************************************************************************************!*\
-  !*** ./resources/js/components/AppCard.vue?vue&type=style&index=0&id=0393c9b6&leng=scss&lang=css& ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCard_vue_vue_type_style_index_0_id_0393c9b6_leng_scss_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./AppCard.vue?vue&type=style&index=0&id=0393c9b6&leng=scss&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppCard.vue?vue&type=style&index=0&id=0393c9b6&leng=scss&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCard_vue_vue_type_style_index_0_id_0393c9b6_leng_scss_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCard_vue_vue_type_style_index_0_id_0393c9b6_leng_scss_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCard_vue_vue_type_style_index_0_id_0393c9b6_leng_scss_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCard_vue_vue_type_style_index_0_id_0393c9b6_leng_scss_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-
 
 /***/ }),
 

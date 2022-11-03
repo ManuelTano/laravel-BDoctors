@@ -89,7 +89,12 @@ export default {
     },
     data() {
         return {
-            // Lista degli utenti correntemente visualizzata
+            // Lista degli utenti filtrati per specializzazione
+            usersBySpecialty: [],
+
+            // Lista dei dottori filtrata per ricerca avanzata
+            filterUsers: [],
+
             users: [],
 
             // Lista utenti precedentemente visualizzata
@@ -149,7 +154,7 @@ export default {
 
         // Metodo invocato al submit del form: raffina la ricerca
         advancedSearch() {
-            const raffinate = this.users.filter((user) => {
+            const raffinate = this.usersBySpecialty.filter((user) => {
                 if (
                     user.media == this.form.rating &&
                     user.numero_recensioni >= parseInt(this.form.number_review)
@@ -157,7 +162,7 @@ export default {
                     return user;
             });
             if (raffinate.length !== 0) {
-                this.prevUsers = this.users;
+                this.prevUsers = this.usersBySpecialty;
                 this.users = raffinate;
             }
         },
@@ -187,8 +192,9 @@ export default {
             axios
                 .get("http://127.0.0.1:8000/api/users/specialty/" + choice)
                 .then((res) => {
-                    this.users = res.data.users_by_specialty;
-                    console.log(res.data.users_by_specialty);
+                    this.users = this.usersBySpecialty =
+                        res.data.users_by_specialty;
+                    console.log("chiamata effettuata con successo");
                 });
         },
 
