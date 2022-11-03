@@ -2322,7 +2322,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     sendReview: function sendReview() {
       var _this = this;
-      axios.post("http://127.0.0.1:8000/api/new-review", this.form).then(function (res) {
+      axios.post("http://127.0.0.1:8000/api/new-review/" + this.userId, this.form).then(function (res) {
         console.log("Inviata con successo");
         console.log(res.data);
         if (res.data.errors) {

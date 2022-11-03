@@ -198,7 +198,10 @@ export default {
 
         sendReview() {
             axios
-                .post("http://127.0.0.1:8000/api/new-review", this.form)
+                .post(
+                    "http://127.0.0.1:8000/api/new-review/" + this.userId,
+                    this.form
+                )
                 .then((res) => {
                     console.log("Inviata con successo");
                     console.log(res.data);

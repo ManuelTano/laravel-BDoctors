@@ -12,7 +12,7 @@ class SendDoctorReview extends Controller
 {
     // Metodo che consente di inviare una nuova recensione
 
-    public function sendNewReview(Request $request){
+    public function sendNewReview(Request $request,$id){
 
         $data = $request->all();
 
@@ -27,7 +27,7 @@ class SendDoctorReview extends Controller
 
         $new_review = new Review();
 
-        $new_review->user_id = 1;
+        $new_review->user_id = $id;
 
         $new_review->fill($data);
 

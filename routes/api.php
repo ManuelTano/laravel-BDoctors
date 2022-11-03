@@ -52,7 +52,7 @@ Route::namespace('Api')->group(function () {
     // # ROTTE CHE INVIANO MESSAGGI E RECENSIONI
 
     // Rotta per inviare una recensione al dottore
-    Route::post('/new-review','SendDoctorReview@sendNewReview');
+    Route::post('/new-review/{id}','SendDoctorReview@sendNewReview');
 
     // Rotta per inviare un messaggio al dottore
     Route::post('/new-message/{id}','ContactDoctor@sendNewMessage');
