@@ -60,11 +60,7 @@
                             </div>
                         </div>
                         <!-- Reviews and messages -->
-                        <div>
-                            <button @click="returnBack" class="btn btn-warning">
-                                <i class="fa-solid fa-rotate-left"></i>
-                            </button>
-                        </div>
+                        <div></div>
                     </address>
                 </div>
             </div>
@@ -79,12 +75,26 @@
                 :lastName="user[0].last_name"
             />
 
+            <!-- Separatore di sezione -->
+            <hr />
+
             <!-- @ Send new review -->
             <ReviewForm
                 :userId="user[0].id"
                 :firstName="user[0].first_name"
                 :lastName="user[0].last_name"
             />
+
+            <!-- Separatore di sezione -->
+            <hr />
+
+            <!-- Buttone che ritorna alla lista di dottori -->
+            <div class="d-flex align-items-center justify-content-end my-3">
+                <button @click="returnBack" class="btn btn-warning">
+                    Ritorna alla lista dei dottori
+                    <i class="ml-2 fa-solid fa-rotate-left"></i>
+                </button>
+            </div>
         </div>
     </section>
 </template>

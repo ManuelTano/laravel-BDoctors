@@ -1830,14 +1830,7 @@ var render = function render() {
     staticClass: "d-flex justify-content-between w-100"
   }, [_c("div", [_c("div", {
     staticClass: "mr-2"
-  }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + "\n                        ")])]), _vm._v(" "), _c("div", [_c("button", {
-    staticClass: "btn btn-warning",
-    on: {
-      click: _vm.returnBack
-    }
-  }, [_c("i", {
-    staticClass: "fa-solid fa-rotate-left"
-  })])])])])]) : _vm._e(), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + "\n                        ")])]), _vm._v(" "), _c("div")])])]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "p-3"
   }), _vm._v(" "), _c("MessageForm", {
     attrs: {
@@ -1845,13 +1838,22 @@ var render = function render() {
       firstName: _vm.user[0].first_name,
       lastName: _vm.user[0].last_name
     }
-  }), _vm._v(" "), _c("ReviewForm", {
+  }), _vm._v(" "), _c("hr"), _vm._v(" "), _c("ReviewForm", {
     attrs: {
       userId: _vm.user[0].id,
       firstName: _vm.user[0].first_name,
       lastName: _vm.user[0].last_name
     }
-  })], 1)], 1);
+  }), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center justify-content-end my-3"
+  }, [_c("button", {
+    staticClass: "btn btn-warning",
+    on: {
+      click: _vm.returnBack
+    }
+  }, [_vm._v("\n                Ritorna alla lista dei dottori\n                "), _c("i", {
+    staticClass: "ml-2 fa-solid fa-rotate-left"
+  })])])], 1)], 1);
 };
 var staticRenderFns = [function () {
   var _vm = this,
