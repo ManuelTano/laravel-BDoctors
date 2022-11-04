@@ -61,6 +61,9 @@
         <AppAlert
             v-if="alertMessage || hasErrors"
             :type="hasErrors ? 'alert-danger' : 'alert-success'"
+            @delete-alert="resetErrorsAndMessage"
+            id="alert"
+            class="my-3"
         >
             <div v-if="alertMessage">{{ alertMessage }}</div>
             <div v-if="hasErrors">
@@ -221,6 +224,17 @@ ul {
 
     li {
         margin: 20px 0;
+    }
+}
+
+#alert {
+    ul {
+        display: block;
+        margin: 0;
+
+        li {
+            margin: 5px 0;
+        }
     }
 }
 </style>

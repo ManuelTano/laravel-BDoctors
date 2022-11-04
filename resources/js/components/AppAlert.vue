@@ -1,9 +1,11 @@
 <template>
     <section id="app-alert">
-        <div class="alert position-relative" :class="type" role="alert">
-            <slot />
-            <!-- Icona che consente di eliminare il post -->
-            <i class="fa-solid fa-xmark" @click="deleteAlert"></i>
+        <div class="container">
+            <div class="alert position-relative" :class="type" role="alert">
+                <slot />
+                <!-- Icona che consente di eliminare il post -->
+                <i class="fa-solid fa-xmark" @click="deleteAlert"></i>
+            </div>
         </div>
     </section>
 </template>

@@ -2682,6 +2682,8 @@ var render = function render() {
       id: "app-alert"
     }
   }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
     staticClass: "alert position-relative",
     "class": _vm.type,
     attrs: {
@@ -2692,7 +2694,7 @@ var render = function render() {
     on: {
       click: _vm.deleteAlert
     }
-  })], 2)]);
+  })], 2)])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -3713,8 +3715,13 @@ var render = function render() {
       click: _vm.resetUsers
     }
   }, [_vm._v("\n                    Reset\n                ")])])])]) : _vm._e(), _vm._v(" "), _vm.alertMessage || _vm.hasErrors ? _c("AppAlert", {
+    staticClass: "my-3",
     attrs: {
-      type: _vm.hasErrors ? "alert-danger" : "alert-success"
+      type: _vm.hasErrors ? "alert-danger" : "alert-success",
+      id: "alert"
+    },
+    on: {
+      "delete-alert": _vm.resetErrorsAndMessage
     }
   }, [_vm.alertMessage ? _c("div", [_vm._v(_vm._s(_vm.alertMessage))]) : _vm._e(), _vm._v(" "), _vm.hasErrors ? _c("div", [_c("ul", _vm._l(_vm.errors, function (error, key) {
     return _c("li", {
@@ -8557,7 +8564,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "ul[data-v-781a2080] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  list-style-type: none;\n  margin: 50px 0;\n}\nul li[data-v-781a2080] {\n  margin: 20px 0;\n}", ""]);
+exports.push([module.i, "ul[data-v-781a2080] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  list-style-type: none;\n  margin: 50px 0;\n}\nul li[data-v-781a2080] {\n  margin: 20px 0;\n}\n#alert ul[data-v-781a2080] {\n  display: block;\n  margin: 0;\n}\n#alert ul li[data-v-781a2080] {\n  margin: 5px 0;\n}", ""]);
 
 // exports
 
