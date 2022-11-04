@@ -217,6 +217,7 @@ export default {
                 .then((res) => {
                     this.users = this.usersBySpecialty =
                         res.data.users_by_specialty;
+                    this.filterBySponsorship();
                     console.log("chiamata effettuata con successo");
                     console.log(this.users);
                 });
@@ -225,14 +226,36 @@ export default {
         // Filtra il risultato dell'api per sponsorizzazioni
         filterBySponsorship() {
             const basicUsers = this.users.filter((user) => {
-                if (user.sponsorships.business_plan === "basic") return user;
+                if (user.sponsorships[0].business_plan === "basic") return user;
+            });
+            console.log("basic: " + basicUsers);
+
+            const goldUsers = this.users.filter((user) => {
+                if (user.sponsorships[0].business_plan === "gold") return user;
             });
 
-            const sponsorshipUsers = this.users.filter((user) => {
-                if (user.sponsorships.business_plan !== "basic") return user;
+            console.log("gold: " + goldUsers);
+
+            const silverUsers = this.users.filter((user) => {
+                if (user.sponsorships[0].business_plan === "silver")
+                    return user;
             });
 
-            this.users = [...basicUsers, ...sponsorshipUsers];
+            console.log("silver: " + silverUsers);
+
+            const bronzeUsers = this.users.filter((user) => {
+                if (user.sponsorships[0].business_plan === "bronze")
+                    return user;
+            });
+
+            console.log("bronze: " + bronzeUsers);
+
+            this.users = [
+                ...goldUsers,
+                ...silverUsers,
+                ...bronzeUsers,
+                ...basicUsers,
+            ];
         },
 
         // Filtra la specializzazione corrente

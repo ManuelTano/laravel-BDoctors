@@ -28,11 +28,6 @@ const routes = new VueRouter({
     routes: [
         { path: "/", component: HomePage, name: "home" },
         {
-            path: "/all-featured-doctors",
-            component: FeaturedDoctorsPage,
-            name: "all-featured-doctors",
-        },
-        {
             path: "/advanced-search",
             component: AdvancedSearch,
             name: "advanced-search",

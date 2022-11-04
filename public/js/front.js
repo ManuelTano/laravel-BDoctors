@@ -2502,6 +2502,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.choice = choice;
       axios.get("http://127.0.0.1:8000/api/users/specialty/" + choice).then(function (res) {
         _this2.users = _this2.usersBySpecialty = res.data.users_by_specialty;
+        _this2.filterBySponsorship();
         console.log("chiamata effettuata con successo");
         console.log(_this2.users);
       });
@@ -2509,12 +2510,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     // Filtra il risultato dell'api per sponsorizzazioni
     filterBySponsorship: function filterBySponsorship() {
       var basicUsers = this.users.filter(function (user) {
-        if (user.sponsorships.business_plan === "basic") return user;
+        if (user.sponsorships[0].business_plan === "basic") return user;
       });
-      var sponsorshipUsers = this.users.filter(function (user) {
-        if (user.sponsorships.business_plan !== "basic") return user;
+      console.log("basic: " + basicUsers);
+      var goldUsers = this.users.filter(function (user) {
+        if (user.sponsorships[0].business_plan === "gold") return user;
       });
-      this.users = [].concat(_toConsumableArray(basicUsers), _toConsumableArray(sponsorshipUsers));
+      console.log("gold: " + goldUsers);
+      var silverUsers = this.users.filter(function (user) {
+        if (user.sponsorships[0].business_plan === "silver") return user;
+      });
+      console.log("silver: " + silverUsers);
+      var bronzeUsers = this.users.filter(function (user) {
+        if (user.sponsorships[0].business_plan === "bronze") return user;
+      });
+      console.log("bronze: " + bronzeUsers);
+      this.users = [].concat(_toConsumableArray(goldUsers), _toConsumableArray(silverUsers), _toConsumableArray(bronzeUsers), _toConsumableArray(basicUsers));
     },
     // Filtra la specializzazione corrente
     filterSpecialty: function filterSpecialty() {
@@ -2845,23 +2856,7 @@ var render = function render() {
         name: "home"
       }
     }
-  }, [_vm._v("Homepage")])], 1), _vm._v(" "), _c("li", {
-    staticClass: "nav-item active"
-  }, [_c("router-link", {
-    attrs: {
-      to: {
-        name: "advanced-search"
-      }
-    }
-  }, [_vm._v("Ricerca avanzata")])], 1), _vm._v(" "), _c("li", {
-    staticClass: "nav-item active"
-  }, [_c("router-link", {
-    attrs: {
-      to: {
-        name: "all-featured-doctors"
-      }
-    }
-  }, [_vm._v("Dottori in evidenza")])], 1)])])], 1)]);
+  }, [_vm._v("Homepage")])], 1)])])], 1)]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -57576,10 +57571,6 @@ var routes = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: "/",
     component: _components_pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: "home"
-  }, {
-    path: "/all-featured-doctors",
-    component: _components_pages_FeaturedDoctorsPage_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
-    name: "all-featured-doctors"
   }, {
     path: "/advanced-search",
     component: _components_pages_AdvancedSearch_vue__WEBPACK_IMPORTED_MODULE_2__["default"],

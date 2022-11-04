@@ -16,7 +16,7 @@
                             >Homepage</router-link
                         >
                     </li>
-                    <li class="nav-item active">
+                    <!-- <li class="nav-item active">
                         <router-link :to="{ name: 'advanced-search' }"
                             >Ricerca avanzata</router-link
                         >
@@ -25,7 +25,7 @@
                         <router-link :to="{ name: 'all-featured-doctors' }"
                             >Dottori in evidenza</router-link
                         >
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </nav>
