@@ -60,4 +60,6 @@ Route::namespace('Api')->group(function () {
     // # ROTTA CHE RESTITUISCE TUTTE LE SPECIALIZZAZIONI
 
     Route::get('/specialties','SpecialtyController@index');
+
+    Route::get('/specialties/{id}','SpecialtyController@show');
 });

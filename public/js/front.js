@@ -2416,6 +2416,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   data: function data() {
     return {
+      // Specializzazione corrente
+      specialty: [],
       // Lista degli utenti filtrati per specializzazione
       usersBySpecialty: [],
       // Lista dei dottori filtrata per ricerca avanzata
@@ -2513,10 +2515,18 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         if (user.sponsorships.business_plan !== "basic") return user;
       });
       this.users = [].concat(_toConsumableArray(basicUsers), _toConsumableArray(sponsorshipUsers));
+    },
+    // Filtra la specializzazione corrente
+    filterSpecialty: function filterSpecialty() {
+      var _this3 = this;
+      axios.get("http://127.0.0.1:8000/api/specialties/" + this.choice).then(function (res) {
+        _this3.specialty = res.data.specialty;
+      });
     }
   },
   mounted: function mounted() {
     this.fetchDoctorsBySpecialties(this.choice);
+    this.filterSpecialty();
   },
   created: function created() {
     this.choice = this.$route.params.id;
@@ -2534,18 +2544,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
-/* harmony import */ var _MessageForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../MessageForm.vue */ "./resources/js/components/MessageForm.vue");
-/* harmony import */ var _ReviewForm_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ReviewForm.vue */ "./resources/js/components/ReviewForm.vue");
-
+/* harmony import */ var _MessageForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../MessageForm.vue */ "./resources/js/components/MessageForm.vue");
+/* harmony import */ var _ReviewForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ReviewForm.vue */ "./resources/js/components/ReviewForm.vue");
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DoctorPage",
   components: {
-    BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    MessageForm: _MessageForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    ReviewForm: _ReviewForm_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    MessageForm: _MessageForm_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ReviewForm: _ReviewForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -3659,12 +3666,12 @@ var render = function render() {
     attrs: {
       id: "advanced-search"
     }
-  }, [_c("BaseJumbotron"), _vm._v(" "), _vm.users.length ? _c("div", {
+  }, [_vm.users.length ? _c("div", {
     staticClass: "container"
   }, [_c("h3", {
     staticClass: "text-center my-5"
   }, [_vm._v("Raffina i tuoi risultati")]), _vm._v(" "), _c("div", [_c("form", {
-    staticClass: "row",
+    staticClass: "row justify-content-center",
     attrs: {
       novalidate: ""
     },
@@ -3741,7 +3748,7 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", {
-    staticClass: "col-12 p-0"
+    staticClass: "col-6 p-0"
   }, [_c("button", {
     staticClass: "btn btn-warning",
     on: {
@@ -3805,7 +3812,7 @@ var render = function render() {
     attrs: {
       id: "doctor-page"
     }
-  }, [_c("BaseJumbotron"), _vm._v(" "), _c("div", {
+  }, [_c("div", {
     staticClass: "container"
   }, [_vm.user ? _c("div", {
     staticClass: "d-flex align-items-centern p-3"
@@ -3852,7 +3859,7 @@ var render = function render() {
     }
   }, [_vm._v("\n                Ritorna alla lista dei dottori\n                "), _c("i", {
     staticClass: "ml-2 fa-solid fa-rotate-left"
-  })])])], 1)], 1);
+  })])])], 1)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -8607,7 +8614,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "ul[data-v-781a2080] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  list-style-type: none;\n  margin: 50px 0;\n}\nul li[data-v-781a2080] {\n  margin: 20px 0;\n}\n#alert ul[data-v-781a2080] {\n  display: block;\n  margin: 0;\n}\n#alert ul li[data-v-781a2080] {\n  margin: 5px 0;\n}", ""]);
+exports.push([module.i, "#advanced-search[data-v-781a2080] {\n  padding-top: 150px;\n}\n#advanced-search ul[data-v-781a2080] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  list-style-type: none;\n  margin: 50px 0;\n}\n#advanced-search ul li[data-v-781a2080] {\n  margin: 20px 0;\n}\n#advanced-search #alert ul[data-v-781a2080] {\n  display: block;\n  margin: 0;\n}\n#advanced-search #alert ul li[data-v-781a2080] {\n  margin: 5px 0;\n}\n#advanced-search .margin-left[data-v-781a2080] {\n  margin-left: 15px;\n}\n#advanced-search .title[data-v-781a2080] {\n  color: #b1a8e5;\n  text-align: center;\n  font-family: \"Avenir Next\", \"Roboto\", sans-serif;\n  font-size: 5vw;\n  line-height: 1;\n  letter-spacing: -0.02em;\n  font-weight: 800;\n}", ""]);
 
 // exports
 
@@ -8626,7 +8633,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#doctor-page figure[data-v-3ba5a564] {\n  width: 200px;\n  height: 200px;\n}\n#doctor-page figure img[data-v-3ba5a564] {\n  -o-object-fit: cover;\n     object-fit: cover;\n}", ""]);
+exports.push([module.i, "#doctor-page[data-v-3ba5a564] {\n  padding-top: 150px;\n}\n#doctor-page figure[data-v-3ba5a564] {\n  width: 200px;\n  height: 200px;\n}\n#doctor-page figure img[data-v-3ba5a564] {\n  -o-object-fit: cover;\n     object-fit: cover;\n}", ""]);
 
 // exports
 

@@ -38,7 +38,8 @@ class SpecialtyController extends Controller
      */
     public function show($id)
     {
-        //
+        $specialty = Specialty::where('id','=',$id)->get();
+        return response()->json(compact('specialty'));
     }
 
     /**

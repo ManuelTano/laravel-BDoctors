@@ -1,13 +1,29 @@
 <template>
     <section id="advanced-search">
         <!-- Jumbotron -->
-        <BaseJumbotron />
+        <!-- <BaseJumbotron
+            class="d-flex align-items-center justify-content-between"
+        >
+            <div class="container">
+                <div class="row margin-left">
+                    <div class="col-12">
+                        <div class="mb-5 text-center">
+                            <span class="title">{{ specialty[0].label }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </BaseJumbotron> -->
 
         <!-- Additional filter -->
         <div class="container" v-if="users.length">
             <h3 class="text-center my-5">Raffina i tuoi risultati</h3>
             <div>
-                <form @submit.prevent="submitForm" class="row" novalidate>
+                <form
+                    @submit.prevent="submitForm"
+                    class="row justify-content-center"
+                    novalidate
+                >
                     <!-- Rating -->
                     <div class="col-6">
                         <div class="form-group">
@@ -41,6 +57,7 @@
                             />
                         </div>
                     </div>
+
                     <div class="col-12">
                         <div class="form-group">
                             <button class="btn btn-success" type="submit">
@@ -49,7 +66,7 @@
                         </div>
                     </div>
                 </form>
-                <div class="col-12 p-0">
+                <div class="col-6 p-0">
                     <button class="btn btn-warning" @click="resetUsers">
                         Reset
                     </button>
@@ -92,6 +109,9 @@ export default {
     },
     data() {
         return {
+            // Specializzazione corrente
+            specialty: [],
+
             // Lista degli utenti filtrati per specializzazione
             usersBySpecialty: [],
 
@@ -214,9 +234,19 @@ export default {
 
             this.users = [...basicUsers, ...sponsorshipUsers];
         },
+
+        // Filtra la specializzazione corrente
+        filterSpecialty() {
+            axios
+                .get("http://127.0.0.1:8000/api/specialties/" + this.choice)
+                .then((res) => {
+                    this.specialty = res.data.specialty;
+                });
+        },
     },
     mounted() {
         this.fetchDoctorsBySpecialties(this.choice);
+        this.filterSpecialty();
     },
     created() {
         this.choice = this.$route.params.id;
@@ -225,29 +255,47 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-ul {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+#advanced-search {
+    padding-top: 150px;
 
-    list-style-type: none;
-
-    margin: 50px 0;
-
-    li {
-        margin: 20px 0;
-    }
-}
-
-#alert {
     ul {
-        display: block;
-        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        list-style-type: none;
+
+        margin: 50px 0;
 
         li {
-            margin: 5px 0;
+            margin: 20px 0;
         }
+    }
+
+    #alert {
+        ul {
+            display: block;
+            margin: 0;
+
+            li {
+                margin: 5px 0;
+            }
+        }
+    }
+
+    .margin-left {
+        margin-left: 15px;
+    }
+
+    .title {
+        color: #b1a8e5;
+        text-align: center;
+        font-family: "Avenir Next", "Roboto", sans-serif;
+        font-size: 5vw;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        font-weight: 800;
     }
 }
 </style>

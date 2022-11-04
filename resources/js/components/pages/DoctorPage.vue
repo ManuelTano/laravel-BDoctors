@@ -1,6 +1,5 @@
 <template>
     <section id="doctor-page">
-        <BaseJumbotron />
         <div class="container">
             <div class="d-flex align-items-centern p-3" v-if="user">
                 <!-- Immagine del dottore -->
@@ -100,13 +99,11 @@
 </template>
 
 <script>
-import BaseJumbotron from "../BaseJumbotron.vue";
 import MessageForm from "../MessageForm.vue";
 import ReviewForm from "../ReviewForm.vue";
 export default {
     name: "DoctorPage",
     components: {
-        BaseJumbotron,
         MessageForm,
         ReviewForm,
     },
@@ -149,6 +146,7 @@ export default {
 
 <style lang="scss" scoped>
 #doctor-page {
+    padding-top: 150px;
     figure {
         width: 200px;
         height: 200px;
