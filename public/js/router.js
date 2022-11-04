@@ -123,8 +123,23 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     user: Object
   },
+  data: function data() {
+    return {
+      currentUser: null
+    };
+  },
+  methods: {
+    showProfile: function showProfile() {
+      this.$router.push({
+        name: "doctors-doctor",
+        params: {
+          user: this.currentUser.id
+        }
+      });
+    }
+  },
   created: function created() {
-    console.log(this.user);
+    this.currentUser = this.user;
   }
 });
 
@@ -820,23 +835,22 @@ var render = function render() {
     return _c("span", {
       key: "spec" - specialty
     }, [_vm._v(_vm._s(specialty.label) + "\n                                "), index === _vm.user.specialties.length - 1 ? _c("span", [_vm._v(".")]) : _c("span", [_vm._v(",")])]);
-  })], 2)])])])]), _vm._v(" "), _vm._m(1)])]);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("li", [_c("div", [_vm._v("Laureato in Medicina")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", [_c("div", {
+  })], 2)])])])]), _vm._v(" "), _c("div", [_c("div", {
     staticClass: "card-body"
   }, [_c("button", {
     staticClass: "btn",
     attrs: {
       id: "show-profile"
+    },
+    on: {
+      click: _vm.showProfile
     }
-  }, [_vm._v("Visita il profile")])])]);
+  }, [_vm._v("Visita il profile")])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("li", [_c("div", [_vm._v("Laureato in Medicina")])]);
 }];
 render._withStripped = true;
 

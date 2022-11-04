@@ -44,7 +44,7 @@
                         </li>
                     </ul> -->
                     <div class="card-body">
-                        <button class="btn" id="show-profile">Visita il profile</button>
+                        <button class="btn" id="show-profile" @click="showProfile">Visita il profile</button>
                     </div>
                 </div>
             </div>
@@ -55,12 +55,24 @@
 <script>
 export default {
     name: "AppCard",
-
     props: {
         user: Object,
     },
+    data() {
+        return {
+            currentUser: null,
+        }
+    },
+    methods: {
+        showProfile() {
+            this.$router.push({
+                name: "doctors-doctor",
+                params: { user: this.currentUser.id  },
+            });
+        }  
+    },
     created() {
-        console.log(this.user);
+        this.currentUser = this.user;
     },
 };
 </script>
