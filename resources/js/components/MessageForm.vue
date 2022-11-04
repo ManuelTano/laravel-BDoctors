@@ -9,6 +9,7 @@
             <AppAlert
                 v-if="alertMessage || hasErrors"
                 :type="hasErrors ? 'alert-danger' : 'alert-success'"
+                @delete-alert="resetErrorsAndMessage"
             >
                 <div v-if="alertMessage">{{ alertMessage }}</div>
                 <div v-if="hasErrors">
