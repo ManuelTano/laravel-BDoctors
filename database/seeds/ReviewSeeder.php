@@ -22,7 +22,7 @@ class ReviewSeeder extends Seeder
         for($i = 0; $i < 30 ; $i++){
             $new_review = new Review();
 
-            $new_review->user_id = Arr::random($users_ids);;
+            $new_review->user_id = Arr::random($users_ids);
 
             $new_review->first_name = $faker->firstName();
             $new_review->last_name = $faker->lastName();

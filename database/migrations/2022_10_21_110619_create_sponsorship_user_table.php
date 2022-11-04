@@ -17,7 +17,7 @@ class CreateSponsorshipUserTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('sponsorship_id')->nullable();
-            $table->date('expiration_date');
+            // $table->date('expiration_date');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

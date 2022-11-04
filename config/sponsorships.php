@@ -2,6 +2,11 @@
 
 return [
     [
+        'business_plan' => 'basic',
+        'time_plan' => 0,
+        'price' => 0.00,
+    ],
+    [
         'business_plan' => 'bronze',
         'time_plan' => 24,
         'price' => 2.99,
@@ -23,11 +28,6 @@ return [
         'color' => '#c3aa57',
         'description' => 'Il nostro piano di punta. Completo di tutti i servizi, offre anche assistenza premium.',
 
-    ],
-    [
-        'business_plan' => 'basic',
-        'time_plan' => 0,
-        'price' => 0.00,
     ],
 ];
 
