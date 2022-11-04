@@ -43,13 +43,6 @@ const imageField = document.getElementById("thumb");
 
 if (imageField !== null) {
     imageField.addEventListener("input", () => {
-        if (imageField.files && imageField.files[0]) {
-            let reader = new FileReader();
-
-            reader.readAsDataURL(imageField.files[0]);
-            reader.onload = (event) => {
-                preview.src = event.target.result;
-            };
-        }
+        preview.src = imageField.value;
     });
 }

@@ -187,14 +187,14 @@
 
         {{-- thumb --}}
         <div class="col-6 row">
-            <div class="form-group col-6 d-flex flex-column align-items-start justify-content-start">
-                <label for="thumb" class="flex-shrink-0 m-0">Immagine</label>
+            <div class="form-group col-6 d-flex flex-column align-items-start justify-content-center">
+                <label for="thumb" class="flex-shrink-0 m-0 my-2">Immagine</label>
                 <input 
                 name="thumb" 
                 type="text" 
                 id="thumb" 
-                class="pl-0 border-0 form-control @error('thumb') is-invalid @enderror"
-                value="{{ old('thumb', $details->thumb) }}"
+                class="pl-0 border-1 form-control @error('thumb') is-invalid @enderror"
+                value="{{ old('thumb') }}"
                 >
                 @error('thumb')
                     <div class="invalid-feedback">
@@ -207,7 +207,7 @@
                 <figure class="m-0 h-100">
                     <img 
                     src="{{ $details->thumb ?? 'https://wopart.eu/wp-content/uploads/2021/10/placeholder-7.png' }}" 
-                    alt="{{ $details->thumb }}"
+                    alt="profile-photo"
                     id="image"
                     class="img-fluid h-100"
                     >
