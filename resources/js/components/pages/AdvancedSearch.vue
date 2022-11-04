@@ -201,6 +201,19 @@ export default {
                     console.log(this.users);
                 });
         },
+
+        // Filtra il risultato dell'api per sponsorizzazioni
+        filterBySponsorship() {
+            const basicUsers = this.users.filter((user) => {
+                if (user.sponsorships.business_plan === "basic") return user;
+            });
+
+            const sponsorshipUsers = this.users.filter((user) => {
+                if (user.sponsorships.business_plan !== "basic") return user;
+            });
+
+            this.users = [...basicUsers, ...sponsorshipUsers];
+        },
     },
     mounted() {
         this.fetchDoctorsBySpecialties(this.choice);

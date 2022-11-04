@@ -2394,6 +2394,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AppMain_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../AppMain.vue */ "./resources/js/components/AppMain.vue");
 /* harmony import */ var _AppAlert_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../AppAlert.vue */ "./resources/js/components/AppAlert.vue");
 /* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
 
@@ -2493,6 +2499,16 @@ __webpack_require__.r(__webpack_exports__);
         console.log("chiamata effettuata con successo");
         console.log(_this2.users);
       });
+    },
+    // Filtra il risultato dell'api per sponsorizzazioni
+    filterBySponsorship: function filterBySponsorship() {
+      var basicUsers = this.users.filter(function (user) {
+        if (user.sponsorships.business_plan === "basic") return user;
+      });
+      var sponsorshipUsers = this.users.filter(function (user) {
+        if (user.sponsorships.business_plan !== "basic") return user;
+      });
+      this.users = [].concat(_toConsumableArray(basicUsers), _toConsumableArray(sponsorshipUsers));
     }
   },
   mounted: function mounted() {
@@ -2737,11 +2753,13 @@ var render = function render() {
     staticClass: "card-title"
   }, [_vm._v("\n                        " + _vm._s(_vm.user.first_name + " " + _vm.user.last_name) + "\n                    ")]), _vm._v(" "), _c("p", {
     staticClass: "card-text"
-  }, [_c("ul", [_vm._m(0), _vm._v(" "), _c("li", [_c("span", [_vm._v("Specializzato in ")]), _vm._v(" "), _vm._l(_vm.user.specialties, function (specialty, index) {
+  }, [_c("ul", [_c("li", [_c("strong", [_vm._v(_vm._s(_vm.user.sponsorships[0].business_plan))])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("li", [_c("span", [_vm._v("Specializzato in ")]), _vm._v(" "), _vm._l(_vm.user.specialties, function (specialty, index) {
     return _c("span", {
       key: "spec" - specialty
     }, [_vm._v(_vm._s(specialty.label) + "\n                                "), index === _vm.user.specialties.length - 1 ? _c("span", [_vm._v(".")]) : _c("span", [_vm._v(",")])]);
-  })], 2)])])])]), _vm._v(" "), _c("div", [_c("div", {
+  })], 2)])])])]), _vm._v(" "), _c("div", [_c("ul", {
+    staticClass: "list-group list-group-flush"
+  }), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("button", {
     staticClass: "btn",

@@ -31,7 +31,7 @@ class UserController extends Controller
     // Metodo legato alla rotta che preleva un singolo
     // medico in funzione dell'id
     public function show($user){
-        $result = User::with('specialties')
+        $result = User::with('specialties','sponsorships')
         ->join('user_details','users.id','=','user_details.user_id')
         ->where('users.id','=',$user)
         ->get();
@@ -52,7 +52,7 @@ class UserController extends Controller
     }
 
     public function filterBySpecialty($query){
-        $users = User::with('specialties','userDetail')
+        $users = User::with('specialties','userDetail','sponsorships')
         ->join('reviews','reviews.user_id','=','users.id')
         ->select('users.*',DB::raw('round(AVG(reviews.rating)) as media'),DB::raw('COUNT(reviews.user_id) as numero_recensioni'))
         ->groupBy('reviews.user_id')

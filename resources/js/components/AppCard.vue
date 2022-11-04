@@ -10,6 +10,7 @@
                         </h5>
                         <p class="card-text">
                             <ul>
+                                <li><strong>{{ user.sponsorships[0].business_plan }}</strong></li>
                                 <!-- Laurea conseguita -->
                                 <li>
                                     <div>Laureato in Medicina</div>
@@ -37,12 +38,12 @@
                     </div>
                 </div>
                 <div>
-                    <!-- <ul class="list-group list-group-flush">
-                        <li class="list-group-item">media: {{ user.media }}</li>
+                    <ul class="list-group list-group-flush">
+                        <!-- <li class="list-group-item">media: {{ user.media }}</li>
                         <li class="list-group-item">
                             review: {{ user.numero_recensioni }}
-                        </li>
-                    </ul> -->
+                        </li> -->
+                    </ul>
                     <div class="card-body">
                         <button class="btn" id="show-profile" @click="showProfile">Visita il profile</button>
                     </div>
