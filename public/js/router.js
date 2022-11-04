@@ -121,7 +121,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppCard",
   props: {
-    user: Object
+    user: Object,
+    specialty: Number
   },
   data: function data() {
     return {
@@ -133,7 +134,8 @@ __webpack_require__.r(__webpack_exports__);
       this.$router.push({
         name: "doctors-doctor",
         params: {
-          user: this.currentUser.id
+          user: this.currentUser.id,
+          specialty: this.specialty
         }
       });
     }
@@ -177,7 +179,8 @@ __webpack_require__.r(__webpack_exports__);
     DoctorsView: _DoctorsView_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    users: Array
+    users: Array,
+    specialty: Number
   }
 });
 
@@ -264,7 +267,8 @@ __webpack_require__.r(__webpack_exports__);
     AppCard: _AppCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    users: Array
+    users: Array,
+    specialty: Number
   }
 });
 
@@ -683,6 +687,15 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.log("User non prelevato, errore di chiamata.");
       });
+    },
+    // Metodo che ritorna alla lista dei dottori
+    returnBack: function returnBack() {
+      this.$router.push({
+        name: "advanced-search",
+        params: {
+          id: this.$route.params.specialty
+        }
+      });
     }
   },
   mounted: function mounted() {
@@ -963,7 +976,8 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("main", [_c("DoctorsView", {
     attrs: {
-      users: _vm.users
+      users: _vm.users,
+      specialty: _vm.specialty
     }
   })], 1);
 };
@@ -1156,7 +1170,8 @@ var render = function render() {
     return _c("AppCard", {
       key: user.id,
       attrs: {
-        user: user
+        user: user,
+        specialty: _vm.specialty
       }
     });
   }), 1)])]);
@@ -1748,7 +1763,8 @@ var render = function render() {
     }, [_vm._v("\n                    " + _vm._s(error) + "\n                ")]);
   }), 0)]) : _vm._e()]) : _vm._e(), _vm._v(" "), _c("AppMain", {
     attrs: {
-      users: _vm.users
+      users: _vm.users,
+      specialty: _vm.choice
     }
   })], 1);
 };
@@ -1814,7 +1830,14 @@ var render = function render() {
     staticClass: "d-flex justify-content-between w-100"
   }, [_c("div", [_c("div", {
     staticClass: "mr-2"
-  }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + "\n                        ")])]), _vm._v(" "), _c("div")])])]) : _vm._e(), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + "\n                        ")])]), _vm._v(" "), _c("div", [_c("button", {
+    staticClass: "btn btn-warning",
+    on: {
+      click: _vm.returnBack
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-rotate-left"
+  })])])])])]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "p-3"
   }), _vm._v(" "), _c("MessageForm", {
     attrs: {
@@ -20135,7 +20158,7 @@ var routes = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/pasqualepedoto/laravel-BDoctors/resources/js/router.js */"./resources/js/router.js");
+module.exports = __webpack_require__(/*! /Users/pasqualepedoto/Desktop/laravel-BDoctors/resources/js/router.js */"./resources/js/router.js");
 
 
 /***/ })

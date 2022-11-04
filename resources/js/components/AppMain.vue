@@ -1,6 +1,6 @@
 <template>
     <main>
-        <DoctorsView :users="users" />
+        <DoctorsView :users="users" :specialty="specialty" />
     </main>
 </template>
 
@@ -16,6 +16,7 @@ export default {
     },
     props: {
         users: Array,
+        specialty: Number,
     },
 };
 </script>

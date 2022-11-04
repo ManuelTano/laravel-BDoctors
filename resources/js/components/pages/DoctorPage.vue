@@ -60,7 +60,11 @@
                             </div>
                         </div>
                         <!-- Reviews and messages -->
-                        <div></div>
+                        <div>
+                            <button @click="returnBack" class="btn btn-warning">
+                                <i class="fa-solid fa-rotate-left"></i>
+                            </button>
+                        </div>
                     </address>
                 </div>
             </div>
@@ -117,6 +121,14 @@ export default {
                 .catch((err) => {
                     console.log("User non prelevato, errore di chiamata.");
                 });
+        },
+
+        // Metodo che ritorna alla lista dei dottori
+        returnBack() {
+            this.$router.push({
+                name: "advanced-search",
+                params: { id: this.$route.params.specialty },
+            });
         },
     },
     mounted() {

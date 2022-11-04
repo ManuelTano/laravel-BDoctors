@@ -4,7 +4,12 @@
             <div
                 class="d-flex flex-wrap justify-content-between align-items-start m-0 p-0 mt-5"
             >
-                <AppCard v-for="user in users" :key="user.id" :user="user" />
+                <AppCard
+                    v-for="user in users"
+                    :key="user.id"
+                    :user="user"
+                    :specialty="specialty"
+                />
             </div>
         </div>
     </section>
@@ -19,6 +24,7 @@ export default {
     },
     props: {
         users: Array,
+        specialty: Number,
     },
 };
 </script>

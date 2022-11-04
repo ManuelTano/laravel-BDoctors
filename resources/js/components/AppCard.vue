@@ -58,6 +58,7 @@ export default {
     name: "AppCard",
     props: {
         user: Object,
+        specialty: Number,
     },
     data() {
         return {
@@ -68,7 +69,7 @@ export default {
         showProfile() {
             this.$router.push({
                 name: "doctors-doctor",
-                params: { user: this.currentUser.id  },
+                params: { user: this.currentUser.id , specialty: this.specialty },
             });
         }  
     },

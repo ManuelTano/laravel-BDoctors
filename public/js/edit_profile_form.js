@@ -143,7 +143,7 @@ if (imageField !== null) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/pasqualepedoto/laravel-BDoctors/resources/js/edit_profile_form.js */"./resources/js/edit_profile_form.js");
+module.exports = __webpack_require__(/*! /Users/pasqualepedoto/Desktop/laravel-BDoctors/resources/js/edit_profile_form.js */"./resources/js/edit_profile_form.js");
 
 
 /***/ })
