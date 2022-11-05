@@ -52,9 +52,6 @@
                             <li class="mr-5">
                                 <a href="{{ route('admin.sponsorships.index') }}" class="text-decoration-none text-secondary"><i class="fa-solid fa-cart-flatbed-suitcase mr-2"></i>Piani d'acquisto</a>
                             </li>
-                            <li class="mr-5">
-                                <a href="" class="text-decoration-none text-secondary"><i class="fa-solid fa-chart-column mr-2"></i>Statistiche</a>
-                            </li>
                         </ul>
                     @endauth
 

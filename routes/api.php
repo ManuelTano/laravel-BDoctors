@@ -47,6 +47,9 @@ Route::namespace('Api')->group(function () {
     // Rotta che raffina il filtro in base alla media voto
     Route::get('/users-raffinate-by-rating/{query}', 'UserController@raffinateFilterByBestRating');
 
+    // Rotta che preleva per primo tutta la lista di dottori per quella specializzazione
+    Route::get('/users/specialties/{query}','UserController@firstFilterBySpecialty');
+
     // # ROTTE CHE PRELEVANO I DATI DEI DOTTORI
 
     // Rotta per prelevare le recensioni di un dottore
