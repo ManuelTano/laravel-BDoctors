@@ -65,4 +65,8 @@ Route::namespace('Api')->group(function () {
     Route::get('/specialties','SpecialtyController@index');
 
     Route::get('/specialties/{id}','SpecialtyController@show');
+
+    // # ROTTA RELATIVE ALLE REVIEWS DEI DOTTORi
+    
+    Route::get('/doctor-reviews/{id}','ReviewController@fetchReviewsFromDoctor');
 });
