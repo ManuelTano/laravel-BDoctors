@@ -32,7 +32,7 @@
                                     <span
                                         v-for="(specialty, index) in user[0]
                                             .specialties"
-                                        :key="'spec' - specialty"
+                                        :key="index"
                                         >{{ specialty.label }}
                                         <span
                                             v-if="
@@ -64,6 +64,10 @@
                 </div>
             </div>
             <div class="p-3"></div>
+
+            <!-- $ ReviewsList -->
+            <h3 class="my-3">Recensioni effettuate da altri utenti</h3>
+            <ReviewsList :reviews="user[0].reviews" class="reviews-list" />
 
             <!-- $ Form -->
 
@@ -101,22 +105,23 @@
 <script>
 import MessageForm from "../MessageForm.vue";
 import ReviewForm from "../ReviewForm.vue";
+import ReviewsList from "../ReviewsList.vue";
 export default {
     name: "DoctorPage",
     components: {
         MessageForm,
         ReviewForm,
+        ReviewsList,
     },
     data() {
         return {
-            user: null,
+            user: {},
         };
     },
     methods: {
         // Chiamata che preleva il singolo dottore
         fetchDoctor() {
             axios
-                // Bisogna sistemare l'url
                 .get(
                     "http://127.0.0.1:8000/api/users/" + this.$route.params.user
                 )
@@ -154,6 +159,10 @@ export default {
         img {
             object-fit: cover;
         }
+    }
+    .reviews-list {
+        max-height: 400px;
+        overflow-y: scroll;
     }
 }
 </style>

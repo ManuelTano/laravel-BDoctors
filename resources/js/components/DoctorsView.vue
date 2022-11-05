@@ -2,7 +2,7 @@
     <section id="doctors-view ">
         <div class="container">
             <div
-                class="d-flex flex-wrap justify-content-between align-items-start m-0 p-0 mt-5"
+                class="d-flex justify-content-between flex-wrap align-items-start m-0 p-0 mt-5"
             >
                 <AppCard
                     v-for="(user, index) in users"
@@ -29,11 +29,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-// .container {
-//     display: flex;
-//     flex-wrap: wrap;
-//     margin: 0 auto;
-//     margin-right: 8rem;
-// }
-</style>
+<style lang="scss" scoped></style>

@@ -170,7 +170,6 @@ export default {
                     return user;
             });
             if (raffinate.length !== 0) {
-                this.prevUsers = this.usersBySpecialty;
                 this.users = raffinate;
             }
         },
@@ -179,6 +178,7 @@ export default {
         resetErrorsAndMessage() {
             this.errors = {};
             this.alertMessage = null;
+            this.users = this.usersBySpecialty;
         },
 
         // Al click del button di reset: resetto i campi del form
@@ -189,8 +189,6 @@ export default {
                 this.form.rating = "";
 
                 this.resetErrorsAndMessage();
-
-                this.users = this.prevUsers;
             }
         },
 
@@ -200,42 +198,40 @@ export default {
             axios
                 .get("http://127.0.0.1:8000/api/users/specialty/" + choice)
                 .then((res) => {
-                    this.users = this.usersBySpecialty =
-                        res.data.users_by_specialty;
+                    this.usersBySpecialty = res.data.users_by_specialty;
                     this.filterBySponsorship();
                     console.log("chiamata effettuata con successo");
-                    console.log(this.users);
                 });
         },
 
         // Filtra il risultato dell'api per sponsorizzazioni
         filterBySponsorship() {
-            const basicUsers = this.users.filter((user) => {
+            const basicUsers = this.usersBySpecialty.filter((user) => {
                 if (user.sponsorships[0].business_plan === "basic") return user;
             });
-            console.log("basic: " + basicUsers);
+            console.log("basic: ", basicUsers);
 
-            const goldUsers = this.users.filter((user) => {
+            const goldUsers = this.usersBySpecialty.filter((user) => {
                 if (user.sponsorships[0].business_plan === "gold") return user;
             });
 
-            console.log("gold: " + goldUsers);
+            console.log("gold: ", goldUsers);
 
-            const silverUsers = this.users.filter((user) => {
+            const silverUsers = this.usersBySpecialty.filter((user) => {
                 if (user.sponsorships[0].business_plan === "silver")
                     return user;
             });
 
-            console.log("silver: " + silverUsers);
+            console.log("silver: ", silverUsers);
 
-            const bronzeUsers = this.users.filter((user) => {
+            const bronzeUsers = this.usersBySpecialty.filter((user) => {
                 if (user.sponsorships[0].business_plan === "bronze")
                     return user;
             });
 
-            console.log("bronze: " + bronzeUsers);
+            console.log("bronze: ", bronzeUsers);
 
-            this.users = [
+            this.usersBySpecialty = this.users = [
                 ...goldUsers,
                 ...silverUsers,
                 ...bronzeUsers,
