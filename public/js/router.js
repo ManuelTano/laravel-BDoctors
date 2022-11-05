@@ -1285,10 +1285,11 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "container"
   }, [_c("div", {
-    staticClass: "d-flex justify-content-between flex-wrap align-items-start m-0 p-0 mt-5"
+    staticClass: "d-flex justify-content-start flex-wrap align-items-start m-0 p-0 mt-5"
   }, _vm._l(_vm.users, function (user, index) {
     return _c("AppCard", {
       key: index,
+      staticClass: "col-4",
       attrs: {
         user: user,
         specialty: _vm.specialty

@@ -2,13 +2,14 @@
     <section id="doctors-view ">
         <div class="container">
             <div
-                class="d-flex justify-content-between flex-wrap align-items-start m-0 p-0 mt-5"
+                class="d-flex justify-content-start flex-wrap align-items-start m-0 p-0 mt-5"
             >
                 <AppCard
                     v-for="(user, index) in users"
                     :key="index"
                     :user="user"
                     :specialty="specialty"
+                    class="col-4"
                 />
             </div>
         </div>
