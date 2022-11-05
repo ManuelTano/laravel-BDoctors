@@ -17,6 +17,8 @@ class ReviewSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        $faker->locale('it_IT');
+        
         $users_ids = User::pluck('id')->toArray();
 
         for($i = 0; $i < 30 ; $i++){

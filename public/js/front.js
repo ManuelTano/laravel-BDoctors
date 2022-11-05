@@ -3069,7 +3069,7 @@ var render = function render() {
       src: "https://i.ibb.co/jwdnvh4/aaaaaaaa.png",
       alt: ""
     }
-  })]), _vm._v(" "), _c("span", [_vm._v("Copyright © 2022 BDoctors, tutti i diritti riservati.")])], 1)]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)])]);
+  })]), _vm._v(" "), _c("span", [_vm._v("Copyright © 2022 BDoctors, tutti i diritti\n                    riservati.")])], 1)]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -3078,13 +3078,13 @@ var staticRenderFns = [function () {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-4"
-  }, [_c("ul", [_c("li", [_c("h4", {
+  }, [_c("h4", {
     staticClass: "text-black"
-  }, [_vm._v("Informazioni su BDoctors")])]), _vm._v(" "), _c("li", [_vm._v("Chi siamo")]), _vm._v(" "), _c("li", [_vm._v("Lavora con noi")]), _vm._v(" "), _c("li", [_vm._v("Hai bisogno di aiuto?")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Informazioni su BDoctors")]), _vm._v(" "), _c("ul", [_c("li", [_vm._v("Chi siamo")]), _vm._v(" "), _c("li", [_vm._v("Lavora con noi")]), _vm._v(" "), _c("li", [_vm._v("Hai bisogno di aiuto?")])])]), _vm._v(" "), _c("div", {
     staticClass: "col-4"
-  }, [_c("ul", [_c("li", [_c("h4", [_vm._v("Trova il tuo specialista")])]), _vm._v(" "), _c("li", [_vm._v("Dermatologo")]), _vm._v(" "), _c("li", [_vm._v("Pediatra")]), _vm._v(" "), _c("li", [_vm._v("Ginecologo")]), _vm._v(" "), _c("li", [_vm._v("Oculista")]), _vm._v(" "), _c("li", [_vm._v("Cardiologo")]), _vm._v(" "), _c("li", [_vm._v("Urologo")]), _vm._v(" "), _c("li", [_vm._v("Odontoiatra")]), _vm._v(" "), _c("li", [_vm._v("Radiologo")]), _vm._v(" "), _c("li", [_vm._v("Virologo")])])]), _vm._v(" "), _c("div", {
+  }, [_c("h4", [_vm._v("Trova il tuo specialista")]), _vm._v(" "), _c("ul", [_c("li", [_vm._v("Dermatologo")]), _vm._v(" "), _c("li", [_vm._v("Pediatra")]), _vm._v(" "), _c("li", [_vm._v("Ginecologo")]), _vm._v(" "), _c("li", [_vm._v("Oculista")]), _vm._v(" "), _c("li", [_vm._v("Cardiologo")]), _vm._v(" "), _c("li", [_vm._v("Urologo")]), _vm._v(" "), _c("li", [_vm._v("Odontoiatra")]), _vm._v(" "), _c("li", [_vm._v("Radiologo")]), _vm._v(" "), _c("li", [_vm._v("Virologo")])])]), _vm._v(" "), _c("div", {
     staticClass: "col-4"
-  }, [_c("ul", [_c("li", [_c("h4", [_vm._v("Ricerche frequenti")])]), _vm._v(" "), _c("li", [_vm._v("Ginecologo Milano")]), _vm._v(" "), _c("li", [_vm._v("Dermatologo Milano")]), _vm._v(" "), _c("li", [_vm._v("Pediatra Milano")]), _vm._v(" "), _c("li", [_vm._v("Cardiologo Milano")]), _vm._v(" "), _c("li", [_vm._v("Oculista Milano")]), _vm._v(" "), _c("li", [_vm._v("Odontoiatra Milano")]), _vm._v(" "), _c("li", [_vm._v("Urologo Milano")]), _vm._v(" "), _c("li", [_vm._v("Virologo Milano")]), _vm._v(" "), _c("li", [_vm._v("Radiologo Milano")])])]), _vm._v(" "), _c("div", {
+  }, [_c("h4", [_vm._v("Ricerche frequenti")]), _vm._v(" "), _c("ul", [_c("li", [_vm._v("Ginecologo Milano")]), _vm._v(" "), _c("li", [_vm._v("Dermatologo Milano")]), _vm._v(" "), _c("li", [_vm._v("Pediatra Milano")]), _vm._v(" "), _c("li", [_vm._v("Cardiologo Milano")]), _vm._v(" "), _c("li", [_vm._v("Oculista Milano")]), _vm._v(" "), _c("li", [_vm._v("Odontoiatra Milano")]), _vm._v(" "), _c("li", [_vm._v("Urologo Milano")]), _vm._v(" "), _c("li", [_vm._v("Virologo Milano")]), _vm._v(" "), _c("li", [_vm._v("Radiologo Milano")])])]), _vm._v(" "), _c("div", {
     staticClass: "col-3"
   })]);
 }, function () {
@@ -3099,25 +3099,25 @@ var staticRenderFns = [function () {
       href: ""
     }
   }, [_c("i", {
-    staticClass: "fa-brands fa-facebook fa-2xl"
+    staticClass: "fa-brands fa-facebook fa-2xl mr-3"
   })]), _vm._v(" "), _c("a", {
     attrs: {
       href: ""
     }
   }, [_c("i", {
-    staticClass: "fa-brands fa-instagram fa-2xl"
+    staticClass: "fa-brands fa-instagram fa-2xl mr-3"
   })]), _vm._v(" "), _c("a", {
     attrs: {
       href: ""
     }
   }, [_c("i", {
-    staticClass: "fa-brands fa-linkedin fa-2xl"
+    staticClass: "fa-brands fa-linkedin fa-2xl mr-3"
   })]), _vm._v(" "), _c("a", {
     attrs: {
       href: ""
     }
   }, [_c("i", {
-    staticClass: "fa-brands fa-youtube fa-2xl"
+    staticClass: "fa-brands fa-youtube fa-2xl mr-3"
   })])])]);
 }, function () {
   var _vm = this,
@@ -3126,7 +3126,7 @@ var staticRenderFns = [function () {
     staticClass: "row mt-5"
   }, [_c("div", {
     staticClass: "col-12"
-  }, [_c("p", [_vm._v("\n          BDoctors Srl, società soggetta a direzione e coordinamento di\n          BDoctors SAS, con sede legale in Milano, Corso Giacomo Matteotti 1,\n          20121 - Capitale Sociale: € 3.010.000,00 i.v. - Codice Fiscale,\n          Partita IVA e n. registrazione registro imprese Milano Monza Brianza\n          Lodi 11537360965 - REA: MI - 2609715, PEC BDoctorssrl@legalmail.it -\n          Per informazioni sul trattamento dei dati personali o per esercitare\n          i propri diritti privacy.italia@BDoctors.com - Nota sulla procedura\n          di risoluzione delle controversie online dei consumatori (ODR). Le\n          informazioni sui diritti dei consumatori e sulla procedura di\n          risoluzione delle controversie online sono disponibili al link\n          https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=IT\n          Condizioni generali di utilizzo • Condizioni d'uso del sito BDoctors\n          • Informativa sulla protezione dei dati personali • Politica\n          sull’uso dei cookies • Gestione dei cookie e consenso • Informativa\n          privacy ex art.14 per personale sanitario Federazione Nazionale\n          degli Ordini dei Medici Chirurghi e degli Odontoiatri • Elenco del\n          FNOMCeO\n        ")])])]);
+  }, [_c("p", [_vm._v("\n                    BDoctors Srl, società soggetta a direzione e\n                    coordinamento di BDoctors SAS, con sede legale in\n                    Milano, Corso Giacomo Matteotti 1, 20121 - Capitale\n                    Sociale: € 3.010.000,00 i.v. - Codice Fiscale, Partita\n                    IVA e n. registrazione registro imprese Milano Monza\n                    Brianza Lodi 11537360965 - REA: MI - 2609715, PEC\n                    BDoctorssrl@legalmail.it - Per informazioni sul\n                    trattamento dei dati personali o per esercitare i propri\n                    diritti privacy.italia@BDoctors.com - Nota sulla\n                    procedura di risoluzione delle controversie online dei\n                    consumatori (ODR). Le informazioni sui diritti dei\n                    consumatori e sulla procedura di risoluzione delle\n                    controversie online sono disponibili al link\n                    https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=IT\n                    Condizioni generali di utilizzo • Condizioni d'uso del\n                    sito BDoctors • Informativa sulla protezione dei dati\n                    personali • Politica sull’uso dei cookies • Gestione dei\n                    cookie e consenso • Informativa privacy ex art.14 per\n                    personale sanitario Federazione Nazionale degli Ordini\n                    dei Medici Chirurghi e degli Odontoiatri • Elenco del\n                    FNOMCeO\n                ")])])]);
 }];
 render._withStripped = true;
 

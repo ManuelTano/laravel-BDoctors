@@ -20,6 +20,8 @@ class UserSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        $faker->locale('it_IT');
+        
         for($i = 0 ; $i < 10 ; $i++){
 
             $specialties_ids = Specialty::pluck('id')->toArray();

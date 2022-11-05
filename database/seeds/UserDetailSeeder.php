@@ -17,6 +17,7 @@ class UserDetailSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        $faker->locale('it_IT');
         $details = Userdetail::all();
 
         foreach($details as $detail){
