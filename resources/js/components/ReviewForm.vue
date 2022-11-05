@@ -85,7 +85,7 @@
                 <!-- Rating -->
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="rating">Rating</label>
+                        <label for="rating">Valutazione</label>
                         <select
                             class="form-control"
                             id="rating"
@@ -249,5 +249,11 @@ export default {
 <style lang="scss" scoped>
 ul {
     list-style-type: none;
+}
+
+.btn.btn-success:hover {
+    border: 1px solid #38c172;
+    color: #38c172;
+    background-color: white;
 }
 </style>

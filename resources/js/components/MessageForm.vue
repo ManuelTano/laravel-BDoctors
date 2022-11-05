@@ -220,4 +220,10 @@ export default {
 ul {
     list-style-type: none;
 }
+
+.btn.btn-success:hover {
+    border: 1px solid #38c172;
+    color: #38c172;
+    background-color: white;
+}
 </style>

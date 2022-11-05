@@ -25,4 +25,13 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#base-review {
+    padding: 10px;
+
+    .card {
+        border: 1px solid #80b9e8;
+        border-radius: 20px;
+    }
+}
+</style>

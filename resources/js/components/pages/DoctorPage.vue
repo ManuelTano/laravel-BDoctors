@@ -1,7 +1,7 @@
 <template>
     <section id="doctor-page">
         <div class="container">
-            <div class="d-flex align-items-centern p-3" v-if="user">
+            <div class="d-flex align-items-centern p-3 user-info" v-if="user">
                 <!-- Immagine del dottore -->
                 <figure class="m-0">
                     <img
@@ -71,29 +71,33 @@
 
             <!-- $ Form -->
 
-            <!-- @ Send new message -->
-            <MessageForm
-                :userId="user[0].id"
-                :firstName="user[0].first_name"
-                :lastName="user[0].last_name"
-            />
+            <div class="message-review-border">
+                <!-- @ Send new message -->
+                <MessageForm
+                    :userId="user[0].id"
+                    :firstName="user[0].first_name"
+                    :lastName="user[0].last_name"
+                    class="review-message-border"
+                />
 
-            <!-- Separatore di sezione -->
-            <hr />
+                <!-- Separatore di sezione -->
+                <hr />
 
-            <!-- @ Send new review -->
-            <ReviewForm
-                :userId="user[0].id"
-                :firstName="user[0].first_name"
-                :lastName="user[0].last_name"
-            />
+                <!-- @ Send new review -->
+                <ReviewForm
+                    :userId="user[0].id"
+                    :firstName="user[0].first_name"
+                    :lastName="user[0].last_name"
+                    class="review-message-border"
+                />
+            </div>
 
             <!-- Separatore di sezione -->
             <hr />
 
             <!-- Buttone che ritorna alla lista di dottori -->
             <div class="d-flex align-items-center justify-content-end my-3">
-                <button @click="returnBack" class="btn btn-warning">
+                <button @click="returnBack" id="return-button" class="btn">
                     Ritorna alla lista dei dottori
                     <i class="ml-2 fa-solid fa-rotate-left"></i>
                 </button>
@@ -158,9 +162,28 @@ export default {
 <style lang="scss" scoped>
 #doctor-page {
     padding-top: 150px;
+
+    .user-info {
+        border-radius: 100px;
+
+        border: 3px solid #a2d9ff;
+        background-color: #a2d9ff;
+    }
+
+    .message-review-border {
+        border: 3px solid #a2d9ff;
+        border-radius: 20px;
+
+        padding: 1rem;
+
+        margin: 2rem 0;
+    }
+
     figure {
         width: 200px;
         height: 200px;
+        background-color: #fff;
+        border-radius: 50%;
 
         img {
             object-fit: cover;
@@ -169,6 +192,18 @@ export default {
     .reviews-list {
         max-height: 400px;
         overflow-y: scroll;
+    }
+
+    #return-button {
+        background-color: #3490dc;
+        color: white;
+        border: 1px solid #3490dc;
+
+        &:hover {
+            background-color: white;
+            color: #3490dc;
+            border: 1px solid #3490dc;
+        }
     }
 }
 </style>
