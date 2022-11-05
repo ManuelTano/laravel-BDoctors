@@ -6,6 +6,8 @@ use Faker\Generator as Faker;
 use App\User;
 use App\Models\UserDetail;
 
+use Illuminate\Support\Arr;
+
 class UserDetailSeeder extends Seeder
 {
     /**
@@ -18,7 +20,7 @@ class UserDetailSeeder extends Seeder
         $details = Userdetail::all();
 
         foreach($details as $detail){
-            $detail->thumb = $faker->imageUrl(640, 480, 'people', true);
+            $detail->thumb = Arr::random(config('images'));
             $detail->phone = $faker->e164PhoneNumber();
 
             $detail->save();

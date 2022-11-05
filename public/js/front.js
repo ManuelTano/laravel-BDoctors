@@ -2858,27 +2858,21 @@ var render = function render() {
     staticStyle: {
       width: "18rem"
     }
-  }, [_c("div", [_c("img", {
+  }, [_c("div", [_c("figure", {
+    staticClass: "m-0"
+  }, [_c("img", {
     staticClass: "card-img-top",
     attrs: {
       src: "".concat(_vm.user.user_detail.thumb),
       alt: "fotoo"
     }
-  }), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "card-body p-0"
+  })]), _vm._v(" "), _c("div", [_c("div", {
     staticClass: "card-body"
   }, [_c("h5", {
-    staticClass: "card-title"
-  }, [_vm._v("\n                        " + _vm._s(_vm.user.first_name + " " + _vm.user.last_name) + "\n                    ")]), _vm._v(" "), _c("p", {
-    staticClass: "card-text"
-  }, [_c("ul", [_c("li", [_c("strong", [_vm._v(_vm._s(_vm.user.sponsorships[0].business_plan))])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("li", [_c("span", [_vm._v("Specializzato in ")]), _vm._v(" "), _vm._l(_vm.user.specialties, function (specialty, index) {
-    return _c("span", {
-      key: index
-    }, [_vm._v(_vm._s(specialty.label) + "\n                                "), index === _vm.user.specialties.length - 1 ? _c("span", [_vm._v(".")]) : _c("span", [_vm._v(",")])]);
-  })], 2)])])])]), _vm._v(" "), _c("div", [_c("ul", {
-    staticClass: "list-group list-group-flush"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("button", {
+    staticClass: "card-title my-3"
+  }, [_vm._v("\n                    " + _vm._s(_vm.user.first_name + " " + _vm.user.last_name) + "\n                ")]), _vm._v(" "), _c("button", {
     staticClass: "btn",
     attrs: {
       id: "show-profile"
@@ -2886,13 +2880,9 @@ var render = function render() {
     on: {
       click: _vm.showProfile
     }
-  }, [_vm._v("Visita il profile")])])])])]);
+  }, [_vm._v("\n                    Visita il profilo\n                ")])])])])]);
 };
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("li", [_c("div", [_vm._v("Laureato in Medicina")])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -8647,7 +8637,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#app-card .card[data-v-0393c9b6] {\n  height: 550px;\n}\n#app-card .block[data-v-0393c9b6] {\n  width: 33.3333333333%;\n}\n#app-card #show-profile[data-v-0393c9b6] {\n  background-color: #3490dc;\n  color: white;\n  border: 1px solid transparent;\n}\n#app-card #show-profile[data-v-0393c9b6]:hover {\n  background-color: white;\n  color: #3490dc;\n  border: 1px solid #3490dc;\n}", ""]);
+exports.push([module.i, "#app-card[data-v-0393c9b6] {\n  height: 450px;\n}\n#app-card #show-profile[data-v-0393c9b6] {\n  background-color: #3490dc;\n  color: white;\n  border: 1px solid transparent;\n}\n#app-card #show-profile[data-v-0393c9b6]:hover {\n  background-color: white;\n  color: #3490dc;\n  border: 1px solid #3490dc;\n}", ""]);
 
 // exports
 
