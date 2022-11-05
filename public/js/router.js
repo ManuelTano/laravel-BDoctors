@@ -771,12 +771,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     // Metodo che ritorna alla lista dei dottori
     returnBack: function returnBack() {
-      this.$router.push({
-        name: "advanced-search",
-        params: {
-          id: this.$route.params.specialty
-        }
-      });
+      if (this.$route.params.specialty) {
+        this.$router.push({
+          name: "advanced-search",
+          params: {
+            id: this.$route.params.specialty
+          }
+        });
+      } else {
+        this.$router.push({
+          name: "home"
+        });
+      }
     }
   },
   mounted: function mounted() {
@@ -1022,21 +1028,17 @@ var render = function render() {
       src: "https://i.ibb.co/0QRNT2m/sdasdasdasd1.png",
       alt: ""
     }
-  })]), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _vm._m(0)], 1)]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "justify-content-start align-items-center text-center"
   }, [_c("ul", {
     staticClass: "navbar-nav mr-auto mt-2 d-flex"
-  }, [_c("li", {
-    staticClass: "nav-item active"
-  }, [_c("router-link", {
-    attrs: {
-      to: {
-        name: "home"
-      }
-    }
-  }, [_vm._v("Homepage")])], 1)])])], 1)]);
-};
-var staticRenderFns = [];
+  })]);
+}];
 render._withStripped = true;
 
 
@@ -1289,7 +1291,7 @@ var render = function render() {
   }, _vm._l(_vm.users, function (user, index) {
     return _c("AppCard", {
       key: index,
-      staticClass: "col-4",
+      staticClass: "d-flex justify-content-center col-xl-4 col-md-6",
       attrs: {
         user: user,
         specialty: _vm.specialty

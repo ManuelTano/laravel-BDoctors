@@ -9,7 +9,7 @@
                     :key="index"
                     :user="user"
                     :specialty="specialty"
-                    class="col-4"
+                    class="d-flex justify-content-center col-xl-4 col-md-6"
                 />
             </div>
         </div>

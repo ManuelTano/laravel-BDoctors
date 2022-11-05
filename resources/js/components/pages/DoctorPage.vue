@@ -137,10 +137,16 @@ export default {
 
         // Metodo che ritorna alla lista dei dottori
         returnBack() {
-            this.$router.push({
-                name: "advanced-search",
-                params: { id: this.$route.params.specialty },
-            });
+            if (this.$route.params.specialty) {
+                this.$router.push({
+                    name: "advanced-search",
+                    params: { id: this.$route.params.specialty },
+                });
+            } else {
+                this.$router.push({
+                    name: "home",
+                });
+            }
         },
     },
     mounted() {

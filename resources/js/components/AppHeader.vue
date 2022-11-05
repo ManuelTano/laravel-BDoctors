@@ -11,11 +11,11 @@
 
             <div class="justify-content-start align-items-center text-center">
                 <ul class="navbar-nav mr-auto mt-2 d-flex">
-                    <li class="nav-item active">
+                    <!-- <li class="nav-item active">
                         <router-link :to="{ name: 'home' }"
                             >Homepage</router-link
                         >
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item active">
                         <router-link :to="{ name: 'advanced-search' }"
                             >Ricerca avanzata</router-link
