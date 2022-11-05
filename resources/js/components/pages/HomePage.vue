@@ -25,6 +25,12 @@
             </div>
         </BaseJumbotron>
 
+        <!-- Featured Doctors -->
+        <div class="container">
+            <h1 class="my-5 text-center">Dottori in evidenza</h1>
+            <AppMain :users="users" />
+        </div>
+
         <!-- Statistics card -->
         <BaseCard />
         <svg
@@ -59,33 +65,53 @@
 import BaseSelect from "../BaseSelect.vue";
 import BaseJumbotron from "../BaseJumbotron.vue";
 import BaseCard from "../BaseCard.vue";
+import AppMain from "../AppMain.vue";
 export default {
     name: "HomePage",
     components: {
         BaseSelect,
         BaseJumbotron,
         BaseCard,
+        AppMain,
     },
     data() {
         return {
             specialties: [],
+            users: [],
         };
     },
     methods: {
+        // Metodo che preleva tutte le specializzazioni per riempire la select
         fetchSpecialties() {
             axios.get("http://127.0.0.1:8000/api/specialties").then((res) => {
                 this.specialties = res.data.specialties;
             });
         },
+
+        // Al change del valore della select verremo reinderizzato sulla pagina di ricerca avanzata
         changeSpecialties(choice) {
             this.$router.push({
                 name: "advanced-search",
                 params: { id: choice },
             });
         },
+
+        // Metodo chhe preleva tutti i dottori della piattaforma
+        fetchDoctors() {
+            axios
+                .get("http://127.0.0.1:8000/api/users")
+                .then((res) => {
+                    this.users = res.data.users;
+                    console.log("dati presi");
+                })
+                .catch((err) => {
+                    console.log("ci sono stati errori");
+                });
+        },
     },
     mounted() {
         this.fetchSpecialties();
+        this.fetchDoctors();
     },
 };
 </script>

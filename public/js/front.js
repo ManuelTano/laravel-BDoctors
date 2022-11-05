@@ -2633,6 +2633,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BaseSelect.vue */ "./resources/js/components/BaseSelect.vue");
 /* harmony import */ var _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../BaseJumbotron.vue */ "./resources/js/components/BaseJumbotron.vue");
 /* harmony import */ var _BaseCard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BaseCard.vue */ "./resources/js/components/BaseCard.vue");
+/* harmony import */ var _AppMain_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AppMain.vue */ "./resources/js/components/AppMain.vue");
+
 
 
 
@@ -2641,20 +2643,24 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     BaseSelect: _BaseSelect_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     BaseJumbotron: _BaseJumbotron_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    BaseCard: _BaseCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    BaseCard: _BaseCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    AppMain: _AppMain_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
-      specialties: []
+      specialties: [],
+      users: []
     };
   },
   methods: {
+    // Metodo che preleva tutte le specializzazioni per riempire la select
     fetchSpecialties: function fetchSpecialties() {
       var _this = this;
       axios.get("http://127.0.0.1:8000/api/specialties").then(function (res) {
         _this.specialties = res.data.specialties;
       });
     },
+    // Al change del valore della select verremo reinderizzato sulla pagina di ricerca avanzata
     changeSpecialties: function changeSpecialties(choice) {
       this.$router.push({
         name: "advanced-search",
@@ -2662,10 +2668,21 @@ __webpack_require__.r(__webpack_exports__);
           id: choice
         }
       });
+    },
+    // Metodo chhe preleva tutti i dottori della piattaforma
+    fetchDoctors: function fetchDoctors() {
+      var _this2 = this;
+      axios.get("http://127.0.0.1:8000/api/users").then(function (res) {
+        _this2.users = res.data.users;
+        console.log("dati presi");
+      })["catch"](function (err) {
+        console.log("ci sono stati errori");
+      });
     }
   },
   mounted: function mounted() {
     this.fetchSpecialties();
+    this.fetchDoctors();
   }
 });
 
@@ -2786,7 +2803,7 @@ var render = function render() {
     staticClass: "card-text"
   }, [_c("ul", [_c("li", [_c("strong", [_vm._v(_vm._s(_vm.user.sponsorships[0].business_plan))])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("li", [_c("span", [_vm._v("Specializzato in ")]), _vm._v(" "), _vm._l(_vm.user.specialties, function (specialty, index) {
     return _c("span", {
-      key: "spec" - specialty
+      key: index
     }, [_vm._v(_vm._s(specialty.label) + "\n                                "), index === _vm.user.specialties.length - 1 ? _c("span", [_vm._v(".")]) : _c("span", [_vm._v(",")])]);
   })], 2)])])])]), _vm._v(" "), _c("div", [_c("ul", {
     staticClass: "list-group list-group-flush"
@@ -3167,9 +3184,9 @@ var render = function render() {
     staticClass: "container"
   }, [_c("div", {
     staticClass: "d-flex flex-wrap justify-content-between align-items-start m-0 p-0 mt-5"
-  }, _vm._l(_vm.users, function (user) {
+  }, _vm._l(_vm.users, function (user, index) {
     return _c("AppCard", {
-      key: user.id,
+      key: index,
       attrs: {
         user: user,
         specialty: _vm.specialty
@@ -3971,7 +3988,15 @@ var render = function render() {
     on: {
       "doctors-for-specialty": _vm.changeSpecialties
     }
-  })], 1)])])]), _vm._v(" "), _c("BaseCard"), _vm._v(" "), _c("svg", {
+  })], 1)])])]), _vm._v(" "), _c("div", {
+    staticClass: "container"
+  }, [_c("h1", {
+    staticClass: "my-5 text-center"
+  }, [_vm._v("Dottori in evidenza")]), _vm._v(" "), _c("AppMain", {
+    attrs: {
+      users: _vm.users
+    }
+  })], 1), _vm._v(" "), _c("BaseCard"), _vm._v(" "), _c("svg", {
     staticStyle: {
       transform: "rotate(0deg)",
       transition: "0.3s"

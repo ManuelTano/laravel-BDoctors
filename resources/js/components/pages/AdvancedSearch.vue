@@ -1,20 +1,5 @@
 <template>
     <section id="advanced-search">
-        <!-- Jumbotron -->
-        <!-- <BaseJumbotron
-            class="d-flex align-items-center justify-content-between"
-        >
-            <div class="container">
-                <div class="row margin-left">
-                    <div class="col-12">
-                        <div class="mb-5 text-center">
-                            <span class="title">{{ specialty[0].label }}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </BaseJumbotron> -->
-
         <!-- Additional filter -->
         <div class="container" v-if="users.length">
             <h3 class="text-center my-5">Raffina i tuoi risultati</h3>

@@ -21,7 +21,7 @@
                                     <span>Specializzato in </span>
                                     <span
                                     v-for="(specialty, index) in user.specialties"
-                                    :key="'spec' - specialty"
+                                    :key="index"
                                     >{{ specialty.label }}
                                     <span
                                     v-if="

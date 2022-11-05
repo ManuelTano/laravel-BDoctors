@@ -5,8 +5,8 @@
                 class="d-flex flex-wrap justify-content-between align-items-start m-0 p-0 mt-5"
             >
                 <AppCard
-                    v-for="user in users"
-                    :key="user.id"
+                    v-for="(user, index) in users"
+                    :key="index"
                     :user="user"
                     :specialty="specialty"
                 />
