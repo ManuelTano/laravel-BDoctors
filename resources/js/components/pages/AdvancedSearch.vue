@@ -2,7 +2,7 @@
     <section id="advanced-search">
         <!-- Additional filter -->
         <div class="container" v-if="users.length">
-            <h3 class="text-center my-5">Raffina i tuoi risultati</h3>
+            <h1 class="my-5">Ricerca avanzata</h1>
             <div>
                 <form
                     @submit.prevent="submitForm"
@@ -45,17 +45,15 @@
 
                     <div class="col-12">
                         <div class="form-group">
-                            <button class="btn btn-success" type="submit">
+                            <button class="btn btn-success mr-2" type="submit">
                                 Filtra
                             </button>
+                            <a @click="resetUsers" class="btn btn-secondary"
+                                >Reset</a
+                            >
                         </div>
                     </div>
                 </form>
-                <div class="col-6 p-0">
-                    <button class="btn btn-warning" @click="resetUsers">
-                        Reset
-                    </button>
-                </div>
             </div>
         </div>
 

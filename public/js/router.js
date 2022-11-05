@@ -1848,9 +1848,9 @@ var render = function render() {
     }
   }, [_vm.users.length ? _c("div", {
     staticClass: "container"
-  }, [_c("h3", {
-    staticClass: "text-center my-5"
-  }, [_vm._v("Raffina i tuoi risultati")]), _vm._v(" "), _c("div", [_c("form", {
+  }, [_c("h1", {
+    staticClass: "my-5"
+  }, [_vm._v("Ricerca avanzata")]), _vm._v(" "), _c("div", [_c("form", {
     staticClass: "row justify-content-center",
     attrs: {
       novalidate: ""
@@ -1927,14 +1927,21 @@ var render = function render() {
         return _vm.$forceUpdate();
       }
     }
-  })])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", {
-    staticClass: "col-6 p-0"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "form-group"
   }, [_c("button", {
-    staticClass: "btn btn-warning",
+    staticClass: "btn btn-success mr-2",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("\n                            Filtra\n                        ")]), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-secondary",
     on: {
       click: _vm.resetUsers
     }
-  }, [_vm._v("\n                    Reset\n                ")])])])]) : _vm._e(), _vm._v(" "), _vm.alertMessage || _vm.hasErrors ? _c("AppAlert", {
+  }, [_vm._v("Reset")])])])])])]) : _vm._e(), _vm._v(" "), _vm.alertMessage || _vm.hasErrors ? _c("AppAlert", {
     staticClass: "my-3",
     attrs: {
       type: _vm.hasErrors ? "alert-danger" : "alert-success",
@@ -1954,20 +1961,7 @@ var render = function render() {
     }
   })], 1);
 };
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-12"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("button", {
-    staticClass: "btn btn-success",
-    attrs: {
-      type: "submit"
-    }
-  }, [_vm._v("\n                            Filtra\n                        ")])])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
