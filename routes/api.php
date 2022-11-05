@@ -29,6 +29,9 @@ Route::namespace('Api')->group(function () {
     // Rotta che filtra i dottori in base all'input
     Route::get('/users/filter/{query}', 'UserController@filterByInput');
 
+    // Rotta che restituisce tutti i dottori sponsorizzati
+    Route::get('/featured-users','UserController@fetchFeaturedDoctors');
+
     // Rotta che filtra i dottori in base alla specialistica
     Route::get('/users/specialty/{query}', 'UserController@filterBySpecialty');
 

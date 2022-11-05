@@ -97,9 +97,9 @@ export default {
         },
 
         // Metodo chhe preleva tutti i dottori della piattaforma
-        fetchDoctors() {
+        fetchFeaturedDoctors() {
             axios
-                .get("http://127.0.0.1:8000/api/users")
+                .get("http://127.0.0.1:8000/api/featured-users")
                 .then((res) => {
                     this.users = res.data.users;
                     console.log("dati presi");
@@ -111,7 +111,7 @@ export default {
     },
     mounted() {
         this.fetchSpecialties();
-        this.fetchDoctors();
+        this.fetchFeaturedDoctors();
     },
 };
 </script>

@@ -792,9 +792,9 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     // Metodo chhe preleva tutti i dottori della piattaforma
-    fetchDoctors: function fetchDoctors() {
+    fetchFeaturedDoctors: function fetchFeaturedDoctors() {
       var _this2 = this;
-      axios.get("http://127.0.0.1:8000/api/users").then(function (res) {
+      axios.get("http://127.0.0.1:8000/api/featured-users").then(function (res) {
         _this2.users = res.data.users;
         console.log("dati presi");
       })["catch"](function (err) {
@@ -804,7 +804,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.fetchSpecialties();
-    this.fetchDoctors();
+    this.fetchFeaturedDoctors();
   }
 });
 

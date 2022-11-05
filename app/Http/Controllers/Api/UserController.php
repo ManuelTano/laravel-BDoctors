@@ -25,12 +25,19 @@ class UserController extends Controller
     public function index()
     {
         $users = User::with('specialties','userDetail','sponsorships')
+        ->get();
+        return response()->json($users);
+    }
+
+    public function fetchFeaturedDoctors(){
+        $users = User::with('specialties','userDetail','sponsorships')
         ->join('sponsorship_user','sponsorship_user.user_id','=','users.id')
         ->join('sponsorships','sponsorships.id','=','sponsorship_user.sponsorship_id')
         ->select('sponsorships.*','users.*')
         ->where('sponsorships.business_plan','<>','basic')
         ->orderBy('sponsorships.id','DESC')
         ->get();
+
         return response()->json(compact('users'));
     }
 
