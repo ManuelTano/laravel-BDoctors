@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Review;
 
 class ReviewController extends Controller
@@ -16,7 +18,8 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::all();
+        $reviews = Review::orderBy('created_at','DESC')
+        ->get();
 
         return view('admin.reviews.index',compact('reviews'));
     }

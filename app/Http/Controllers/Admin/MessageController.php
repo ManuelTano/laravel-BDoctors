@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Message;
 
 class MessageController extends Controller
@@ -16,7 +18,8 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::all();
+        $messages = Message::orderBy('created_at','DESC')
+        ->get();
 
         return view('admin.messages.index',compact('messages'));
     }
