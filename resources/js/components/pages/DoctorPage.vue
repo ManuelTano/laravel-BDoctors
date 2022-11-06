@@ -1,7 +1,7 @@
 <template>
     <section id="doctor-page">
         <div class="container">
-            <div class="d-flex align-items-centern p-3 user-info" v-if="user">
+            <div class="d-flex align-items-center p-3 user-info" v-if="user">
                 <!-- Immagine del dottore -->
                 <figure class="m-0">
                     <img
@@ -12,10 +12,10 @@
                 </figure>
                 <!-- Informazioni principale: Nome completo e specializzazioni -->
                 <div
-                    class="ml-3 d-flex align-items-center flex-column justify-content-between"
+                    class="ml-3 d-flex align-items-center flex-column justify-content-between flex-grow-1"
                 >
                     <!-- Main information -->
-                    <div>
+                    <div class="w-100">
                         <h1 class="m-0">
                             {{ user[0].first_name + " " + user[0].last_name }}
                         </h1>
@@ -49,17 +49,26 @@
                     </div>
 
                     <!-- Address -->
-                    <address class="d-flex justify-content-between w-100">
+                    <address class="d-flex justify-content-between w-100 m-0">
                         <div>
                             <div class="mr-2">
                                 {{ user[0].phone ?? "+39 3498976345" }}
                             </div>
                             <div>
-                                {{ user[0].address }}
+                                {{ user[0].address }} , {{ user[0].city }}
                             </div>
                         </div>
-                        <!-- Reviews and messages -->
-                        <div></div>
+                        <!-- PDF -->
+                        <div
+                            class="d-flex align-items-center justify-content-center"
+                        >
+                            <button
+                                class="btn btn-primary mr-4 d-flex align-items-center"
+                            >
+                                <i class="fa-solid fa-arrow-right"></i
+                                ><i class="ml-2 fa-solid fa-file-pdf fa-2x"></i>
+                            </button>
+                        </div>
                     </address>
                 </div>
             </div>

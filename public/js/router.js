@@ -1989,7 +1989,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "container"
   }, [_vm.user ? _c("div", {
-    staticClass: "d-flex align-items-centern p-3 user-info"
+    staticClass: "d-flex align-items-center p-3 user-info"
   }, [_c("figure", {
     staticClass: "m-0"
   }, [_c("img", {
@@ -1999,18 +1999,20 @@ var render = function render() {
       alt: ""
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "ml-3 d-flex align-items-center flex-column justify-content-between"
-  }, [_c("div", [_c("h1", {
+    staticClass: "ml-3 d-flex align-items-center flex-column justify-content-between flex-grow-1"
+  }, [_c("div", {
+    staticClass: "w-100"
+  }, [_c("h1", {
     staticClass: "m-0"
   }, [_vm._v("\n                        " + _vm._s(_vm.user[0].first_name + " " + _vm.user[0].last_name) + "\n                    ")]), _vm._v(" "), _c("div", [_c("ul", [_vm._m(0), _vm._v(" "), _c("li", [_c("span", [_vm._v("Specializzato in ")]), _vm._v(" "), _vm._l(_vm.user[0].specialties, function (specialty, index) {
     return _c("span", {
       key: index
     }, [_vm._v(_vm._s(specialty.label) + "\n                                    "), index === _vm.user[0].specialties.length - 1 ? _c("span", [_vm._v(".")]) : _c("span", [_vm._v(",")])]);
   })], 2)])])]), _vm._v(" "), _c("address", {
-    staticClass: "d-flex justify-content-between w-100"
+    staticClass: "d-flex justify-content-between w-100 m-0"
   }, [_c("div", [_c("div", {
     staticClass: "mr-2"
-  }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + "\n                        ")])]), _vm._v(" "), _c("div")])])]) : _vm._e(), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + " , " + _vm._s(_vm.user[0].city) + "\n                        ")])]), _vm._v(" "), _vm._m(1)])])]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "p-3"
   }), _vm._v(" "), _c("h3", {
     staticClass: "my-3"
@@ -2053,6 +2055,18 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("li", [_c("div", [_vm._v("Laureato in Medicina")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "d-flex align-items-center justify-content-center"
+  }, [_c("button", {
+    staticClass: "btn btn-primary mr-4 d-flex align-items-center"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-arrow-right"
+  }), _c("i", {
+    staticClass: "ml-2 fa-solid fa-file-pdf fa-2x"
+  })])]);
 }];
 render._withStripped = true;
 
