@@ -134,14 +134,14 @@ __webpack_require__.r(__webpack_exports__);
       this.$router.push({
         name: "doctors-doctor",
         params: {
-          user: this.currentUser.id,
+          user: this.user.id,
           specialty: this.specialty
         }
       });
     }
   },
   created: function created() {
-    this.currentUser = this.user;
+    this.currentUser = this.user.id;
   }
 });
 
@@ -664,6 +664,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
       if (raffinate.length !== 0) {
         this.users = raffinate;
+        console.log(this.users);
       }
     },
     // Resetta tutti i campi del form e il messaggio
@@ -710,6 +711,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
       console.log("bronze: ", bronzeUsers);
       this.usersBySpecialty = this.users = [].concat(_toConsumableArray(goldUsers), _toConsumableArray(silverUsers), _toConsumableArray(bronzeUsers), _toConsumableArray(basicUsers));
+      console.log(this.users);
     },
     // Filtra la specializzazione corrente
     filterSpecialty: function filterSpecialty() {
@@ -787,6 +789,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.fetchDoctor();
+    console.log(this.$route.params.user);
   }
 });
 

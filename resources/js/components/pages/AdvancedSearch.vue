@@ -169,6 +169,7 @@ export default {
             });
             if (raffinate.length !== 0) {
                 this.users = raffinate;
+                console.log(this.users);
             }
         },
 
@@ -235,6 +236,8 @@ export default {
                 ...bronzeUsers,
                 ...basicUsers,
             ];
+
+            console.log(this.users);
         },
 
         // Filtra la specializzazione corrente

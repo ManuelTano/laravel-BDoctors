@@ -171,6 +171,7 @@ export default {
     },
     mounted() {
         this.fetchDoctor();
+        console.log(this.$route.params.user);
     },
 };
 </script>

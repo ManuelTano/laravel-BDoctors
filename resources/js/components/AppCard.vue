@@ -47,12 +47,6 @@
                 </div>
             </div>
             <div>
-                <!-- <ul class="list-group list-group-flush">
-                    <li class="list-group-item">media: {{ user.media }}</li>
-                        <li class="list-group-item">
-                            review: {{ user.numero_recensioni }}
-                        </li>
-                </ul> -->
                 <div class="card-body">
                     <h5 class="card-title my-3">
                         {{ user.first_name + " " + user.last_name }}
@@ -83,14 +77,14 @@ export default {
             this.$router.push({
                 name: "doctors-doctor",
                 params: {
-                    user: this.currentUser.id,
+                    user: this.user.id,
                     specialty: this.specialty,
                 },
             });
         },
     },
     created() {
-        this.currentUser = this.user;
+        this.currentUser = this.user.id;
     },
 };
 </script>
