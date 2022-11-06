@@ -4011,9 +4011,7 @@ var render = function render() {
     staticClass: "d-flex justify-content-between w-100 m-0"
   }, [_c("div", [_c("div", {
     staticClass: "mr-2"
-  }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + " , " + _vm._s(_vm.user[0].city) + "\n                        ")])]), _vm._v(" "), _vm._m(1)])])]) : _vm._e(), _vm._v(" "), _c("div", {
-    staticClass: "p-3"
-  }), _vm._v(" "), _c("h3", {
+  }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + " , " + _vm._s(_vm.user[0].city) + "\n                        ")])]), _vm._v(" "), _vm._m(1)])])]) : _vm._e(), _vm._v(" "), _c("h3", {
     staticClass: "my-3"
   }, [_vm._v("Recensioni effettuate da altri utenti")]), _vm._v(" "), _c("ReviewsList", {
     staticClass: "reviews-list",
@@ -4029,7 +4027,9 @@ var render = function render() {
       firstName: _vm.user[0].first_name,
       lastName: _vm.user[0].last_name
     }
-  }), _vm._v(" "), _c("hr"), _vm._v(" "), _c("ReviewForm", {
+  }), _vm._v(" "), _c("hr", {
+    staticClass: "my-5"
+  }), _vm._v(" "), _c("ReviewForm", {
     staticClass: "review-message-border",
     attrs: {
       userId: _vm.user[0].id,
@@ -8861,7 +8861,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#doctor-page[data-v-3ba5a564] {\n  padding-top: 150px;\n}\n#doctor-page .user-info[data-v-3ba5a564] {\n  border-radius: 100px;\n  border: 3px solid #a2d9ff;\n  background-color: #a2d9ff;\n}\n#doctor-page .message-review-border[data-v-3ba5a564] {\n  border: 3px solid #a2d9ff;\n  border-radius: 20px;\n  padding: 1rem;\n  margin: 2rem 0;\n}\n#doctor-page figure[data-v-3ba5a564] {\n  width: 200px;\n  height: 200px;\n  background-color: #fff;\n  border-radius: 50%;\n}\n#doctor-page figure img[data-v-3ba5a564] {\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n#doctor-page .reviews-list[data-v-3ba5a564] {\n  max-height: 400px;\n  overflow-y: scroll;\n}\n#doctor-page #return-button[data-v-3ba5a564] {\n  background-color: #3490dc;\n  color: white;\n  border: 1px solid #3490dc;\n}\n#doctor-page #return-button[data-v-3ba5a564]:hover {\n  background-color: white;\n  color: #3490dc;\n  border: 1px solid #3490dc;\n}", ""]);
+exports.push([module.i, "#doctor-page[data-v-3ba5a564] {\n  padding-top: 150px;\n}\n#doctor-page .user-info[data-v-3ba5a564] {\n  border-radius: 100px;\n  border: 3px solid #a2d9ff;\n  background-color: #a2d9ff;\n  margin: 50px 0;\n}\n#doctor-page .message-review-border[data-v-3ba5a564] {\n  border: 3px solid #a2d9ff;\n  border-radius: 20px;\n  padding: 1rem;\n  margin: 100px 0;\n}\n#doctor-page figure[data-v-3ba5a564] {\n  width: 200px;\n  height: 200px;\n  background-color: #fff;\n  border-radius: 50%;\n}\n#doctor-page figure img[data-v-3ba5a564] {\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n#doctor-page .reviews-list[data-v-3ba5a564] {\n  max-height: 400px;\n  overflow-y: scroll;\n}\n#doctor-page #return-button[data-v-3ba5a564] {\n  background-color: #3490dc;\n  color: white;\n  border: 1px solid #3490dc;\n  margin: 30px 0;\n}\n#doctor-page #return-button[data-v-3ba5a564]:hover {\n  background-color: white;\n  color: #3490dc;\n  border: 1px solid #3490dc;\n}", ""]);
 
 // exports
 

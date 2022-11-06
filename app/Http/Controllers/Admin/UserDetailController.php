@@ -53,31 +53,17 @@ class UserDetailController extends Controller
         $request->validate([
             'phone' => 'required|min:10|max:13',
             'thumb' => 'string',
-            'curriculum_vitae' => 'file|mimes:pdf',
+            'curriculum_vitae' => 'string',
         ],[
             'min:10' => 'Il numero telefonico deve essere composto da almeno 10 caratteri',
             'max:13' => 'Il numero telefonico deve essere composto massimo 13 caratteri',
             'phone.required' => 'Il numero telefonico è un campo obbligatorio',
-            'thumb.required' => 'L\'immagine è un campo obbligatorio',
-            'curriculum_vitae.required' => 'Il curriculum vitae è un campo obbligatorio',
-            'thumb.mimes' => 'Il formato dell\'immagine può essere: .jpg,.png,.jpeg',
-            'curriculum_vitae.mimes' => 'Il formato del curriculum vitae deve essere .pdf',
+            'thumb.string' => 'L\'immagine deve essere una stringa',
+            'curriculum_vitae.string' => 'Il curriculum vitae deve essere na stringa',
         ]);
 
         // Assegnazione dei dati
         $data = $request->all();
-
-        // Gestione dell'input file per il curriculum
-        if(array_key_exists('curriculum_vitae',$data)){
-
-            // # Storiamo l'immagine nella cartella storage-copia in public:
-            // # otteniamo un link assoluto che verrà salavto sul DB e che potrà
-            // # essere prelevato
-
-            if($details->curriculum_vitae) Storage::delete($details->curriculum_vitae);
-            $curriculum_vitae_link = Storage::put('users_curriculum_vitae',$data['curriculum_vitae']);
-            $details->curriculum_vitae = $curriculum_vitae_link;
-        }
 
         // Update dei dati
         $details->update($data);

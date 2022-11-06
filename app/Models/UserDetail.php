@@ -9,7 +9,8 @@ class UserDetail extends Model
 
     protected $fillable = [
         'phone',
-        'thumb'
+        'thumb',
+        'curriculum_vitae',
     ];
 
     // # Methods

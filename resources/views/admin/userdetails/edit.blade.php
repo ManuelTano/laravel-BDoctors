@@ -154,7 +154,14 @@
         <div class="col-6 row">
             <div class="form-group col-8">
                 <label for="curriculum_vitae" class="flex-shrink-0 m-0">Curriculum Vitae</label>
-                <input name="curriculum_vitae" type="file" id="curriculum_vitae" class="pl-0 border-0 form-control @error('curriculum_vitae') is-invalid @enderror">
+                <input 
+                name="curriculum_vitae" 
+                type="text" 
+                id="curriculum_vitae" 
+                class="pl-0 border-0 form-control 
+                @error('curriculum_vitae') is-invalid @enderror" 
+                value="{{ old('curriculum_vitae',$details->curriculum_vitae) }}"
+                >
                 @error('curriculum_vitae')
                     <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -194,7 +201,7 @@
                 type="text" 
                 id="thumb" 
                 class="pl-0 border-1 form-control @error('thumb') is-invalid @enderror"
-                value="{{ old('thumb') }}"
+                value="{{ old('thumb', $details->thumb ) }}"
                 >
                 @error('thumb')
                     <div class="invalid-feedback">
@@ -202,6 +209,7 @@
                     </div>
                 @enderror
             </div>
+
             {{-- Thumb preview --}}
             <div class="form-group col-6 m-0 h-100">
                 <figure class="m-0 h-100">

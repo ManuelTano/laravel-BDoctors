@@ -58,6 +58,7 @@
                                 {{ user[0].address }} , {{ user[0].city }}
                             </div>
                         </div>
+
                         <!-- PDF -->
                         <div
                             class="d-flex align-items-center justify-content-center"
@@ -68,11 +69,17 @@
                                 <i class="fa-solid fa-arrow-right"></i
                                 ><i class="ml-2 fa-solid fa-file-pdf fa-2x"></i>
                             </button>
+                            <!-- <iframe
+                                :src="user[0].curriculum_vitae"
+                                frameborder="0"
+                                height="100%"
+                                width="100%"
+                            >
+                            </iframe> -->
                         </div>
                     </address>
                 </div>
             </div>
-            <div class="p-3"></div>
 
             <!-- $ ReviewsList -->
             <h3 class="my-3">Recensioni effettuate da altri utenti</h3>
@@ -90,7 +97,7 @@
                 />
 
                 <!-- Separatore di sezione -->
-                <hr />
+                <hr class="my-5" />
 
                 <!-- @ Send new review -->
                 <ReviewForm
@@ -177,6 +184,8 @@ export default {
 
         border: 3px solid #a2d9ff;
         background-color: #a2d9ff;
+
+        margin: 50px 0;
     }
 
     .message-review-border {
@@ -185,7 +194,7 @@ export default {
 
         padding: 1rem;
 
-        margin: 2rem 0;
+        margin: 100px 0;
     }
 
     figure {
@@ -207,6 +216,8 @@ export default {
         background-color: #3490dc;
         color: white;
         border: 1px solid #3490dc;
+
+        margin: 30px 0;
 
         &:hover {
             background-color: white;
