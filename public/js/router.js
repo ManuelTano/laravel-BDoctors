@@ -1872,7 +1872,7 @@ var render = function render() {
     attrs: {
       "for": "rating"
     }
-  }, [_vm._v("Rating")]), _vm._v(" "), _c("select", {
+  }, [_vm._v("Valutazione")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -2461,7 +2461,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#advanced-search[data-v-781a2080] {\n  padding-top: 150px;\n}\n#advanced-search ul[data-v-781a2080] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  list-style-type: none;\n  margin: 50px 0;\n}\n#advanced-search ul li[data-v-781a2080] {\n  margin: 20px 0;\n}\n#advanced-search #alert ul[data-v-781a2080] {\n  display: block;\n  margin: 0;\n}\n#advanced-search #alert ul li[data-v-781a2080] {\n  margin: 5px 0;\n}\n#advanced-search .margin-left[data-v-781a2080] {\n  margin-left: 15px;\n}\n#advanced-search .title[data-v-781a2080] {\n  color: #b1a8e5;\n  text-align: center;\n  font-family: \"Avenir Next\", \"Roboto\", sans-serif;\n  font-size: 5vw;\n  line-height: 1;\n  letter-spacing: -0.02em;\n  font-weight: 800;\n}", ""]);
+exports.push([module.i, "#advanced-search[data-v-781a2080] {\n  padding-top: 150px;\n}\n#advanced-search form[data-v-781a2080] {\n  border: 3px solid #a2d9ff;\n  border-radius: 20px;\n  padding: 1rem;\n}\n#advanced-search ul[data-v-781a2080] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  list-style-type: none;\n  margin: 50px 0;\n}\n#advanced-search ul li[data-v-781a2080] {\n  margin: 20px 0;\n}\n#advanced-search #alert ul[data-v-781a2080] {\n  display: block;\n  margin: 0;\n}\n#advanced-search #alert ul li[data-v-781a2080] {\n  margin: 5px 0;\n}\n#advanced-search .margin-left[data-v-781a2080] {\n  margin-left: 15px;\n}\n#advanced-search .title[data-v-781a2080] {\n  color: #b1a8e5;\n  text-align: center;\n  font-family: \"Avenir Next\", \"Roboto\", sans-serif;\n  font-size: 5vw;\n  line-height: 1;\n  letter-spacing: -0.02em;\n  font-weight: 800;\n}", ""]);
 
 // exports
 

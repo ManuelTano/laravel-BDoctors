@@ -12,7 +12,7 @@
                     <!-- Rating -->
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="rating">Rating</label>
+                            <label for="rating">Valutazione</label>
                             <select
                                 class="form-control"
                                 id="rating"
@@ -262,6 +262,12 @@ export default {
 <style lang="scss" scoped>
 #advanced-search {
     padding-top: 150px;
+
+    form {
+        border: 3px solid #a2d9ff;
+        border-radius: 20px;
+        padding: 1rem;
+    }
 
     ul {
         display: flex;
