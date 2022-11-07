@@ -2016,7 +2016,7 @@ var render = function render() {
   }, [_c("div", [_c("div", {
     staticClass: "mr-2"
   }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + " , " + _vm._s(_vm.user[0].city) + "\n                        ")])]), _vm._v(" "), _vm._m(1)])])]) : _vm._e(), _vm._v(" "), _c("h3", {
-    staticClass: "my-3"
+    staticClass: "my-4"
   }, [_vm._v("Recensioni effettuate da altri utenti")]), _vm._v(" "), _c("ReviewsList", {
     staticClass: "reviews-list",
     attrs: {

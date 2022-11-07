@@ -82,7 +82,7 @@
             </div>
 
             <!-- $ ReviewsList -->
-            <h3 class="my-3">Recensioni effettuate da altri utenti</h3>
+            <h3 class="my-4">Recensioni effettuate da altri utenti</h3>
             <ReviewsList :reviews="user[0].reviews" class="reviews-list" />
 
             <!-- $ Form -->
