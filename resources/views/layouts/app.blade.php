@@ -24,6 +24,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- Additional css --}}
+    @yield('additional-css')
 </head>
 <body class="bg-white">
     <div id="app">

@@ -16,4 +16,5 @@ mix.js("resources/js/app.js", "public/js")
     .js("resources/js/edit_profile_form.js", "public/js")
     .js("resources/js/router.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
+    .sass("resources/sass/doctorhomepage.scss", "public/css")
     .options({ processCssUrls: false });

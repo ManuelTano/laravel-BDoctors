@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/css/doctorhomepage.css": "/css/doctorhomepage.css",
     "/js/edit_profile_form.js": "/js/edit_profile_form.js",
     "/js/front.js": "/js/front.js",
     "/js/router.js": "/js/router.js"
