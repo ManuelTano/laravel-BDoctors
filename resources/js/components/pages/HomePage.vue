@@ -30,8 +30,29 @@
             <h1 class="my-5 text-center">Dottori in evidenza</h1>
             <AppMain :users="users" />
         </div>
+
         <!-- Statistics card -->
         <BaseCard />
+
+        <!-- Spot -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-6 text-center">
+                <h2>Il nostro spot</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-6 text-center">
+                <iframe
+                    width="660"
+                    height="415"
+                    src="https://www.youtube.com/embed/w2rCh6Rtj-4"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </div>
     </section>
 </template>
 

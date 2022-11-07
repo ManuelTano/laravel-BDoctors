@@ -2215,9 +2215,35 @@ var render = function render() {
     attrs: {
       users: _vm.users
     }
-  })], 1), _vm._v(" "), _c("BaseCard")], 1);
+  })], 1), _vm._v(" "), _c("BaseCard"), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)], 1);
 };
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "row justify-content-center mt-5"
+  }, [_c("div", {
+    staticClass: "col-6 text-center"
+  }, [_c("h2", [_vm._v("Il nostro spot")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "row justify-content-center mt-4"
+  }, [_c("div", {
+    staticClass: "col-6 text-center"
+  }, [_c("iframe", {
+    attrs: {
+      width: "660",
+      height: "415",
+      src: "https://www.youtube.com/embed/w2rCh6Rtj-4",
+      title: "YouTube video player",
+      frameborder: "0",
+      allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+      allowfullscreen: ""
+    }
+  })])]);
+}];
 render._withStripped = true;
 
 
