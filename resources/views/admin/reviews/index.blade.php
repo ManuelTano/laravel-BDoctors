@@ -12,11 +12,8 @@
                             <h6 class="card-title"><strong>Valutazione:</strong> {{ $review->rating }}</h6>
                             <p class="card-text"><strong>Recensione:</strong> {{ $review->feedback }}</p>
                         </div>
-                        <div class="mt-5 d-flex justify-content-between">
+                        <div class="mt-5">
                             <p><strong>Data ed orario:</strong> {{ $review->created_at }}</p>
-                            <a href="{{ route('admin.reviews.show', $review) }}" class="btn btn-primary mr-2">
-                                <i class="fa-solid fa-eye"></i>
-                            </a>
                         </div>
                     </div>
                 </div>
