@@ -87,6 +87,9 @@
 
             <!-- $ Form -->
 
+            <h3 class="mt-5">
+                Contatta {{ user[0].first_name }} {{ user[0].last_name }}
+            </h3>
             <div class="message-review-border">
                 <!-- @ Send new message -->
                 <MessageForm
@@ -195,7 +198,7 @@ export default {
 
         padding: 1rem;
 
-        margin: 100px 0;
+        margin: 50px 0;
     }
 
     figure {
