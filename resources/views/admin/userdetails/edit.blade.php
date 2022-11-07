@@ -158,7 +158,7 @@
                 name="curriculum_vitae" 
                 type="text" 
                 id="curriculum_vitae" 
-                class="pl-0 border-0 form-control 
+                class="pl-0 border-1 form-control 
                 @error('curriculum_vitae') is-invalid @enderror" 
                 value="{{ old('curriculum_vitae',$details->curriculum_vitae) }}"
                 >

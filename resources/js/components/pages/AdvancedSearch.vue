@@ -76,7 +76,7 @@
         </AppAlert>
 
         <!-- Main section: doctor card -->
-        <AppMain :users="users" :specialty="choice" />
+        <AppMain :users="users" :specialty="choice" class="my-5" />
     </section>
 </template>
 <script>

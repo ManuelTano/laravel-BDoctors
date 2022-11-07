@@ -20,9 +20,9 @@
                         <p><i class="fa-solid fa-user mr-3"></i>{{ $user->getFullName() }}</p>
                         <p><i class="fa-solid fa-house mr-3"></i>{{ $user->address }} , {{ $user->city }}</p>
                     </div>
-                    {{-- <div>
+                    <div>
                         <i class="fa-solid fa-medal fa-2x {{ $user->sponsorships[0]->business_plan }}-badge"></i>
-                    </div> --}}
+                    </div>
                 </div>
                 <div>
                     <address class="d-flex align-items-center justify-content-between">

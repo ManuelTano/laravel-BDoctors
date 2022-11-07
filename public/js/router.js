@@ -976,8 +976,12 @@ var render = function render() {
   })]), _vm._v(" "), _c("div", [_c("div", {
     staticClass: "card-body"
   }, [_c("h5", {
-    staticClass: "card-title my-3"
-  }, [_vm._v("\n                    " + _vm._s(_vm.user.first_name + " " + _vm.user.last_name) + "\n                ")]), _vm._v(" "), _c("button", {
+    staticClass: "card-title my-2"
+  }, [_vm._v("\n                    " + _vm._s(_vm.user.first_name + " " + _vm.user.last_name) + "\n                ")]), _vm._v(" "), _vm.user.media ? _c("div", {
+    staticClass: "m-0"
+  }, [_vm._v("\n                    Valutazione: " + _vm._s(_vm.user.media) + "\n                ")]) : _vm._e(), _vm._v(" "), _vm.user.numero_recensioni ? _c("div", {
+    staticClass: "m-0"
+  }, [_vm._v("\n                    Numero di recensioni: " + _vm._s(_vm.user.numero_recensioni) + "\n                ")]) : _vm._e(), _vm._v(" "), _c("button", {
     staticClass: "btn",
     attrs: {
       id: "show-profile"
@@ -1962,6 +1966,7 @@ var render = function render() {
       key: key
     }, [_vm._v("\n                    " + _vm._s(error) + "\n                ")]);
   }), 0)]) : _vm._e()]) : _vm._e(), _vm._v(" "), _c("AppMain", {
+    staticClass: "my-5",
     attrs: {
       users: _vm.users,
       specialty: _vm.choice
@@ -2307,7 +2312,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#app-card[data-v-0393c9b6] {\n  height: 450px;\n}\n#app-card #show-profile[data-v-0393c9b6] {\n  background-color: #3490dc;\n  color: white;\n  border: 1px solid transparent;\n}\n#app-card #show-profile[data-v-0393c9b6]:hover {\n  background-color: white;\n  color: #3490dc;\n  border: 1px solid #3490dc;\n}", ""]);
+exports.push([module.i, "#app-card[data-v-0393c9b6] {\n  height: 480px;\n}\n#app-card #show-profile[data-v-0393c9b6] {\n  background-color: #3490dc;\n  color: white;\n  border: 1px solid transparent;\n}\n#app-card #show-profile[data-v-0393c9b6]:hover {\n  background-color: white;\n  color: #3490dc;\n  border: 1px solid #3490dc;\n}", ""]);
 
 // exports
 

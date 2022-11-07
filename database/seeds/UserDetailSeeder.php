@@ -22,6 +22,7 @@ class UserDetailSeeder extends Seeder
 
         foreach($details as $detail){
             $detail->thumb = Arr::random(config('images'));
+            $detail->curriculum_vitae = Arr::random(config('curriculum'));
             $detail->phone = $faker->e164PhoneNumber();
 
             $detail->save();

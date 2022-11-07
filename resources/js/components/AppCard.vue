@@ -12,45 +12,19 @@
                         alt="fotoo"
                     />
                 </figure>
-                <div class="card-body p-0">
-                    <!-- <p class="card-text"> -->
-                    <!-- <ul> -->
-                    <!-- <li>
-                        <strong>{{
-                            user.sponsorships[0].business_plan
-                        }}</strong>
-                    </li> -->
-                    <!-- Laurea conseguita -->
-                    <!-- <li>
-                                    <div>Laureato in Medicina</div>
-                                </li> -->
-
-                    <!-- Specializzazioni acquisite -->
-                    <!-- <li>
-                                    <span>Specializzato in </span>
-                                    <span
-                                    v-for="(specialty, index) in user.specialties"
-                                    :key="index"
-                                    >{{ specialty.label }}
-                                    <span
-                                    v-if="
-                                            index ===
-                                            user.specialties.length - 1
-                                            "
-                                        >.</span
-                                        >
-                                        <span v-else>,</span>
-                                    </span>
-                                </li> -->
-                    <!-- </ul>
-                        </p> -->
-                </div>
+                <div class="card-body p-0"></div>
             </div>
             <div>
                 <div class="card-body">
-                    <h5 class="card-title my-3">
+                    <h5 class="card-title my-2">
                         {{ user.first_name + " " + user.last_name }}
                     </h5>
+                    <div v-if="user.media" class="m-0">
+                        Valutazione: {{ user.media }}
+                    </div>
+                    <div v-if="user.numero_recensioni" class="m-0">
+                        Numero di recensioni: {{ user.numero_recensioni }}
+                    </div>
                     <button class="btn" id="show-profile" @click="showProfile">
                         Visita il profilo
                     </button>
@@ -92,7 +66,7 @@ export default {
 <style lang="scss" scoped>
 @import "../../sass/variables";
 #app-card {
-    height: 450px;
+    height: 480px;
 
     #show-profile {
         background-color: $primary-color;
