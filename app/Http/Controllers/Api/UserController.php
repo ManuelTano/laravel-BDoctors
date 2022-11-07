@@ -29,6 +29,21 @@ class UserController extends Controller
         return response()->json($users);
     }
 
+    public function fetchSpecialtyUsers($query){
+        $users = User::with('specialties','userDetail','sponsorships')
+        ->get();
+
+        $users_by_specialty = [];
+
+        foreach($users as $user){
+            foreach($user->specialties as $specialty){
+                if($specialty->id == $query) $users_by_specialty[] = $user;
+            }
+        }
+
+        return response()->json(compact('users_by_specialty'));
+    }
+
     public function fetchFeaturedDoctors(){
         $users = User::with('specialties','userDetail','sponsorships')
         ->join('sponsorship_user','sponsorship_user.user_id','=','users.id')

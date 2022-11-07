@@ -606,11 +606,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       specialty: [],
       // Lista degli utenti filtrati per specializzazione
       usersBySpecialty: [],
-      // Lista dei dottori filtrata per ricerca avanzata
-      filterUsers: [],
+      // Lista dei dottori che va in Show
       users: [],
       // Lista utenti precedentemente visualizzata
-      prevUsers: [],
+      filteredUsers: [],
       // Campi del form
       form: {
         rating: null,
@@ -659,12 +658,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     // Metodo invocato al submit del form: raffina la ricerca
     advancedSearch: function advancedSearch() {
       var _this = this;
-      var raffinate = this.usersBySpecialty.filter(function (user) {
+      console.log(this.filteredUsers);
+      console.log("sono nel filtro");
+      var raffinate = this.filteredUsers.filter(function (user) {
+        console.log(user.media);
         if (user.media == _this.form.rating && user.numero_recensioni >= parseInt(_this.form.number_review)) return user;
       });
+      console.log(raffinate);
       if (raffinate.length !== 0) {
         this.users = raffinate;
-        console.log(this.users);
       }
     },
     // Resetta tutti i campi del form e il messaggio
@@ -683,46 +685,48 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
     },
     // **** Filtro dei dottori per specializzazioni
-    fetchDoctorsBySpecialties: function fetchDoctorsBySpecialties(choice) {
+    fetchDoctorsBySpecialties: function fetchDoctorsBySpecialties() {
       var _this2 = this;
-      this.choice = choice;
-      axios.get("http://127.0.0.1:8000/api/users/specialty/" + choice).then(function (res) {
-        _this2.usersBySpecialty = res.data.users_by_specialty;
+      axios.get("http://127.0.0.1:8000/api/users/specialty/" + this.$route.params.id).then(function (res) {
+        _this2.filteredUsers = res.data.users_by_specialty;
         _this2.filterBySponsorship();
+      });
+    },
+    // preleva i dottori a prescindere dalle recensioni
+    fetchDoctorsWithoutReviews: function fetchDoctorsWithoutReviews() {
+      var _this3 = this;
+      axios.get("http://127.0.0.1:8000/api/users/specialties/" + this.$route.params.id).then(function (res) {
+        _this3.users = _this3.usersBySpecialty = res.data.users_by_specialty;
         console.log("chiamata effettuata con successo");
       });
     },
     // Filtra il risultato dell'api per sponsorizzazioni
     filterBySponsorship: function filterBySponsorship() {
-      var basicUsers = this.usersBySpecialty.filter(function (user) {
+      var basicUsers = this.filteredUsers.filter(function (user) {
         if (user.sponsorships[0].business_plan === "basic") return user;
       });
-      console.log("basic: ", basicUsers);
-      var goldUsers = this.usersBySpecialty.filter(function (user) {
+      var goldUsers = this.filteredUsers.filter(function (user) {
         if (user.sponsorships[0].business_plan === "gold") return user;
       });
-      console.log("gold: ", goldUsers);
-      var silverUsers = this.usersBySpecialty.filter(function (user) {
+      var silverUsers = this.filteredUsers.filter(function (user) {
         if (user.sponsorships[0].business_plan === "silver") return user;
       });
-      console.log("silver: ", silverUsers);
-      var bronzeUsers = this.usersBySpecialty.filter(function (user) {
+      var bronzeUsers = this.filteredUsers.filter(function (user) {
         if (user.sponsorships[0].business_plan === "bronze") return user;
       });
-      console.log("bronze: ", bronzeUsers);
-      this.usersBySpecialty = this.users = [].concat(_toConsumableArray(goldUsers), _toConsumableArray(silverUsers), _toConsumableArray(bronzeUsers), _toConsumableArray(basicUsers));
-      console.log(this.users);
+      this.filteredUsers = [].concat(_toConsumableArray(goldUsers), _toConsumableArray(silverUsers), _toConsumableArray(bronzeUsers), _toConsumableArray(basicUsers));
     },
     // Filtra la specializzazione corrente
     filterSpecialty: function filterSpecialty() {
-      var _this3 = this;
+      var _this4 = this;
       axios.get("http://127.0.0.1:8000/api/specialties/" + this.choice).then(function (res) {
-        _this3.specialty = res.data.specialty;
+        _this4.specialty = res.data.specialty;
       });
     }
   },
   mounted: function mounted() {
-    this.fetchDoctorsBySpecialties(this.choice);
+    this.fetchDoctorsWithoutReviews();
+    this.fetchDoctorsBySpecialties();
     this.filterSpecialty();
   },
   created: function created() {
@@ -963,7 +967,7 @@ var render = function render() {
     staticStyle: {
       width: "18rem"
     }
-  }, [_c("div", [_c("figure", {
+  }, [_c("div", [_vm.user.user_detail.thumb ? _c("figure", {
     staticClass: "m-0"
   }, [_c("img", {
     staticClass: "card-img-top",
@@ -971,17 +975,17 @@ var render = function render() {
       src: "".concat(_vm.user.user_detail.thumb),
       alt: "fotoo"
     }
-  })]), _vm._v(" "), _c("div", {
+  })]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "card-body p-0"
   })]), _vm._v(" "), _c("div", [_c("div", {
     staticClass: "card-body"
   }, [_c("h5", {
     staticClass: "card-title my-2"
-  }, [_vm._v("\n                    " + _vm._s(_vm.user.first_name + " " + _vm.user.last_name) + "\n                ")]), _vm._v(" "), _vm.user.media ? _c("div", {
+  }, [_vm._v("\n                    " + _vm._s(_vm.user.first_name + " " + _vm.user.last_name) + "\n                ")]), _vm._v(" "), _vm.user.media ? _c("div", [_vm.user.media ? _c("div", {
     staticClass: "m-0"
-  }, [_vm._v("\n                    Valutazione: " + _vm._s(_vm.user.media) + "\n                ")]) : _vm._e(), _vm._v(" "), _vm.user.numero_recensioni ? _c("div", {
+  }, [_vm._v("\n                        Valutazione: " + _vm._s(_vm.user.media) + "\n                    ")]) : _vm._e(), _vm._v(" "), _vm.user.numero_recensioni ? _c("div", {
     staticClass: "m-0"
-  }, [_vm._v("\n                    Numero di recensioni: " + _vm._s(_vm.user.numero_recensioni) + "\n                ")]) : _vm._e(), _vm._v(" "), _c("button", {
+  }, [_vm._v("\n                        Numero di recensioni: " + _vm._s(_vm.user.numero_recensioni) + "\n                    ")]) : _vm._e()]) : _vm._e(), _vm._v(" "), _c("button", {
     staticClass: "btn my-3",
     attrs: {
       id: "show-profile"

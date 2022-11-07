@@ -5,7 +5,7 @@
             style="width: 18rem"
         >
             <div>
-                <figure class="m-0">
+                <figure class="m-0" v-if="user.user_detail.thumb">
                     <img
                         :src="`${user.user_detail.thumb}`"
                         class="card-img-top"
@@ -19,11 +19,13 @@
                     <h5 class="card-title my-2">
                         {{ user.first_name + " " + user.last_name }}
                     </h5>
-                    <div v-if="user.media" class="m-0">
-                        Valutazione: {{ user.media }}
-                    </div>
-                    <div v-if="user.numero_recensioni" class="m-0">
-                        Numero di recensioni: {{ user.numero_recensioni }}
+                    <div v-if="user.media">
+                        <div v-if="user.media" class="m-0">
+                            Valutazione: {{ user.media }}
+                        </div>
+                        <div v-if="user.numero_recensioni" class="m-0">
+                            Numero di recensioni: {{ user.numero_recensioni }}
+                        </div>
                     </div>
                     <button
                         class="btn my-3"

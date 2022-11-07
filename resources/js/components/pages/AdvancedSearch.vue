@@ -98,13 +98,11 @@ export default {
             // Lista degli utenti filtrati per specializzazione
             usersBySpecialty: [],
 
-            // Lista dei dottori filtrata per ricerca avanzata
-            filterUsers: [],
-
+            // Lista dei dottori che va in Show
             users: [],
 
             // Lista utenti precedentemente visualizzata
-            prevUsers: [],
+            filteredUsers: [],
 
             // Campi del form
             form: {
@@ -160,16 +158,19 @@ export default {
 
         // Metodo invocato al submit del form: raffina la ricerca
         advancedSearch() {
-            const raffinate = this.usersBySpecialty.filter((user) => {
+            console.log(this.filteredUsers);
+            console.log("sono nel filtro");
+            const raffinate = this.filteredUsers.filter((user) => {
+                console.log(user.media);
                 if (
                     user.media == this.form.rating &&
                     user.numero_recensioni >= parseInt(this.form.number_review)
                 )
                     return user;
             });
+            console.log(raffinate);
             if (raffinate.length !== 0) {
                 this.users = raffinate;
-                console.log(this.users);
             }
         },
 
@@ -192,52 +193,58 @@ export default {
         },
 
         // **** Filtro dei dottori per specializzazioni
-        fetchDoctorsBySpecialties(choice) {
-            this.choice = choice;
+        fetchDoctorsBySpecialties() {
             axios
-                .get("http://127.0.0.1:8000/api/users/specialty/" + choice)
+                .get(
+                    "http://127.0.0.1:8000/api/users/specialty/" +
+                        this.$route.params.id
+                )
                 .then((res) => {
-                    this.usersBySpecialty = res.data.users_by_specialty;
+                    this.filteredUsers = res.data.users_by_specialty;
                     this.filterBySponsorship();
+                });
+        },
+
+        // preleva i dottori a prescindere dalle recensioni
+        fetchDoctorsWithoutReviews() {
+            axios
+                .get(
+                    "http://127.0.0.1:8000/api/users/specialties/" +
+                        this.$route.params.id
+                )
+                .then((res) => {
+                    this.users = this.usersBySpecialty =
+                        res.data.users_by_specialty;
                     console.log("chiamata effettuata con successo");
                 });
         },
 
         // Filtra il risultato dell'api per sponsorizzazioni
         filterBySponsorship() {
-            const basicUsers = this.usersBySpecialty.filter((user) => {
+            const basicUsers = this.filteredUsers.filter((user) => {
                 if (user.sponsorships[0].business_plan === "basic") return user;
             });
-            console.log("basic: ", basicUsers);
 
-            const goldUsers = this.usersBySpecialty.filter((user) => {
+            const goldUsers = this.filteredUsers.filter((user) => {
                 if (user.sponsorships[0].business_plan === "gold") return user;
             });
 
-            console.log("gold: ", goldUsers);
-
-            const silverUsers = this.usersBySpecialty.filter((user) => {
+            const silverUsers = this.filteredUsers.filter((user) => {
                 if (user.sponsorships[0].business_plan === "silver")
                     return user;
             });
 
-            console.log("silver: ", silverUsers);
-
-            const bronzeUsers = this.usersBySpecialty.filter((user) => {
+            const bronzeUsers = this.filteredUsers.filter((user) => {
                 if (user.sponsorships[0].business_plan === "bronze")
                     return user;
             });
 
-            console.log("bronze: ", bronzeUsers);
-
-            this.usersBySpecialty = this.users = [
+            this.filteredUsers = [
                 ...goldUsers,
                 ...silverUsers,
                 ...bronzeUsers,
                 ...basicUsers,
             ];
-
-            console.log(this.users);
         },
 
         // Filtra la specializzazione corrente
@@ -250,7 +257,8 @@ export default {
         },
     },
     mounted() {
-        this.fetchDoctorsBySpecialties(this.choice);
+        this.fetchDoctorsWithoutReviews();
+        this.fetchDoctorsBySpecialties();
         this.filterSpecialty();
     },
     created() {

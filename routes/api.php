@@ -32,8 +32,11 @@ Route::namespace('Api')->group(function () {
     // Rotta che restituisce tutti i dottori sponsorizzati
     Route::get('/featured-users','UserController@fetchFeaturedDoctors');
 
-    // Rotta che filtra i dottori in base alla specialistica
+    // Rotta che filtra i dottori in base alla specialistica con le reviews
     Route::get('/users/specialty/{query}', 'UserController@filterBySpecialty');
+
+    // Rotta che filtra i dottori in base alla specialistica
+    Route::get('/users/specialties/{query}', 'UserController@fetchSpecialtyUsers');
 
     // Rotta che filtra i dottori in base al numero di recensioni
     Route::get('/users-by-reviews', 'UserController@filterByMoreReviews');
@@ -46,9 +49,6 @@ Route::namespace('Api')->group(function () {
 
     // Rotta che raffina il filtro in base alla media voto
     Route::get('/users-raffinate-by-rating/{query}', 'UserController@raffinateFilterByBestRating');
-
-    // Rotta che preleva per primo tutta la lista di dottori per quella specializzazione
-    Route::get('/users/specialties/{query}','UserController@firstFilterBySpecialty');
 
     // # ROTTE CHE PRELEVANO I DATI DEI DOTTORI
 
