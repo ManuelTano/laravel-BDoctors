@@ -182,7 +182,7 @@
         {{-- Phone --}}
         <div class="col-6">
             <div class="form-group">
-                <label for="phone">Numero Di Telefono</label>
+                <label for="phone">Numero Di Telefono<span class="mb-2">*</span></label>
                 <input type="text" id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone',$details->phone) }}">
                 @error('phone')
                     <div class="invalid-feedback">
