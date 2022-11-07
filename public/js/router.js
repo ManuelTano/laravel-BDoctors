@@ -756,7 +756,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      user: {}
+      user: {},
+      showCurriculum: false
     };
   },
   methods: {
@@ -785,6 +786,9 @@ __webpack_require__.r(__webpack_exports__);
           name: "home"
         });
       }
+    },
+    showCurriculumVitae: function showCurriculumVitae() {
+      if (this.showCurriculum === true) this.showCurriculum = false;else this.showCurriculum = true;
     }
   },
   mounted: function mounted() {
@@ -2015,7 +2019,30 @@ var render = function render() {
     staticClass: "d-flex justify-content-between w-100 m-0"
   }, [_c("div", [_c("div", {
     staticClass: "mr-2"
-  }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + " , " + _vm._s(_vm.user[0].city) + "\n                        ")])]), _vm._v(" "), _vm._m(1)])])]) : _vm._e(), _vm._v(" "), _c("h3", {
+  }, [_vm._v("\n                            " + _vm._s((_vm$user$0$phone = _vm.user[0].phone) !== null && _vm$user$0$phone !== void 0 ? _vm$user$0$phone : "+39 3498976345") + "\n                        ")]), _vm._v(" "), _c("div", [_vm._v("\n                            " + _vm._s(_vm.user[0].address) + " , " + _vm._s(_vm.user[0].city) + "\n                        ")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center justify-content-center"
+  }, [_c("button", {
+    staticClass: "btn btn-primary mr-4 d-flex align-items-center",
+    on: {
+      click: _vm.showCurriculumVitae
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-arrow-right"
+  }), _c("i", {
+    staticClass: "ml-2 fa-solid fa-file-pdf fa-2x"
+  })])])])])]) : _vm._e(), _vm._v(" "), _vm.showCurriculum ? _c("div", {
+    attrs: {
+      id: "curriculum-vitae"
+    }
+  }, [_c("iframe", {
+    attrs: {
+      src: _vm.user[0].curriculum_vitae,
+      frameborder: "0",
+      height: "100%",
+      width: "100%",
+      id: "iframe-curriculum"
+    }
+  })]) : _vm._e(), _vm._v(" "), _c("h3", {
     staticClass: "my-4"
   }, [_vm._v("Recensioni effettuate da altri utenti")]), _vm._v(" "), _c("ReviewsList", {
     staticClass: "reviews-list",
@@ -2060,18 +2087,6 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("li", [_c("div", [_vm._v("Laureato in Medicina")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center justify-content-center"
-  }, [_c("button", {
-    staticClass: "btn btn-primary mr-4 d-flex align-items-center"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-arrow-right"
-  }), _c("i", {
-    staticClass: "ml-2 fa-solid fa-file-pdf fa-2x"
-  })])]);
 }];
 render._withStripped = true;
 
@@ -2482,7 +2497,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#doctor-page[data-v-3ba5a564] {\n  padding-top: 150px;\n}\n#doctor-page .user-info[data-v-3ba5a564] {\n  border-radius: 100px;\n  border: 3px solid #a2d9ff;\n  background-color: #a2d9ff;\n  margin: 50px 0;\n}\n#doctor-page .message-review-border[data-v-3ba5a564] {\n  border: 3px solid #a2d9ff;\n  border-radius: 20px;\n  padding: 1rem;\n  margin: 50px 0;\n}\n#doctor-page figure[data-v-3ba5a564] {\n  width: 200px;\n  height: 200px;\n  background-color: #fff;\n  border-radius: 50%;\n}\n#doctor-page figure img[data-v-3ba5a564] {\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n#doctor-page .reviews-list[data-v-3ba5a564] {\n  max-height: 400px;\n  overflow-y: scroll;\n}\n#doctor-page #return-button[data-v-3ba5a564] {\n  background-color: #3490dc;\n  color: white;\n  border: 1px solid #3490dc;\n  margin: 30px 0;\n}\n#doctor-page #return-button[data-v-3ba5a564]:hover {\n  background-color: white;\n  color: #3490dc;\n  border: 1px solid #3490dc;\n}", ""]);
+exports.push([module.i, "#doctor-page[data-v-3ba5a564] {\n  padding-top: 150px;\n}\n#doctor-page #iframe-curriculum[data-v-3ba5a564] {\n  height: 500px;\n}\n#doctor-page .user-info[data-v-3ba5a564] {\n  border-radius: 100px;\n  border: 3px solid #a2d9ff;\n  background-color: #a2d9ff;\n  margin: 50px 0;\n}\n#doctor-page .message-review-border[data-v-3ba5a564] {\n  border: 3px solid #a2d9ff;\n  border-radius: 20px;\n  padding: 1rem;\n  margin: 50px 0;\n}\n#doctor-page figure[data-v-3ba5a564] {\n  width: 200px;\n  height: 200px;\n  background-color: #fff;\n  border-radius: 50%;\n}\n#doctor-page figure img[data-v-3ba5a564] {\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n#doctor-page .reviews-list[data-v-3ba5a564] {\n  max-height: 400px;\n  overflow-y: scroll;\n}\n#doctor-page #return-button[data-v-3ba5a564] {\n  background-color: #3490dc;\n  color: white;\n  border: 1px solid #3490dc;\n  margin: 30px 0;\n}\n#doctor-page #return-button[data-v-3ba5a564]:hover {\n  background-color: white;\n  color: #3490dc;\n  border: 1px solid #3490dc;\n}", ""]);
 
 // exports
 

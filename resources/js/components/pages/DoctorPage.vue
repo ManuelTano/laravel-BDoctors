@@ -65,20 +65,25 @@
                         >
                             <button
                                 class="btn btn-primary mr-4 d-flex align-items-center"
+                                @click="showCurriculumVitae"
                             >
                                 <i class="fa-solid fa-arrow-right"></i
                                 ><i class="ml-2 fa-solid fa-file-pdf fa-2x"></i>
                             </button>
-                            <!-- <iframe
-                                :src="user[0].curriculum_vitae"
-                                frameborder="0"
-                                height="100%"
-                                width="100%"
-                            >
-                            </iframe> -->
                         </div>
                     </address>
                 </div>
+            </div>
+
+            <div id="curriculum-vitae" v-if="showCurriculum">
+                <iframe
+                    :src="user[0].curriculum_vitae"
+                    frameborder="0"
+                    height="100%"
+                    width="100%"
+                    id="iframe-curriculum"
+                >
+                </iframe>
             </div>
 
             <!-- $ ReviewsList -->
@@ -139,6 +144,7 @@ export default {
     data() {
         return {
             user: {},
+            showCurriculum: false,
         };
     },
     methods: {
@@ -171,6 +177,11 @@ export default {
                 });
             }
         },
+
+        showCurriculumVitae() {
+            if (this.showCurriculum === true) this.showCurriculum = false;
+            else this.showCurriculum = true;
+        },
     },
     mounted() {
         this.fetchDoctor();
@@ -182,6 +193,10 @@ export default {
 <style lang="scss" scoped>
 #doctor-page {
     padding-top: 150px;
+
+    #iframe-curriculum {
+        height: 500px;
+    }
 
     .user-info {
         border-radius: 100px;
