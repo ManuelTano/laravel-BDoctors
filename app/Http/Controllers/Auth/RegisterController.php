@@ -103,6 +103,10 @@ class RegisterController extends Controller
 
         $user->specialties()->sync($data['specialties']);
 
+        $basic = ['1'];
+
+        $user->sponsorships()->attach($basic);
+
         $details->save();
         return $user;
     }
