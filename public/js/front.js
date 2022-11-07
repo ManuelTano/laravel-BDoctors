@@ -2922,7 +2922,7 @@ var render = function render() {
   }, [_vm._v("\n                    Valutazione: " + _vm._s(_vm.user.media) + "\n                ")]) : _vm._e(), _vm._v(" "), _vm.user.numero_recensioni ? _c("div", {
     staticClass: "m-0"
   }, [_vm._v("\n                    Numero di recensioni: " + _vm._s(_vm.user.numero_recensioni) + "\n                ")]) : _vm._e(), _vm._v(" "), _c("button", {
-    staticClass: "btn",
+    staticClass: "btn my-3",
     attrs: {
       id: "show-profile"
     },

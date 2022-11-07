@@ -25,7 +25,11 @@
                     <div v-if="user.numero_recensioni" class="m-0">
                         Numero di recensioni: {{ user.numero_recensioni }}
                     </div>
-                    <button class="btn" id="show-profile" @click="showProfile">
+                    <button
+                        class="btn my-3"
+                        id="show-profile"
+                        @click="showProfile"
+                    >
                         Visita il profilo
                     </button>
                 </div>
